@@ -1,0 +1,82 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: Tutorial
+    chapters:
+    - file: Quickstart.md
+    - file: Serialization.md
+    - file: Requests-and-Responses.md
+    - file: Class-based-views.md
+    - file: Authentication-and-Permissions.md
+    - file: Relationships-and-Hyperlinked-APIs.md
+    - file: ViewSets-and-Routers.md
+    - file: Schemas-and-client_libraries.md
+  - caption: API-Guide
+    chapters:
+    - file: API-Guide/Requests.md
+    - file: API-Guide/Responses.md
+    - file: API-Guide/Views.md
+    - file: API-Guide/Generic-views.md
+    - file: API-Guide/Viewsets.md
+    - file: API-Guide/Routers.md
+    - file: API-Guide/Parsers.md
+    - file: API-Guide/Renderers.md
+    - file: API-Guide/Serializers.md
+    - file: API-Guide/Serializer-fields.md
+    - file: API-Guide/Serializer-relations.md
+    - file: API-Guide/Validators.md
+    - file: API-Guide/Authentication.md
+    - file: API-Guide/Permissions.md
+    - file: API-Guide/Caching.md
+    - file: API-Guide/Throttling.md
+    - file: API-Guide/Filtering.md
+    - file: API-Guide/Pagination.md
+    - file: API-Guide/Versioning.md
+    - file: API-Guide/Content-negotiation.md
+    - file: API-Guide/Metadata.md
+    - file: API-Guide/Schemas.md
+    - file: API-Guide/Format-suffixes.md
+    - file: API-Guide/Returning-URLs.md
+    - file: API-Guide/Exceptions.md
+    - file: API-Guide/Status-codes.md
+    - file: API-Guide/Testing.md
+    - file: API-Guide/Settings.md
+  - caption: Topics
+    chapters:
+    - file: Topics/Documenting_your_API.md
+    - file: Topics/API_Clients.md
+    - file: Topics/Internationalization.md
+    - file: Topics/AJAX,_CSRF_&_CORS.md
+    - file: Topics/HTML_&_Forms.md
+    - file: Topics/Browser_Enhancements.md
+    - file: Topics/The_Browsable_API.md
+    - file: Topics/REST,_Hypermedia_&_HATEOAS.md
+  - caption: Community
+    chapters:
+    - file: Community/Tutorials_and_Resources.md
+    - file: Community/Third_Party_Packages.md
+    - file: Community/Contributing_to_REST_framework.md
+    - file: Community/Project_management.md
+    - file: Community/Release_Notes.md
+    - file: Community/3.14_Announcement.md
+    - file: Community/3.13_Announcement.md
+    - file: Community/3.12_Announcement.md
+    - file: Community/3.11_Announcement.md
+    - file: Community/3.10_Announcement.md
+    - file: Community/3.9_Announcement.md
+    - file: Community/3.8_Announcement.md
+    - file: Community/3.7_Announcement.md
+    - file: Community/3.6_Announcement.md
+    - file: Community/3.5_Announcement.md
+    - file: Community/3.4_Announcement.md
+    - file: Community/3.3_Announcement.md
+    - file: Community/3.2_Announcement.md
+    - file: Community/3.1_Announcement.md
+    - file: Community/3.0_Announcement.md
+    - file: Community/Kickstarter_Announcement.md
+    - file: Community/Mozilla_Grant.md
+    - file: Community/Funding.md
+    - file: Community/Jobs.md
