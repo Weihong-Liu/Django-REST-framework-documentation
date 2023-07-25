@@ -6,14 +6,14 @@ root: intro
 parts:
   - caption: Tutorial
     chapters:
-    - file: Quickstart.md
-    - file: Serialization.md
-    - file: Requests-and-Responses.md
-    - file: Class-based-views.md
-    - file: Authentication-and-Permissions.md
-    - file: Relationships-and-Hyperlinked-APIs.md
-    - file: ViewSets-and-Routers.md
-    - file: Schemas-and-client_libraries.md
+    - file: Tutorial/Quickstart.md
+    - file: Tutorial/Serialization.md
+    - file: Tutorial/Requests-and-Responses.md
+    - file: Tutorial/Class-based-views.md
+    - file: Tutorial/Authentication-and-Permissions.md
+    - file: Tutorial/Relationships-and-Hyperlinked-APIs.md
+    - file: Tutorial/ViewSets-and-Routers.md
+    - file: Tutorial/Schemas-and-client_libraries.md
   - caption: API-Guide
     chapters:
     - file: API-Guide/Requests.md
