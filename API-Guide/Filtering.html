@@ -1,0 +1,1055 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>过滤 (Filtering) &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'API-Guide/Filtering';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="分页 (Pagination)" href="Pagination.html" />
+    <link rel="prev" title="限流 (Throttling)" href="Throttling.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Authentication-and-Permissions.html">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Views.html">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Renderers.html">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-fields.html">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Validators.html">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Authentication.html">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Permissions.html">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Throttling.html">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Pagination.html">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Exceptions.html">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Testing.html">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Settings.html">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/API_Clients.html">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/The_Browsable_API.html">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Community/Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Third_Party_Packages.html">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Contributing_to_REST_framework.html">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Community/Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.4_Announcement.html">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.0_Announcement.html">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAPI-Guide/Filtering.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/API-Guide/Filtering.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>过滤 (Filtering)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">过滤 (Filtering)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-against-the-current-user">过滤当前用户 (Filtering against the current user)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#url-filtering-against-the-url">过滤 URL (Filtering against the URL)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-against-query-parameters">过滤查询参数 (Filtering against query parameters)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#generic-filtering">通用过滤 (Generic Filtering)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-filter-backends">设置过滤器后端 (Setting filter backends)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-and-object-lookups">过滤和对象查找 (Filtering and object lookups)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overriding-the-initial-queryset">重写初始查询集 (Overriding the initial queryset)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-guide">API 指南 (API Guide)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#djangofilterbackend">DjangoFilterBackend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searchfilter">SearchFilter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orderingfilter">OrderingFilter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-which-fields-may-be-ordered-against">指定可以对哪些字段进行排序 (Specifying which fields may be ordered against)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-a-default-ordering">指定默认排序 (Specifying a default ordering)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#djangoobjectpermissionsfilter">DjangoObjectPermissionsFilter</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-generic-filtering">自定义通用过滤 (Custom generic filtering)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">举个栗子</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-the-interface">自定义界面 (Customizing the interface)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pagination-schemas">分页和模式 (Pagination &amp; schemas)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#third-party-packages">第三方包 (Third party packages)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-filters-package">Django REST framework filters package</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-full-word-search-filter">Django REST framework full word search filter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-url-filter">Django URL Filter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drf-url-filters">drf-url-filters</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="filtering">
+<h1>过滤 (Filtering)<a class="headerlink" href="#filtering" title="Permalink to this heading">#</a></h1>
+<p>Manager 提供的根 QuerySet 描述了数据库表中的所有对象。但是，通常您只需要选择完整对象集的一个子集。—— <a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/db/queries/#retrieving-specific-objects-with-filters">Django 文档</a></p>
+<p>REST framework 的通用列表视图的默认行为是返回模型管理器的整个查询集。通常您会希望 API 限制查询集返回的条目。</p>
+<p>过滤子类 <code class="docutils literal notranslate"><span class="pre">GenericAPIView</span></code> 的任何视图的查询集的最简单方法是重写 <code class="docutils literal notranslate"><span class="pre">.get_queryset()</span></code> 方法。</p>
+<p>重写此方法允许您以多种不同方式自定义视图返回的查询集。</p>
+<section id="filtering-against-the-current-user">
+<h2>过滤当前用户 (Filtering against the current user)<a class="headerlink" href="#filtering-against-the-current-user" title="Permalink to this heading">#</a></h2>
+<p>您可能希望过滤查询集以确保只返回与当前经过身份验证的用户发出的请求相关的结果。</p>
+<p>您可以通过基于 <code class="docutils literal notranslate"><span class="pre">request.user</span></code> 的值进行过滤来完成此操作。</p>
+<p>举个栗子：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">myapp.models</span> <span class="kn">import</span> <span class="n">Purchase</span>
+<span class="kn">from</span> <span class="nn">myapp.serializers</span> <span class="kn">import</span> <span class="n">PurchaseSerializer</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">generics</span>
+
+<span class="k">class</span> <span class="nc">PurchaseList</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListAPIView</span><span class="p">):</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">PurchaseSerializer</span>
+
+    <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        此视图应返回当前已验证用户的所有 purchases 列表。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span>
+        <span class="k">return</span> <span class="n">Purchase</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">purchaser</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="url-filtering-against-the-url">
+<h2>过滤 URL (Filtering against the URL)<a class="headerlink" href="#url-filtering-against-the-url" title="Permalink to this heading">#</a></h2>
+<p>另一种过滤方式可能涉及限制基于 URL 某些部分的查询集。</p>
+<p>例如，如果 URL 配置包含这样的条目：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span><span class="p">(</span><span class="s1">&#39;^purchases/(?P&lt;username&gt;.+)/$&#39;</span><span class="p">,</span> <span class="n">PurchaseList</span><span class="o">.</span><span class="n">as_view</span><span class="p">()),</span>
+</pre></div>
+</div>
+<p>然后，您可以编写一个视图，该视图返回由 URL 的用户名部分过滤的 purchase 查询集：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PurchaseList</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListAPIView</span><span class="p">):</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">PurchaseSerializer</span>
+
+    <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        这个视图应该返回由 URL 的用户名部分确定的用户的所有 purchases 列表。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">username</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">Purchase</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">purchaser__username</span><span class="o">=</span><span class="n">username</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="filtering-against-query-parameters">
+<h2>过滤查询参数 (Filtering against query parameters)<a class="headerlink" href="#filtering-against-query-parameters" title="Permalink to this heading">#</a></h2>
+<p>过滤初始查询集的最后一个示例是根据 url 中的查询参数确定初始查询集。</p>
+<p>我们可以重写 <code class="docutils literal notranslate"><span class="pre">.get_queryset()</span></code> 来处理诸如 <code class="docutils literal notranslate"><span class="pre">http://example.com/api/purchases?username=denvercoder9</span></code> 的 URL，并且只有在 URL 中包含 <code class="docutils literal notranslate"><span class="pre">username</span></code> 参数时才过滤查询集：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PurchaseList</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListAPIView</span><span class="p">):</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">PurchaseSerializer</span>
+
+    <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        通过过滤 URL 中的 `username` 查询参数，可以选择将返回的 purchases 限制为给定的用户。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">queryset</span> <span class="o">=</span> <span class="n">Purchase</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="n">username</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">username</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">queryset</span> <span class="o">=</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">purchaser__username</span><span class="o">=</span><span class="n">username</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">queryset</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="generic-filtering">
+<h1>通用过滤 (Generic Filtering)<a class="headerlink" href="#generic-filtering" title="Permalink to this heading">#</a></h1>
+<p>除了能够重写默认的查询集外，REST framework 还包括对通用过滤后端的支​​持，允许您轻松地构建复杂的搜索和过滤器。</p>
+<p>通用过滤器还可以在可浏览的 API 和管理 API 中将自身显示为 HTML 控件。</p>
+<p><img alt="filter-controls.png" src="http://pan.16mb.com/data/f_85463608.png" /></p>
+<section id="setting-filter-backends">
+<h2>设置过滤器后端 (Setting filter backends)<a class="headerlink" href="#setting-filter-backends" title="Permalink to this heading">#</a></h2>
+<p>可以使用 <code class="docutils literal notranslate"><span class="pre">DEFAULT_FILTER_BACKENDS</span></code> setting 全局设置默认的过滤器后端。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_FILTER_BACKENDS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;django_filters.rest_framework.DjangoFilterBackend&#39;</span><span class="p">,)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>您还可以使用基于类的视图 (<code class="docutils literal notranslate"><span class="pre">GenericAPIView</span></code>)，在每个视图或每个视图集的基础上设置过滤器后端。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">django_filters.rest_framework</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">myapp.serializers</span> <span class="kn">import</span> <span class="n">UserSerializer</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">generics</span>
+
+<span class="k">class</span> <span class="nc">UserListView</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListAPIView</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">UserSerializer</span>
+    <span class="n">filter_backends</span> <span class="o">=</span> <span class="p">(</span><span class="n">django_filters</span><span class="o">.</span><span class="n">rest_framework</span><span class="o">.</span><span class="n">DjangoFilterBackend</span><span class="p">,)</span>
+</pre></div>
+</div>
+</section>
+<section id="filtering-and-object-lookups">
+<h2>过滤和对象查找 (Filtering and object lookups)<a class="headerlink" href="#filtering-and-object-lookups" title="Permalink to this heading">#</a></h2>
+<p>请注意，如果为视图配置了过滤器后端，那么除了用于过滤列表视图之外，它还将用于过滤用于返回单个对象的查询集。</p>
+<p>例如，给定前面的示例以及 ID 为 4675 的产品，以下 URL 将返回相应的对象，或返回 404 响应，具体取决于给定的产品实例是否满足过滤条件：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>http://example.com/api/products/4675/?category=clothing&amp;max_price=10.00
+</pre></div>
+</div>
+</section>
+<section id="overriding-the-initial-queryset">
+<h2>重写初始查询集 (Overriding the initial queryset)<a class="headerlink" href="#overriding-the-initial-queryset" title="Permalink to this heading">#</a></h2>
+<p>请注意，您可以同时使用重写的 <code class="docutils literal notranslate"><span class="pre">.get_queryset()</span></code> 和通用过滤，并且一切都将按预期工作。例如，如果 <code class="docutils literal notranslate"><span class="pre">Product</span></code> 与 <code class="docutils literal notranslate"><span class="pre">User</span></code> (名为 <code class="docutils literal notranslate"><span class="pre">purchase</span></code>) 有多对多的关系，则您可能需要编写像这样的视图：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PurchasedProductsList</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListAPIView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list of all the products that the authenticated</span>
+<span class="sd">    user has ever purchased, with optional filtering.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Product</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">ProductSerializer</span>
+    <span class="n">filter_class</span> <span class="o">=</span> <span class="n">ProductFilter</span>
+
+    <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span>
+        <span class="k">return</span> <span class="n">user</span><span class="o">.</span><span class="n">purchase_set</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="api-api-guide">
+<h1>API 指南 (API Guide)<a class="headerlink" href="#api-api-guide" title="Permalink to this heading">#</a></h1>
+<section id="djangofilterbackend">
+<h2>DjangoFilterBackend<a class="headerlink" href="#djangofilterbackend" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">django-filter</span></code> 库包含 <code class="docutils literal notranslate"><span class="pre">DjangoFilterBackend</span></code> 类，它支持 REST framework 高度自定义字段过滤。</p>
+<p>要使用 <code class="docutils literal notranslate"><span class="pre">DjangoFilterBackend</span></code>，首先安装 <code class="docutils literal notranslate"><span class="pre">django-filter</span></code>。然后将 <code class="docutils literal notranslate"><span class="pre">django_filters</span></code> 添加到 Django 的 <code class="docutils literal notranslate"><span class="pre">INSTALLED_APPS</span></code> 中</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">django</span><span class="o">-</span><span class="nb">filter</span>
+</pre></div>
+</div>
+<p>您现在应该将过滤器后端添加到您的设置：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_FILTER_BACKENDS&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;django_filters.rest_framework.DjangoFilterBackend&#39;</span><span class="p">,)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>或者将过滤器后端添加到单个视图或视图集。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django_filters.rest_framework</span> <span class="kn">import</span> <span class="n">DjangoFilterBackend</span>
+
+<span class="k">class</span> <span class="nc">UserListView</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListAPIView</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="n">filter_backends</span> <span class="o">=</span> <span class="p">(</span><span class="n">DjangoFilterBackend</span><span class="p">,)</span>
+</pre></div>
+</div>
+<p>如果您需要的是简单的基于等式的过滤，则可以在视图或视图集上设置 <code class="docutils literal notranslate"><span class="pre">filter_fields</span></code> 属性，列出您想要过滤的一组字段。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ProductList</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListAPIView</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">ProductSerializer</span>
+    <span class="n">filter_backends</span> <span class="o">=</span> <span class="p">(</span><span class="n">DjangoFilterBackend</span><span class="p">,)</span>
+    <span class="n">filter_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="s1">&#39;in_stock&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这将自动为给定字段创建一个 <code class="docutils literal notranslate"><span class="pre">FilterSet</span></code> 类，并允许您发出如下请求：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>http://example.com/api/products?category=clothing&amp;in_stock=True
+</pre></div>
+</div>
+<p>对于更高级的过滤要求，您可以指定视图应使用的 <code class="docutils literal notranslate"><span class="pre">FilterSet</span></code> 类。您可以在 <a class="reference external" href="https://django-filter.readthedocs.io/en/latest/index.html">django-filter 文档</a>中阅读有关 <code class="docutils literal notranslate"><span class="pre">FilterSet</span></code> 的更多信息。还建议您阅读有关 <a class="reference external" href="https://django-filter.readthedocs.io/en/latest/guide/rest_framework.html">DRF integration</a> 的部分。</p>
+</section>
+<section id="searchfilter">
+<h2>SearchFilter<a class="headerlink" href="#searchfilter" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">SearchFilter</span></code> 类支持简单的基于单个查询参数的搜索，并且基于 <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/contrib/admin/#django.contrib.admin.ModelAdmin.search_fields">Django 管理员的搜索功能</a>。</p>
+<p>在使用时，可浏览的 API 将包含 <code class="docutils literal notranslate"><span class="pre">SearchFilter</span></code> 控件：</p>
+<p><img alt="search-filter.png" src="http://pan.16mb.com/data/f_19520707.png" /></p>
+<p>仅当视图具有 <code class="docutils literal notranslate"><span class="pre">search_fields</span></code> 属性集时，才会应用 <code class="docutils literal notranslate"><span class="pre">SearchFilter</span></code> 类。<code class="docutils literal notranslate"><span class="pre">search_fields</span></code> 属性应该是模型上文本类型字段的名称列表，例如 <code class="docutils literal notranslate"><span class="pre">CharField</span></code> 或 <code class="docutils literal notranslate"><span class="pre">TextField</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UserListView</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListAPIView</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">UserSerializer</span>
+    <span class="n">filter_backends</span> <span class="o">=</span> <span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">SearchFilter</span><span class="p">,)</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这将允许客户端通过查询来过滤列表中的项，例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>http://example.com/api/users?search=russell
+</pre></div>
+</div>
+<p>您还可以使用查找 API 双下划线表示法对 ForeignKey 或 ManyToManyField 执行相关查找：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;profile__profession&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>默认情况下，搜索将使用不区分大小写的部分匹配。搜索参数可能包含多个搜索项，它们应该是空格和/或逗号分隔的。如果使用多个搜索项，则只有在所有提供的项匹配的情况下，对象才会返回到列表中。</p>
+<p>可以通过在 <code class="docutils literal notranslate"><span class="pre">search_fields</span></code> 之前添加各种字符来限制搜索行为。</p>
+<ul class="simple">
+<li><p>‘^’ 开始搜索。</p></li>
+<li><p>‘=’ 完全匹配。</p></li>
+<li><p>‘&#64;’ 全文搜索。(目前只支持 Django 的 MySQL 后端。)</p></li>
+<li><p>‘$’ 正则表达式搜索。</p></li>
+</ul>
+<p>举个栗子：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;=username&#39;</span><span class="p">,</span> <span class="s1">&#39;=email&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>默认情况下，搜索参数被命名为 <code class="docutils literal notranslate"><span class="pre">'search'</span></code>，但这可能会被 <code class="docutils literal notranslate"><span class="pre">SEARCH_PARAM</span></code> 设置覆盖。</p>
+<p>有关更多详细信息，请参阅 <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/contrib/admin/#django.contrib.admin.ModelAdmin.search_fields">Django 文档</a>。</p>
+</section>
+<hr class="docutils" />
+<section id="orderingfilter">
+<h2>OrderingFilter<a class="headerlink" href="#orderingfilter" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">OrderingFilter</span></code> 类支持简单查询参数控制结果的排序。</p>
+<p><img alt="f_52271811.png" src="http://pan.16mb.com/data/f_52271811.png" /></p>
+<p>默认情况下，查询参数被命名为 <code class="docutils literal notranslate"><span class="pre">'ordering'</span></code>，但这可能会被 <code class="docutils literal notranslate"><span class="pre">ORDERING_PARAM</span></code> 设置覆盖。</p>
+<p>例如，要按 username 对用户排序：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>http://example.com/api/users?ordering=username
+</pre></div>
+</div>
+<p>客户端还可以通过在字段名称前加上 ‘-’ 来指定反向排序，如下所示：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>http://example.com/api/users?ordering=-username
+</pre></div>
+</div>
+<p>还可以指定多个排序：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>http://example.com/api/users?ordering=account,username
+</pre></div>
+</div>
+<section id="specifying-which-fields-may-be-ordered-against">
+<h3>指定可以对哪些字段进行排序 (Specifying which fields may be ordered against)<a class="headerlink" href="#specifying-which-fields-may-be-ordered-against" title="Permalink to this heading">#</a></h3>
+<p>建议您显式指定 API 应该允许在排序过滤器中使用哪些字段。您可以通过在视图上设置 <code class="docutils literal notranslate"><span class="pre">ordering_fields</span></code> 属性来完成此操作，如下所示：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UserListView</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListAPIView</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">UserSerializer</span>
+    <span class="n">filter_backends</span> <span class="o">=</span> <span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">OrderingFilter</span><span class="p">,)</span>
+    <span class="n">ordering_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这有助于防止意外的数据泄漏，例如允许用户对密码哈希字段或其他敏感数据进行排序。</p>
+<p>如果您在视图上未指定 <code class="docutils literal notranslate"><span class="pre">ordering_fields</span></code> 属性，则过滤器类将默认允许用户过滤由 <code class="docutils literal notranslate"><span class="pre">serializer_class</span></code> 属性指定的序列化器中的任何可读字段。</p>
+<p>如果您确信视图使用的查询集不包含任何敏感数据，则还可以通过使用特殊值 <code class="docutils literal notranslate"><span class="pre">'__all__'</span></code> 显式指定允许在任何模型字段或查询集聚合上进行排序的视图。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BookingsListView</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListAPIView</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Booking</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">BookingSerializer</span>
+    <span class="n">filter_backends</span> <span class="o">=</span> <span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">OrderingFilter</span><span class="p">,)</span>
+    <span class="n">ordering_fields</span> <span class="o">=</span> <span class="s1">&#39;__all__&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="specifying-a-default-ordering">
+<h3>指定默认排序 (Specifying a default ordering)<a class="headerlink" href="#specifying-a-default-ordering" title="Permalink to this heading">#</a></h3>
+<p>如果在视图上设置了 <code class="docutils literal notranslate"><span class="pre">ordering</span></code> 属性，则将用作默认排序。</p>
+<p>通常，您通过在初始查询集上设置 <code class="docutils literal notranslate"><span class="pre">order_by</span></code> 来控制，但是使用视图上的 <code class="docutils literal notranslate"><span class="pre">ordering</span></code> 参数允许您以某种方式指定顺序，然后可以将其作为上下文自动传递到渲染的模板。如果它们被用于排序结果，这使得自动渲染不同的列标题成为可能。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UserListView</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListAPIView</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">UserSerializer</span>
+    <span class="n">filter_backends</span> <span class="o">=</span> <span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">OrderingFilter</span><span class="p">,)</span>
+    <span class="n">ordering_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">)</span>
+    <span class="n">ordering</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ordering</span></code> 属性可以是字符串或者字符串列表/元组。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="djangoobjectpermissionsfilter">
+<h2>DjangoObjectPermissionsFilter<a class="headerlink" href="#djangoobjectpermissionsfilter" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">DjangoObjectPermissionsFilter</span></code> 旨在与 <code class="docutils literal notranslate"><span class="pre">django-guardian</span></code> 软件包一起使用，添加了自定义 <code class="docutils literal notranslate"><span class="pre">'view'</span></code> 的权限。过滤器将确保查询集仅返回用户具有适当查看权限的对象。</p>
+<p>如果您正在使用的是 <code class="docutils literal notranslate"><span class="pre">DjangoObjectPermissionsFilter</span></code>，那么您可能还需要添加适当的对象权限类，以确保用户只有在具有适当对象权限的情况下才能对实例进行操作。做到这一点的最简单方法是子类化 <code class="docutils literal notranslate"><span class="pre">DjangoObjectPermissions</span></code> 并为  <code class="docutils literal notranslate"><span class="pre">perms_map</span></code> 属性添加 <code class="docutils literal notranslate"><span class="pre">'view'</span></code> 权限。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">DjangoObjectPermissionsFilter</span></code> 和 <code class="docutils literal notranslate"><span class="pre">DjangoObjectPermissions</span></code> 的完整示例可能如下所示。</p>
+<p><strong><a class="reference external" href="http://permissions.py">permissions.py</a></strong>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomObjectPermissions</span><span class="p">(</span><span class="n">permissions</span><span class="o">.</span><span class="n">DjangoObjectPermissions</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Similar to `DjangoObjectPermissions`, but adding &#39;view&#39; permissions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">perms_map</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;GET&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%(app_label)s</span><span class="s1">.view_</span><span class="si">%(model_name)s</span><span class="s1">&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;OPTIONS&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%(app_label)s</span><span class="s1">.view_</span><span class="si">%(model_name)s</span><span class="s1">&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;HEAD&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%(app_label)s</span><span class="s1">.view_</span><span class="si">%(model_name)s</span><span class="s1">&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;POST&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%(app_label)s</span><span class="s1">.add_</span><span class="si">%(model_name)s</span><span class="s1">&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;PUT&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%(app_label)s</span><span class="s1">.change_</span><span class="si">%(model_name)s</span><span class="s1">&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;PATCH&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%(app_label)s</span><span class="s1">.change_</span><span class="si">%(model_name)s</span><span class="s1">&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;DELETE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%(app_label)s</span><span class="s1">.delete_</span><span class="si">%(model_name)s</span><span class="s1">&#39;</span><span class="p">],</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p><strong><a class="reference external" href="http://views.py">views.py</a></strong>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">EventViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    如果用户有 &#39;view&#39; 权限，视图集只列出事件，如果用户有适当的 &#39;view&#39;, &#39;add&#39;, &#39;change&#39; or &#39;delete&#39; 权限，则只允许对单个事件进行操作。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Event</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">EventSerializer</span>
+    <span class="n">filter_backends</span> <span class="o">=</span> <span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">DjangoObjectPermissionsFilter</span><span class="p">,)</span>
+    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">myapp</span><span class="o">.</span><span class="n">permissions</span><span class="o">.</span><span class="n">CustomObjectPermissions</span><span class="p">,)</span>
+</pre></div>
+</div>
+<p>有关为模型添加 <code class="docutils literal notranslate"><span class="pre">'view'</span></code> 权限的更多信息，请参阅 <code class="docutils literal notranslate"><span class="pre">django-guardian</span></code> 文档的<a class="reference external" href="https://django-guardian.readthedocs.io/en/latest/userguide/assign.html">相关部分</a>和<a class="reference external" href="https://blog.nyaruka.com/adding-a-view-permission-to-django-models">此博客文章</a>。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="custom-generic-filtering">
+<h1>自定义通用过滤 (Custom generic filtering)<a class="headerlink" href="#custom-generic-filtering" title="Permalink to this heading">#</a></h1>
+<p>您还可以提供自己的通用过滤后端，或编写可安装的应用程序供其他开发人员使用。</p>
+<p>为此，请重写 <code class="docutils literal notranslate"><span class="pre">BaseFilterBackend</span></code>，并重写 <code class="docutils literal notranslate"><span class="pre">.filter_queryset(self,</span> <span class="pre">request,</span> <span class="pre">queryset,</span> <span class="pre">view)</span></code> 方法。该方法应返回一个新的过滤查询集。</p>
+<p>除了允许客户端执行搜索和过滤外，通用过滤器后端对于限制哪些对象对任何给定的请求或用户可见是有用的。</p>
+<section id="id1">
+<h2>举个栗子<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>例如，您可能需要将用户限制为只能看到他们创建的对象。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">IsOwnerFilterBackend</span><span class="p">(</span><span class="n">filters</span><span class="o">.</span><span class="n">BaseFilterBackend</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    只允许用户查看自己的对象的筛选器。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">filter_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>我们可以通过重写视图上的 <code class="docutils literal notranslate"><span class="pre">get_queryset()</span></code> 来实现相同的行为，但使用过滤器后端允许您更轻松地将此限制添加到多个视图，或者将其应用于整个 API。</p>
+</section>
+<section id="customizing-the-interface">
+<h2>自定义界面 (Customizing the interface)<a class="headerlink" href="#customizing-the-interface" title="Permalink to this heading">#</a></h2>
+<p>通用过滤器还可以在可浏览的 API 中呈现接口。为此，您应该实现 <code class="docutils literal notranslate"><span class="pre">to_html()</span></code> 方法来返回过滤器的渲染 HTML 表示。此方法应具有以下签名：</p>
+<p><code class="docutils literal notranslate"><span class="pre">to_html(self,</span> <span class="pre">request,</span> <span class="pre">queryset,</span> <span class="pre">view)</span></code></p>
+<p>该方法应返回渲染的 HTML 字符串。</p>
+</section>
+<section id="pagination-schemas">
+<h2>分页和模式 (Pagination &amp; schemas)<a class="headerlink" href="#pagination-schemas" title="Permalink to this heading">#</a></h2>
+<p>您还可以通过实现 <code class="docutils literal notranslate"><span class="pre">get_schema_fields()</span></code> 方法，使过滤器控件可用于 REST framework 提供的模式自动生成。此方法应具有以下签名：</p>
+<p><code class="docutils literal notranslate"><span class="pre">get_schema_fields(self,</span> <span class="pre">view)</span></code></p>
+<p>该方法应该返回一个 <code class="docutils literal notranslate"><span class="pre">coreapi.Field</span></code> 实例列表。</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="third-party-packages">
+<h1>第三方包 (Third party packages)<a class="headerlink" href="#third-party-packages" title="Permalink to this heading">#</a></h1>
+<p>以下第三方包提供了额外的过滤器实现。</p>
+<section id="django-rest-framework-filters-package">
+<h2>Django REST framework filters package<a class="headerlink" href="#django-rest-framework-filters-package" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/philipn/django-rest-framework-filters">django-rest-framework-filters 包</a>与 <code class="docutils literal notranslate"><span class="pre">DjangoFilterBackend</span></code> 类一起工作，并允许您轻松地创建跨关系的过滤器，或者为给定字段创建多个过滤器查找类型。</p>
+</section>
+<section id="django-rest-framework-full-word-search-filter">
+<h2>Django REST framework full word search filter<a class="headerlink" href="#django-rest-framework-full-word-search-filter" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/trollknurr/django-rest-framework-word-search-filter">djangorestframework-word-filter</a> 是作为 <code class="docutils literal notranslate"><span class="pre">filters.SearchFilter</span></code> 的替代品开发的，将在文本中搜索全文，或者完全匹配。</p>
+</section>
+<section id="django-url-filter">
+<h2>Django URL Filter<a class="headerlink" href="#django-url-filter" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/miki725/django-url-filter">django-url-filter</a> 提供了一种通过人性化 URL 过滤数据的安全方法。它的工作原理与 DRF 序列化器和字段非常类似，在某种意义上，它们可以嵌套，除非它们被称为过滤器集和过滤器。这提供了过滤相关数据的简便方法。此库也是通用的，因此它可用于过滤其他数据源，而不仅仅是Django <code class="docutils literal notranslate"><span class="pre">QuerySets</span></code>。</p>
+</section>
+<section id="drf-url-filters">
+<h2>drf-url-filters<a class="headerlink" href="#drf-url-filters" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/manjitkumar/drf-url-filters">drf-url-filter</a> 是一个简单的 Django 应用程序，它以简洁，可配置的方式在 drf <code class="docutils literal notranslate"><span class="pre">ModelViewSet</span></code> 的 <code class="docutils literal notranslate"><span class="pre">Queryset</span></code> 上应用过滤器。它还支持对传入查询参数及其值的验证。一个漂亮的 python 包 <code class="docutils literal notranslate"><span class="pre">Voluptuous</span></code> 被用于对传入的查询参数进行验证。voluptuous 的最好部分是可以根据查询参数要求定义自己的验证。</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./API-Guide"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Throttling.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">限流 (Throttling)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Pagination.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">分页 (Pagination)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">过滤 (Filtering)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-against-the-current-user">过滤当前用户 (Filtering against the current user)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#url-filtering-against-the-url">过滤 URL (Filtering against the URL)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-against-query-parameters">过滤查询参数 (Filtering against query parameters)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#generic-filtering">通用过滤 (Generic Filtering)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-filter-backends">设置过滤器后端 (Setting filter backends)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-and-object-lookups">过滤和对象查找 (Filtering and object lookups)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overriding-the-initial-queryset">重写初始查询集 (Overriding the initial queryset)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-guide">API 指南 (API Guide)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#djangofilterbackend">DjangoFilterBackend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searchfilter">SearchFilter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orderingfilter">OrderingFilter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-which-fields-may-be-ordered-against">指定可以对哪些字段进行排序 (Specifying which fields may be ordered against)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-a-default-ordering">指定默认排序 (Specifying a default ordering)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#djangoobjectpermissionsfilter">DjangoObjectPermissionsFilter</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-generic-filtering">自定义通用过滤 (Custom generic filtering)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">举个栗子</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-the-interface">自定义界面 (Customizing the interface)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pagination-schemas">分页和模式 (Pagination &amp; schemas)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#third-party-packages">第三方包 (Third party packages)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-filters-package">Django REST framework filters package</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-full-word-search-filter">Django REST framework full word search filter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-url-filter">Django URL Filter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drf-url-filters">drf-url-filters</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

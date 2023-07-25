@@ -1,0 +1,890 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>教程 4：认证和权限 &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Tutorial/Authentication-and-Permissions';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="教程 5：关系和超链接 API" href="Relationships-and-Hyperlinked-APIs.html" />
+    <link rel="prev" title="教程 3：基于类的视图" href="Class-based-views.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Views.html">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Renderers.html">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializer-fields.html">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Validators.html">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Authentication.html">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Permissions.html">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Throttling.html">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Filtering.html">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Pagination.html">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Exceptions.html">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Testing.html">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Settings.html">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/API_Clients.html">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/The_Browsable_API.html">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Community/Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Third_Party_Packages.html">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Contributing_to_REST_framework.html">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Community/Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.4_Announcement.html">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.0_Announcement.html">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FTutorial/Authentication-and-Permissions.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Tutorial/Authentication-and-Permissions.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>教程 4：认证和权限</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">将信息添加到我们的模型</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">为我们的用户模型添加端点</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#snippets">将 Snippets 和用户关联</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">更新我们的序列化器</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">添加视图所需的权限</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api">添加登录到可浏览 API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">对象级权限</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">使用 API 进行身份验证</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">总结</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>教程 4：认证和权限<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p>目前我们的 API 对谁可以编辑或删除 snippet 代码没有任何限制。我们希望有一些更高级的行为来确保：</p>
+<ul class="simple">
+<li><p>snippets 代码始终与创建者相关联。</p></li>
+<li><p>只有经过身份验证的用户可以创建 snippets。</p></li>
+<li><p>只有 snippets 的创建者可以更新或删除它。</p></li>
+<li><p>未经身份验证的请求应具有完全只读访问权限。</p></li>
+</ul>
+<section id="id2">
+<h2>将信息添加到我们的模型<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>我们将对 <code class="docutils literal notranslate"><span class="pre">Snippet</span></code> 模型类进行一些更改。首先，我们添加几个字段。其中一个字段将用于表示创建 snippet 代码的用户。另一个字段将用于存储高亮显示的 HTML 内容表示的代码。</p>
+<p>将以下两个字段添加到 <code class="docutils literal notranslate"><span class="pre">models.py</span></code> 文件中的 <code class="docutils literal notranslate"><span class="pre">Snippet</span></code> 模型中。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Snippet</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">linenos</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 是否显示行号</span>
+    <span class="n">language</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="n">LANGUAGE_CHOICES</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">style</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="n">STYLE_CHOICES</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;friendly&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">owner</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;auth.User&#39;</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;snippets&#39;</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="n">highlighted</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>我们还需要确保在保存模型时，使用 <code class="docutils literal notranslate"><span class="pre">pygments</span></code> 代码高亮库填充 highlighted 字段。</p>
+<p>我们需要导入额外的模块：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pygments.lexers</span> <span class="kn">import</span> <span class="n">get_lexer_by_name</span>
+<span class="kn">from</span> <span class="nn">pygments.formatters.html</span> <span class="kn">import</span> <span class="n">HtmlFormatter</span>
+<span class="kn">from</span> <span class="nn">pygments</span> <span class="kn">import</span> <span class="n">highlight</span>
+</pre></div>
+</div>
+<p>现在我们可以在我们的模型类中添加一个 <code class="docutils literal notranslate"><span class="pre">.save()</span></code> 方法：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    使用 pygments 库创建一个高亮显示的 HTML 表示的 snippet 代码。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lexer</span> <span class="o">=</span> <span class="n">get_lexer_by_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">language</span><span class="p">)</span>
+    <span class="n">linenos</span> <span class="o">=</span> <span class="s1">&#39;table&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">linenos</span> <span class="k">else</span> <span class="kc">False</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">}</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="k">else</span> <span class="p">{}</span>
+    <span class="n">formatter</span> <span class="o">=</span> <span class="n">HtmlFormatter</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="p">,</span> <span class="n">linenos</span><span class="o">=</span><span class="n">linenos</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">highlighted</span> <span class="o">=</span> <span class="n">highlight</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="n">lexer</span><span class="p">,</span> <span class="n">formatter</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">Snippet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>完成这些工作后，我们需要更新我们的数据库表。通常这种情况我们会创建一个数据库迁移来实现这一点，但作为教程的目的，让我们删除数据库并重新开始。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">f</span> <span class="n">db</span><span class="o">.</span><span class="n">sqlite3</span>
+<span class="n">rm</span> <span class="o">-</span><span class="n">r</span> <span class="n">snippets</span><span class="o">/</span><span class="n">migrations</span>
+<span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">makemigrations</span> <span class="n">snippets</span>
+<span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
+</pre></div>
+</div>
+<p>您可能还想创建几个不同的用户，以用于测试 API。最快捷的方法是使用 <code class="docutils literal notranslate"><span class="pre">createsuperuser</span></code> 命令。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">createsuperuser</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>为我们的用户模型添加端点<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>现在我们有一些用户可以使用，我们最好将这些用户的表示添加到我们的 API 中。创建一个新的序列化器很简单，在 <code class="docutils literal notranslate"><span class="pre">serializers.py</span></code> 文件中添加：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+
+<span class="k">class</span> <span class="nc">UserSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="n">snippets</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">PrimaryKeyRelatedField</span><span class="p">(</span><span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">queryset</span><span class="o">=</span><span class="n">Snippet</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;snippets&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>由于 <code class="docutils literal notranslate"><span class="pre">'snippets'</span></code> 在用户模型上是反向关系，当在使用 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 类时，它将不会被默认包含，所以我们需要为它添加一个显式字段。</p>
+<p>我们还会在 <code class="docutils literal notranslate"><span class="pre">views.py</span></code> 中添加几个视图。我们想要使用用户表示的只读视图，所以我们将使用 <code class="docutils literal notranslate"><span class="pre">ListAPIView</span></code> 和 <code class="docutils literal notranslate"><span class="pre">RetrieveAPIView</span></code> 通用的基于类的视图。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+
+
+<span class="k">class</span> <span class="nc">UserList</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListAPIView</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">UserSerializer</span>
+
+
+<span class="k">class</span> <span class="nc">UserDetail</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">RetrieveAPIView</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">UserSerializer</span>
+</pre></div>
+</div>
+<p>确保也导入了 <code class="docutils literal notranslate"><span class="pre">UserSerializer</span></code> 类</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">snippets.serializers</span> <span class="kn">import</span> <span class="n">UserSerializer</span>
+</pre></div>
+</div>
+<p>最后，我们需要通过在 URL conf 中引用这些视图来将这些视图添加到 API 中。将以下内容添加到 <code class="docutils literal notranslate"><span class="pre">urls.py</span></code> 中的模式中。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^users/$&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">UserList</span><span class="o">.</span><span class="n">as_view</span><span class="p">()),</span>
+<span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^users/(?P&lt;pk&gt;[0-9]+)/$&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">UserDetail</span><span class="o">.</span><span class="n">as_view</span><span class="p">()),</span>
+</pre></div>
+</div>
+</section>
+<section id="snippets">
+<h2>将 Snippets 和用户关联<a class="headerlink" href="#snippets" title="Permalink to this heading">#</a></h2>
+<p>现在，如果我们创建了一个 snippet 代码，那么无法将创建 snippet 的用户与 snippet 实例关联起来。用户不是作为序列化表示的一部分发送的，而是作为传入请求的属性。</p>
+<p>我们处理方式是在我们的 snippet 视图上覆盖 <code class="docutils literal notranslate"><span class="pre">.perform_create()</span></code> 方法，这允许我们修改实例保存的管理方式，并处理传入请求或请求的 URL 中隐含的任何信息。</p>
+<p>在 <code class="docutils literal notranslate"><span class="pre">SnippetList</span></code> 视图类中(<code class="docutils literal notranslate"><span class="pre">snippets/views.py</span></code>)，添加以下方法：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">perform_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serializer</span><span class="p">):</span>
+    <span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>现在我们的序列化器的 <code class="docutils literal notranslate"><span class="pre">create()</span></code> 方法将被传递一个附加的 <code class="docutils literal notranslate"><span class="pre">'owner'</span></code> 字段以及来自请求的验证数据。</p>
+</section>
+<section id="id4">
+<h2>更新我们的序列化器<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>现在 snippets 与创建它们的用户相关联了，让我们更新我们的 <code class="docutils literal notranslate"><span class="pre">SnippetSerializer</span></code> 以体现这一点。将以下字段添加到 <code class="docutils literal notranslate"><span class="pre">serializers.py</span></code> 中的序列化器的定义中：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">owner</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ReadOnlyField</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;owner.username&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>注意：确保您还将 <code class="docutils literal notranslate"><span class="pre">'owner'</span></code> 添加到内部 <code class="docutils literal notranslate"><span class="pre">Meta</span></code> 类的字段列表中。</p>
+<p>这个字段正在做一件很有趣的事情。<code class="docutils literal notranslate"><span class="pre">source</span></code> 参数控制哪个属性用于填充字段，并且可以指向序列化实例上的任何属性。它也可以采用如上所示的点符号(.)，在这种情况下，它将以与 Django  模板语言相似的方式遍历给定的属性。</p>
+<p>我们添加的字段是无类型的 <code class="docutils literal notranslate"><span class="pre">ReadOnlyField</span></code> 类，与其他类型的字段相反，如 <code class="docutils literal notranslate"><span class="pre">CharField</span></code>，<code class="docutils literal notranslate"><span class="pre">BooleanField</span></code> 等…无类型的 <code class="docutils literal notranslate"><span class="pre">ReadOnlyField</span></code> 始终是只读的，只能用于序列化表示，但不能用于在反序列化时更新模型实例。我们在这里也可以使用 <code class="docutils literal notranslate"><span class="pre">CharField(read_only=True)</span></code>。</p>
+</section>
+<section id="id5">
+<h2>添加视图所需的权限<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>现在，snippets 和用户相关联，我们希望确保只有经过身份验证的用户才能创建，更新和删除 snippets。</p>
+<p>REST framework 包含许多权限类，我们可以用来限制谁可以访问给定的视图。在这种情况下，我们需要的是 <code class="docutils literal notranslate"><span class="pre">IsAuthenticatedOrReadOnly</span></code> 类，它将确保经过身份验证的请求获得读写访问权限，未经身份验证的请求将获得只读访问权限。</p>
+<p>首先要在视图模块中导入以下内容</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">permissions</span>
+</pre></div>
+</div>
+<p>然后，将以下属性添加到 <code class="docutils literal notranslate"><span class="pre">SnippetList</span></code> 和 <code class="docutils literal notranslate"><span class="pre">SnippetDetail</span></code> 视图类中。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">permission_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">permissions</span><span class="o">.</span><span class="n">IsAuthenticatedOrReadOnly</span><span class="p">,)</span>
+</pre></div>
+</div>
+</section>
+<section id="api">
+<h2>添加登录到可浏览 API<a class="headerlink" href="#api" title="Permalink to this heading">#</a></h2>
+<p>如果您现在打开浏览器并导航到可浏览的 API，那么您将发现无法再创建新的 snippets。为了做到这一点，我们需要能够以用户身份登录。</p>
+<p>我们可以通过编辑项目级 <code class="docutils literal notranslate"><span class="pre">urls.py</span></code> 文件(<code class="docutils literal notranslate"><span class="pre">tutorial/urls.py</span></code>)中的 URLconf 来添加可浏览 API 的登录视图。</p>
+<p>在文件顶部添加以下导入：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">include</span>
+</pre></div>
+</div>
+<p>并且，在文件末尾添加一个模式以包括可浏览的 API 的登录和注销视图。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^api-auth/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;rest_framework.urls&#39;</span><span class="p">)),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>模式的 <code class="docutils literal notranslate"><span class="pre">r'^api-auth/'</span></code> 部分实际上可以是你要使用的任何 URL。</p>
+<p>现在，如果您再次打开浏览器并刷新页面，则会在页面右上方看到一个“登录”链接。如果您用前面创建的用户登录，就可以再次创建 snippets。</p>
+<p>一旦创建了一些 snippets 后，导航到 <code class="docutils literal notranslate"><span class="pre">'/users/'</span></code> 端点，并注意到在每个用户的 ‘snippets’ 字段中包含与每个用户相关联的 snippet id 的列表。</p>
+</section>
+<section id="id6">
+<h2>对象级权限<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p>实际上，我们希望所有人都可以看到所有 snippets，但也要确保只有创建 snippet 的用户才能更新或删除它。</p>
+<p>为此，我们需要创建一个自定义权限。</p>
+<p>在 snippets 应用中，创建一个新文件 <code class="docutils literal notranslate"><span class="pre">permissions.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">permissions</span>
+
+
+<span class="k">class</span> <span class="nc">IsOwnerOrReadOnly</span><span class="p">(</span><span class="n">permissions</span><span class="o">.</span><span class="n">BasePermission</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    自定义权限只允许对象的所有者编辑它。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">has_object_permission</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">view</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="c1"># 读取权限被允许用于任何请求，</span>
+        <span class="c1"># 所以我们始终允许 GET，HEAD 或 OPTIONS 请求。</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="ow">in</span> <span class="n">permissions</span><span class="o">.</span><span class="n">SAFE_METHODS</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="c1"># 写入权限只允许给 snippet 的所有者。</span>
+        <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">owner</span> <span class="o">==</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
+</pre></div>
+</div>
+<p>现在我们可以通过编辑 <code class="docutils literal notranslate"><span class="pre">SnippetDetail</span></code> 视图类中的 <code class="docutils literal notranslate"><span class="pre">permission_classes</span></code> 属性来将自定义权限添加到我们的snippet 实例端点：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">permission_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">permissions</span><span class="o">.</span><span class="n">IsAuthenticatedOrReadOnly</span><span class="p">,</span> <span class="n">IsOwnerOrReadOnly</span><span class="p">,)</span>
+</pre></div>
+</div>
+<p>确保要先导入 <code class="docutils literal notranslate"><span class="pre">IsOwnerOrReadOnly</span></code> 类。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">snippets.permissions</span> <span class="kn">import</span> <span class="n">IsOwnerOrReadOnly</span>
+</pre></div>
+</div>
+<p>现在，如果再次打开浏览器，你会发现 “DELETE” 和 “PUT” 操作只出现在以 snippet 创建者的身份登录的 snippet 实例端点上。</p>
+</section>
+<section id="id7">
+<h2>使用 API 进行身份验证<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<p>因为现在我们在 API 上有一组权限，如果我们想要编辑任何 snippet，我们需要验证我们的请求。我们还没有设置任何认证类，因此当前应用的是默认的 <code class="docutils literal notranslate"><span class="pre">SessionAuthentication</span></code> 和 <code class="docutils literal notranslate"><span class="pre">BasicAuthentication</span></code>。</p>
+<p>当我们通过 Web 浏览器与 API 进行交互时，我们可以登录，然后浏览器会话将为请求提供所需的身份验证。</p>
+<p>如果我们以编程方式与 API 进行交互，那么我们需要在每个请求上明确提供身份验证凭据。</p>
+<p>如果我们尝试创建一个没有进行身份验证的 snippet，我们会得到一个错误：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>(venv) fangweiren@ubuntu:~/Django_REST_framework$ http POST http://127.0.0.1:8000/snippets/ code=&quot;print 123&quot;
+HTTP/1.1 403 Forbidden
+Allow: GET, HEAD, OPTIONS
+Content-Length: 58
+Content-Type: application/json
+Date: Sun, 17 Jun 2018 14:56:36 GMT
+Server: WSGIServer/0.2 CPython/3.5.2
+Vary: Accept, Cookie
+X-Frame-Options: SAMEORIGIN
+
+{
+    &quot;detail&quot;: &quot;Authentication credentials were not provided.&quot;
+}
+</pre></div>
+</div>
+<p>我们可以通过添加我们之前创建的用户的用户名和密码来发送成功的请求。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>(venv) fangweiren@ubuntu:~/Django_REST_framework$ http -a djrest:aa112211 POST http://127.0.0.1:8000/snippets/ code=&quot;print 789&quot;
+HTTP/1.1 201 Created
+Allow: GET, POST, HEAD, OPTIONS
+Content-Length: 110
+Content-Type: application/json
+Date: Mon, 18 Jun 2018 14:55:44 GMT
+Server: WSGIServer/0.2 CPython/3.5.2
+Vary: Accept, Cookie
+X-Frame-Options: SAMEORIGIN
+
+{
+    &quot;code&quot;: &quot;print 789&quot;,
+    &quot;id&quot;: 4,
+    &quot;language&quot;: &quot;python&quot;,
+    &quot;linenos&quot;: false,
+    &quot;owner&quot;: &quot;djrest&quot;,
+    &quot;style&quot;: &quot;friendly&quot;,
+    &quot;title&quot;: &quot;&quot;
+}
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h2>总结<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<p>我们现在已经在我们的 Web API 上获得了相当精细的一组权限集合，并为系统用户和他们创建的 snippet 提供了终点。</p>
+<p>在<a class="reference external" href="http://www.iamnancy.top/post/171/">本教程的第 5 部分</a>中，我们将介绍如何通过为高亮显示 snippet 创建 HTML 端点来将所有内容联结在一起，并通过对系统内的关系使用超链接来提高 API 的凝聚力。</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Tutorial"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Class-based-views.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">教程 3：基于类的视图</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Relationships-and-Hyperlinked-APIs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">教程 5：关系和超链接 API</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">将信息添加到我们的模型</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">为我们的用户模型添加端点</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#snippets">将 Snippets 和用户关联</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">更新我们的序列化器</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">添加视图所需的权限</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api">添加登录到可浏览 API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">对象级权限</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">使用 API 进行身份验证</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">总结</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

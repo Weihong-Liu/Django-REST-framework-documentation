@@ -1,0 +1,1127 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>认证 (Authentication) &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'API-Guide/Authentication';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="权限 (Permissions)" href="Permissions.html" />
+    <link rel="prev" title="验证器 (Validators)" href="Validators.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Authentication-and-Permissions.html">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Views.html">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Renderers.html">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-fields.html">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Validators.html">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Permissions.html">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Throttling.html">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Filtering.html">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Pagination.html">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Exceptions.html">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Testing.html">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Settings.html">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/API_Clients.html">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/The_Browsable_API.html">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Community/Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Third_Party_Packages.html">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Contributing_to_REST_framework.html">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Community/Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.4_Announcement.html">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.0_Announcement.html">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAPI-Guide/Authentication.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/API-Guide/Authentication.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>认证 (Authentication)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">认证 (Authentication)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-authentication-is-determined">如何确定身份验证 (How authentication is determined)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-authentication-scheme">设置身份验证方案 (Setting the authentication scheme)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unauthorized-and-forbidden-responses">未经授权和禁止响应 (Unauthorized and Forbidden responses)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apache-mod-wsgi-apache-mod-wsgi-specific-configuration">Apache mod_wsgi 具体配置 (Apache mod_wsgi specific configuration)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-reference">API 参考 (API Reference)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basicauthentication">BasicAuthentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenauthentication">TokenAuthentication</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-tokens">生成令牌 (Generating Tokens)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#by-using-signals">通过使用信号 (By using signals)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#api-by-exposing-an-api-endpoint">通过暴露 api 端点 (By exposing an api endpoint)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#with-django-admin">With Django admin</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#django-manage-py-using-django-manage-py-command">使用 Django manage.py 命令 (Using Django manage.py command)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sessionauthentication">SessionAuthentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remoteuserauthentication">RemoteUserAuthentication</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-authentication">自定义身份验证 (Custom authentication)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">举个栗子</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#third-party-packages">第三方包 (Third party packages)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-oauth-toolkit">Django OAuth Toolkit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-configuration">安装和配置 (Installation &amp; configuration)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-oauth">Django REST framework OAuth</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">安装和配置 (Installation &amp; configuration)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digest-authentication">Digest Authentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-oauth2-consumer">Django OAuth2 Consumer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#json-web-token-authentication">JSON Web Token Authentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hawk-http-authentication">Hawk HTTP Authentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#http-signature-authentication">HTTP Signature Authentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#djoser">Djoser</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-auth">django-rest-auth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-social-oauth2">django-rest-framework-social-oauth2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-knox">django-rest-knox</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drfpasswordless">drfpasswordless</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="authentication">
+<h1>认证 (Authentication)<a class="headerlink" href="#authentication" title="Permalink to this heading">#</a></h1>
+<p>身份验证需要可插拔。—— Jacob Kaplan-Moss, <a class="reference external" href="https://jacobian.org/writing/rest-worst-practices/">“REST worst practices”</a></p>
+<p>身份验证是将传入请求与一组标识凭据 (例如请求来自的用户或其签名的令牌) 相关联的机制。然后，<a class="reference external" href="http://www.django-rest-framework.org/api-guide/permissions/">权限</a>和<a class="reference external" href="http://www.django-rest-framework.org/api-guide/throttling/">限制</a>策略可以使用这些凭据来确定是否应允许该请求。</p>
+<p>REST framework 提供了一些开箱即用的身份验证方案，并且还允许您实现自定义方案。</p>
+<p>身份验证始终在视图的最开始运行，在权限和限制检查发生之前以及允许任何其他代码继续执行之前。</p>
+<p><code class="docutils literal notranslate"><span class="pre">request.user</span></code> 属性通常被设置为 <code class="docutils literal notranslate"><span class="pre">contrib.auth</span></code> 包的 <code class="docutils literal notranslate"><span class="pre">User</span></code> 类的实例。</p>
+<p><code class="docutils literal notranslate"><span class="pre">request.auth</span></code> 属性用于任何其他身份验证信息，例如，它可用于表示请求已签名的身份验证令牌。</p>
+<hr class="docutils" />
+<p><strong>注意</strong>：不要忘记，<strong>身份验证本身不会允许或不允许传入的请求</strong>，它只识别发出请求的凭证。</p>
+<p>有关如何为 API 设置权限策略的信息，请参阅<a class="reference external" href="http://www.django-rest-framework.org/api-guide/permissions/">权限文档</a>。</p>
+<hr class="docutils" />
+<section id="how-authentication-is-determined">
+<h2>如何确定身份验证 (How authentication is determined)<a class="headerlink" href="#how-authentication-is-determined" title="Permalink to this heading">#</a></h2>
+<p>身份验证方案始终定义为类列表。REST framework 将尝试对列表中的每个类进行身份验证，并使用成功进行身份验证的第一个类的返回值设置 <code class="docutils literal notranslate"><span class="pre">request.user</span></code> 和 <code class="docutils literal notranslate"><span class="pre">request.auth</span></code>。</p>
+<p>如果没有类进行身份验证，<code class="docutils literal notranslate"><span class="pre">request.user</span></code> 将被设置为 <code class="docutils literal notranslate"><span class="pre">django.contrib.auth.models.AnonymousUser</span></code> 的实例，<code class="docutils literal notranslate"><span class="pre">request.auth</span></code> 将被设置为 <code class="docutils literal notranslate"><span class="pre">None</span></code>。</p>
+<p>可以使用 <code class="docutils literal notranslate"><span class="pre">UNAUTHENTICATED_USER</span></code> 和 <code class="docutils literal notranslate"><span class="pre">UNAUTHENTICATED_TOKEN</span></code> 的设置修改未经身份认证的请求的 <code class="docutils literal notranslate"><span class="pre">request.user</span></code> 和 <code class="docutils literal notranslate"><span class="pre">request.auth</span></code> 的值。</p>
+</section>
+<section id="setting-the-authentication-scheme">
+<h2>设置身份验证方案 (Setting the authentication scheme)<a class="headerlink" href="#setting-the-authentication-scheme" title="Permalink to this heading">#</a></h2>
+<p>可以使用 <code class="docutils literal notranslate"><span class="pre">DEFAULT_AUTHENTICATION_CLASSES</span></code> 设置全局的默认身份验证方案。比如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_AUTHENTICATION_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;rest_framework.authentication.BasicAuthentication&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;rest_framework.authentication.SessionAuthentication&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>您还可以使用基于 <code class="docutils literal notranslate"><span class="pre">APIView</span></code> 类的视图在每个视图或每个视图集的基础上设置身份验证方案。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.authentication</span> <span class="kn">import</span> <span class="n">SessionAuthentication</span><span class="p">,</span> <span class="n">BasicAuthentication</span>
+<span class="kn">from</span> <span class="nn">rest_framework.permissions</span> <span class="kn">import</span> <span class="n">IsAuthenticated</span>
+<span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">rest_framework.views</span> <span class="kn">import</span> <span class="n">APIView</span>
+
+<span class="k">class</span> <span class="nc">ExampleView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="n">authentication_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">SessionAuthentication</span><span class="p">,</span> <span class="n">BasicAuthentication</span><span class="p">)</span>
+    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">IsAuthenticated</span><span class="p">,)</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">unicode</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">),</span>  <span class="c1"># `django.contrib.auth.User` instance.</span>
+            <span class="s1">&#39;auth&#39;</span><span class="p">:</span> <span class="n">unicode</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">auth</span><span class="p">),</span>  <span class="c1"># None</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>或者，如果您使用基于函数的视图的 <code class="docutils literal notranslate"><span class="pre">&#64;api_view</span></code> 装饰器。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@authentication_classes</span><span class="p">((</span><span class="n">SessionAuthentication</span><span class="p">,</span> <span class="n">BasicAuthentication</span><span class="p">))</span>
+<span class="nd">@permission_classes</span><span class="p">((</span><span class="n">IsAuthenticated</span><span class="p">,))</span>
+<span class="k">def</span> <span class="nf">example_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">unicode</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">),</span>  <span class="c1"># `django.contrib.auth.User` instance.</span>
+        <span class="s1">&#39;auth&#39;</span><span class="p">:</span> <span class="n">unicode</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">auth</span><span class="p">),</span>  <span class="c1"># None</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="unauthorized-and-forbidden-responses">
+<h2>未经授权和禁止响应 (Unauthorized and Forbidden responses)<a class="headerlink" href="#unauthorized-and-forbidden-responses" title="Permalink to this heading">#</a></h2>
+<p>当未经验证的请求被拒绝许可时，有两种不同的错误代码可能是适当的。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2">HTTP 401 未经授权</a></p></li>
+<li><p><a class="reference external" href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4">HTTP 403 权限被拒绝</a></p></li>
+</ul>
+<p>HTTP 401 响应必须始终包含 <code class="docutils literal notranslate"><span class="pre">WWW-Authenticate</span></code> 标头，指示客户端如何进行身份验证。HTTP 403 响应不包括 <code class="docutils literal notranslate"><span class="pre">WWW-Authenticate</span></code> 标头。</p>
+<p>使用的响应类型取决于身份验证方案。尽管可以使用多种认证方案，但是仅可以使用一种方案来确定响应的类型。<strong>在确定响应类型时使用视图上设置的第一个身份验证类。</strong></p>
+<p>注意，当请求可以成功进行身份验证时，但仍然被拒绝执行该请求的许可，不管认证方案如何，总是使用 <code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Permission</span> <span class="pre">Denied</span></code> 响应。</p>
+</section>
+<section id="apache-mod-wsgi-apache-mod-wsgi-specific-configuration">
+<h2>Apache mod_wsgi 具体配置 (Apache mod_wsgi specific configuration)<a class="headerlink" href="#apache-mod-wsgi-apache-mod-wsgi-specific-configuration" title="Permalink to this heading">#</a></h2>
+<p>请注意，如果<a class="reference external" href="https://modwsgi.readthedocs.io/en/develop/configuration-directives/WSGIPassAuthorization.html">使用 mod_wsgi 部署到 Apache</a>，授权标头默认不会传递给 WSGI 应用程序，因为它假定由 Apache 处理身份验证，而不是在应用程序级别处理。</p>
+<p>如果您正在部署到 Apache，并使用任何基于非会话的身份验证，则需要明确配置 mod_wsgi 以将所需的标头传递给应用程序。这可以通过在适当的上下文中指定 <code class="docutils literal notranslate"><span class="pre">WSGIPassAuthorization</span></code> 指令并将其设置为 <code class="docutils literal notranslate"><span class="pre">'On'</span></code> 来完成。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 这可以在服务器配置、虚拟主机、目录或 .htaccess 中执行</span>
+<span class="n">WSGIPassAuthorization</span> <span class="n">On</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="api-api-reference">
+<h1>API 参考 (API Reference)<a class="headerlink" href="#api-api-reference" title="Permalink to this heading">#</a></h1>
+<section id="basicauthentication">
+<h2>BasicAuthentication<a class="headerlink" href="#basicauthentication" title="Permalink to this heading">#</a></h2>
+<p>此身份验证方案使用 <a class="reference external" href="https://tools.ietf.org/html/rfc2617">HTTP 基本身份验证</a>，对用户的用户名和密码进行签名。基本身份验证通常仅适用于测试。</p>
+<p>如果成功通过身份验证，<code class="docutils literal notranslate"><span class="pre">BasicAuthentication</span></code> 提供以下凭据。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">request.user</span></code> 将是 Django <code class="docutils literal notranslate"><span class="pre">User</span></code> 实例。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">request.auth</span></code> 将是 <code class="docutils literal notranslate"><span class="pre">None</span></code>。</p></li>
+</ul>
+<p>拒绝许可的未经身份验证的响应将导致带有相应的 WWW-Authenticate 标头的 <code class="docutils literal notranslate"><span class="pre">HTTP</span> <span class="pre">401</span> <span class="pre">Unauthorized</span></code> 响应。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">WWW</span><span class="o">-</span><span class="n">Authenticate</span><span class="p">:</span> <span class="n">Basic</span> <span class="n">realm</span><span class="o">=</span><span class="s2">&quot;api&quot;</span>
+</pre></div>
+</div>
+<p><strong>注意</strong>：如果您在产品中使用 <code class="docutils literal notranslate"><span class="pre">BasicAuthentication</span></code>，您必须确保您的 API 仅在 <code class="docutils literal notranslate"><span class="pre">https</span></code> 上可用。您还应确保您的 API 客户端始终在登录时重新请求用户名和密码，并且不会存储这些详细信息到持久存储器中。</p>
+</section>
+<section id="tokenauthentication">
+<h2>TokenAuthentication<a class="headerlink" href="#tokenauthentication" title="Permalink to this heading">#</a></h2>
+<p>此身份验证方案使用简单的基于令牌的 HTTP 身份验证方案。令牌认证适用于客户端-服务器设置，例如本地桌面和移动客户端。</p>
+<p>要使用 <code class="docutils literal notranslate"><span class="pre">TokenAuthentication</span></code> 方案，您需要<a class="reference external" href="http://www.django-rest-framework.org/api-guide/authentication/#setting-the-authentication-scheme">配置身份验证类</a>以包含 <code class="docutils literal notranslate"><span class="pre">TokenAuthentication</span></code>，并在 <code class="docutils literal notranslate"><span class="pre">INSTALLED_APPS</span></code> 设置中另外包含 <code class="docutils literal notranslate"><span class="pre">rest_framework.authtoken</span></code>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="o">...</span>
+    <span class="s1">&#39;rest_framework.authtoken&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>注意</strong>：确保在更改设置后运行 <code class="docutils literal notranslate"><span class="pre">manage.py</span> <span class="pre">migrate</span></code>。<code class="docutils literal notranslate"><span class="pre">rest_framework.authtoken</span></code> 应用程序提供 Django 数据库迁移。</p>
+<hr class="docutils" />
+<p>您还需要为用户创建令牌。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.authtoken.models</span> <span class="kn">import</span> <span class="n">Token</span>
+
+<span class="n">token</span> <span class="o">=</span> <span class="n">Token</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="o">=...</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">token</span><span class="o">.</span><span class="n">key</span>
+</pre></div>
+</div>
+<p>要使客户端进行身份验证，令牌密钥应包含在 <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> HTTP 标头中。密钥应以字符串文字“Token”为前缀，空格分隔两个字符串。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Authorization</span><span class="p">:</span> <span class="n">Token</span> <span class="mi">9944</span><span class="n">b09199c62bcf9418ad846dd0e4bbdfc6ee4b</span>
+</pre></div>
+</div>
+<p><strong>注意</strong>：如果想要在标头中使用不同的关键字，例如 <code class="docutils literal notranslate"><span class="pre">Bearer</span></code>，只需将 <code class="docutils literal notranslate"><span class="pre">TokenAuthentication</span></code> 子类化并设置 <code class="docutils literal notranslate"><span class="pre">keyword</span></code> 类变量。</p>
+<p>如果成功通过身份验证，<code class="docutils literal notranslate"><span class="pre">TokenAuthentication</span></code> 提供以下凭据。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">request.user</span></code> 将是 Django <code class="docutils literal notranslate"><span class="pre">User</span></code> 实例。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">request.auth</span></code> 将是 <code class="docutils literal notranslate"><span class="pre">rest_framework.authtoken.models.Token</span></code> 实例。</p></li>
+</ul>
+<p>拒绝许可的未经身份验证的响应将导致带有相应的 WWW-Authenticate 标头的 <code class="docutils literal notranslate"><span class="pre">HTTP</span> <span class="pre">401</span> <span class="pre">Unauthorized</span></code> 响应。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">WWW</span><span class="o">-</span><span class="n">Authenticate</span><span class="p">:</span> <span class="n">Token</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">curl</span></code> 命令行工具可用于测试令牌认证 API。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">X</span> <span class="n">GET</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">example</span><span class="o">/</span> <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b&#39;</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>注意</strong>：如果您在产品中使用 <code class="docutils literal notranslate"><span class="pre">TokenAuthentication</span></code>，您必须确保您的 API 仅在 <code class="docutils literal notranslate"><span class="pre">https</span></code> 上可用。</p>
+<hr class="docutils" />
+<section id="generating-tokens">
+<h3>生成令牌 (Generating Tokens)<a class="headerlink" href="#generating-tokens" title="Permalink to this heading">#</a></h3>
+<section id="by-using-signals">
+<h4>通过使用信号 (By using signals)<a class="headerlink" href="#by-using-signals" title="Permalink to this heading">#</a></h4>
+<p>如果您想要每个用户都拥有一个自动生成的令牌，您只需捕获用户的 <code class="docutils literal notranslate"><span class="pre">post_save</span></code> 信号即可。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span> <span class="nn">django.db.models.signals</span> <span class="kn">import</span> <span class="n">post_save</span>
+<span class="kn">from</span> <span class="nn">django.dispatch</span> <span class="kn">import</span> <span class="n">receiver</span>
+<span class="kn">from</span> <span class="nn">rest_framework.authtoken.models</span> <span class="kn">import</span> <span class="n">Token</span>
+
+<span class="nd">@receiver</span><span class="p">(</span><span class="n">post_save</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">AUTH_USER_MODEL</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">create_auth_token</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">created</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">created</span><span class="p">:</span>
+        <span class="n">Token</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">instance</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>请注意，您需要确保将此代码段放在已安装的 <code class="docutils literal notranslate"><span class="pre">models.py</span></code> 模块中，或者在启动时由 Django 导入的其他位置。</p>
+<p>如果您已经创建了一些用户，则可以为所有现有用户生成令牌，如下所示：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">rest_framework.authtoken.models</span> <span class="kn">import</span> <span class="n">Token</span>
+
+<span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+    <span class="n">Token</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="api-by-exposing-an-api-endpoint">
+<h4>通过暴露 api 端点 (By exposing an api endpoint)<a class="headerlink" href="#api-by-exposing-an-api-endpoint" title="Permalink to this heading">#</a></h4>
+<p>当使用 <code class="docutils literal notranslate"><span class="pre">TokenAuthentication</span></code> 时，你可能希望为客户端提供一种获取给定用户名和密码的令牌的机制。REST framework 提供了一个内置的视图来提供此行为。要使用它，请将 <code class="docutils literal notranslate"><span class="pre">obtain_auth_token</span></code> 视图添加到你的 URLconf：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.authtoken</span> <span class="kn">import</span> <span class="n">views</span>
+<span class="n">urlpatterns</span> <span class="o">+=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^api-token-auth/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">obtain_auth_token</span><span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>请注意，模式的 URL 部分可以是您要使用的任何内容。</p>
+<p>当使用表单数据或 JSON 将有效的 <code class="docutils literal notranslate"><span class="pre">username</span></code> 和 <code class="docutils literal notranslate"><span class="pre">password</span></code> 字段 POST 到视图时，<code class="docutils literal notranslate"><span class="pre">obtain_auth_token</span></code> 视图将返回 JSON 响应：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s1">&#39;token&#39;</span> <span class="p">:</span> <span class="s1">&#39;9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b&#39;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>请注意，默认的 <code class="docutils literal notranslate"><span class="pre">obtain_auth_token</span></code> 视图显式使用 JSON 请求和响应，而不是使用 settings 中默认的渲染器和解析器类。</p>
+<p>默认情况下，没有应用于 <code class="docutils literal notranslate"><span class="pre">obtain_auth_token</span></code> 视图的权限或限制。如果您希望应用限制，则需要重写视图类，并使用 <code class="docutils literal notranslate"><span class="pre">throttle_classes</span></code> 属性将它们包括在内。</p>
+<p>如果需要自定义版本的 <code class="docutils literal notranslate"><span class="pre">obtain_auth_token</span></code> 视图，可以通过子类化 <code class="docutils literal notranslate"><span class="pre">ObtainAuthToken</span></code> 类，并在 url conf 中使用它来实现。</p>
+<p>例如，您可以返回令牌值之外的其他用户信息：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.authtoken.views</span> <span class="kn">import</span> <span class="n">ObtainAuthToken</span>
+<span class="kn">from</span> <span class="nn">rest_framework.authtoken.models</span> <span class="kn">import</span> <span class="n">Token</span>
+<span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="kn">import</span> <span class="n">Response</span>
+
+<span class="k">class</span> <span class="nc">CustomAuthToken</span><span class="p">(</span><span class="n">ObtainAuthToken</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">serializer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serializer_class</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                                           <span class="n">context</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;request&#39;</span><span class="p">:</span> <span class="n">request</span><span class="p">})</span>
+        <span class="n">serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">serializer</span><span class="o">.</span><span class="n">validated_data</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span>
+        <span class="n">token</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">Token</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({</span>
+            <span class="s1">&#39;token&#39;</span><span class="p">:</span> <span class="n">token</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+            <span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">pk</span><span class="p">,</span>
+            <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span>
+        <span class="p">})</span>
+</pre></div>
+</div>
+<p>在你的 <code class="docutils literal notranslate"><span class="pre">urls.py</span></code> 中：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">+=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^api-token-auth/&#39;</span><span class="p">,</span> <span class="n">CustomAuthToken</span><span class="o">.</span><span class="n">as_view</span><span class="p">())</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="with-django-admin">
+<h4>With Django admin<a class="headerlink" href="#with-django-admin" title="Permalink to this heading">#</a></h4>
+<p>还可以通过管理界面手动创建令牌。如果您使用的是大型用户基础，我们建议您修补 <code class="docutils literal notranslate"><span class="pre">TokenAdmin</span></code> 类以根据需要对其进行自定义，更具体地说，将 <code class="docutils literal notranslate"><span class="pre">user</span></code> 字段声明为<code class="docutils literal notranslate"><span class="pre">raw_field</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">your_app/admin.py</span></code>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.authtoken.admin</span> <span class="kn">import</span> <span class="n">TokenAdmin</span>
+
+<span class="n">TokenAdmin</span><span class="o">.</span><span class="n">raw_id_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="django-manage-py-using-django-manage-py-command">
+<h3>使用 Django <a class="reference external" href="http://manage.py">manage.py</a> 命令 (Using Django <a class="reference external" href="http://manage.py">manage.py</a> command)<a class="headerlink" href="#django-manage-py-using-django-manage-py-command" title="Permalink to this heading">#</a></h3>
+<p>从版本3.6.4开始，可以使用以下命令生成用户令牌：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">drf_create_token</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>此命令将返回给定用户的 API 令牌，如果它不存在则创建它：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Generated</span> <span class="n">token</span> <span class="mi">9944</span><span class="n">b09199c62bcf9418ad846dd0e4bbdfc6ee4b</span> <span class="k">for</span> <span class="n">user</span> <span class="n">user1</span>
+</pre></div>
+</div>
+<p>如果您想要重新生成令牌 (例如如果它已被破坏或泄露)，您可以传递一个额外的参数：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">drf_create_token</span> <span class="o">-</span><span class="n">r</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="sessionauthentication">
+<h2>SessionAuthentication<a class="headerlink" href="#sessionauthentication" title="Permalink to this heading">#</a></h2>
+<p>此身份验证方案使用 Django 的默认会话后端进行身份验证。会话身份验证适用于与您的网站在同一会话上下文中运行的 AJAX 客户端。</p>
+<p>如果成功通过身份验证，则 <code class="docutils literal notranslate"><span class="pre">SessionAuthentication</span></code> 提供以下凭据。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">request.user</span></code> 是 Django <code class="docutils literal notranslate"><span class="pre">User</span></code> 实例。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">request.auth</span></code> 是 <code class="docutils literal notranslate"><span class="pre">None</span></code>。</p></li>
+</ul>
+<p>未经许可的未经身份验证的响应将导致 <code class="docutils literal notranslate"><span class="pre">HTTP</span> <span class="pre">403</span> <span class="pre">Forbidden</span></code> 响应。</p>
+<p>如果您正在使用带有 SessionAuthentication 的 AJAX 样式的 API，则需要确保为任何“不安全” HTTP 方法调用 (例如 <code class="docutils literal notranslate"><span class="pre">PUT</span></code>，<code class="docutils literal notranslate"><span class="pre">PATCH</span></code>，<code class="docutils literal notranslate"><span class="pre">POST</span></code> 或 <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> 请求) 包含有效的 CSRF 令牌。有关更多详细信息，请参阅 <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/csrf/#ajax">Django CSRF 文档</a>。</p>
+<p><strong>警告</strong>：创建登录页面时，始终使用 Django 的标准登录视图。这将确保您的登录视图得到适当保护。</p>
+<p>REST framework 中的 CSRF 验证与标准 Django 的工作方式略有不同，因为需要同时支持基于会话和非会话的身份验证。这意味着只有经过身份验证的请求才需要 CSRF 令牌，并且可以在没有 CSRF 令牌的情况下发送匿名请求。此行为不适用于登录视图，登录视图应始终应用 CSRF 验证。</p>
+</section>
+<section id="remoteuserauthentication">
+<h2>RemoteUserAuthentication<a class="headerlink" href="#remoteuserauthentication" title="Permalink to this heading">#</a></h2>
+<p>此身份验证方案允许您将身份验证委托给 Web 服务器，该服务器设置 <code class="docutils literal notranslate"><span class="pre">REMOTE_USER</span></code> 环境变量。</p>
+<p>要使用它，你必须在你的 <code class="docutils literal notranslate"><span class="pre">AUTHENTICATION_BACKENDS</span></code> 设置中有 <code class="docutils literal notranslate"><span class="pre">django.contrib.auth.backends.RemoteUserBackend</span></code> （或者子类）。默认情况下，<code class="docutils literal notranslate"><span class="pre">RemoteUserBackend</span></code> 为尚不存在的用户名创建 <code class="docutils literal notranslate"><span class="pre">User</span></code> 对象。要更改此行为和其他行为，请参阅 <a class="reference external" href="https://docs.djangoproject.com/en/stable/howto/auth-remote-user/">Django 文档</a>。</p>
+<p>如果成功通过身份验证，<code class="docutils literal notranslate"><span class="pre">RemoteUserAuthentication</span></code> 提供以下凭据：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">request.user</span></code> 是 Django <code class="docutils literal notranslate"><span class="pre">User</span></code> 实例。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">request.auth</span></code> 是 <code class="docutils literal notranslate"><span class="pre">None</span></code>。</p></li>
+</ul>
+<p>有关配置身份验证方法的信息，请参阅 Web 服务器的文档，例如：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://httpd.apache.org/docs/2.4/howto/auth.html">Apache Authentication How-To</a></p></li>
+<li><p><a class="reference external" href="https://www.nginx.com/resources/admin-guide/#restricting_access">NGINX (Restricting Access)</a></p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="custom-authentication">
+<h1>自定义身份验证 (Custom authentication)<a class="headerlink" href="#custom-authentication" title="Permalink to this heading">#</a></h1>
+<p>要实现自定义的身份验证方案，要继承 <code class="docutils literal notranslate"><span class="pre">BaseAuthentication</span></code> 类并且重写 <code class="docutils literal notranslate"><span class="pre">.authenticate(self,</span> <span class="pre">request)</span></code> 方法。如果认证成功，该方法应返回 <code class="docutils literal notranslate"><span class="pre">(user,</span> <span class="pre">auth)</span></code> 的二元元组，否则返回 <code class="docutils literal notranslate"><span class="pre">None</span></code>。</p>
+<p>在某些情况下，您可能想要从 <code class="docutils literal notranslate"><span class="pre">.authenticate()</span></code> 方法引发 <code class="docutils literal notranslate"><span class="pre">AuthenticationFailed</span></code> 异常，而不是返回 <code class="docutils literal notranslate"><span class="pre">None</span></code>。</p>
+<p>通常，您应采取的方法是：</p>
+<ul class="simple">
+<li><p>如果未尝试验证，返回 <code class="docutils literal notranslate"><span class="pre">None</span></code>。还将检查任何其他正在使用的身份验证方案。</p></li>
+<li><p>如果尝试验证失败，则引发 <code class="docutils literal notranslate"><span class="pre">AuthenticationFailed</span></code> 异常。无论是否进行任何权限检查，都将立即返回错误响应，并且不会检查任何其他身份验证方案。</p></li>
+</ul>
+<p>您还可以重写 <code class="docutils literal notranslate"><span class="pre">.authenticate_header(self,</span> <span class="pre">request)</span></code> 方法。如果实现，则应返回将用作 <code class="docutils literal notranslate"><span class="pre">HTTP</span> <span class="pre">401</span> <span class="pre">Unauthorized</span></code> 响应中的 <code class="docutils literal notranslate"><span class="pre">WWW-Authenticate</span></code> 标头的值的字符串。</p>
+<p>如果 <code class="docutils literal notranslate"><span class="pre">.authenticate_header()</span></code> 方法未被重写，则身份验证方案将在未经验证的请求被拒绝访问时返回 <code class="docutils literal notranslate"><span class="pre">HTTP</span> <span class="pre">403</span> <span class="pre">Forbidden</span></code> 响应。</p>
+<hr class="docutils" />
+<p><strong>注意</strong>：当您的自定义身份验证器被请求对象的 <code class="docutils literal notranslate"><span class="pre">.user</span></code> 或 <code class="docutils literal notranslate"><span class="pre">.auth</span></code> 属性调用时，您可能会看到 <code class="docutils literal notranslate"><span class="pre">AttributeError</span></code> 作为 <code class="docutils literal notranslate"><span class="pre">WrappedAttributeError</span></code> 被重新引发。这对于防止原始异常被外部属性访问所抑制是必要的。Python 不会识别来自您的自定义身份验证器的 <code class="docutils literal notranslate"><span class="pre">AttributeError</span></code>，而是会假设请求对象没有 <code class="docutils literal notranslate"><span class="pre">.user</span></code> 或 <code class="docutils literal notranslate"><span class="pre">.auth</span></code> 属性。这些错误应由您的验证器修复或以其他方式处理。</p>
+<hr class="docutils" />
+<section id="id1">
+<h2>举个栗子<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>以下示例将对在自定义请求标头中名为 ‘X_USERNAME’ 的用户名指定的用户的任何传入请求进行身份验证。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">authentication</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">exceptions</span>
+
+<span class="k">class</span> <span class="nc">ExampleAuthentication</span><span class="p">(</span><span class="n">authentication</span><span class="o">.</span><span class="n">BaseAuthentication</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">username</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;X_USERNAME&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">username</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">User</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">AuthenticationFailed</span><span class="p">(</span><span class="s1">&#39;No such user&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="third-party-packages">
+<h1>第三方包 (Third party packages)<a class="headerlink" href="#third-party-packages" title="Permalink to this heading">#</a></h1>
+<p>以下是可用的第三方包。</p>
+<section id="django-oauth-toolkit">
+<h2>Django OAuth Toolkit<a class="headerlink" href="#django-oauth-toolkit" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/evonove/django-oauth-toolkit">Django OAuth Toolkit</a> 包提供了 OAuth 2.0 支持，并且兼容 Python 2.7 和 Python 3.3+。这个包使用优秀的 <a class="reference external" href="https://github.com/idan/oauthlib">OAuthLib</a>，由 <a class="reference external" href="https://github.com/evonove/">Evonove</a> 维护。该软件包有很完善的文档，并得到很好的支持，目前是我们推荐使用的 OAuth 2.0 支持软件包。</p>
+<section id="installation-configuration">
+<h3>安装和配置 (Installation &amp; configuration)<a class="headerlink" href="#installation-configuration" title="Permalink to this heading">#</a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">pip</span></code> 安装。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">django</span><span class="o">-</span><span class="n">oauth</span><span class="o">-</span><span class="n">toolkit</span>
+</pre></div>
+</div>
+<p>把这个包添加到你的 <code class="docutils literal notranslate"><span class="pre">INSTALLED_APPS</span></code> 中，并修改您的 REST framework 设置。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="o">...</span>
+    <span class="s1">&#39;oauth2_provider&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_AUTHENTICATION_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;oauth2_provider.contrib.rest_framework.OAuth2Authentication&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>有关更多详细信息，请参阅 <a class="reference external" href="https://django-oauth-toolkit.readthedocs.io/en/latest/rest-framework/getting_started.html">Django REST框架 - 入门</a>文档。</p>
+</section>
+</section>
+<section id="django-rest-framework-oauth">
+<h2>Django REST framework OAuth<a class="headerlink" href="#django-rest-framework-oauth" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://jpadilla.github.io/django-rest-framework-oauth/">Django REST framework OAuth</a> 包为 REST framework 提供 OAuth1 和 OAuth2 支持。</p>
+<p>此软件包以前直接包含在 REST framework 包中，但现在作为第三方包支持和维护。</p>
+<section id="id2">
+<h3>安装和配置 (Installation &amp; configuration)<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">pip</span></code> 安装软件包。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">djangorestframework</span><span class="o">-</span><span class="n">oauth</span>
+</pre></div>
+</div>
+<p>有关配置和使用的详细信息，请参阅 Django REST framework OAuth 文档的<a class="reference external" href="https://jpadilla.github.io/django-rest-framework-oauth/authentication/">身份验证</a>和<a class="reference external" href="https://jpadilla.github.io/django-rest-framework-oauth/permissions/">权限</a>。</p>
+</section>
+</section>
+<section id="digest-authentication">
+<h2>Digest Authentication<a class="headerlink" href="#digest-authentication" title="Permalink to this heading">#</a></h2>
+<p>HTTP 摘要认证是一种广泛实施的方案，旨在取代 HTTP 基本认证，并提供简单的加密认证机制。<a class="reference external" href="https://github.com/juanriaza">Juan Riaza</a> 维护着 <a class="reference external" href="https://github.com/juanriaza/django-rest-framework-digestauth">djangorestframework-digestauth</a> 包，它为 REST framework 提供 HTTP 摘要认证支持。</p>
+</section>
+<section id="django-oauth2-consumer">
+<h2>Django OAuth2 Consumer<a class="headerlink" href="#django-oauth2-consumer" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/Rediker-Software">Rediker Software</a> 的 <a class="reference external" href="https://github.com/Rediker-Software/doac">Django OAuth2 Consumer</a> 是另一个<a class="reference external" href="https://github.com/Rediker-Software/doac/blob/master/docs/integrations.md#">为 REST framework 提供 OAuth 2.0 支持</a>的软件包。该软件包包含令牌的令牌范围权限，允许对你的 API 进行更细粒度的访问。</p>
+</section>
+<section id="json-web-token-authentication">
+<h2>JSON Web Token Authentication<a class="headerlink" href="#json-web-token-authentication" title="Permalink to this heading">#</a></h2>
+<p>JSON Web Token 是一个相当新的标准，可用于基于令牌的身份验证。与内置 TokenAuthentication 方案不同，JWT Authentication 不需要使用数据库来验证令牌。<a class="reference external" href="https://github.com/GetBlimp">Blimp</a> 维护着 <a class="reference external" href="https://github.com/GetBlimp/django-rest-framework-jwt">djangorestframework-jwt</a> 软件包，它提供了 JWT Authentication 类，以及客户端获取给定用户名和密码的 JWT 的机制。JWT 身份验证的另一个包是 <a class="reference external" href="https://github.com/davesque/django-rest-framework-simplejwt">djangorestframe -simplejwt</a>，它提供了不同的特性以及可插入的令牌黑名单应用程序。</p>
+</section>
+<section id="hawk-http-authentication">
+<h2>Hawk HTTP Authentication<a class="headerlink" href="#hawk-http-authentication" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://hawkrest.readthedocs.io/en/latest/">HawkREST</a> 库以 <a class="reference external" href="https://mohawk.readthedocs.io/en/latest/">Mohawk</a> 库为基础，允许您在 API 中处理 <a class="reference external" href="https://github.com/hueniverse/hawk">Hawk</a> 签名的请求和响应。Hawk 让双方使用共享密钥签名的消息彼此安全地进行通信。它基于 <a class="reference external" href="https://tools.ietf.org/html/draft-hammer-oauth-v2-mac-token-05">HTTP MAC 访问认证</a>(基于 <a class="reference external" href="https://oauth.net/core/1.0a/">OAuth 1.0</a> 的部分)。</p>
+</section>
+<section id="http-signature-authentication">
+<h2>HTTP Signature Authentication<a class="headerlink" href="#http-signature-authentication" title="Permalink to this heading">#</a></h2>
+<p>HTTP 签名(目前为 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-cavage-http-signatures/">IETF 草案</a>)提供了一种实现 HTTP 消息的源认证和消息完整性的方法。与 <a class="reference external" href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Amazon 的 HTTP 签名方案</a>类似，许多服务使用它，它允许无状态的每个请求的身份验证。<a class="reference external" href="https://github.com/etoccalino/">Elvio Toccalino</a> 维护 <a class="reference external" href="https://github.com/etoccalino/django-rest-framework-httpsignature">djangorestframework-httpsignature</a> 包，提供了一个易于使用的 HTTP 签名身份验证机制。</p>
+</section>
+<section id="djoser">
+<h2>Djoser<a class="headerlink" href="#djoser" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/sunscrapers/djoser">Djoser</a> 库提供了一组视图来处理诸如注册，登录，注销，密码重置和帐户激活等基本操作。该包使用自定义用户模型，并使用基于令牌的身份验证。这是一个可以使用 REST 实现的 Django 身份验证系统。</p>
+</section>
+<section id="django-rest-auth">
+<h2>django-rest-auth<a class="headerlink" href="#django-rest-auth" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/Tivix/django-rest-auth">Django-rest-auth</a> 库提供了一组 REST API 端点，用于注册，身份验证(包括社交媒体身份验证)，密码重置，检索和更新用户详细信息等。通过拥有这些 API 端点，您的客户端应用程序(如 AngularJS、iOS、Android 等)可以通过 REST API 独立地与 Django 后端站点通信，用于用户管理。</p>
+</section>
+<section id="django-rest-framework-social-oauth2">
+<h2>django-rest-framework-social-oauth2<a class="headerlink" href="#django-rest-framework-social-oauth2" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/PhilipGarnero/django-rest-framework-social-oauth2">Django-rest-framework-social-oauth2</a> 库提供了一种将社交插件(facebook、twitter、google 等)集成到您的身份验证系统和简单的 oauth2 设置的简单方法。使用这个库，您将能够基于外部令牌(例如 facebook 访问令牌)对用户进行身份验证，将这些令牌转换为“内部” oauth2 令牌，并使用和生成 oauth2 令牌来验证您的用户。</p>
+</section>
+<section id="django-rest-knox">
+<h2>django-rest-knox<a class="headerlink" href="#django-rest-knox" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/James1345/django-rest-knox">Django-rest-knox</a> 库提供模型和视图，以比内置 TokenAuthentication 方案更安全和可扩展的方式处理基于令牌的身份验证 - 考虑到单页应用程序和移动客户端。它为每个客户端提供令牌，并在提供一些其他身份验证(通常是基本身份验证)时生成它们，以删除令牌(提供服务器强制注销)，并删除所有令牌(注销用户登录的所有客户端)的视图。</p>
+</section>
+<section id="drfpasswordless">
+<h2>drfpasswordless<a class="headerlink" href="#drfpasswordless" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/aaronn/django-rest-framework-passwordless">drfpasswordless</a> 为 Django REST Framework 自己的 TokenAuthentication 方案添加了(Medium，Square Cash灵感)无密码支持。用户登录并使用发送到联系人点(如电子邮件地址或手机号码)的令牌进行注册。</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./API-Guide"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Validators.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">验证器 (Validators)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Permissions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">权限 (Permissions)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">认证 (Authentication)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-authentication-is-determined">如何确定身份验证 (How authentication is determined)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-authentication-scheme">设置身份验证方案 (Setting the authentication scheme)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unauthorized-and-forbidden-responses">未经授权和禁止响应 (Unauthorized and Forbidden responses)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apache-mod-wsgi-apache-mod-wsgi-specific-configuration">Apache mod_wsgi 具体配置 (Apache mod_wsgi specific configuration)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-reference">API 参考 (API Reference)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basicauthentication">BasicAuthentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenauthentication">TokenAuthentication</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-tokens">生成令牌 (Generating Tokens)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#by-using-signals">通过使用信号 (By using signals)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#api-by-exposing-an-api-endpoint">通过暴露 api 端点 (By exposing an api endpoint)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#with-django-admin">With Django admin</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#django-manage-py-using-django-manage-py-command">使用 Django manage.py 命令 (Using Django manage.py command)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sessionauthentication">SessionAuthentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remoteuserauthentication">RemoteUserAuthentication</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-authentication">自定义身份验证 (Custom authentication)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">举个栗子</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#third-party-packages">第三方包 (Third party packages)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-oauth-toolkit">Django OAuth Toolkit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-configuration">安装和配置 (Installation &amp; configuration)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-oauth">Django REST framework OAuth</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">安装和配置 (Installation &amp; configuration)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digest-authentication">Digest Authentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-oauth2-consumer">Django OAuth2 Consumer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#json-web-token-authentication">JSON Web Token Authentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hawk-http-authentication">Hawk HTTP Authentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#http-signature-authentication">HTTP Signature Authentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#djoser">Djoser</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-auth">django-rest-auth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-social-oauth2">django-rest-framework-social-oauth2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-knox">django-rest-knox</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drfpasswordless">drfpasswordless</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1218 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>设置 (Settings) &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'API-Guide/Settings';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="记录您的 API (Documenting your API)" href="../Topics/Documenting_your_API.html" />
+    <link rel="prev" title="测试 (Testing)" href="Testing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Authentication-and-Permissions.html">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Views.html">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Renderers.html">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-fields.html">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Validators.html">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Authentication.html">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Permissions.html">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Throttling.html">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Filtering.html">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Pagination.html">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Exceptions.html">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Testing.html">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/API_Clients.html">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/The_Browsable_API.html">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Community/Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Third_Party_Packages.html">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Contributing_to_REST_framework.html">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Community/Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.4_Announcement.html">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.0_Announcement.html">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAPI-Guide/Settings.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/API-Guide/Settings.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>设置 (Settings)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">设置 (Settings)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-settings">访问设置 (Accessing settings)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-reference">API 参考 (API Reference)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-policy-settings">API 策略设置 (API policy settings)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-renderer-classes">DEFAULT_RENDERER_CLASSES</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-parser-classes">DEFAULT_PARSER_CLASSES</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-authentication-classes">DEFAULT_AUTHENTICATION_CLASSES</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-permission-classes">DEFAULT_PERMISSION_CLASSES</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-throttle-classes">DEFAULT_THROTTLE_CLASSES</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-content-negotiation-class">DEFAULT_CONTENT_NEGOTIATION_CLASS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-schema-class">DEFAULT_SCHEMA_CLASS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generic-view-settings">通用视图设置 (Generic view settings)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-pagination-serializer-class">DEFAULT_PAGINATION_SERIALIZER_CLASS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-filter-backends">DEFAULT_FILTER_BACKENDS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paginate-by">PAGINATE_BY</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#page-size">PAGE_SIZE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paginate-by-param">PAGINATE_BY_PARAM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#max-paginate-by">MAX_PAGINATE_BY</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-param">SEARCH_PARAM</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ordering-param">ORDERING_PARAM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#versioning-settings">版本控制设置 (Versioning settings)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-version">DEFAULT_VERSION</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#allowed-versions">ALLOWED_VERSIONS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-param">VERSION_PARAM</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication-settings">认证设置 (Authentication settings)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unauthenticated-user">UNAUTHENTICATED_USER</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unauthenticated-token">UNAUTHENTICATED_TOKEN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-settings">测试设置 (Test settings)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-request-default-format">TEST_REQUEST_DEFAULT_FORMAT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-request-renderer-classes">TEST_REQUEST_RENDERER_CLASSES</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-generation-controls">模式生成控件 (Schema generation controls)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-coerce-path-pk">SCHEMA_COERCE_PATH_PK</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-coerce-method-names">SCHEMA_COERCE_METHOD_NAMES</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content-type-controls">内容类型控件 (Content type controls)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#url-format-override">URL_FORMAT_OVERRIDE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#format-suffix-kwarg">FORMAT_SUFFIX_KWARG</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#date-and-time-formatting">日期和时间格式 (Date and time formatting)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datetime-format">DATETIME_FORMAT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datetime-input-formats">DATETIME_INPUT_FORMATS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date-format">DATE_FORMAT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date-input-formats">DATE_INPUT_FORMATS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-format">TIME_FORMAT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-input-formats">TIME_INPUT_FORMATS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encodings">编码 (Encodings)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unicode-json">UNICODE_JSON</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compact-json">COMPACT_JSON</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strict-json">STRICT_JSON</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coerce-decimal-to-string">COERCE_DECIMAL_TO_STRING</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-names-and-descriptions">视图名称和描述 (View names and descriptions)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-name-function">VIEW_NAME_FUNCTION</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-description-function">VIEW_DESCRIPTION_FUNCTION</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#html-html-select-field-cutoffs">HTML 选择字段截取 (HTML Select Field cutoffs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#html-select-cutoff">HTML_SELECT_CUTOFF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#html-select-cutoff-text">HTML_SELECT_CUTOFF_TEXT</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous-settings">杂项设置 (Miscellaneous settings)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-handler">EXCEPTION_HANDLER</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-field-errors-key">NON_FIELD_ERRORS_KEY</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#url-field-name">URL_FIELD_NAME</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#num-proxies">NUM_PROXIES</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="settings">
+<h1>设置 (Settings)<a class="headerlink" href="#settings" title="Permalink to this heading">#</a></h1>
+<p>命名空间是一个很棒的主意 - 让我们做更多的事情吧！—— <a class="reference external" href="https://www.python.org/dev/peps/pep-0020/">The Zen of Python</a></p>
+<p>REST framework 的配置全部在单个 Django 设置中命名的，名为 <code class="docutils literal notranslate"><span class="pre">REST_FRAMEWORK</span></code>。</p>
+<p>例如，您的项目的 <code class="docutils literal notranslate"><span class="pre">settings.py</span></code> 文件可能包含以下内容：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_RENDERER_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;rest_framework.renderers.JSONRenderer&#39;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="s1">&#39;DEFAULT_PARSER_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;rest_framework.parsers.JSONParser&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="accessing-settings">
+<h2>访问设置 (Accessing settings)<a class="headerlink" href="#accessing-settings" title="Permalink to this heading">#</a></h2>
+<p>如果您需要访问项目中 REST framework 的 API 设置的值，则应使用 <code class="docutils literal notranslate"><span class="pre">api_settings</span></code> 对象。例如。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.settings</span> <span class="kn">import</span> <span class="n">api_settings</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">api_settings</span><span class="o">.</span><span class="n">DEFAULT_AUTHENTICATION_CLASSES</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">api_settings</span></code> 对象将检查任何用户定义的设置，否则将回退到默认值。 任何使用字符串导入路径引用类的设置都会自动导入并返回被引用的类，而不是字符串文字。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="api-api-reference">
+<h1>API 参考 (API Reference)<a class="headerlink" href="#api-api-reference" title="Permalink to this heading">#</a></h1>
+<section id="api-api-policy-settings">
+<h2>API 策略设置 (API policy settings)<a class="headerlink" href="#api-api-policy-settings" title="Permalink to this heading">#</a></h2>
+<p><em>以下设置控制基本 API 策略，并应用于每个基于 <code class="docutils literal notranslate"><span class="pre">APIView</span></code> 类的视图或基于 <code class="docutils literal notranslate"><span class="pre">&#64;api_view</span></code> 函数的视图。</em></p>
+<section id="default-renderer-classes">
+<h3>DEFAULT_RENDERER_CLASSES<a class="headerlink" href="#default-renderer-classes" title="Permalink to this heading">#</a></h3>
+<p>渲染器类的列表或元组，用于确定返回 <code class="docutils literal notranslate"><span class="pre">Response</span></code> 对象时可能使用的默认渲染器集。</p>
+<p>默认：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="s1">&#39;rest_framework.renderers.JSONRenderer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rest_framework.renderers.BrowsableAPIRenderer&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="default-parser-classes">
+<h3>DEFAULT_PARSER_CLASSES<a class="headerlink" href="#default-parser-classes" title="Permalink to this heading">#</a></h3>
+<p>解析器类的列表或元组，用于确定访问 <code class="docutils literal notranslate"><span class="pre">request.data</span></code> 属性时使用的默认解析器集。</p>
+<p>默认：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="s1">&#39;rest_framework.parsers.JSONParser&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rest_framework.parsers.FormParser&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rest_framework.parsers.MultiPartParser&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="default-authentication-classes">
+<h3>DEFAULT_AUTHENTICATION_CLASSES<a class="headerlink" href="#default-authentication-classes" title="Permalink to this heading">#</a></h3>
+<p>身份验证类的列表或元组，用于确定在访问 <code class="docutils literal notranslate"><span class="pre">request.user</span></code> 或 <code class="docutils literal notranslate"><span class="pre">request.auth</span></code> 属性时使用的默认身份验证器集。</p>
+<p>默认：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="s1">&#39;rest_framework.authentication.SessionAuthentication&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rest_framework.authentication.BasicAuthentication&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="default-permission-classes">
+<h3>DEFAULT_PERMISSION_CLASSES<a class="headerlink" href="#default-permission-classes" title="Permalink to this heading">#</a></h3>
+<p>权限类的列表或元组，用于确定在视图开始时检查的默认权限集。权限必须由列表中的每个类授予。</p>
+<p>默认：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="s1">&#39;rest_framework.permissions.AllowAny&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="default-throttle-classes">
+<h3>DEFAULT_THROTTLE_CLASSES<a class="headerlink" href="#default-throttle-classes" title="Permalink to this heading">#</a></h3>
+<p>限流类的列表或元组，用于确定在视图开始时检查的默认限流类集。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">()</span></code></p>
+</section>
+<section id="default-content-negotiation-class">
+<h3>DEFAULT_CONTENT_NEGOTIATION_CLASS<a class="headerlink" href="#default-content-negotiation-class" title="Permalink to this heading">#</a></h3>
+<p>内容协商类，在给定传入请求的情况下，确定如何为响应选择渲染器。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">'rest_framework.negotiation.DefaultContentNegotiation'</span></code></p>
+</section>
+<section id="default-schema-class">
+<h3>DEFAULT_SCHEMA_CLASS<a class="headerlink" href="#default-schema-class" title="Permalink to this heading">#</a></h3>
+<p>将用于模式生成的视图检查器类。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">'rest_framework.schemas.AutoSchema'</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="generic-view-settings">
+<h2>通用视图设置 (Generic view settings)<a class="headerlink" href="#generic-view-settings" title="Permalink to this heading">#</a></h2>
+<p><em>以下设置控制通用基于类的视图的行为。</em></p>
+<section id="default-pagination-serializer-class">
+<h3>DEFAULT_PAGINATION_SERIALIZER_CLASS<a class="headerlink" href="#default-pagination-serializer-class" title="Permalink to this heading">#</a></h3>
+<hr class="docutils" />
+<p><strong>此设置已被删除。</strong></p>
+<p>分页 API 不使用序列化器来确定输出格式，您需要在分页类上重写 <code class="docutils literal notranslate"><span class="pre">get_paginated_response</span></code> 方法，以便指定如何控制输出格式。</p>
+<hr class="docutils" />
+</section>
+<section id="default-filter-backends">
+<h3>DEFAULT_FILTER_BACKENDS<a class="headerlink" href="#default-filter-backends" title="Permalink to this heading">#</a></h3>
+<p>用于通用过滤的过滤器后端类列表。如果设置为 <code class="docutils literal notranslate"><span class="pre">None</span></code>，则禁用通用过滤。</p>
+</section>
+<section id="paginate-by">
+<h3>PAGINATE_BY<a class="headerlink" href="#paginate-by" title="Permalink to this heading">#</a></h3>
+<hr class="docutils" />
+<p><strong>此设置已被删除。</strong></p>
+<p>有关<a class="reference external" href="http://www.django-rest-framework.org/api-guide/pagination/#modifying-the-pagination-style">设置分页样式</a>的进一步指导，请参阅分页文档。</p>
+<hr class="docutils" />
+</section>
+<section id="page-size">
+<h3>PAGE_SIZE<a class="headerlink" href="#page-size" title="Permalink to this heading">#</a></h3>
+<p>用于分页的默认页面大小。如果设置为 <code class="docutils literal notranslate"><span class="pre">None</span></code>，则默认情况下禁用分页。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</section>
+<section id="paginate-by-param">
+<h3>PAGINATE_BY_PARAM<a class="headerlink" href="#paginate-by-param" title="Permalink to this heading">#</a></h3>
+<hr class="docutils" />
+<p><strong>此设置已被删除。</strong></p>
+<p>有关<a class="reference external" href="http://www.django-rest-framework.org/api-guide/pagination/#modifying-the-pagination-style">设置分页样式</a>的进一步指导，请参阅分页文档。</p>
+<hr class="docutils" />
+</section>
+<section id="max-paginate-by">
+<h3>MAX_PAGINATE_BY<a class="headerlink" href="#max-paginate-by" title="Permalink to this heading">#</a></h3>
+<hr class="docutils" />
+<p><strong>此设置已被删除。</strong></p>
+<p>有关<a class="reference external" href="http://www.django-rest-framework.org/api-guide/pagination/#modifying-the-pagination-style">设置分页样式</a>的进一步指导，请参阅分页文档。</p>
+</section>
+<hr class="docutils" />
+<section id="search-param">
+<h3>SEARCH_PARAM<a class="headerlink" href="#search-param" title="Permalink to this heading">#</a></h3>
+<p>查询参数的名称，可用于指定 <code class="docutils literal notranslate"><span class="pre">SearchFilter</span></code> 使用的搜索词。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">search</span></code></p>
+<section id="ordering-param">
+<h4>ORDERING_PARAM<a class="headerlink" href="#ordering-param" title="Permalink to this heading">#</a></h4>
+<p>查询参数的名称，可用于指定 <code class="docutils literal notranslate"><span class="pre">OrderingFilter</span></code> 返回的结果的排序。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">ordering</span></code></p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="versioning-settings">
+<h2>版本控制设置 (Versioning settings)<a class="headerlink" href="#versioning-settings" title="Permalink to this heading">#</a></h2>
+<section id="default-version">
+<h3>DEFAULT_VERSION<a class="headerlink" href="#default-version" title="Permalink to this heading">#</a></h3>
+<p>当没有版本控制信息存在时，应该用于 <code class="docutils literal notranslate"><span class="pre">request.version</span></code> 的值。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</section>
+<section id="allowed-versions">
+<h3>ALLOWED_VERSIONS<a class="headerlink" href="#allowed-versions" title="Permalink to this heading">#</a></h3>
+<p>如果设置，则此值将限制版本控制方案可能返回的版本集合，并且如果提供的版本不在此集合中，则会引发错误。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</section>
+<section id="version-param">
+<h3>VERSION_PARAM<a class="headerlink" href="#version-param" title="Permalink to this heading">#</a></h3>
+<p>应该用于任何版本控制参数的字符串，例如媒体类型或 URL 查询参数。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">'version'</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="authentication-settings">
+<h2>认证设置 (Authentication settings)<a class="headerlink" href="#authentication-settings" title="Permalink to this heading">#</a></h2>
+<p><em>以下设置控制未经身份验证的请求的行为。</em></p>
+<section id="unauthenticated-user">
+<h3>UNAUTHENTICATED_USER<a class="headerlink" href="#unauthenticated-user" title="Permalink to this heading">#</a></h3>
+<p>应该用于为未经身份验证的请求初始化 <code class="docutils literal notranslate"><span class="pre">request.user</span></code> 的类。(如果要完全删除身份验证，例如从 <code class="docutils literal notranslate"><span class="pre">INSTALLED_APPS</span></code> 中删除 <code class="docutils literal notranslate"><span class="pre">django.contrib.auth</span></code>，将 <code class="docutils literal notranslate"><span class="pre">UNAUTHENTICATED_USER</span></code> 设置为 <code class="docutils literal notranslate"><span class="pre">None</span></code>。)</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">django.contrib.auth.models.AnonymousUser</span></code></p>
+</section>
+<section id="unauthenticated-token">
+<h3>UNAUTHENTICATED_TOKEN<a class="headerlink" href="#unauthenticated-token" title="Permalink to this heading">#</a></h3>
+<p>应该用于为未经身份验证的请求初始化 <code class="docutils literal notranslate"><span class="pre">request.auth</span></code> 的类。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="test-settings">
+<h2>测试设置 (Test settings)<a class="headerlink" href="#test-settings" title="Permalink to this heading">#</a></h2>
+<p><em>以下设置控制 APIRequestFactory 和 APIClient 的行为</em></p>
+<section id="test-request-default-format">
+<h3>TEST_REQUEST_DEFAULT_FORMAT<a class="headerlink" href="#test-request-default-format" title="Permalink to this heading">#</a></h3>
+<p>发出测试请求时应使用的默认格式。</p>
+<p>这应该与 <code class="docutils literal notranslate"><span class="pre">TEST_REQUEST_RENDERER_CLASSES</span></code> 设置中某个渲染器类的格式相匹配。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">'multipart'</span></code></p>
+</section>
+<section id="test-request-renderer-classes">
+<h3>TEST_REQUEST_RENDERER_CLASSES<a class="headerlink" href="#test-request-renderer-classes" title="Permalink to this heading">#</a></h3>
+<p>构建测试请求时支持的渲染器类。</p>
+<p>构建测试请求时可以使用任何这些渲染器类的格式，例如：<code class="docutils literal notranslate"><span class="pre">client.post('/users',</span> <span class="pre">{'username':</span> <span class="pre">'jamie'},</span> <span class="pre">format='json')</span></code></p>
+<p>默认：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="s1">&#39;rest_framework.renderers.MultiPartRenderer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;rest_framework.renderers.JSONRenderer&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="schema-generation-controls">
+<h2>模式生成控件 (Schema generation controls)<a class="headerlink" href="#schema-generation-controls" title="Permalink to this heading">#</a></h2>
+<section id="schema-coerce-path-pk">
+<h3>SCHEMA_COERCE_PATH_PK<a class="headerlink" href="#schema-coerce-path-pk" title="Permalink to this heading">#</a></h3>
+<p>如果设置，则在生成模式路径参数时，将 URL conf 中的 <code class="docutils literal notranslate"><span class="pre">'pk'</span></code> 标识符映射到实际字段名称上。通常这将是 <code class="docutils literal notranslate"><span class="pre">'id'</span></code>。这给出了更合适的表示，因为 “主键” 是实现细节，而 “标识符” 是更一般的概念。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</section>
+<section id="schema-coerce-method-names">
+<h3>SCHEMA_COERCE_METHOD_NAMES<a class="headerlink" href="#schema-coerce-method-names" title="Permalink to this heading">#</a></h3>
+<p>如果设置，则用于将内部视图集方法名称映射到模式生成中使用的外部操作名称。这允许我们生成更适合外部表示的名称，而不是代码库内部使用的名称。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">{'retrieve':</span> <span class="pre">'read',</span> <span class="pre">'destroy':</span> <span class="pre">'delete'}</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="content-type-controls">
+<h2>内容类型控件 (Content type controls)<a class="headerlink" href="#content-type-controls" title="Permalink to this heading">#</a></h2>
+<section id="url-format-override">
+<h3>URL_FORMAT_OVERRIDE<a class="headerlink" href="#url-format-override" title="Permalink to this heading">#</a></h3>
+<p>通过在请求 URL 中使用 <code class="docutils literal notranslate"><span class="pre">format=…</span></code> 查询参数，可用于覆盖默认内容协商 <code class="docutils literal notranslate"><span class="pre">Accept</span></code> 标头行为的 URL 参数的名称。</p>
+<p>例如：<code class="docutils literal notranslate"><span class="pre">http://example.com/organizations/?format=csv</span></code></p>
+<p>如果此设置的值为 <code class="docutils literal notranslate"><span class="pre">None</span></code>，则 URL 格式覆盖将被禁用。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">'format'</span></code></p>
+</section>
+<section id="format-suffix-kwarg">
+<h3>FORMAT_SUFFIX_KWARG<a class="headerlink" href="#format-suffix-kwarg" title="Permalink to this heading">#</a></h3>
+<p>URL conf 中用于提供格式后缀的参数名称。使用 <code class="docutils literal notranslate"><span class="pre">format_suffix_patterns</span></code> 包含后缀 URL patterns 时应用此设置。</p>
+<p>例如：<code class="docutils literal notranslate"><span class="pre">http://example.com/organizations.csv/</span></code></p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">'format'</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="date-and-time-formatting">
+<h2>日期和时间格式 (Date and time formatting)<a class="headerlink" href="#date-and-time-formatting" title="Permalink to this heading">#</a></h2>
+<p><em>以下设置用于控制如何解析和渲染日期和时间表示。</em></p>
+<section id="datetime-format">
+<h3>DATETIME_FORMAT<a class="headerlink" href="#datetime-format" title="Permalink to this heading">#</a></h3>
+<p>默认情况下用于渲染 <code class="docutils literal notranslate"><span class="pre">DateTimeField</span></code> 序列化器字段的输出的格式字符串。如果为 <code class="docutils literal notranslate"><span class="pre">None</span></code>，那么 <code class="docutils literal notranslate"><span class="pre">DateTimeField</span></code> 序列化器字段将返回 Python <code class="docutils literal notranslate"><span class="pre">datetime</span></code> 对象，并且日期时间编码将由渲染器决定。</p>
+<p>可以是 <code class="docutils literal notranslate"><span class="pre">None</span></code>，<code class="docutils literal notranslate"><span class="pre">'iso-8601'</span></code> 或 Python <a class="reference external" href="https://docs.python.org/3/library/time.html#time.strftime">strftime 格式</a>字符串中的任何一个。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">'iso-8601'</span></code></p>
+</section>
+<section id="datetime-input-formats">
+<h3>DATETIME_INPUT_FORMATS<a class="headerlink" href="#datetime-input-formats" title="Permalink to this heading">#</a></h3>
+<p>默认情况下应用于解析 <code class="docutils literal notranslate"><span class="pre">DateTimeField</span></code> 序列化器字段输入的格式字符串列表。</p>
+<p>可以是包含字符串 <code class="docutils literal notranslate"><span class="pre">'iso-8601'</span></code> 或 Python <a class="reference external" href="https://docs.python.org/3/library/time.html#time.strftime">strftime 格式</a>字符串的列表。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">['iso-8601']</span></code></p>
+</section>
+<section id="date-format">
+<h3>DATE_FORMAT<a class="headerlink" href="#date-format" title="Permalink to this heading">#</a></h3>
+<p>默认情况下用于渲染 <code class="docutils literal notranslate"><span class="pre">DateField</span></code> 序列化器字段的输出的格式字符串。如果为 <code class="docutils literal notranslate"><span class="pre">None</span></code>，那么 <code class="docutils literal notranslate"><span class="pre">DateField</span></code> 序列化器字段将返回 Python <code class="docutils literal notranslate"><span class="pre">date</span></code> 对象，并且日期编码将由渲染器决定。</p>
+<p>可以是 <code class="docutils literal notranslate"><span class="pre">None</span></code>，<code class="docutils literal notranslate"><span class="pre">'iso-8601'</span></code> 或 Python <a class="reference external" href="https://docs.python.org/3/library/time.html#time.strftime">strftime 格式</a>字符串中的任何一个。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">'iso-8601'</span></code></p>
+</section>
+<section id="date-input-formats">
+<h3>DATE_INPUT_FORMATS<a class="headerlink" href="#date-input-formats" title="Permalink to this heading">#</a></h3>
+<p>默认情况下应用于解析 <code class="docutils literal notranslate"><span class="pre">DateField</span></code> 序列化器字段的输入的格式字符串列表。</p>
+<p>可以是包含字符串 <code class="docutils literal notranslate"><span class="pre">'iso-8601'</span></code> 或 Python <a class="reference external" href="https://docs.python.org/3/library/time.html#time.strftime">strftime 格式</a>字符串的列表。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">['iso-8601']</span></code></p>
+</section>
+<section id="time-format">
+<h3>TIME_FORMAT<a class="headerlink" href="#time-format" title="Permalink to this heading">#</a></h3>
+<p>默认情况下用于渲染 <code class="docutils literal notranslate"><span class="pre">TimeField</span></code> 序列化器字段的输出的格式字符串。如果为 <code class="docutils literal notranslate"><span class="pre">None</span></code>，那么 <code class="docutils literal notranslate"><span class="pre">TimeField</span></code> 序列化器字段将返回 Python <code class="docutils literal notranslate"><span class="pre">time</span></code> 对象，并且时间编码将由渲染器决定。</p>
+<p>可以是 <code class="docutils literal notranslate"><span class="pre">None</span></code>，<code class="docutils literal notranslate"><span class="pre">'iso-8601'</span></code> 或 Python <a class="reference external" href="https://docs.python.org/3/library/time.html#time.strftime">strftime 格式</a>字符串中的任何一个。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">'iso-8601'</span></code></p>
+</section>
+<section id="time-input-formats">
+<h3>TIME_INPUT_FORMATS<a class="headerlink" href="#time-input-formats" title="Permalink to this heading">#</a></h3>
+<p>默认情况下应用于解析 <code class="docutils literal notranslate"><span class="pre">TimeField</span></code> 序列化器字段的输入的格式字符串列表。</p>
+<p>可以是包含字符串 <code class="docutils literal notranslate"><span class="pre">'iso-8601'</span></code> 或 Python <a class="reference external" href="https://docs.python.org/3/library/time.html#time.strftime">strftime 格式</a>字符串的列表。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">['iso-8601']</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="encodings">
+<h2>编码 (Encodings)<a class="headerlink" href="#encodings" title="Permalink to this heading">#</a></h2>
+<section id="unicode-json">
+<h3>UNICODE_JSON<a class="headerlink" href="#unicode-json" title="Permalink to this heading">#</a></h3>
+<p>设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时，JSON 响应将允许响应中的 unicode 字符。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;unicode black star&quot;</span><span class="p">:</span><span class="s2">&quot;★&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>当设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code> 时，JSON 响应将转义非 ascii 字符，如下所示：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;unicode black star&quot;</span><span class="p">:</span><span class="s2">&quot;</span><span class="se">\u2605</span><span class="s2">&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>两种样式都符合 <a class="reference external" href="https://www.ietf.org/rfc/rfc4627.txt">RFC 4627</a>，并且在语法上是有效的 JSON。在检查 API 响应时，首选 unicode 样式是因为它更加用户友好。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</section>
+<section id="compact-json">
+<h3>COMPACT_JSON<a class="headerlink" href="#compact-json" title="Permalink to this heading">#</a></h3>
+<p>当设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时，JSON 响应将返回紧凑表示，在 <code class="docutils literal notranslate"><span class="pre">':'</span></code> 和 <code class="docutils literal notranslate"><span class="pre">','</span></code> 字符之后没有间隔。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;is_admin&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;email&quot;</span><span class="p">:</span><span class="s2">&quot;jane@example&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code> 时，JSON 响应将返回稍微更详细的表示，如下所示：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;is_admin&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;jane@example&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>默认样式是返回缩小的响应，符合 <a class="reference external" href="https://github.com/interagent/http-api-design#keep-json-minified-in-all-responses">Heroku 的 API 设计指南</a>。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</section>
+<section id="strict-json">
+<h3>STRICT_JSON<a class="headerlink" href="#strict-json" title="Permalink to this heading">#</a></h3>
+<p>当设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时，JSON 渲染和解析只会遵循语法上有效的 JSON，而 Python 的 <code class="docutils literal notranslate"><span class="pre">json</span></code> 模块接受的扩展浮点值 (<code class="docutils literal notranslate"><span class="pre">nan</span></code>，<code class="docutils literal notranslate"><span class="pre">inf</span></code>，<code class="docutils literal notranslate"><span class="pre">-inf</span></code>) 引发异常。这是推荐的设置，因为通常不支持这些值。例如，Javascript 的 <code class="docutils literal notranslate"><span class="pre">JSON.Parse</span></code> 和 PostgreSQL 的 JSON 数据类型都不接受这些值。</p>
+<p>设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code> 时，JSON 渲染和解析将是允许的。但是，这些值仍然无效，需要在代码中进行特殊处理。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</section>
+<section id="coerce-decimal-to-string">
+<h3>COERCE_DECIMAL_TO_STRING<a class="headerlink" href="#coerce-decimal-to-string" title="Permalink to this heading">#</a></h3>
+<p>当在不支持原生十进制类型的 API 表示中返回十进制对象时，通常最好以字符串的形式返回值。这避免了二进制浮点实现所产生的精度损失。</p>
+<p>设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 时，序列化器 <code class="docutils literal notranslate"><span class="pre">DecimalField</span></code> 类将返回字符串而不是 <code class="docutils literal notranslate"><span class="pre">Decimal</span></code> 对象。设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code> 时，序列化器将返回 <code class="docutils literal notranslate"><span class="pre">Decimal</span></code> 对象，默认 JSON 编码器将作为浮点数返回。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="view-names-and-descriptions">
+<h2>视图名称和描述 (View names and descriptions)<a class="headerlink" href="#view-names-and-descriptions" title="Permalink to this heading">#</a></h2>
+<p><strong>以下设置用于生成视图名称和描述，如用于响应 <code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code> 请求，以及用于可浏览 API 。</strong></p>
+<section id="view-name-function">
+<h3>VIEW_NAME_FUNCTION<a class="headerlink" href="#view-name-function" title="Permalink to this heading">#</a></h3>
+<p>表示在生成视图名称时应该使用的函数的字符串。</p>
+<p>这应该是具有以下签名的函数：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">view_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cls</span></code>：视图类。通常，名称函数会在生成描述性名称时会通过访问 <code class="docutils literal notranslate"><span class="pre">cls.__name__</span></code> 来检查类的名称。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">suffix</span></code>：区分视图集中各个视图时使用的可选后缀。</p></li>
+</ul>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">'rest_framework.views.get_view_name'</span></code></p>
+</section>
+<section id="view-description-function">
+<h3>VIEW_DESCRIPTION_FUNCTION<a class="headerlink" href="#view-description-function" title="Permalink to this heading">#</a></h3>
+<p>表示生成视图描述时应使用的函数的字符串。</p>
+<p>可以更改此设置以支持默认 markdown 以外的标记样式。例如，您可以使用它来支持在可浏览的 API 中输出的视图文档字符串中的 <code class="docutils literal notranslate"><span class="pre">rst</span></code> 标记。</p>
+<p>这应该是具有以下签名的函数：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">view_description</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">html</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cls</span></code>：视图类。通常，描述函数在生成描述时会通过访问 <code class="docutils literal notranslate"><span class="pre">cls.__doc__</span></code> 来检查类的文档字符串。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html</span></code>：指示是否需要 HTML 输出的布尔值。在可浏览的 API 中使用时为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，在生成 <code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code> 响应时使用 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
+</ul>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">'rest_framework.views.get_view_description'</span></code></p>
+</section>
+</section>
+<section id="html-html-select-field-cutoffs">
+<h2>HTML 选择字段截取 (HTML Select Field cutoffs)<a class="headerlink" href="#html-html-select-field-cutoffs" title="Permalink to this heading">#</a></h2>
+<p>用于在可浏览 API 中<a class="reference external" href="http://www.django-rest-framework.org/api-guide/relations/#select-field-cutoffs">渲染关系字段的选择字段截取</a>的全局设置。</p>
+<section id="html-select-cutoff">
+<h3>HTML_SELECT_CUTOFF<a class="headerlink" href="#html-select-cutoff" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">html_cutoff</span></code> 值的全局设置。必须是整数。</p>
+<p>默认：1000</p>
+</section>
+<section id="html-select-cutoff-text">
+<h3>HTML_SELECT_CUTOFF_TEXT<a class="headerlink" href="#html-select-cutoff-text" title="Permalink to this heading">#</a></h3>
+<p>表示 <code class="docutils literal notranslate"><span class="pre">html_cutoff_text</span></code> 的全局设置的字符串。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">&quot;More</span> <span class="pre">than</span> <span class="pre">{count}</span> <span class="pre">items...&quot;</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="miscellaneous-settings">
+<h2>杂项设置 (Miscellaneous settings)<a class="headerlink" href="#miscellaneous-settings" title="Permalink to this heading">#</a></h2>
+<section id="exception-handler">
+<h3>EXCEPTION_HANDLER<a class="headerlink" href="#exception-handler" title="Permalink to this heading">#</a></h3>
+<p>一个字符串，表示在为任何给定异常返回响应时应使用的函数。如果函数返回 <code class="docutils literal notranslate"><span class="pre">None</span></code>，则会引发 500 错误。</p>
+<p>可以更改此设置以支持除默认 <code class="docutils literal notranslate"><span class="pre">{&quot;detail&quot;:</span> <span class="pre">&quot;Failure...&quot;}</span></code> 响应之外的错误响应。例如，您可以使用它来提供API响应，例如 <code class="docutils literal notranslate"><span class="pre">{&quot;errors&quot;:</span> <span class="pre">[{&quot;message&quot;:</span> <span class="pre">&quot;Failure...&quot;,</span> <span class="pre">&quot;code&quot;:</span> <span class="pre">&quot;&quot;}</span> <span class="pre">...]}</span></code>。</p>
+<p>这应该是具有以下签名的函数：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">exception_handler</span><span class="p">(</span><span class="n">exc</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">exc</span></code>：异常。</p></li>
+</ul>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">'rest_framework.views.exception_handler'</span></code></p>
+</section>
+<section id="non-field-errors-key">
+<h3>NON_FIELD_ERRORS_KEY<a class="headerlink" href="#non-field-errors-key" title="Permalink to this heading">#</a></h3>
+<p>一个字符串，表示应该用于不引用特定字段的序列化器错误的键，而是一般错误。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">'non_field_errors'</span></code></p>
+</section>
+<section id="url-field-name">
+<h3>URL_FIELD_NAME<a class="headerlink" href="#url-field-name" title="Permalink to this heading">#</a></h3>
+<p>一个字符串，表示应该用于 <code class="docutils literal notranslate"><span class="pre">HyperlinkedModelSerializer</span></code> 生成的 URL 字段的键。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">'url'</span></code></p>
+</section>
+<section id="num-proxies">
+<h3>NUM_PROXIES<a class="headerlink" href="#num-proxies" title="Permalink to this heading">#</a></h3>
+<p>0 或更大的整数，可用于指定 API 在后台运行的应用程序代理的数量。这允许限制更准确地识别客户端 IP 地址。如果设置为 <code class="docutils literal notranslate"><span class="pre">None</span></code>，那么限流类将使用不太严格的 IP 匹配。</p>
+<p>默认：<code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./API-Guide"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Testing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">测试 (Testing)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Topics/Documenting_your_API.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">记录您的 API (Documenting your API)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">设置 (Settings)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-settings">访问设置 (Accessing settings)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-reference">API 参考 (API Reference)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-policy-settings">API 策略设置 (API policy settings)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-renderer-classes">DEFAULT_RENDERER_CLASSES</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-parser-classes">DEFAULT_PARSER_CLASSES</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-authentication-classes">DEFAULT_AUTHENTICATION_CLASSES</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-permission-classes">DEFAULT_PERMISSION_CLASSES</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-throttle-classes">DEFAULT_THROTTLE_CLASSES</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-content-negotiation-class">DEFAULT_CONTENT_NEGOTIATION_CLASS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-schema-class">DEFAULT_SCHEMA_CLASS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generic-view-settings">通用视图设置 (Generic view settings)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-pagination-serializer-class">DEFAULT_PAGINATION_SERIALIZER_CLASS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-filter-backends">DEFAULT_FILTER_BACKENDS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paginate-by">PAGINATE_BY</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#page-size">PAGE_SIZE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paginate-by-param">PAGINATE_BY_PARAM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#max-paginate-by">MAX_PAGINATE_BY</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-param">SEARCH_PARAM</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ordering-param">ORDERING_PARAM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#versioning-settings">版本控制设置 (Versioning settings)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-version">DEFAULT_VERSION</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#allowed-versions">ALLOWED_VERSIONS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-param">VERSION_PARAM</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication-settings">认证设置 (Authentication settings)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unauthenticated-user">UNAUTHENTICATED_USER</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unauthenticated-token">UNAUTHENTICATED_TOKEN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-settings">测试设置 (Test settings)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-request-default-format">TEST_REQUEST_DEFAULT_FORMAT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-request-renderer-classes">TEST_REQUEST_RENDERER_CLASSES</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-generation-controls">模式生成控件 (Schema generation controls)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-coerce-path-pk">SCHEMA_COERCE_PATH_PK</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-coerce-method-names">SCHEMA_COERCE_METHOD_NAMES</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content-type-controls">内容类型控件 (Content type controls)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#url-format-override">URL_FORMAT_OVERRIDE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#format-suffix-kwarg">FORMAT_SUFFIX_KWARG</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#date-and-time-formatting">日期和时间格式 (Date and time formatting)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datetime-format">DATETIME_FORMAT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datetime-input-formats">DATETIME_INPUT_FORMATS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date-format">DATE_FORMAT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date-input-formats">DATE_INPUT_FORMATS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-format">TIME_FORMAT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-input-formats">TIME_INPUT_FORMATS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encodings">编码 (Encodings)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unicode-json">UNICODE_JSON</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compact-json">COMPACT_JSON</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strict-json">STRICT_JSON</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coerce-decimal-to-string">COERCE_DECIMAL_TO_STRING</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-names-and-descriptions">视图名称和描述 (View names and descriptions)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-name-function">VIEW_NAME_FUNCTION</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-description-function">VIEW_DESCRIPTION_FUNCTION</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#html-html-select-field-cutoffs">HTML 选择字段截取 (HTML Select Field cutoffs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#html-select-cutoff">HTML_SELECT_CUTOFF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#html-select-cutoff-text">HTML_SELECT_CUTOFF_TEXT</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous-settings">杂项设置 (Miscellaneous settings)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-handler">EXCEPTION_HANDLER</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-field-errors-key">NON_FIELD_ERRORS_KEY</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#url-field-name">URL_FIELD_NAME</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#num-proxies">NUM_PROXIES</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

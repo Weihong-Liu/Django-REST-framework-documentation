@@ -1,0 +1,1578 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>序列化器字段 (Serializer fields) &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'API-Guide/Serializer-fields';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="序列化器关系 (Serializer relations)" href="Serializer-relations.html" />
+    <link rel="prev" title="序列化器 (Serializers)" href="Serializers.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Authentication-and-Permissions.html">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Views.html">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Renderers.html">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Validators.html">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Authentication.html">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Permissions.html">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Throttling.html">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Filtering.html">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Pagination.html">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Exceptions.html">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Testing.html">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Settings.html">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/API_Clients.html">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/The_Browsable_API.html">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Community/Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Third_Party_Packages.html">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Contributing_to_REST_framework.html">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Community/Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.4_Announcement.html">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.0_Announcement.html">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAPI-Guide/Serializer-fields.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/API-Guide/Serializer-fields.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>序列化器字段 (Serializer fields)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">序列化器字段 (Serializer fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-arguments">核心参数 (Core arguments)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-only"><code class="docutils literal notranslate"><span class="pre">read_only</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-only"><code class="docutils literal notranslate"><span class="pre">write_only</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required"><code class="docutils literal notranslate"><span class="pre">required</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default"><code class="docutils literal notranslate"><span class="pre">default</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#allow-null"><code class="docutils literal notranslate"><span class="pre">allow_null</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validators"><code class="docutils literal notranslate"><span class="pre">validators</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-messages"><code class="docutils literal notranslate"><span class="pre">error_messages</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#label"><code class="docutils literal notranslate"><span class="pre">label</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#help-text"><code class="docutils literal notranslate"><span class="pre">help_text</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial"><code class="docutils literal notranslate"><span class="pre">initial</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#style"><code class="docutils literal notranslate"><span class="pre">style</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-boolean-fields">Boolean 字段 (Boolean fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#booleanfield">BooleanField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nullbooleanfield">NullBooleanField</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#string-fields">字符串字段 (String fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#charfield">CharField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emailfield">EmailField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regexfield">RegexField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slugfield">SlugField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#urlfield">URLField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uuidfield">UUIDField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filepathfield">FilePathField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ipaddressfield">IPAddressField</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numeric-fields">数字字段 (Numeric fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integerfield">IntegerField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#floatfield">FloatField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decimalfield">DecimalField</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-usage">用法示例 (Example usage)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#date-and-time-fields">日期和时间字段 (Date and time fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datetimefield">DateTimeField</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">DateTimeField</span></code> 格式字符串。</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#auto-now-auto-now-add"><code class="docutils literal notranslate"><span class="pre">auto_now</span></code> 和 <code class="docutils literal notranslate"><span class="pre">auto_now_add</span></code> 模型字段。</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datefield">DateField</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">DateField</span></code> 格式化字符串</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timefield">TimeField</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">TimeField</span></code> 格式化字符串</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#durationfield">DurationField</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#choice-selection-fields">选择字段 (Choice selection fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choicefield">ChoiceField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplechoicefield">MultipleChoiceField</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#file-upload-fields">文件上传字段 (File upload fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parsers-and-file-uploads">解析器和文件上传 (Parsers and file uploads.)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filefield">FileField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imagefield">ImageField</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#composite-fields">复合字段 (Composite fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listfield">ListField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictfield">DictField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hstorefield">HStoreField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jsonfield">JSONField</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous-fields">各种各样的字段 (Miscellaneous fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readonlyfield">ReadOnlyField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hiddenfield">HiddenField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelfield">ModelField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#serializermethodfield">SerializerMethodField</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-fields">自定义字段 (Custom fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">举个栗子</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-basic-custom-field">基本自定义字段 (A Basic Custom Field)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raising-validation-errors">抛出验证错误 (Raising validation errors)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">使用 <code class="docutils literal notranslate"><span class="pre">source='*'</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#third-party-packages">第三方包 (Third party packages)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drf-compound-fields">DRF Compound Fields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drf-extra-fields">DRF Extra Fields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#djangorestframework-recursive">djangorestframework-recursive</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-gis">django-rest-framework-gis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-hstore">django-rest-framework-hstore</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="serializer-fields">
+<h1>序列化器字段 (Serializer fields)<a class="headerlink" href="#serializer-fields" title="Permalink to this heading">#</a></h1>
+<p>Form 类中的每个字段不仅负责验证数据，而且还负责“清理”它 — 将其规范化为一致的格式。—— <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/forms/api/#django.forms.Form.cleaned_data">Django 文档</a></p>
+<p>序列化器字段处理原始值和内部数据类型之间的转换。它们还处理验证输入值，以及从父对象检索和设置值。</p>
+<hr class="docutils" />
+<p><strong>注意</strong>： 序列化器字段都声明在 <code class="docutils literal notranslate"><span class="pre">fields.py</span></code> 中，但按照惯例，应该使用 <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">rest_framework</span> <span class="pre">import</span> <span class="pre">serializers</span></code> 导入它们，并引用字段作为 <code class="docutils literal notranslate"><span class="pre">serializers.&lt;FieldName&gt;</span></code>。</p>
+<hr class="docutils" />
+<section id="core-arguments">
+<h2>核心参数 (Core arguments)<a class="headerlink" href="#core-arguments" title="Permalink to this heading">#</a></h2>
+<p>每个序列化器字段类构造函数至少采用这些参数。某些 Field 类采用附加的、字段特定的参数，但应始终接受以下内容：</p>
+<section id="read-only">
+<h3><code class="docutils literal notranslate"><span class="pre">read_only</span></code><a class="headerlink" href="#read-only" title="Permalink to this heading">#</a></h3>
+<p>只读字段包含在 API 输出中，但不应包含在创建或更新操作期间的输入中。任何不正确地包含在序列化器输入中的 ‘read_only’ 字段将被忽略。</p>
+<p>将此属性设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 可确保在序列化表示时使用该字段，但在反序列化期间创建或更新实例时不使用该字段。</p>
+<p>默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</section>
+<section id="write-only">
+<h3><code class="docutils literal notranslate"><span class="pre">write_only</span></code><a class="headerlink" href="#write-only" title="Permalink to this heading">#</a></h3>
+<p>将此属性设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 可确保在更新或创建实例时可以使用该字段，但在序列化表示时不包括该字段。</p>
+<p>默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</section>
+<section id="required">
+<h3><code class="docutils literal notranslate"><span class="pre">required</span></code><a class="headerlink" href="#required" title="Permalink to this heading">#</a></h3>
+<p>通常，如果在反序列化期间未提供字段，则会引发错误。如果在反序列化期间不需要此字段，则设置为 false。</p>
+<p>将此属性设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code> 还允许在序列化实例时从输出中省略对象属性或字典键。如果键不存在，它就不会包含在输出表示中。</p>
+<p>默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</section>
+<section id="default">
+<h3><code class="docutils literal notranslate"><span class="pre">default</span></code><a class="headerlink" href="#default" title="Permalink to this heading">#</a></h3>
+<p>如果设置，则给出默认值，如果未提供输入值，将使用该字段。如果未设置，则默认行为是不填充该属性。</p>
+<p>部分更新操作时不应用 <code class="docutils literal notranslate"><span class="pre">default</span></code>。在部分更新的情况下，只有传入数据中提供的字段将返回验证值。</p>
+<p>可以设置为函数或其他可调用函数，在这种情况下，将在每次使用时评估该值。调用时，它不会收到任何参数。如果可调用函数具有 <code class="docutils literal notranslate"><span class="pre">set_context</span></code> 方法，那么每次在获取字段实例作为唯一参数的值之前都会调用该方法。这与<a class="reference external" href="http://www.django-rest-framework.org/api-guide/validators/#using-set_context">验证器</a>的工作方式相同。</p>
+<p>序列化实例时，如果实例中不存在对象属性或字典键，则将使用默认值。</p>
+<p>请注意，设置默认值意味着该字段不是必须的。同时包括 <code class="docutils literal notranslate"><span class="pre">default</span></code> 和 <code class="docutils literal notranslate"><span class="pre">required</span></code> 的关键字参数都是无效的，并且会引发错误。</p>
+</section>
+<section id="allow-null">
+<h3><code class="docutils literal notranslate"><span class="pre">allow_null</span></code><a class="headerlink" href="#allow-null" title="Permalink to this heading">#</a></h3>
+<p>如果把 <code class="docutils literal notranslate"><span class="pre">None</span></code> 传递给序列化器字段，通常会引发错误。如果 <code class="docutils literal notranslate"><span class="pre">None</span></code> 应被视为有效值，则将此关键字参数设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p>
+<p>请注意，如果没有显式的默认值，将此参数设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 将意味着将序列化输出的 <code class="docutils literal notranslate"><span class="pre">default</span></code> 为 <code class="docutils literal notranslate"><span class="pre">null</span></code>，但并不表示输入反序列化的默认值。</p>
+<p>默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</section>
+<section id="source">
+<h3><code class="docutils literal notranslate"><span class="pre">source</span></code><a class="headerlink" href="#source" title="Permalink to this heading">#</a></h3>
+<p>将用于填充字段的属性的名称。可能是只接受 <code class="docutils literal notranslate"><span class="pre">self</span></code> 参数的方法，如 <code class="docutils literal notranslate"><span class="pre">URLField(source='get_absolute_url')</span></code>，或者使用点符号来遍历属性，如 <code class="docutils literal notranslate"><span class="pre">EmailField(source='user.email')</span></code>。在使用点符号时，如果在属性遍历期间任何对象不存在或为空，则可能需要提供 <code class="docutils literal notranslate"><span class="pre">default</span></code> 值。</p>
+<p><code class="docutils literal notranslate"><span class="pre">source='*'</span></code> 具有特殊含义，用于指示整个对象应该被传递到该字段。这对于创建嵌套表示或需要访问整个对象以确定输出表示的字段很有用。</p>
+<p>默认为字段名称。</p>
+</section>
+<section id="validators">
+<h3><code class="docutils literal notranslate"><span class="pre">validators</span></code><a class="headerlink" href="#validators" title="Permalink to this heading">#</a></h3>
+<p>应用于传入字段输入的验证器函数列表，并且会引发验证错误或仅返回。验证器函数通常引发 <code class="docutils literal notranslate"><span class="pre">serializers.ValidationError</span></code>，但 Django 的内置 <code class="docutils literal notranslate"><span class="pre">ValidationError</span></code> 也支持与 Django 代码库或第三方 Django 包中定义的验证器兼容。</p>
+</section>
+<section id="error-messages">
+<h3><code class="docutils literal notranslate"><span class="pre">error_messages</span></code><a class="headerlink" href="#error-messages" title="Permalink to this heading">#</a></h3>
+<p>错误代码为键，错误消息为值的字典。</p>
+</section>
+<section id="label">
+<h3><code class="docutils literal notranslate"><span class="pre">label</span></code><a class="headerlink" href="#label" title="Permalink to this heading">#</a></h3>
+<p>一个简短的文本字符串，可用作 HTML 表单字段或其他描述性元素中字段的名称。</p>
+</section>
+<section id="help-text">
+<h3><code class="docutils literal notranslate"><span class="pre">help_text</span></code><a class="headerlink" href="#help-text" title="Permalink to this heading">#</a></h3>
+<p>一个文本字符串，可用作 HTML 表单字段或其他描述性元素中字段的描述。</p>
+</section>
+<section id="initial">
+<h3><code class="docutils literal notranslate"><span class="pre">initial</span></code><a class="headerlink" href="#initial" title="Permalink to this heading">#</a></h3>
+<p>用于预填充 HTML 表单字段值的值。您可以将 callable 传递给它，就像使用任何常规 Django <code class="docutils literal notranslate"><span class="pre">Field</span></code> 一样：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
+<span class="k">class</span> <span class="nc">ExampleSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">):</span>
+    <span class="n">day</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">initial</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="style">
+<h3><code class="docutils literal notranslate"><span class="pre">style</span></code><a class="headerlink" href="#style" title="Permalink to this heading">#</a></h3>
+<p>用于控制渲染器如何渲染字段的键值对的字典。</p>
+<p>这里有两个例子是 <code class="docutils literal notranslate"><span class="pre">'input_type'</span></code> 和 <code class="docutils literal notranslate"><span class="pre">'base_template'</span></code>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用 &lt;input type=&quot;password&quot;&gt; 作为输入。</span>
+<span class="n">password</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;input_type&#39;</span><span class="p">:</span> <span class="s1">&#39;password&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># 使用单选输入而不是选择输入。</span>
+<span class="n">color_channel</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ChoiceField</span><span class="p">(</span>
+    <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">],</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;base_template&#39;</span><span class="p">:</span> <span class="s1">&#39;radio.html&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>有关更多详细信息，请参阅 <a class="reference external" href="http://www.django-rest-framework.org/topics/html-and-forms/">HTML 和表单</a>文档。</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="boolean-boolean-fields">
+<h1>Boolean 字段 (Boolean fields)<a class="headerlink" href="#boolean-boolean-fields" title="Permalink to this heading">#</a></h1>
+<section id="booleanfield">
+<h2>BooleanField<a class="headerlink" href="#booleanfield" title="Permalink to this heading">#</a></h2>
+<p>布尔表示。</p>
+<p>当使用 HTML 编码表单输入时，注意省略总是被视为将字段设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code> 的值，即使它指定了 <code class="docutils literal notranslate"><span class="pre">default=True</span></code> 选项。这是因为 HTML 复选框通过省略该值来表示未选中的状态，所以 REST framework 将省略看作是空的复选框输入。</p>
+<p>注意，默认的 <code class="docutils literal notranslate"><span class="pre">BooleanField</span></code> 实例将使用 <code class="docutils literal notranslate"><span class="pre">required=False</span></code> 选项生成 (因为 Django <code class="docutils literal notranslate"><span class="pre">models.BooleanField</span></code> 始终为 <code class="docutils literal notranslate"><span class="pre">blank=True</span></code>)。如果想要更改此行为，请在序列化器类上显式声明 <code class="docutils literal notranslate"><span class="pre">BooleanField</span></code>。</p>
+<p>对应于 <code class="docutils literal notranslate"><span class="pre">django.db.models.fields.BooleanField</span></code>。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">BooleanField()</span></code></p>
+</section>
+<section id="nullbooleanfield">
+<h2>NullBooleanField<a class="headerlink" href="#nullbooleanfield" title="Permalink to this heading">#</a></h2>
+<p>还接受 <code class="docutils literal notranslate"><span class="pre">None</span></code> 作为有效值的布尔表示。</p>
+<p>对应于 <code class="docutils literal notranslate"><span class="pre">django.db.models.fields.NullBooleanField</span></code>。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">NullBooleanField()</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="string-fields">
+<h1>字符串字段 (String fields)<a class="headerlink" href="#string-fields" title="Permalink to this heading">#</a></h1>
+<section id="charfield">
+<h2>CharField<a class="headerlink" href="#charfield" title="Permalink to this heading">#</a></h2>
+<p>文本表示。(可选) 验证文本是否小于 <code class="docutils literal notranslate"><span class="pre">max_length</span></code> 且长于 <code class="docutils literal notranslate"><span class="pre">min_length</span></code>。</p>
+<p>对应于 <code class="docutils literal notranslate"><span class="pre">django.db.models.fields.CharField</span></code> 或 <code class="docutils literal notranslate"><span class="pre">django.db.models.fields.TextField</span></code>。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">CharField(max_length=None,</span> <span class="pre">min_length=None,</span> <span class="pre">allow_blank=False,</span> <span class="pre">trim_whitespace=True)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">max_length</span></code> —— 验证输入包含的字符数不超过此数目。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_length</span></code> —— 验证输入包含的字符数不小于此数目。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">allow_blank</span></code> —— 如果设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，则空字符串应被视为有效值。如果设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code>，那么空字符串被认为是无效的并会引发验证错误。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trim_whitespace</span></code> —— 如果设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，则前后空格将被删除。默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">allow_null</span></code> 选项也可用于字符串字段，但不鼓励使用 <code class="docutils literal notranslate"><span class="pre">allow_blank</span></code>。同时设置 <code class="docutils literal notranslate"><span class="pre">allow_blank=True</span></code> 和 <code class="docutils literal notranslate"><span class="pre">allow_null=True</span></code> 是有效的，但这样做意味着字符串表示允许有两种不同类型的空值，这可能导致数据不一致和微妙的应用程序错误。</p>
+</section>
+<section id="emailfield">
+<h2>EmailField<a class="headerlink" href="#emailfield" title="Permalink to this heading">#</a></h2>
+<p>文本表示，将文本验证为有效的电子邮件地址。</p>
+<p>对应于 <code class="docutils literal notranslate"><span class="pre">django.db.models.fields.EmailField</span></code></p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">EmailField(max_length=None,</span> <span class="pre">min_length=None,</span> <span class="pre">allow_blank=False)</span></code></p>
+</section>
+<section id="regexfield">
+<h2>RegexField<a class="headerlink" href="#regexfield" title="Permalink to this heading">#</a></h2>
+<p>文本表示，用于验证给定的值是否与某个正则表达式匹配。</p>
+<p>对应于 <code class="docutils literal notranslate"><span class="pre">django.forms.fields.RegexField</span></code></p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">RegexField(regex,</span> <span class="pre">max_length=None,</span> <span class="pre">min_length=None,</span> <span class="pre">allow_blank=False)</span></code></p>
+<p>强制的 <code class="docutils literal notranslate"><span class="pre">regex</span></code> 参数可以是字符串，也可以是编译的 python 正则表达式对象。</p>
+<p>使用 Django 的 <code class="docutils literal notranslate"><span class="pre">django.core.validators.RegexValidator</span></code> 进行验证。</p>
+</section>
+<section id="slugfield">
+<h2>SlugField<a class="headerlink" href="#slugfield" title="Permalink to this heading">#</a></h2>
+<p>根据模式 <code class="docutils literal notranslate"><span class="pre">[a-zA-Z0-9_-]+</span></code> 验证输入的 <code class="docutils literal notranslate"><span class="pre">RegexField</span></code>。</p>
+<p>对应于 <code class="docutils literal notranslate"><span class="pre">django.db.models.fields.SlugField</span></code></p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">SlugField(max_length=50,</span> <span class="pre">min_length=None,</span> <span class="pre">allow_blank=False)</span></code></p>
+</section>
+<section id="urlfield">
+<h2>URLField<a class="headerlink" href="#urlfield" title="Permalink to this heading">#</a></h2>
+<p>根据 URL 匹配模式验证输入的 <code class="docutils literal notranslate"><span class="pre">RegexField</span></code>。期望窗体的完全限定 URL 为 <code class="docutils literal notranslate"><span class="pre">http://&lt;host&gt;/&lt;path&gt;</span></code>。</p>
+<p>对应于 <code class="docutils literal notranslate"><span class="pre">django.db.models.fields.URLField</span></code>。使用 Django 的 <code class="docutils literal notranslate"><span class="pre">django.core.validators.URLValidator</span></code> 进行验证。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">URLField(max_length=200,</span> <span class="pre">min_length=None,</span> <span class="pre">allow_blank=False)</span></code></p>
+</section>
+<section id="uuidfield">
+<h2>UUIDField<a class="headerlink" href="#uuidfield" title="Permalink to this heading">#</a></h2>
+<p>确保输入是有效 UUID 字符串的字段。<code class="docutils literal notranslate"><span class="pre">to_internal_value</span></code> 将返回 <code class="docutils literal notranslate"><span class="pre">uuid.UUID</span></code> 实例。在输出时，该字段将返回规范的连字符格式的字符串，例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;de305d54-75b4-431b-adb2-eb6b9e546013&quot;</span>
+</pre></div>
+</div>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">UUIDField(format='hex_verbose')</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code>：确定 uuid 值的表示格式</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'hex_verbose'</span></code> —— 规范十六进制表示，包含连字符：<code class="docutils literal notranslate"><span class="pre">&quot;5ce0e9a5-5ffa-654b-cee0-1238041fb31a&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'hex'</span></code> —— UUID 的紧凑的十六进制表示， 不包含连字符：<code class="docutils literal notranslate"><span class="pre">&quot;5ce0e9a55ffa654bcee01238041fb31a&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'int'</span></code> —— UUID 的 128 位整数表示：<code class="docutils literal notranslate"><span class="pre">&quot;123456789012312313134124512351145145114&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'urn'</span></code> —— UUID 的 RFC 4122 URN 表示：<code class="docutils literal notranslate"><span class="pre">&quot;urn:uuid:5ce0e9a5-5ffa-654b-cee0-1238041fb31a&quot;</span></code> 修改 <code class="docutils literal notranslate"><span class="pre">format</span></code> 参数只影响表示值。<code class="docutils literal notranslate"><span class="pre">to_internal_value</span></code> 接受所有格式。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="filepathfield">
+<h2>FilePathField<a class="headerlink" href="#filepathfield" title="Permalink to this heading">#</a></h2>
+<p>选择限于文件系统上某个目录中的文件名的字段。</p>
+<p>应用于 <code class="docutils literal notranslate"><span class="pre">django.forms.fields.FilePathField</span></code>。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">FilePathField(path,</span> <span class="pre">match=None,</span> <span class="pre">recursive=False,</span> <span class="pre">allow_files=True,</span> <span class="pre">allow_folders=False,</span> <span class="pre">required=None,</span> <span class="pre">**kwargs)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code> —— FilePathField 应该从中选择的文件系统到目录的绝对路径。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">match</span></code> —— 一个正则表达式，作为字符串，FilePathField 将用于过滤文件名。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">recursive</span></code> —— 指定是否应该包含路径的所有子目录。默认值是 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">allow_files</span></code> —— 指定是否应该包含指定位置的文件。默认值为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。这个参数或 <code class="docutils literal notranslate"><span class="pre">allow_folders</span></code> 必须是 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">allow_folders</span></code> —— 指定是否应该包含指定位置的文件夹。默认值是 <code class="docutils literal notranslate"><span class="pre">False</span></code>。这个参数或 <code class="docutils literal notranslate"><span class="pre">allow_files</span></code> 必须是 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+</ul>
+</section>
+<section id="ipaddressfield">
+<h2>IPAddressField<a class="headerlink" href="#ipaddressfield" title="Permalink to this heading">#</a></h2>
+<p>确保输入是有效 IPv4 或 IPv6 字符串的字段。</p>
+<p>对应于 <code class="docutils literal notranslate"><span class="pre">django.forms.fields.IPAddressField</span></code> 和 <code class="docutils literal notranslate"><span class="pre">django.forms.fields.GenericIPAddressField</span></code>。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">IPAddressField(protocol='both',</span> <span class="pre">unpack_ipv4=False,</span> <span class="pre">**options)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">protocol</span></code> 限制指定协议的有效输入。可接受的值是 ‘both’ (默认)，’IPv4’ 或 ‘IPv6’。匹配不区分大小写。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unpack_ipv4</span></code> 解压 IPv4 映射地址，如 ::ffff:192.0.2.1。如果启用此选项，则该地址将解压到 192.0.2.1。默认为禁用。只能在 protocol 设置为 ‘both’ 时使用。</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="numeric-fields">
+<h1>数字字段 (Numeric fields)<a class="headerlink" href="#numeric-fields" title="Permalink to this heading">#</a></h1>
+<section id="integerfield">
+<h2>IntegerField<a class="headerlink" href="#integerfield" title="Permalink to this heading">#</a></h2>
+<p>整数表示。</p>
+<p>对应于 <code class="docutils literal notranslate"><span class="pre">django.db.models.fields.IntegerField</span></code>， <code class="docutils literal notranslate"><span class="pre">django.db.models.fields.SmallIntegerField</span></code>，<code class="docutils literal notranslate"><span class="pre">django.db.models.fields.PositiveIntegerField</span></code> 和 <code class="docutils literal notranslate"><span class="pre">django.db.models.fields.PositiveSmallIntegerField</span></code>。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">IntegerField(max_value=None,</span> <span class="pre">min_value=None)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">max_value</span></code> 验证所提供的数字不大于这个值。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_value</span></code> 验证所提供的数字不小于这个值。</p></li>
+</ul>
+</section>
+<section id="floatfield">
+<h2>FloatField<a class="headerlink" href="#floatfield" title="Permalink to this heading">#</a></h2>
+<p>浮点表示。</p>
+<p>对应于 <code class="docutils literal notranslate"><span class="pre">django.db.models.fields.FloatField</span></code>。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">FloatField(max_value=None,</span> <span class="pre">min_value=None)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">max_value</span></code> 验证所提供的数字不大于这个值。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_value</span></code> 验证所提供的数字不小于这个值。</p></li>
+</ul>
+</section>
+<section id="decimalfield">
+<h2>DecimalField<a class="headerlink" href="#decimalfield" title="Permalink to this heading">#</a></h2>
+<p>十进制表示，由 <code class="docutils literal notranslate"><span class="pre">Decimal</span></code> 实例在 Python 中表示。</p>
+<p>对应于 <code class="docutils literal notranslate"><span class="pre">django.db.models.fields.DecimalField</span></code>。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">DecimalField(max_digits,</span> <span class="pre">decimal_places,</span> <span class="pre">coerce_to_string=None,</span> <span class="pre">max_value=None,</span> <span class="pre">min_value=None)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">max_digits</span></code> 数字中允许的最大位数。它必须是 <code class="docutils literal notranslate"><span class="pre">None</span></code> 或大于等于 <code class="docutils literal notranslate"><span class="pre">decimal_places</span></code> 的整数。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">decimal_places</span></code> 以数字存储的小数位数。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coerce_to_string</span></code> 如果用于表示应返回字符串值，则设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>；如果应返回 <code class="docutils literal notranslate"><span class="pre">Decimal</span></code> 对象，则设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。默认与 <code class="docutils literal notranslate"><span class="pre">COERCE_DECIMAL_TO_STRING</span></code> 设置中的键值相同，除非重写，否则将为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。如果序列化器返回 <code class="docutils literal notranslate"><span class="pre">Decimal</span></code> 对象，则最终输出格式将由渲染器确定。请注意，设置 <code class="docutils literal notranslate"><span class="pre">localize</span></code> 会将值强制为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_value</span></code> 验证所提供的数字不大于这个值。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_value</span></code> 验证所提供的数字不小于这个值。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">localize</span></code> 设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 以便基于当前区域启用输入和输出本地化。这也将强制 <code class="docutils literal notranslate"><span class="pre">coerce_to_string</span></code> 为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。请注意，如果在设置文件中设置了 <code class="docutils literal notranslate"><span class="pre">USE_L10N</span> <span class="pre">=</span> <span class="pre">True</span></code>，则会启用数据格式化。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rounding</span></code> 设置量化到配置精度时使用的舍入模式。有效值是 <a class="reference external" href="https://docs.python.org/3/library/decimal.html#rounding-modes"><code class="docutils literal notranslate"><span class="pre">decimal</span></code> 模块舍入模式</a>。默认为 <code class="docutils literal notranslate"><span class="pre">None</span></code>。</p></li>
+</ul>
+<section id="example-usage">
+<h3>用法示例 (Example usage)<a class="headerlink" href="#example-usage" title="Permalink to this heading">#</a></h3>
+<p>要使用 2 位小数的精度验证最大为 999 的数字，您可以使用：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">serializers</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>并且以 10 位小数的精度验证最多不到 10 亿的数字：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">serializers</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">19</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>该字段还带有一个可选参数 <code class="docutils literal notranslate"><span class="pre">coerce_to_string</span></code>。如果设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，则表示将以字符串形式输出。如果设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code>，则表示将保留为 <code class="docutils literal notranslate"><span class="pre">Decimal</span></code> 实例，最终表示形式将由渲染器确定。</p>
+<p>如果未设置，则默认与 <code class="docutils literal notranslate"><span class="pre">COERCE_DECIMAL_TO_STRING</span></code> 设置相同的值，除非另行设置，否则该值为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="date-and-time-fields">
+<h1>日期和时间字段 (Date and time fields)<a class="headerlink" href="#date-and-time-fields" title="Permalink to this heading">#</a></h1>
+<section id="datetimefield">
+<h2>DateTimeField<a class="headerlink" href="#datetimefield" title="Permalink to this heading">#</a></h2>
+<p>日期和时间表示。</p>
+<p>对应于 <code class="docutils literal notranslate"><span class="pre">django.db.models.fields.DateTimeField</span></code>。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">DateTimeField(format=api_settings.DATETIME_FORMAT,</span> <span class="pre">input_formats=None)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code> —— 表示输出格式的字符串。如果未指定，则默认为与 <code class="docutils literal notranslate"><span class="pre">DATETIME_FORMAT</span></code> 设置键相同的值，除非设置，否则将为 <code class="docutils literal notranslate"><span class="pre">'iso-8601'</span></code>。设置为格式字符串表明 <code class="docutils literal notranslate"><span class="pre">to_representation</span></code> 返回值应该被强制为字符串输出。格式字符串描述如下。将此值设置为 <code class="docutils literal notranslate"><span class="pre">None</span></code> 表明应由 <code class="docutils literal notranslate"><span class="pre">to_representation</span></code> 返回 Python <code class="docutils literal notranslate"><span class="pre">datetime</span></code> 对象。在这种情况下，日期时间编码将由渲染器确定。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input_formats</span></code> —— 表示可用于解析日期的输入格式的字符串列表。如果未指定，则将使用 <code class="docutils literal notranslate"><span class="pre">DATETIME_INPUT_FORMATS</span></code> 设置，默认为 <code class="docutils literal notranslate"><span class="pre">['iso-8601']</span></code>。</p></li>
+</ul>
+<section id="id1">
+<h3><code class="docutils literal notranslate"><span class="pre">DateTimeField</span></code> 格式字符串。<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>格式化字符串可以是显式指定的 Python strftime 格式，也可以是表明使用 ISO 8601 样式的日期时间的特殊字符串 <code class="docutils literal notranslate"><span class="pre">iso-8601</span></code>。(例如 <code class="docutils literal notranslate"><span class="pre">'2013-01-29T12:34:56.000000Z'</span></code>)</p>
+<p>当格式化日期时间对象使用 <code class="docutils literal notranslate"><span class="pre">None</span></code> 值时，<code class="docutils literal notranslate"><span class="pre">to_representation</span></code> 将返回，最终的输出表示将由渲染器类决定。</p>
+</section>
+<section id="auto-now-auto-now-add">
+<h3><code class="docutils literal notranslate"><span class="pre">auto_now</span></code> 和 <code class="docutils literal notranslate"><span class="pre">auto_now_add</span></code> 模型字段。<a class="headerlink" href="#auto-now-auto-now-add" title="Permalink to this heading">#</a></h3>
+<p>当使用 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 或 <code class="docutils literal notranslate"><span class="pre">HyperlinkedModelSerializer</span></code> 时，请注意，任何带有 <code class="docutils literal notranslate"><span class="pre">auto_now=True</span></code> 或 <code class="docutils literal notranslate"><span class="pre">auto_now_add=True</span></code> 的模型字段将默认使用 <code class="docutils literal notranslate"><span class="pre">read_only=True</span></code> 的序列化字段。</p>
+<p>如果想重写此行为，则需要在序列化器中显式声明 <code class="docutils literal notranslate"><span class="pre">DateTimeField</span></code>。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CommentSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Comment</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="datefield">
+<h2>DateField<a class="headerlink" href="#datefield" title="Permalink to this heading">#</a></h2>
+<p>日期表示。</p>
+<p>对应于 <code class="docutils literal notranslate"><span class="pre">django.db.models.fields.DateField</span></code></p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">DateField(format=api_settings.DATE_FORMAT,</span> <span class="pre">input_formats=None)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code> —— 表示输出格式的字符串。如果未指定，则默认与 <code class="docutils literal notranslate"><span class="pre">DATE_FORMAT</span></code> 设置的键相同的值，除非设置，否则将为 <code class="docutils literal notranslate"><span class="pre">'iso-8601'</span></code>。设置为格式化字符串则表明 <code class="docutils literal notranslate"><span class="pre">to_representation</span></code> 返回值应被强制为字符串输出。格式化字符串描述如下。将此值设置为 <code class="docutils literal notranslate"><span class="pre">None</span></code> 表示 Python <code class="docutils literal notranslate"><span class="pre">date</span></code> 对象应由 <code class="docutils literal notranslate"><span class="pre">to_representation</span></code> 返回。在这种情况下，日期编码将由渲染器确定。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input_formats</span></code> —— 表示可用于解析日期的输入格式的字符串列表。如果未指定，将使用 <code class="docutils literal notranslate"><span class="pre">DATE_INPUT_FORMATS</span></code> 设置，默认为 <code class="docutils literal notranslate"><span class="pre">['iso-8601']</span></code>。</p></li>
+</ul>
+<section id="id2">
+<h3><code class="docutils literal notranslate"><span class="pre">DateField</span></code> 格式化字符串<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>格式化字符串可以是显式指定的 <a class="reference external" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior">Python strftime 格式</a>，也可以是表明使用 <a class="reference external" href="https://www.w3.org/TR/NOTE-datetime">ISO 8601</a> 样式的日期的特殊字符串 <code class="docutils literal notranslate"><span class="pre">iso-8601</span></code>。(例如 <code class="docutils literal notranslate"><span class="pre">'2013-01-29'</span></code>)</p>
+</section>
+</section>
+<section id="timefield">
+<h2>TimeField<a class="headerlink" href="#timefield" title="Permalink to this heading">#</a></h2>
+<p>时间表示。</p>
+<p>对应于 <code class="docutils literal notranslate"><span class="pre">django.db.models.fields.TimeField</span></code></p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">TimeField(format=api_settings.TIME_FORMAT,</span> <span class="pre">input_formats=None)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code> —— 表示输出格式的字符串。如果未指定，则默认与 <code class="docutils literal notranslate"><span class="pre">TIME_FORMAT</span></code> 设置的键相同的值，除非设置，否则将为 <code class="docutils literal notranslate"><span class="pre">'iso-8601'</span></code>。设置为格式化字符串则表明 <code class="docutils literal notranslate"><span class="pre">to_representation</span></code> 返回值应被强制为字符串输出。格式化字符串描述如下。将此值设置为 <code class="docutils literal notranslate"><span class="pre">None</span></code> 表示 Python <code class="docutils literal notranslate"><span class="pre">time</span></code> 对象应由 <code class="docutils literal notranslate"><span class="pre">to_representation</span></code> 返回。在这种情况下，日期编码将由渲染器确定。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input_formats</span></code> —— 表示可用于解析日期的输入格式的字符串列表。如果未指定，将使用 <code class="docutils literal notranslate"><span class="pre">TIME_INPUT_FORMATS</span></code> 设置，默认为 <code class="docutils literal notranslate"><span class="pre">['iso-8601']</span></code>。</p></li>
+</ul>
+<section id="id3">
+<h3><code class="docutils literal notranslate"><span class="pre">TimeField</span></code> 格式化字符串<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>格式化字符串可以是显式指定的 <a class="reference external" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior">Python strftime 格式</a>，也可以是表明使用 <a class="reference external" href="https://www.w3.org/TR/NOTE-datetime">ISO 8601</a> 样式的日期的特殊字符串 <code class="docutils literal notranslate"><span class="pre">iso-8601</span></code>。(例如 <code class="docutils literal notranslate"><span class="pre">'12:34:56.000000'</span></code>)</p>
+</section>
+</section>
+<section id="durationfield">
+<h2>DurationField<a class="headerlink" href="#durationfield" title="Permalink to this heading">#</a></h2>
+<p>持续时间表示。对应于 <code class="docutils literal notranslate"><span class="pre">django.db.models.fields.DurationField</span></code></p>
+<p>这些字段的 <code class="docutils literal notranslate"><span class="pre">validated_data</span></code> 将包含 <code class="docutils literal notranslate"><span class="pre">datetime.timedelta</span></code> 实例。该表示形式是遵循格式 <code class="docutils literal notranslate"><span class="pre">'[DD]</span> <span class="pre">[HH:[MM:]]ss[.uuuuuu]'</span></code> 的字符串。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">DurationField()</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="choice-selection-fields">
+<h1>选择字段 (Choice selection fields)<a class="headerlink" href="#choice-selection-fields" title="Permalink to this heading">#</a></h1>
+<section id="choicefield">
+<h2>ChoiceField<a class="headerlink" href="#choicefield" title="Permalink to this heading">#</a></h2>
+<p>可以接受有限选项集中的值的字段。</p>
+<p>如果相应的模型字段包含 <code class="docutils literal notranslate"><span class="pre">choices=…</span></code> 参数，则使用 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 自动生成字段。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">ChoiceField(choices)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">choices</span></code> —— 有效值列表，或 <code class="docutils literal notranslate"><span class="pre">(key,</span> <span class="pre">display_name)</span></code> 元组列表。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">allow_blank</span></code> —— 如果设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，则空字符串应被视为有效值。如果设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code>，那么空字符串被认为是无效的并会引发验证错误。默认是 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html_cutoff</span></code> —— 如果设置，这将是 HTML 选择下拉菜单中显示的选项的最大数量。可用于确保自动生成具有非常大的可能选择的 <code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code>，而不会阻止模板的渲染。默认是 <code class="docutils literal notranslate"><span class="pre">None</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html_cutoff_text</span></code> —— 如果设置，如果在 HTML 选择下拉菜单中截断了最大数量的项，则将显示文本指示符。默认为 <code class="docutils literal notranslate"><span class="pre">&quot;More</span> <span class="pre">than</span> <span class="pre">{count}</span> <span class="pre">items…&quot;</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">allow_blank</span></code> 和 <code class="docutils literal notranslate"><span class="pre">allow_null</span></code> 都是 <code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code> 上的有效选项，但强烈建议只使用一个而不是两个都用。对于文本选择，<code class="docutils literal notranslate"><span class="pre">allow_blank</span></code> 应该是首选，而对于数字或其他非文本选择，<code class="docutils literal notranslate"><span class="pre">allow_null</span></code> 应该是首选。</p>
+</section>
+<section id="multiplechoicefield">
+<h2>MultipleChoiceField<a class="headerlink" href="#multiplechoicefield" title="Permalink to this heading">#</a></h2>
+<p>可以接受一组零个、一个或多个值的字段，从一组有限的选选项中选择。采用一个必填的参数。<code class="docutils literal notranslate"><span class="pre">to_internal_value</span></code> 返回包含选定值的 <code class="docutils literal notranslate"><span class="pre">set</span></code>。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">MultipleChoiceField(choices)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">choices</span></code> —— 有效值列表，或 <code class="docutils literal notranslate"><span class="pre">(key,</span> <span class="pre">display_name)</span></code> 元组列表。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">allow_blank</span></code> —— 如果设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，则空字符串应被视为有效值。如果设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code>，那么空字符串被认为是无效的并会引发验证错误。默认是 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html_cutoff</span></code> —— 如果设置，这将是 HTML 选择下拉菜单中显示的选项的最大数量。可用于确保自动生成具有非常大的可能选择的 <code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code>，而不会阻止模板的渲染。默认是 <code class="docutils literal notranslate"><span class="pre">None</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html_cutoff_text</span></code> —— 如果设置，如果在 HTML 选择下拉菜单中截断了最大数量的项，则将显示文本指示符。默认为 <code class="docutils literal notranslate"><span class="pre">&quot;More</span> <span class="pre">than</span> <span class="pre">{count}</span> <span class="pre">items…&quot;</span></code></p></li>
+</ul>
+<p>与 <code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code> 一样，<code class="docutils literal notranslate"><span class="pre">allow_blank</span></code> 和 <code class="docutils literal notranslate"><span class="pre">allow_null</span></code> 都是 <code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code> 选项都是有效的，但强烈建议只使用一个而不是两个都用。对于文本选择，<code class="docutils literal notranslate"><span class="pre">allow_blank</span></code> 应该是首选，而对于数字或其他非文本选择，<code class="docutils literal notranslate"><span class="pre">allow_null</span></code> 应该是首选。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="file-upload-fields">
+<h1>文件上传字段 (File upload fields)<a class="headerlink" href="#file-upload-fields" title="Permalink to this heading">#</a></h1>
+<section id="parsers-and-file-uploads">
+<h2>解析器和文件上传 (Parsers and file uploads.)<a class="headerlink" href="#parsers-and-file-uploads" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">FileField</span></code> 和 <code class="docutils literal notranslate"><span class="pre">ImageField</span></code> 类只适用于 <code class="docutils literal notranslate"><span class="pre">MultiPartParser</span></code> 或 <code class="docutils literal notranslate"><span class="pre">FileUploadParser</span></code>。大多数解析器，例如，JSON 不支持文件上传。Django 的常规 <code class="docutils literal notranslate"><span class="pre">FILE_UPLOAD_HANDLERS</span></code> 用于处理上传的文件。</p>
+</section>
+<section id="filefield">
+<h2>FileField<a class="headerlink" href="#filefield" title="Permalink to this heading">#</a></h2>
+<p>文件表示。执行 Django 的标准 FileField 验证。</p>
+<p>对应于 <code class="docutils literal notranslate"><span class="pre">django.forms.fields.FileField</span></code></p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">FileField(max_length=None,</span> <span class="pre">allow_empty_file=False,</span> <span class="pre">use_url=UPLOADED_FILES_USE_URL)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">max_length</span></code> —— 指定文件名的最大长度。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">allow_empty_file</span></code> —— 指定是否允许空文件。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">use_url</span></code> —— 如果设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，则 URL 字符串值将用于输出表示。如果设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code>，则文件名字符串值将用于输出表示。默认为 <code class="docutils literal notranslate"><span class="pre">UPLOADED_FILES_USE_URL</span></code> 设置键的值，除非另有设置，否则为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+</ul>
+</section>
+<section id="imagefield">
+<h2>ImageField<a class="headerlink" href="#imagefield" title="Permalink to this heading">#</a></h2>
+<p>图像表示。验证上传的文件内容是否匹配已知的图像格式。</p>
+<p>对应于 <code class="docutils literal notranslate"><span class="pre">django.forms.fields.ImageField</span></code></p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">ImageField(max_length=None,</span> <span class="pre">allow_empty_file=False,</span> <span class="pre">use_url=UPLOADED_FILES_USE_URL)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">max_length</span></code> —— 指定文件名的最大长度。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">allow_empty_file</span></code> —— 指定是否允许空文件。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">use_url</span></code> —— 如果设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，则 URL 字符串值将用于输出表示。如果设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code>，则文件名字符串值将用于输出表示。默认为 <code class="docutils literal notranslate"><span class="pre">UPLOADED_FILES_USE_URL</span></code> 设置键的值，除非另有设置，否则为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+</ul>
+<p>需要 <code class="docutils literal notranslate"><span class="pre">Pillow</span></code> 包或 <code class="docutils literal notranslate"><span class="pre">PIL</span></code> 包。建议使用 <code class="docutils literal notranslate"><span class="pre">Pillow</span></code> 包，因为不再主动维护 <code class="docutils literal notranslate"><span class="pre">PIL</span></code>。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="composite-fields">
+<h1>复合字段 (Composite fields)<a class="headerlink" href="#composite-fields" title="Permalink to this heading">#</a></h1>
+<section id="listfield">
+<h2>ListField<a class="headerlink" href="#listfield" title="Permalink to this heading">#</a></h2>
+<p>验证对象列表的字段类。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">ListField(child=&lt;A_FIELD_INSTANCE&gt;,</span> <span class="pre">min_length=None,</span> <span class="pre">max_length=None)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">child</span></code> —— 用于验证列表中的对象的字段实例。如果未提供此参数，则列表中的对象将不会被验证。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_length</span></code> —— 验证列表中包含的元素数量不少于这个数。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_length</span></code> —— 验证列表中包含的元素数量不超过这个数。</p></li>
+</ul>
+<p>例如，要验证整数列表，可以使用以下内容：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ListField</span><span class="p">(</span>
+   <span class="n">child</span><span class="o">=</span><span class="n">serializers</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">min_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ListField</span></code> 类还支持声明性样式，允许您编写可重用列表字段类。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">StringListField</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ListField</span><span class="p">):</span>
+    <span class="n">child</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>我们现在可以在我们的应用程序中重新使用我们自定义的 <code class="docutils literal notranslate"><span class="pre">StringListField</span></code> 类，而无需为其提供 <code class="docutils literal notranslate"><span class="pre">child</span></code> 参数。</p>
+</section>
+<section id="dictfield">
+<h2>DictField<a class="headerlink" href="#dictfield" title="Permalink to this heading">#</a></h2>
+<p>验证对象字典的字段类。<code class="docutils literal notranslate"><span class="pre">DictField</span></code> 中的键始终假定为字符串值。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">DictField(child=&lt;A_FIELD_INSTANCE&gt;)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">child</span></code> —— 用于验证字典中的值的字段实例。如果未提供此参数，则映射中的值将不会被验证。</p></li>
+</ul>
+<p>例如，要创建一个验证字符串到字符串映射的字段，可以这样写：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">document</span> <span class="o">=</span> <span class="n">DictField</span><span class="p">(</span><span class="n">child</span><span class="o">=</span><span class="n">CharField</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>您也可以使用声明式样式，与 <code class="docutils literal notranslate"><span class="pre">ListField</span></code> 一样。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DocumentField</span><span class="p">(</span><span class="n">DictField</span><span class="p">):</span>
+    <span class="n">child</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="hstorefield">
+<h2>HStoreField<a class="headerlink" href="#hstorefield" title="Permalink to this heading">#</a></h2>
+<p>与 Django 的 postgres <code class="docutils literal notranslate"><span class="pre">HStoreField</span></code> 兼容的预配置的 <code class="docutils literal notranslate"><span class="pre">DictField</span></code>。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">HStoreField(child=&lt;A_FIELD_INSTANCE&gt;)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">child</span></code> —— 用于验证字典中的值的字段实例。默认子字段接受空字符串和空值。</p></li>
+</ul>
+<p>请注意，子字段<strong>必须</strong>是 <code class="docutils literal notranslate"><span class="pre">CharField</span></code> 的实例，因为 hstore 扩展将值存储为字符串。</p>
+</section>
+<section id="jsonfield">
+<h2>JSONField<a class="headerlink" href="#jsonfield" title="Permalink to this heading">#</a></h2>
+<p>验证传入数据结构由有效 JSON 基元组成的字段类。在它的交替二进制模式中，它将表示和验证 JSON 编码的二进制字符串。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">JSONField(binary)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">binary</span></code> —— 如果设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，那么该字段将输出并验证 JSON 编码的字符串，而不是原始数据结构。默认是 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="miscellaneous-fields">
+<h1>各种各样的字段 (Miscellaneous fields)<a class="headerlink" href="#miscellaneous-fields" title="Permalink to this heading">#</a></h1>
+<section id="readonlyfield">
+<h2>ReadOnlyField<a class="headerlink" href="#readonlyfield" title="Permalink to this heading">#</a></h2>
+<p>只返回字段的值而不进行修改的字段类。</p>
+<p>当包含与属性相关的字段名称而不是模型字段时，默认情况下，此字段与 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 一起使用。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">ReadOnlyField()</span></code></p>
+<p>例如，如果 <code class="docutils literal notranslate"><span class="pre">has_expired</span></code> 是 <code class="docutils literal notranslate"><span class="pre">Account</span></code> 模型上的属性，则以下序列化器会自动将其生成为 <code class="docutils literal notranslate"><span class="pre">ReadOnlyField</span></code>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AccountSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Account</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;account_name&#39;</span><span class="p">,</span> <span class="s1">&#39;has_expired&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="hiddenfield">
+<h2>HiddenField<a class="headerlink" href="#hiddenfield" title="Permalink to this heading">#</a></h2>
+<p>不根据用户输入获取值，而是从默认值或可调用值中获取值的字段类。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">HiddenField()</span></code></p>
+<p>例如，要包含始终提供当前时间作为序列化器验证数据的一部分的字段，您将使用以下内容：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">modified</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">HiddenField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>如果需要运行某些基于预先提供的字段值的验证，通常只需要 <code class="docutils literal notranslate"><span class="pre">HiddenField</span></code> 类，而不是将所有这些字段公开给最终用户。</p>
+<p>有关 <code class="docutils literal notranslate"><span class="pre">HiddenField</span></code> 的更多示例，请参阅<a class="reference external" href="http://www.django-rest-framework.org/api-guide/validators/">验证器</a>文档。</p>
+</section>
+<section id="modelfield">
+<h2>ModelField<a class="headerlink" href="#modelfield" title="Permalink to this heading">#</a></h2>
+<p>可以绑定到任意模型字段的通用字段。<code class="docutils literal notranslate"><span class="pre">ModelField</span></code> 类将序列化/反序列化的任务委托给其关联的模型字段。该字段可用于为自定义模型字段创建序列化器字段，而无需创建新的自定义序列化器字段。</p>
+<p><code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 使用此字段来对应自定义模型字段类。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">ModelField(model_field=&lt;Django</span> <span class="pre">ModelField</span> <span class="pre">instance&gt;)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">ModelField</span></code> 类通常供内部使用，但如果需要，可以由 API 使用。为了正确实例化 <code class="docutils literal notranslate"><span class="pre">ModelField</span></code>，必须传递一个附属于实例化模型的字段。例如：<code class="docutils literal notranslate"><span class="pre">ModelField(model_field=MyModel()._meta.get_field('custom_field'))</span></code></p>
+</section>
+<section id="serializermethodfield">
+<h2>SerializerMethodField<a class="headerlink" href="#serializermethodfield" title="Permalink to this heading">#</a></h2>
+<p>这是一个只读字段。它通过调用附属于序列化器类上的方法来获取其值。它可用于将任何类型的数据添加到对象的序列化表示中。</p>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">SerializerMethodField(method_name=None)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">method_name</span></code> —— 要调用序列化器上的方法名称。如果不包含，则默认为 <code class="docutils literal notranslate"><span class="pre">get_&lt;field_name&gt;</span></code>。</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">method_name</span></code> 参数引用的序列化器方法应该接受一个参数 (除了 self )，这是被序列化的对象。它应该返回您想要包含在对象的序列化表示中的任何内容。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">django.utils.timezone</span> <span class="kn">import</span> <span class="n">now</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
+
+<span class="k">class</span> <span class="nc">UserSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="n">days_since_joined</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">SerializerMethodField</span><span class="p">()</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
+
+    <span class="k">def</span> <span class="nf">get_days_since_joined</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">obj</span><span class="o">.</span><span class="n">date_joined</span><span class="p">)</span><span class="o">.</span><span class="n">days</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="custom-fields">
+<h1>自定义字段 (Custom fields)<a class="headerlink" href="#custom-fields" title="Permalink to this heading">#</a></h1>
+<p>如果想要创建自定义字段，则需要子类化 <code class="docutils literal notranslate"><span class="pre">Field</span></code>，并重写 <code class="docutils literal notranslate"><span class="pre">.to_representation()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.to_internal_value()</span></code> 方法中的一个或两个。这两种方法用于在初始数据类型和原始可序列化数据类型之间进行转换。原始数据类型通常是数字，字符串，布尔值，<code class="docutils literal notranslate"><span class="pre">date</span></code>/<code class="docutils literal notranslate"><span class="pre">time</span></code>/<code class="docutils literal notranslate"><span class="pre">datetime</span></code> 或 <code class="docutils literal notranslate"><span class="pre">None</span></code>。它们也可以是任何仅包含其他原始对象的列表或字典。可能支持其他类型，具体取决于您使用的渲染器。</p>
+<p>调用 <code class="docutils literal notranslate"><span class="pre">.to_representation()</span></code> 方法将初始数据类型转换为原始的可序列化数据类型。</p>
+<p>调用 <code class="docutils literal notranslate"><span class="pre">to_internal_value()</span></code> 方法将原始数据类型恢复为其内部 python 表示。如果数据无效，此方法应该引发 <code class="docutils literal notranslate"><span class="pre">serializers.ValidationError</span></code> 异常。</p>
+<p>请注意，2.x 版本中存在的 <code class="docutils literal notranslate"><span class="pre">WritableField</span></code> 类不再存在。 如果字段支持数据输入，则应该子类化 <code class="docutils literal notranslate"><span class="pre">Field</span></code> 并重写 <code class="docutils literal notranslate"><span class="pre">to_internal_value()</span></code>。</p>
+<section id="id4">
+<h2>举个栗子<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<section id="a-basic-custom-field">
+<h3>基本自定义字段 (A Basic Custom Field)<a class="headerlink" href="#a-basic-custom-field" title="Permalink to this heading">#</a></h3>
+<p>让我们来看一个序列化一个表示 RGB 颜色值的类的例子：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Color</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    在 RGB 颜色空间中表示的颜色。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">):</span>
+        <span class="k">assert</span><span class="p">(</span><span class="n">red</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">green</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">blue</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">assert</span><span class="p">(</span><span class="n">red</span> <span class="o">&lt;</span> <span class="mi">256</span> <span class="ow">and</span> <span class="n">green</span> <span class="o">&lt;</span> <span class="mi">256</span> <span class="ow">and</span> <span class="n">blue</span> <span class="o">&lt;</span> <span class="mi">256</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">green</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">blue</span> <span class="o">=</span> <span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span>
+
+<span class="k">class</span> <span class="nc">ColorField</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Field</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    颜色对象被序列化为 &#39;rgb(#, #, #)&#39; 表示法。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">to_representation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;rgb(</span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">green</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">to_internal_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;rgb(&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+        <span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>默认情况下，字段值被视为映射到对象上的属性。如果需要自定义访问和设置字段值的方式，则需要重写 <code class="docutils literal notranslate"><span class="pre">.get_attribute()</span></code> 和/或 <code class="docutils literal notranslate"><span class="pre">.get_value()</span></code>。</p>
+<p>例如，让我们创建一个用于表示被序列化对象的类名的字段：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ClassNameField</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Field</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="c1"># We pass the object instance onto `to_representation`,</span>
+        <span class="c1"># not just the field attribute.</span>
+        <span class="k">return</span> <span class="n">obj</span>
+
+    <span class="k">def</span> <span class="nf">to_representation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Serialize the object&#39;s class name.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+</pre></div>
+</div>
+</section>
+<section id="raising-validation-errors">
+<h3>抛出验证错误 (Raising validation errors)<a class="headerlink" href="#raising-validation-errors" title="Permalink to this heading">#</a></h3>
+<p>我们上面的 <code class="docutils literal notranslate"><span class="pre">ColorField</span></code> 类目前不执行任何数据验证。要指示无效数据，我们应引发 <code class="docutils literal notranslate"><span class="pre">serializers.ValidationError</span></code>，如下所示：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">to_internal_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">):</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Incorrect type. Expected a string, but got </span><span class="si">%s</span><span class="s1">&#39;</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^rgb\([0-9]+,[0-9]+,[0-9]+\)$&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;Incorrect format. Expected `rgb(#,#,#)`.&#39;</span><span class="p">)</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;rgb(&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+    <span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)]</span>
+
+    <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">col</span> <span class="o">&gt;</span> <span class="mi">255</span> <span class="ow">or</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">)]):</span>
+        <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;Value out of range. Must be between 0 and 255.&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">.fail()</span></code> 方法是引发 <code class="docutils literal notranslate"><span class="pre">ValidationError</span></code> 的快捷方式，它从 <code class="docutils literal notranslate"><span class="pre">error_messages</span></code> 字典中获取消息字符串。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">default_error_messages</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;incorrect_type&#39;</span><span class="p">:</span> <span class="s1">&#39;Incorrect type. Expected a string, but got </span><span class="si">{input_type}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;incorrect_format&#39;</span><span class="p">:</span> <span class="s1">&#39;Incorrect format. Expected `rgb(#,#,#)`.&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;out_of_range&#39;</span><span class="p">:</span> <span class="s1">&#39;Value out of range. Must be between 0 and 255.&#39;</span>
+<span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">to_internal_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="s1">&#39;incorrect_type&#39;</span><span class="p">,</span> <span class="n">input_type</span><span class="o">=</span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^rgb\([0-9]+,[0-9]+,[0-9]+\)$&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="s1">&#39;incorrect_format&#39;</span><span class="p">)</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;rgb(&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
+    <span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)]</span>
+
+    <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">col</span> <span class="o">&gt;</span> <span class="mi">255</span> <span class="ow">or</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">)]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="s1">&#39;out_of_range&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这种样式使您的错误信息更清晰，并且代码更独立，应该是首选。</p>
+</section>
+<section id="id5">
+<h3>使用 <code class="docutils literal notranslate"><span class="pre">source='*'</span></code><a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>在这里，我们将以一个带有 <code class="docutils literal notranslate"><span class="pre">x_coordinate</span></code> 和 <code class="docutils literal notranslate"><span class="pre">y_coordinate</span></code> 属性的平面 <code class="docutils literal notranslate"><span class="pre">DataPoint</span></code> 模型为例。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DataPoint</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">x_coordinate</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">()</span>
+    <span class="n">y_coordinate</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SmallIntegerField</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>使用自定义字段和 <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">='*'</span></code>，我们可以提供坐标对的嵌套表示：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CoordinateField</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Field</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">to_representation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">obj</span><span class="o">.</span><span class="n">x_coordinate</span><span class="p">,</span>
+            <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">obj</span><span class="o">.</span><span class="n">y_coordinate</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">ret</span>
+
+    <span class="k">def</span> <span class="nf">to_internal_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;x_coordinate&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;y_coordinate&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">ret</span>
+
+
+<span class="k">class</span> <span class="nc">DataPointSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="n">coordinates</span> <span class="o">=</span> <span class="n">CoordinateField</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">DataPoint</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;coordinates&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>请注意，此示例不处理验证。部分原因是，在真实的项目中，使用 <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">='*'</span></code> 的嵌套序列化器可以更好地处理坐标嵌套，并且带有两个 <code class="docutils literal notranslate"><span class="pre">IntegerField</span></code> 实例，每个实例都有自己的 <code class="docutils literal notranslate"><span class="pre">source</span></code> 指向相关字段。</p>
+<p>不过，这个例子的关键点是：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">to_representation</span></code> 传递整个 <code class="docutils literal notranslate"><span class="pre">DataPoint</span></code> 对象， 并且会映射到所需的输出。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">instance</span> <span class="o">=</span> <span class="n">DataPoint</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Example&#39;</span><span class="p">,</span> <span class="n">x_coordinate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y_coordinate</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out_serializer</span> <span class="o">=</span> <span class="n">DataPointSerializer</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out_serializer</span><span class="o">.</span><span class="n">data</span>
+<span class="go">ReturnDict([(&#39;label&#39;, &#39;testing&#39;), (&#39;coordinates&#39;, {&#39;x&#39;: 1, &#39;y&#39;: 2})])</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>除非我们的字段是只读的，否则 <code class="docutils literal notranslate"><span class="pre">to_internal_value</span></code> 必须映射回适合更新目标对象的字典。使用 <code class="docutils literal notranslate"><span class="pre">source='*'</span></code>，<code class="docutils literal notranslate"><span class="pre">to_internal_value</span></code> 的返回将更新根验证的数据字典，而不是单个键。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Second Example&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>        <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">}</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">in_serializer</span> <span class="o">=</span> <span class="n">DataPointSerializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">in_serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">in_serializer</span><span class="o">.</span><span class="n">validated_data</span>
+<span class="go">OrderedDict([(&#39;label&#39;, &#39;Second Example&#39;),</span>
+<span class="go">             (&#39;y_coordinate&#39;, 4),</span>
+<span class="go">             (&#39;x_coordinate&#39;, 3)])</span>
+</pre></div>
+</div>
+<p>为了完整性，我们再次做同样的事情，但是使用上面建议的嵌套序列化方法：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NestedCoordinateSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;x_coordinate&#39;</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;y_coordinate&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">DataPointSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="n">coordinates</span> <span class="o">=</span> <span class="n">NestedCoordinateSerializer</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">DataPoint</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;coordinates&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>在这里，目标和源属性对(<code class="docutils literal notranslate"><span class="pre">x</span></code> 和 <code class="docutils literal notranslate"><span class="pre">x_coordinate</span></code>，<code class="docutils literal notranslate"><span class="pre">y</span></code> 和 <code class="docutils literal notranslate"><span class="pre">y_coordinate</span></code>)之间的映射在 <code class="docutils literal notranslate"><span class="pre">IntegerField</span></code> 声明中处理。这是使用了 <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">='*'</span></code> 的 <code class="docutils literal notranslate"><span class="pre">NestedCoordinateSerializer</span></code>。</p>
+<p>新的 <code class="docutils literal notranslate"><span class="pre">DataPointSerializer</span></code> 展现出与自定义字段方法相同的行为。</p>
+<p>序列化：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">out_serializer</span> <span class="o">=</span> <span class="n">DataPointSerializer</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out_serializer</span><span class="o">.</span><span class="n">data</span>
+<span class="go">ReturnDict([(&#39;label&#39;, &#39;testing&#39;),</span>
+<span class="go">            (&#39;coordinates&#39;, OrderedDict([(&#39;x&#39;, 1), (&#39;y&#39;, 2)]))])</span>
+</pre></div>
+</div>
+<p>反序列化：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">in_serializer</span> <span class="o">=</span> <span class="n">DataPointSerializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">in_serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">in_serializer</span><span class="o">.</span><span class="n">validated_data</span>
+<span class="go">OrderedDict([(&#39;label&#39;, &#39;still testing&#39;),</span>
+<span class="go">             (&#39;x_coordinate&#39;, 3),</span>
+<span class="go">             (&#39;y_coordinate&#39;, 4)])</span>
+</pre></div>
+</div>
+<p>但我们也免费获得内置验证：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">invalid_data</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;still testing&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="gp">... </span>        <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">}</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invalid_serializer</span> <span class="o">=</span> <span class="n">DataPointSerializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">invalid_data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invalid_serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invalid_serializer</span><span class="o">.</span><span class="n">errors</span>
+<span class="go">ReturnDict([(&#39;coordinates&#39;,</span>
+<span class="go">             {&#39;x&#39;: [&#39;A valid integer is required.&#39;],</span>
+<span class="go">              &#39;y&#39;: [&#39;A valid integer is required.&#39;]})])</span>
+</pre></div>
+</div>
+<p>由于这个原因，嵌套的序列化器方法将是第一个尝试。当嵌套的序列化器变得不可行或过于复杂时，您将使用自定义字段方法。</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="third-party-packages">
+<h1>第三方包 (Third party packages)<a class="headerlink" href="#third-party-packages" title="Permalink to this heading">#</a></h1>
+<p>以下是可用的第三方包。</p>
+<section id="drf-compound-fields">
+<h2>DRF Compound Fields<a class="headerlink" href="#drf-compound-fields" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://drf-compound-fields.readthedocs.io/">drf-compound-fields</a> 包提供“复合”序列化器字段，例如简单值列表，它可以由其他字段描述，而不是使用 <code class="docutils literal notranslate"><span class="pre">many</span> <span class="pre">=</span> <span class="pre">True</span></code> 选项的序列化器。还提供了类型化字典和值的字段，它们可以是特定类型或该类型的项列表。</p>
+</section>
+<section id="drf-extra-fields">
+<h2>DRF Extra Fields<a class="headerlink" href="#drf-extra-fields" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/Hipo/drf-extra-fields">drf-extra-fields</a> 包为 REST framework 提供了额外的序列化器字段，包括 <code class="docutils literal notranslate"><span class="pre">Base64ImageField</span></code> 和 <code class="docutils literal notranslate"><span class="pre">PointField</span></code> 类。</p>
+</section>
+<section id="djangorestframework-recursive">
+<h2>djangorestframework-recursive<a class="headerlink" href="#djangorestframework-recursive" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/heywbj/django-rest-framework-recursive">djangorestframework-recursive</a> 包为序列化和反序列化递归结构提供了 <code class="docutils literal notranslate"><span class="pre">RecursiveField</span></code>。</p>
+</section>
+<section id="django-rest-framework-gis">
+<h2>django-rest-framework-gis<a class="headerlink" href="#django-rest-framework-gis" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/djangonauts/django-rest-framework-gis">django-rest-framework-gis</a> 包为 django rest framework 提供了地理插件，如 <code class="docutils literal notranslate"><span class="pre">GeometryField</span></code> 字段和 GeoJSON 序列化器。</p>
+</section>
+<section id="django-rest-framework-hstore">
+<h2>django-rest-framework-hstore<a class="headerlink" href="#django-rest-framework-hstore" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/djangonauts/django-rest-framework-hstore">django-rest-framework-hstore</a> 包提供了 <code class="docutils literal notranslate"><span class="pre">HStoreField</span></code> 来支持 <a class="reference external" href="https://github.com/djangonauts/django-hstore">django-hstore</a> <code class="docutils literal notranslate"><span class="pre">DictionaryField</span></code> 模型字段。</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./API-Guide"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Serializers.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">序列化器 (Serializers)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Serializer-relations.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">序列化器关系 (Serializer relations)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">序列化器字段 (Serializer fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-arguments">核心参数 (Core arguments)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-only"><code class="docutils literal notranslate"><span class="pre">read_only</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-only"><code class="docutils literal notranslate"><span class="pre">write_only</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required"><code class="docutils literal notranslate"><span class="pre">required</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default"><code class="docutils literal notranslate"><span class="pre">default</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#allow-null"><code class="docutils literal notranslate"><span class="pre">allow_null</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validators"><code class="docutils literal notranslate"><span class="pre">validators</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-messages"><code class="docutils literal notranslate"><span class="pre">error_messages</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#label"><code class="docutils literal notranslate"><span class="pre">label</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#help-text"><code class="docutils literal notranslate"><span class="pre">help_text</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial"><code class="docutils literal notranslate"><span class="pre">initial</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#style"><code class="docutils literal notranslate"><span class="pre">style</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-boolean-fields">Boolean 字段 (Boolean fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#booleanfield">BooleanField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nullbooleanfield">NullBooleanField</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#string-fields">字符串字段 (String fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#charfield">CharField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emailfield">EmailField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regexfield">RegexField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slugfield">SlugField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#urlfield">URLField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uuidfield">UUIDField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filepathfield">FilePathField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ipaddressfield">IPAddressField</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numeric-fields">数字字段 (Numeric fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integerfield">IntegerField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#floatfield">FloatField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decimalfield">DecimalField</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-usage">用法示例 (Example usage)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#date-and-time-fields">日期和时间字段 (Date and time fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datetimefield">DateTimeField</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">DateTimeField</span></code> 格式字符串。</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#auto-now-auto-now-add"><code class="docutils literal notranslate"><span class="pre">auto_now</span></code> 和 <code class="docutils literal notranslate"><span class="pre">auto_now_add</span></code> 模型字段。</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datefield">DateField</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">DateField</span></code> 格式化字符串</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timefield">TimeField</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">TimeField</span></code> 格式化字符串</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#durationfield">DurationField</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#choice-selection-fields">选择字段 (Choice selection fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choicefield">ChoiceField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplechoicefield">MultipleChoiceField</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#file-upload-fields">文件上传字段 (File upload fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parsers-and-file-uploads">解析器和文件上传 (Parsers and file uploads.)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filefield">FileField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imagefield">ImageField</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#composite-fields">复合字段 (Composite fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listfield">ListField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictfield">DictField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hstorefield">HStoreField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jsonfield">JSONField</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous-fields">各种各样的字段 (Miscellaneous fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readonlyfield">ReadOnlyField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hiddenfield">HiddenField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelfield">ModelField</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#serializermethodfield">SerializerMethodField</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-fields">自定义字段 (Custom fields)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">举个栗子</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-basic-custom-field">基本自定义字段 (A Basic Custom Field)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raising-validation-errors">抛出验证错误 (Raising validation errors)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">使用 <code class="docutils literal notranslate"><span class="pre">source='*'</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#third-party-packages">第三方包 (Third party packages)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drf-compound-fields">DRF Compound Fields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drf-extra-fields">DRF Extra Fields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#djangorestframework-recursive">djangorestframework-recursive</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-gis">django-rest-framework-gis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-hstore">django-rest-framework-hstore</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1160 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>渲染器 (Renderers) &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'API-Guide/Renderers';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="序列化器 (Serializers)" href="Serializers.html" />
+    <link rel="prev" title="解析器 (Parsers)" href="Parsers.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Authentication-and-Permissions.html">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Views.html">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-fields.html">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Validators.html">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Authentication.html">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Permissions.html">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Throttling.html">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Filtering.html">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Pagination.html">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Exceptions.html">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Testing.html">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Settings.html">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/API_Clients.html">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/The_Browsable_API.html">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Community/Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Third_Party_Packages.html">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Contributing_to_REST_framework.html">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Community/Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.4_Announcement.html">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.0_Announcement.html">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAPI-Guide/Renderers.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/API-Guide/Renderers.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>渲染器 (Renderers)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">渲染器 (Renderers)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-the-renderer-is-determined">如何确定渲染器 (How the renderer is determined)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-renderers">设置渲染器 (Setting the renderers)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ordering-of-renderer-classes">渲染器类的排序 (Ordering of renderer classes)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-reference">API 参考 (API Reference)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jsonrenderer">JSONRenderer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#templatehtmlrenderer">TemplateHTMLRenderer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statichtmlrenderer">StaticHTMLRenderer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#browsableapirenderer">BrowsableAPIRenderer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">自定义 BrowsableAPIRenderer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adminrenderer">AdminRenderer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#htmlformrenderer">HTMLFormRenderer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multipartrenderer">MultiPartRenderer</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-renderers">自定义渲染器 (Custom renderers)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">举个栗子</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-character-set">设置字符集 (Setting the character set)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-renderer-usage">高级渲染器用法 (Advanced renderer usage)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#varying-behaviour-by-media-type">媒体类型的不同行为 (Varying behaviour by media type)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#underspecifying-the-media-type">未指定媒体类型 (Underspecifying the media type)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#designing-your-media-types">设计媒体类型 (Designing your media types)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#html-html-error-views">HTML 错误视图 (HTML error views)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#third-party-packages">第三方包 (Third party packages)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yaml">YAML</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-configuration">安装和配置 (Installation &amp; configuration)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xml">XML</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">安装和配置 (Installation &amp; configuration)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jsonp">JSONP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">安装和配置 (Installation &amp; configuration)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#messagepack">MessagePack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv">CSV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ultrajson">UltraJSON</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#camelcase-json">CamelCase JSON</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-csv-excel-png">Pandas (CSV, Excel, PNG)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latex">LaTeX</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="renderers">
+<h1>渲染器 (Renderers)<a class="headerlink" href="#renderers" title="Permalink to this heading">#</a></h1>
+<p>在将 TemplateResponse 实例返回给客户端之前，必须渲染它。渲染过程采用模板和上下文的中间表示，并将其转换为可以提供给客户端的最终字节流。—— Django 文档</p>
+<p>REST framework 包含许多内置的渲染器 (Renderer) 类，允许您返回各种媒体类型的响应。还支持自定义渲染器，这使您可以灵活地设计自己的媒体类型。</p>
+<section id="how-the-renderer-is-determined">
+<h2>如何确定渲染器 (How the renderer is determined)<a class="headerlink" href="#how-the-renderer-is-determined" title="Permalink to this heading">#</a></h2>
+<p>视图的有效渲染器集合始终被定义为类列表。进入视图时，REST框架将对传入请求执行内容协商，并确定最合适的渲染器以满足请求。</p>
+<p>内容协商的基本过程涉及检查请求的 <code class="docutils literal notranslate"><span class="pre">Accept</span></code> 标头，以确定它在响应中期望的媒体类型。可选地，URL 上的格式后缀可以用于显式地请求特定的表示。例如，URL <code class="docutils literal notranslate"><span class="pre">http://example.com/api/users_count.json</span></code> 可能是始终返回 JSON 数据的端点。</p>
+<p>有关更多信息，请参阅有关<a class="reference external" href="http://www.django-rest-framework.org/api-guide/content-negotiation/">内容协商</a>的文档。</p>
+</section>
+<section id="setting-the-renderers">
+<h2>设置渲染器 (Setting the renderers)<a class="headerlink" href="#setting-the-renderers" title="Permalink to this heading">#</a></h2>
+<p>可以使用 <code class="docutils literal notranslate"><span class="pre">DEFAULT_RENDERER_CLASSES</span></code> 设置全局的默认渲染器集。例如，以下设置将使用 <code class="docutils literal notranslate"><span class="pre">JSON</span></code> 作为主要媒体类型，并且还包含自描述 API。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_RENDERER_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;rest_framework.renderers.JSONRenderer&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;rest_framework.renderers.BrowsableAPIRenderer&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>您还可以使用基于 <code class="docutils literal notranslate"><span class="pre">APIView</span></code> 类的视图设置用于单个视图或视图集的渲染器。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">rest_framework.renderers</span> <span class="kn">import</span> <span class="n">JSONRenderer</span>
+<span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">rest_framework.views</span> <span class="kn">import</span> <span class="n">APIView</span>
+
+<span class="k">class</span> <span class="nc">UserCountView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    返回 JSON 中活跃用户数量的视图。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">renderer_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">JSONRenderer</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">user_count</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">active</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;user_count&#39;</span><span class="p">:</span> <span class="n">user_count</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>或者，如果您使用基于函数的视图的 <code class="docutils literal notranslate"><span class="pre">&#64;api_view</span></code> 装饰器。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@renderer_classes</span><span class="p">((</span><span class="n">JSONRenderer</span><span class="p">,))</span>
+<span class="k">def</span> <span class="nf">user_count_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A view that returns the count of active users in JSON.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">user_count</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">active</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;user_count&#39;</span><span class="p">:</span> <span class="n">user_count</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="ordering-of-renderer-classes">
+<h2>渲染器类的排序 (Ordering of renderer classes)<a class="headerlink" href="#ordering-of-renderer-classes" title="Permalink to this heading">#</a></h2>
+<p>在为 API 指定渲染器类时，考虑要分配给每个媒体类型的优先级非常重要。如果客户端未指定可接受的表现形式，例如发送 <code class="docutils literal notranslate"><span class="pre">Accept：*/*</span></code> 标头，或者根本不包含 <code class="docutils literal notranslate"><span class="pre">Accept</span></code> 标头，则 REST framework 将选择列表中的第一个渲染器用于响应。</p>
+<p>例如，如果您的 API 提供 JSON 响应和 HTML 可浏览 API，您可能希望使 <code class="docutils literal notranslate"><span class="pre">JSONReNDER</span></code> 成为默认的渲染器，以便向不指定 <code class="docutils literal notranslate"><span class="pre">Accept</span></code> 标头的客户端发送 <code class="docutils literal notranslate"><span class="pre">JSON</span></code> 响应。</p>
+<p>如果您的 API 包含可以根据请求同时提供常规网页和 API 响应的视图，那么你可以考虑将  <code class="docutils literal notranslate"><span class="pre">TemplateHTMLRenderer</span></code> 设置为默认渲染器，以便与发送<a class="reference external" href="http://www.gethifi.com/blog/browser-rest-http-accept-headers">损坏的 accept 标头</a>的旧浏览器很好地配合使用。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="api-api-reference">
+<h1>API 参考 (API Reference)<a class="headerlink" href="#api-api-reference" title="Permalink to this heading">#</a></h1>
+<section id="jsonrenderer">
+<h2>JSONRenderer<a class="headerlink" href="#jsonrenderer" title="Permalink to this heading">#</a></h2>
+<p>使用 utf-8 编码将请求数据渲染为 <code class="docutils literal notranslate"><span class="pre">JSON</span></code>。</p>
+<p>请注意，默认风格包含 unicode 字符，并使用紧凑风格渲染 (没有多余的空白) 响应：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;unicode black star&quot;</span><span class="p">:</span><span class="s2">&quot;★&quot;</span><span class="p">,</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="mi">999</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>客户端可能另外包括 <code class="docutils literal notranslate"><span class="pre">'indent'</span></code> 媒体类型参数，在这种情况下，返回的 <code class="docutils literal notranslate"><span class="pre">JSON</span></code> 将缩进。例如  <code class="docutils literal notranslate"><span class="pre">Accept:</span> <span class="pre">application/json;</span> <span class="pre">indent=4</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;unicode black star&quot;</span><span class="p">:</span> <span class="s2">&quot;★&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">999</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">UNICODE_JSON</span></code> 和 <code class="docutils literal notranslate"><span class="pre">COMPACT_JSON</span></code> 设置键可以更改默认的 JSON 编码样式。</p>
+<p><strong>.media_type</strong>: <code class="docutils literal notranslate"><span class="pre">application/json</span></code></p>
+<p><strong>.format</strong>: <code class="docutils literal notranslate"><span class="pre">'.json'</span></code></p>
+<p><strong>.charset</strong>: <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</section>
+<section id="templatehtmlrenderer">
+<h2>TemplateHTMLRenderer<a class="headerlink" href="#templatehtmlrenderer" title="Permalink to this heading">#</a></h2>
+<p>使用 Django 的标准模板渲染将数据渲染为 HTML。与其他渲染器不同，传递给 <code class="docutils literal notranslate"><span class="pre">Response</span></code> 的数据不需要序列化。此外，与其他渲染器不同，您可能想要在创建 <code class="docutils literal notranslate"><span class="pre">Response</span></code> 时包含 <code class="docutils literal notranslate"><span class="pre">template_name</span></code> 参数。</p>
+<p>TemplateHTMLRenderer 将创建 <code class="docutils literal notranslate"><span class="pre">RequestContext</span></code>，使用 <code class="docutils literal notranslate"><span class="pre">response.data</span></code> 作为上下文字典，并确定用于渲染上下文的模板名称。</p>
+<p>模板名称由 (按优先顺序) 确定：</p>
+<ol class="arabic simple">
+<li><p>传递给响应的显式 <code class="docutils literal notranslate"><span class="pre">template_name</span></code> 参数。</p></li>
+<li><p>在此类上设置显式的 <code class="docutils literal notranslate"><span class="pre">.template_name</span></code> 属性。</p></li>
+<li><p>调用 <code class="docutils literal notranslate"><span class="pre">view.get_template_names()</span></code> 的返回结果。</p></li>
+</ol>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">TemplateHTMLRenderer</span></code> 的视图示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UserDetail</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">RetrieveAPIView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    回给定用户的模板化 HTML 表示的视图。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">renderer_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">TemplateHTMLRenderer</span><span class="p">,)</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">object</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_object</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">},</span> <span class="n">template_name</span><span class="o">=</span><span class="s1">&#39;user_detail.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>可以使用 <code class="docutils literal notranslate"><span class="pre">TestPielHTMLReDeReor</span></code> 来使用 REST framework 返回常规 HTML 页面，或者从单个端点返回 HTML 和 API 响应。</p>
+<p>如果你正在构建使用 <code class="docutils literal notranslate"><span class="pre">TemplateHTMLRenderer</span></code> 以及其他渲染器类的网站，您应该考虑将<code class="docutils literal notranslate"><span class="pre">TemplateHTMLRenderer</span></code> 列为 <code class="docutils literal notranslate"><span class="pre">renderer_classes</span></code> 列表中的第一个类，因此，对于发送格式不正确的 <code class="docutils literal notranslate"><span class="pre">ACCEPT:</span></code> 标头，它甚至会优先考虑浏览器。</p>
+<p>有关 <code class="docutils literal notranslate"><span class="pre">TemplateHTMLRenderer</span></code> 用法的更多示例，请参阅 <a class="reference external" href="http://www.django-rest-framework.org/topics/html-and-forms/">HTML&amp;Forms 主题页</a>。</p>
+<p><strong>.media_type</strong>: <code class="docutils literal notranslate"><span class="pre">text/html</span></code></p>
+<p><strong>.format</strong>: <code class="docutils literal notranslate"><span class="pre">'.html'</span></code></p>
+<p><strong>.charset</strong>: <code class="docutils literal notranslate"><span class="pre">utf-8</span></code></p>
+<p>也可以看看： <code class="docutils literal notranslate"><span class="pre">StaticHTMLRenderer</span></code></p>
+</section>
+<section id="statichtmlrenderer">
+<h2>StaticHTMLRenderer<a class="headerlink" href="#statichtmlrenderer" title="Permalink to this heading">#</a></h2>
+<p>一个简单的渲染器，只返回预渲染的 HTML。与其他渲染器不同，传递给响应对象的数据应该是表示要返回的内容的字符串。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">StaticHTMLRenderer</span></code> 的视图示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">((</span><span class="s1">&#39;GET&#39;</span><span class="p">,))</span>
+<span class="nd">@renderer_classes</span><span class="p">((</span><span class="n">StaticHTMLRenderer</span><span class="p">,))</span>
+<span class="k">def</span> <span class="nf">simple_html_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;&lt;html&gt;&lt;body&gt;&lt;h1&gt;Hello, world&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&#39;</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>可以使用 <code class="docutils literal notranslate"><span class="pre">StaticHTMLRenderer</span></code> 来使用 REST framework 返回常规 HTML 页面，或者从单个端点返回 HTML 和 API 响应。</p>
+<p><strong>.media_type</strong>: <code class="docutils literal notranslate"><span class="pre">text/html</span></code></p>
+<p><strong>.format</strong>: <code class="docutils literal notranslate"><span class="pre">'.html'</span></code></p>
+<p><strong>.charset</strong>: <code class="docutils literal notranslate"><span class="pre">utf-8</span></code></p>
+<p>也可以看看： <code class="docutils literal notranslate"><span class="pre">TemplateHTMLRenderer</span></code></p>
+</section>
+<section id="browsableapirenderer">
+<h2>BrowsableAPIRenderer<a class="headerlink" href="#browsableapirenderer" title="Permalink to this heading">#</a></h2>
+<p>为可浏览的 API 将数据渲染为 HTML：</p>
+<p><img alt="" src="http://www.django-rest-framework.org/img/quickstart.png" /></p>
+<p>此渲染器将确定哪个其他渲染器将被赋予最高优先级，并使用它来显示 HTML 页面中 API 样式的响应。</p>
+<p><strong>.media_type</strong>: <code class="docutils literal notranslate"><span class="pre">text/html</span></code></p>
+<p><strong>.format</strong>: <code class="docutils literal notranslate"><span class="pre">'.api'</span></code></p>
+<p><strong>.charset</strong>: <code class="docutils literal notranslate"><span class="pre">utf-8</span></code></p>
+<p><strong>.template</strong>: <code class="docutils literal notranslate"><span class="pre">'rest_framework/api.html'</span></code></p>
+<section id="id1">
+<h3>自定义 BrowsableAPIRenderer<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>默认情况下，响应内容将使用除 <code class="docutils literal notranslate"><span class="pre">BrowsableAPIRenderer</span></code> 之外的最高优先级渲染器进行渲染。如果您需要自定义此行为，例如使用 HTML 作为默认返回格式，但在可浏览的 API 中使用 JSON，则可以通过重写 <code class="docutils literal notranslate"><span class="pre">get_default_renderer()</span></code> 方法来实现。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomBrowsableAPIRenderer</span><span class="p">(</span><span class="n">BrowsableAPIRenderer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_default_renderer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">JSONRenderer</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="adminrenderer">
+<h2>AdminRenderer<a class="headerlink" href="#adminrenderer" title="Permalink to this heading">#</a></h2>
+<p>将数据渲染为 HTML 以进行类似管理的显示：</p>
+<p><img alt="" src="https://q1mi.github.io/Django-REST-framework-documentation/img/admin.png" /></p>
+<p>此渲染器适用于 CRUD 样式的 Web API，它还应提供用户友好的界面来管理数据。</p>
+<p>请注意，对于其输入具有嵌套或列表序列化程序的视图将无法与 <code class="docutils literal notranslate"><span class="pre">AdminRenderer</span></code> 一起使用，因为 HTML 表单无法正确支持它们。</p>
+<p><strong>注意</strong>：当在数据中存在正确配置的 <code class="docutils literal notranslate"><span class="pre">URL_FIELD_NAME</span></code> (默认为 <code class="docutils literal notranslate"><span class="pre">url</span></code> ) 属性时，<code class="docutils literal notranslate"><span class="pre">AdminRenderer</span></code> 才能包含指向详细信息页面的链接。对于 <code class="docutils literal notranslate"><span class="pre">HyperlinkedModelSerializer</span></code>，情况就是如此，但是对于 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 或者简单的 <code class="docutils literal notranslate"><span class="pre">Serializer</span></code> 类，你需要确保显式地包含该字段。例如，我们在这里使用模型  <code class="docutils literal notranslate"><span class="pre">get_absolute_url</span></code> 方法：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AccountSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;get_absolute_url&#39;</span><span class="p">,</span> <span class="n">read_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Account</span>
+</pre></div>
+</div>
+<p><strong>.media_type</strong>: <code class="docutils literal notranslate"><span class="pre">text/html</span></code></p>
+<p><strong>.format</strong>: <code class="docutils literal notranslate"><span class="pre">'.admin'</span></code></p>
+<p><strong>.charset</strong>: <code class="docutils literal notranslate"><span class="pre">utf-8</span></code></p>
+<p><strong>.template</strong>: <code class="docutils literal notranslate"><span class="pre">'rest_framework/admin.html'</span></code></p>
+</section>
+<section id="htmlformrenderer">
+<h2>HTMLFormRenderer<a class="headerlink" href="#htmlformrenderer" title="Permalink to this heading">#</a></h2>
+<p>将序列化程序返回的数据渲染为 HTML 表单。此渲染器的输出不包括封闭的 <code class="docutils literal notranslate"><span class="pre">&lt;form&gt;</span></code> 标记，隐藏的 CSRF 输入或任何提交按钮。</p>
+<p>此渲染器不是直接使用，而是可以通过将序列化器实例传递给 <code class="docutils literal notranslate"><span class="pre">render_form</span></code> 模板标记来替代模板。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="o">%</span> <span class="n">load</span> <span class="n">rest_framework</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="o">&lt;</span><span class="n">form</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;/submit-report/&quot;</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;post&quot;</span><span class="o">&gt;</span>
+    <span class="p">{</span><span class="o">%</span> <span class="n">csrf_token</span> <span class="o">%</span><span class="p">}</span>
+    <span class="p">{</span><span class="o">%</span> <span class="n">render_form</span> <span class="n">serializer</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Save&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">form</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>有关更多信息，请参阅 <a class="reference external" href="http://www.django-rest-framework.org/topics/html-and-forms/">HTML 和表单</a>文档。</p>
+<p><strong>.media_type</strong>: <code class="docutils literal notranslate"><span class="pre">text/html</span></code></p>
+<p><strong>.format</strong>: <code class="docutils literal notranslate"><span class="pre">'.form'</span></code></p>
+<p><strong>.charset</strong>: <code class="docutils literal notranslate"><span class="pre">utf-8</span></code></p>
+<p><strong>.template</strong>: <code class="docutils literal notranslate"><span class="pre">'rest_framework/horizontal/form.html'</span></code></p>
+</section>
+<section id="multipartrenderer">
+<h2>MultiPartRenderer<a class="headerlink" href="#multipartrenderer" title="Permalink to this heading">#</a></h2>
+<p>此渲染器用于渲染 HTML 多部分表单数据。<strong>它不适合作为响应渲染器</strong>，而是用于使用 REST framework 的<a class="reference external" href="http://www.django-rest-framework.org/api-guide/testing/">测试客户端和测试请求工厂</a>来创建测试请求。</p>
+<p><strong>.media_type</strong>: <code class="docutils literal notranslate"><span class="pre">multipart/form-data;</span> <span class="pre">boundary=BoUnDaRyStRiNg</span></code></p>
+<p><strong>.format</strong>: <code class="docutils literal notranslate"><span class="pre">'.multipart'</span></code></p>
+<p><strong>.charset</strong>: <code class="docutils literal notranslate"><span class="pre">utf-8</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="custom-renderers">
+<h1>自定义渲染器 (Custom renderers)<a class="headerlink" href="#custom-renderers" title="Permalink to this heading">#</a></h1>
+<p>要实现自定义渲染器，你应该重写 <code class="docutils literal notranslate"><span class="pre">BaseRenderer</span></code>，设置 <code class="docutils literal notranslate"><span class="pre">.media_type</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.format</span></code> 属性，并且实现 <code class="docutils literal notranslate"><span class="pre">.render(self,</span> <span class="pre">data,</span> <span class="pre">media_type=None,</span> <span class="pre">renderer_context=None)</span></code> 方法。</p>
+<p>该方法应当返回一个 bytestring，它将被用于 HTTP 响应的主体。</p>
+<p>传递给 <code class="docutils literal notranslate"><span class="pre">.render()</span></code> 方法的参数是：</p>
+<p><strong>data</strong></p>
+<p>请求数据，由 <code class="docutils literal notranslate"><span class="pre">Response()</span></code> 例化设置。</p>
+<p><strong>media_type=None</strong></p>
+<p>可选的。如果提供，这是接受的媒体类型，由内容协商阶段确定。</p>
+<p>根据客户端的 <code class="docutils literal notranslate"><span class="pre">Accept:</span></code>标头，这可能比渲染器的 <code class="docutils literal notranslate"><span class="pre">media_type</span></code> 属性更具体，并且可能包括媒体类型参数。例如 <code class="docutils literal notranslate"><span class="pre">&quot;application/json;</span> <span class="pre">nested=true&quot;</span></code>。</p>
+<p><strong>renderer_context=None</strong></p>
+<p>可选的。如果提供，这是由视图提供的上下文信息的字典。</p>
+<p>默认情况下，这将包括以下键：<code class="docutils literal notranslate"><span class="pre">view</span></code>, <code class="docutils literal notranslate"><span class="pre">request</span></code>, <code class="docutils literal notranslate"><span class="pre">response</span></code>, <code class="docutils literal notranslate"><span class="pre">args</span></code>, <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>。</p>
+<section id="id2">
+<h2>举个栗子<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>下面是一个纯文本渲染器示例，它将返回一个以 <code class="docutils literal notranslate"><span class="pre">data</span></code> 参数作为响应内容的响应。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils.encoding</span> <span class="kn">import</span> <span class="n">smart_unicode</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">renderers</span>
+
+
+<span class="k">class</span> <span class="nc">PlainTextRenderer</span><span class="p">(</span><span class="n">renderers</span><span class="o">.</span><span class="n">BaseRenderer</span><span class="p">):</span>
+    <span class="n">media_type</span> <span class="o">=</span> <span class="s1">&#39;text/plain&#39;</span>
+    <span class="nb">format</span> <span class="o">=</span> <span class="s1">&#39;txt&#39;</span>
+
+    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">media_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">renderer_context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">charset</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="setting-the-character-set">
+<h2>设置字符集 (Setting the character set)<a class="headerlink" href="#setting-the-character-set" title="Permalink to this heading">#</a></h2>
+<p>默认情况下，渲染器类被假定为使用 <code class="docutils literal notranslate"><span class="pre">UTF-8</span></code> 编码。要使用其他编码，请在渲染器上设置 <code class="docutils literal notranslate"><span class="pre">charset</span></code> 属性。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PlainTextRenderer</span><span class="p">(</span><span class="n">renderers</span><span class="o">.</span><span class="n">BaseRenderer</span><span class="p">):</span>
+    <span class="n">media_type</span> <span class="o">=</span> <span class="s1">&#39;text/plain&#39;</span>
+    <span class="nb">format</span> <span class="o">=</span> <span class="s1">&#39;txt&#39;</span>
+    <span class="n">charset</span> <span class="o">=</span> <span class="s1">&#39;iso-8859-1&#39;</span>
+
+    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">media_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">renderer_context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">charset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>注意，如果渲染器类返回 unicode 字符串，则响应内容将被 <code class="docutils literal notranslate"><span class="pre">Response</span></code> 类强制为 bytestring，而设置在渲染器上的字符集属性用于确定编码。</p>
+<p>如果渲染器返回表示原始二进制内容的字节串，则应将字符集值设置为 <code class="docutils literal notranslate"><span class="pre">None</span></code>，这将确保响应的 <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> 标头不会设置字符集值。</p>
+<p>在某些情况下，您可能还希望将 <code class="docutils literal notranslate"><span class="pre">render_style</span></code> 属性设置为 <code class="docutils literal notranslate"><span class="pre">'binary'</span></code>。这样做也将确保可浏览 API 不会试图将二进制内容显示为字符串。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">JPEGRenderer</span><span class="p">(</span><span class="n">renderers</span><span class="o">.</span><span class="n">BaseRenderer</span><span class="p">):</span>
+    <span class="n">media_type</span> <span class="o">=</span> <span class="s1">&#39;image/jpeg&#39;</span>
+    <span class="nb">format</span> <span class="o">=</span> <span class="s1">&#39;jpg&#39;</span>
+    <span class="n">charset</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">render_style</span> <span class="o">=</span> <span class="s1">&#39;binary&#39;</span>
+
+    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">media_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">renderer_context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">data</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="advanced-renderer-usage">
+<h1>高级渲染器用法 (Advanced renderer usage)<a class="headerlink" href="#advanced-renderer-usage" title="Permalink to this heading">#</a></h1>
+<p>您可以使用 REST framework 的渲染器做一些非常灵活的事情。一些例子…</p>
+<ul class="simple">
+<li><p>根据请求的媒体类型，从同一端点提供平面或嵌套表示。</p></li>
+<li><p>提供常规 HTML 网页和来自同一端点的基于 JSON 的 API 响应。</p></li>
+<li><p>为要使用的 API 客户端指定多种类型的 HTML 表示。</p></li>
+<li><p>未指定渲染器的媒体类型，例如使用 <code class="docutils literal notranslate"><span class="pre">media_type</span> <span class="pre">=</span> <span class="pre">'image/*'</span></code>，并使用 <code class="docutils literal notranslate"><span class="pre">Accept</span></code> 标头来更改响应的编码。</p></li>
+</ul>
+<section id="varying-behaviour-by-media-type">
+<h2>媒体类型的不同行为 (Varying behaviour by media type)<a class="headerlink" href="#varying-behaviour-by-media-type" title="Permalink to this heading">#</a></h2>
+<p>在某些情况下，您可能希望视图根据所接受的媒体类型使用不同的序列化样式。如果需要这样做，可以访问 <code class="docutils literal notranslate"><span class="pre">request.accepted_renderer</span></code> 以确定将用于响应的协商渲染器。</p>
+<p>举个栗子：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">((</span><span class="s1">&#39;GET&#39;</span><span class="p">,))</span>
+<span class="nd">@renderer_classes</span><span class="p">((</span><span class="n">TemplateHTMLRenderer</span><span class="p">,</span> <span class="n">JSONRenderer</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">list_users</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    可以返回系统中用户的 JSON 或 HTML 表示的视图。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Users</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">active</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">accepted_renderer</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s1">&#39;html&#39;</span><span class="p">:</span>
+	    <span class="c1"># TemplateHTMLRenderer 采用上下文字典，并且还需要 template_name 名称。</span>
+	    <span class="c1"># 它不需要序列化。</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;users&#39;</span><span class="p">:</span> <span class="n">queryset</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">template_name</span><span class="o">=</span><span class="s1">&#39;list_users.html&#39;</span><span class="p">)</span>
+
+    <span class="c1"># JSONRenderer 需要正常的序列化数据。</span>
+    <span class="n">serializer</span> <span class="o">=</span> <span class="n">UserSerializer</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">queryset</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">serializer</span><span class="o">.</span><span class="n">data</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="underspecifying-the-media-type">
+<h2>未指定媒体类型 (Underspecifying the media type)<a class="headerlink" href="#underspecifying-the-media-type" title="Permalink to this heading">#</a></h2>
+<p>在某些情况下，您可能希望渲染器提供一系列媒体类型。在这种情况下，你可以不指定应该响应的媒体类型，通过使用  <code class="docutils literal notranslate"><span class="pre">media_type</span></code> 值 (诸如 <code class="docutils literal notranslate"><span class="pre">image/*</span></code> 或 <code class="docutils literal notranslate"><span class="pre">*/*</span></code> ) 。</p>
+<p>如果您未指定渲染器的媒体类型，则应确保在使用 <code class="docutils literal notranslate"><span class="pre">content_type</span></code> 属性返回响应时显式指定媒体类型。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="s1">&#39;image/png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="designing-your-media-types">
+<h2>设计媒体类型 (Designing your media types)<a class="headerlink" href="#designing-your-media-types" title="Permalink to this heading">#</a></h2>
+<p>对于许多 Web API 的目的，具有超链接关系的简单 <code class="docutils literal notranslate"><span class="pre">JSON</span></code> 响应可能是足够的。如果您想完全拥抱 RESTful 设计和 <a class="reference external" href="http://timelessrepo.com/haters-gonna-hateoas">HATEOAS</a>，则需要更详细地考虑媒体类型的设计和使用。</p>
+<p>用 <a class="reference external" href="http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven">Roy Fielding 的话</a>说，“REST API 应该花费几乎所有的描述性工作来定义用于表示资源和驱动应用程序状态的媒体类型，或者为现有的标准媒体类型定义扩展关系名称和/或超文本启用标记。”。</p>
+<p>有关自定义媒体类型的良好示例，请参阅 GitHub 的使用自定义 <a class="reference external" href="https://developer.github.com/v3/media/">application/vnd.github+json</a> 媒体类型，以及 Mike Amundsen 的 IANA 认可的  <a class="reference external" href="http://www.amundsen.com/media-types/collection/">application/vnd.collection+json</a> 基于 JSON 超媒体。</p>
+</section>
+<section id="html-html-error-views">
+<h2>HTML 错误视图 (HTML error views)<a class="headerlink" href="#html-html-error-views" title="Permalink to this heading">#</a></h2>
+<p>通常，渲染器都会表现相同，无论是处理常规响应，还是由异常引起的响应，例如 <code class="docutils literal notranslate"><span class="pre">Http404</span></code> 或 <code class="docutils literal notranslate"><span class="pre">PermissionDenied</span></code> 异常，或 <code class="docutils literal notranslate"><span class="pre">APIException</span></code> 的子类。</p>
+<p>如果您正在使用 <code class="docutils literal notranslate"><span class="pre">TemplateHTMLRenderer</span></code> 或 <code class="docutils literal notranslate"><span class="pre">StaticHTMLRenderer</span></code> 并引发异常，行为略有不同，并反映 <a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/http/views/#customizing-error-views">Django 对错误视图的默认处理</a>。</p>
+<p>由 HTML 渲染器引发和处理的异常将尝试按优先顺序使用以下方法之一进行渲染。</p>
+<ul class="simple">
+<li><p>加载并渲染名为 <code class="docutils literal notranslate"><span class="pre">{status_code}.html</span></code> 的模板。</p></li>
+<li><p>加载并渲染名为 <code class="docutils literal notranslate"><span class="pre">api_exception.html</span></code> 的模板。</p></li>
+<li><p>渲染 HTTP 状态码和文本，例如 “404 Not Found”。</p></li>
+</ul>
+<p>模板将用一个包含 <code class="docutils literal notranslate"><span class="pre">status_code</span></code> 和 <code class="docutils literal notranslate"><span class="pre">details</span></code> 键的 <code class="docutils literal notranslate"><span class="pre">RequestContext</span></code> 渲染。</p>
+<p><strong>注意</strong>：如果 <code class="docutils literal notranslate"><span class="pre">DEBUG=True</span></code>，Django 的标准回溯错误页面将被展示，而不是渲染 HTTP 状态码和文本。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="third-party-packages">
+<h1>第三方包 (Third party packages)<a class="headerlink" href="#third-party-packages" title="Permalink to this heading">#</a></h1>
+<p>以下第三方包都是可用的。</p>
+<section id="yaml">
+<h2>YAML<a class="headerlink" href="#yaml" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://jpadilla.github.io/django-rest-framework-yaml/">REST framework YAML</a> 提供 <a class="reference external" href="http://www.yaml.org/">YAML</a> 解析和渲染支持。它以前直接包含在REST framework 包中，现在被替代为第三方包支持。</p>
+<section id="installation-configuration">
+<h3>安装和配置 (Installation &amp; configuration)<a class="headerlink" href="#installation-configuration" title="Permalink to this heading">#</a></h3>
+<p>使用 pip 安装。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ pip install djangorestframework-yaml
+</pre></div>
+</div>
+<p>修改您的 REST framework 设置。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_PARSER_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;rest_framework_yaml.parsers.YAMLParser&#39;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="s1">&#39;DEFAULT_RENDERER_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;rest_framework_yaml.renderers.YAMLRenderer&#39;</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="xml">
+<h2>XML<a class="headerlink" href="#xml" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://jpadilla.github.io/django-rest-framework-xml/">REST Framework XML</a> 提供了一个简单的非正式 XML 格式。它以前直接包含在 REST framework 包中，现在被替代为第三方包支持。</p>
+<section id="id3">
+<h3>安装和配置 (Installation &amp; configuration)<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>使用 pip 安装。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ pip install djangorestframework-xml
+</pre></div>
+</div>
+<p>修改您的 REST framework 设置。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_PARSER_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;rest_framework_xml.parsers.XMLParser&#39;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="s1">&#39;DEFAULT_RENDERER_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;rest_framework_xml.renderers.XMLRenderer&#39;</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="jsonp">
+<h2>JSONP<a class="headerlink" href="#jsonp" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://jpadilla.github.io/django-rest-framework-jsonp/">REST framework JSONP</a> 提供 JSONP 渲染支持。它之前直接包含在 REST framework 包中，现在被替代为第三方包支持。</p>
+<hr class="docutils" />
+<p><strong>警告</strong>：如果你需要跨域的 AJAX 请求，你通常应该使用更现代化的 <a class="reference external" href="https://www.w3.org/TR/cors/">CORS</a> 方法代替 <code class="docutils literal notranslate"><span class="pre">JSONP</span></code>。有关更多详细信息，请参阅 <a class="reference external" href="http://www.django-rest-framework.org/topics/ajax-csrf-cors/">CORS 文档</a>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">JSONP</span></code> 方法本质上是一个浏览器破解，并且<a class="reference external" href="https://stackoverflow.com/questions/613962/is-jsonp-safe-to-use">仅适用于全局可读的 API 端点</a>，其中 <code class="docutils literal notranslate"><span class="pre">GET</span></code> 请求是未经认证的并且不需要任何用户权限。</p>
+<hr class="docutils" />
+<section id="id4">
+<h3>安装和配置 (Installation &amp; configuration)<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>使用 pip 安装。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ pip install djangorestframework-jsonp
+</pre></div>
+</div>
+<p>修改您的 REST framework 设置。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_RENDERER_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;rest_framework_jsonp.renderers.JSONPRenderer&#39;</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="messagepack">
+<h2>MessagePack<a class="headerlink" href="#messagepack" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://msgpack.org/">MessagePack</a> 是一种快速，高效的二进制序列化格式。<a class="reference external" href="https://github.com/juanriaza">Juan Riaza</a> 维护着 <a class="reference external" href="https://github.com/juanriaza/django-rest-framework-msgpack">djangorestframework-msgpack</a> 包，它为 REST framework 提供 MessagePack 渲染器和解析器支持。</p>
+</section>
+<section id="csv">
+<h2>CSV<a class="headerlink" href="#csv" title="Permalink to this heading">#</a></h2>
+<p>逗号分隔值是纯文本表格数据格式，可以轻松导入到电子表格应用中。<a class="reference external" href="https://github.com/mjumbewu">Mjumbe Poe</a> 维护着 <a class="reference external" href="https://github.com/mjumbewu/django-rest-framework-csv">djangorestframework-csv</a> 包，它为 REST framework 提供了 CSV 渲染器支持。</p>
+</section>
+<section id="ultrajson">
+<h2>UltraJSON<a class="headerlink" href="#ultrajson" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/esnme/ultrajson">UltraJSON</a> 是一个优化的 C JSON 编码器，可以显著提高 JSON 渲染速度。<a class="reference external" href="https://github.com/hzy">Jacob Haslehurst</a> 维护着使用 UJSON 包实现 JSON 渲染的 <a class="reference external" href="https://github.com/gizmag/drf-ujson-renderer">drf-ujson-renderer</a> 包。</p>
+</section>
+<section id="camelcase-json">
+<h2>CamelCase JSON<a class="headerlink" href="#camelcase-json" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/vbabiy/djangorestframework-camel-case">djangorestframework-camel-case</a> 为 REST framework 提供了驼峰式 JSON 渲染器和解析器。这使序列化程序可以使用 Python 风格的下划线字段名，但是在 API 中显示成 Javascript 样式的驼峰字段名。它由 <a class="reference external" href="https://github.com/vbabiy">Vitaly Babiy</a> 维护着。</p>
+</section>
+<section id="pandas-csv-excel-png">
+<h2>Pandas (CSV, Excel, PNG)<a class="headerlink" href="#pandas-csv-excel-png" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/wq/django-rest-pandas">Django REST Pandas</a> 提供了一个序列化器和渲染器，通过 <a class="reference external" href="https://pandas.pydata.org/">Pandas</a> DataFrame API 支持额外的数据处理和输出。Django REST Pandas 包括 Pandas 风格的 CSV 文件，Excel 表格(包括 <code class="docutils literal notranslate"><span class="pre">.xls</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.xlsx</span></code>)以及许多<a class="reference external" href="https://github.com/wq/django-rest-pandas#supported-formats">其他格式</a>的渲染器。由 <a class="reference external" href="https://github.com/sheppard">S. Andrew Sheppard</a> 维护，作为 <a class="reference external" href="https://github.com/wq">wq 项目</a>的一部分。</p>
+</section>
+<section id="latex">
+<h2>LaTeX<a class="headerlink" href="#latex" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/mypebble/rest-framework-latex">Rest Framework Latex</a> 提供了一个使用 Laulatex 输出 PDF 的渲染器。它由 <a class="reference external" href="https://github.com/mypebble">Pebble (S/F Software)</a> 维护着。</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./API-Guide"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Parsers.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">解析器 (Parsers)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Serializers.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">序列化器 (Serializers)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">渲染器 (Renderers)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-the-renderer-is-determined">如何确定渲染器 (How the renderer is determined)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-renderers">设置渲染器 (Setting the renderers)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ordering-of-renderer-classes">渲染器类的排序 (Ordering of renderer classes)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-reference">API 参考 (API Reference)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jsonrenderer">JSONRenderer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#templatehtmlrenderer">TemplateHTMLRenderer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statichtmlrenderer">StaticHTMLRenderer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#browsableapirenderer">BrowsableAPIRenderer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">自定义 BrowsableAPIRenderer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adminrenderer">AdminRenderer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#htmlformrenderer">HTMLFormRenderer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multipartrenderer">MultiPartRenderer</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-renderers">自定义渲染器 (Custom renderers)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">举个栗子</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-character-set">设置字符集 (Setting the character set)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-renderer-usage">高级渲染器用法 (Advanced renderer usage)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#varying-behaviour-by-media-type">媒体类型的不同行为 (Varying behaviour by media type)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#underspecifying-the-media-type">未指定媒体类型 (Underspecifying the media type)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#designing-your-media-types">设计媒体类型 (Designing your media types)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#html-html-error-views">HTML 错误视图 (HTML error views)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#third-party-packages">第三方包 (Third party packages)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yaml">YAML</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-configuration">安装和配置 (Installation &amp; configuration)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xml">XML</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">安装和配置 (Installation &amp; configuration)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jsonp">JSONP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">安装和配置 (Installation &amp; configuration)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#messagepack">MessagePack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv">CSV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ultrajson">UltraJSON</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#camelcase-json">CamelCase JSON</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-csv-excel-png">Pandas (CSV, Excel, PNG)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latex">LaTeX</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

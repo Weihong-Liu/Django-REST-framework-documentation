@@ -1,0 +1,1017 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>分页 (Pagination) &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'API-Guide/Pagination';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="版本控制 (Versioning)" href="Versioning.html" />
+    <link rel="prev" title="过滤 (Filtering)" href="Filtering.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Authentication-and-Permissions.html">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Views.html">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Renderers.html">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-fields.html">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Validators.html">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Authentication.html">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Permissions.html">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Throttling.html">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Filtering.html">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Exceptions.html">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Testing.html">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Settings.html">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/API_Clients.html">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/The_Browsable_API.html">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Community/Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Third_Party_Packages.html">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Contributing_to_REST_framework.html">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Community/Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.4_Announcement.html">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.0_Announcement.html">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAPI-Guide/Pagination.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/API-Guide/Pagination.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>分页 (Pagination)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">分页 (Pagination)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-pagination-style">设置分页样式 (Setting the pagination style)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-the-pagination-style">修改分页样式 (Modifying the pagination style)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-reference">API 参考 (API Reference)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pagenumberpagination">PageNumberPagination</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">设置 (Setup)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">配置 (Configuration)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitoffsetpagination">LimitOffsetPagination</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">设置 (Setup)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">配置 (Configuration)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cursorpagination">CursorPagination</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#details-and-limitations">细节和限制 (Details and limitations)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">设置 (Setup)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">配置 (Configuration)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-pagination-styles">自定义分页样式 (Custom pagination styles)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">举个栗子</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-your-custom-pagination-class">使用您的自定义分页类 (Using your custom pagination class)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pagination-schemas">分页和模式 (Pagination &amp; schemas)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#html-html-pagination-controls">HTML 分页控件 (HTML pagination controls)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-the-controls">自定义控件 (Customizing the controls)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-low-level-api">低级 API (Low-level API)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#third-party-packages">第三方包 (Third party packages)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drf-extensions">DRF-extensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drf-proxy-pagination">drf-proxy-pagination</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#link-header-pagination">link-header-pagination</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pagination">
+<h1>分页 (Pagination)<a class="headerlink" href="#pagination" title="Permalink to this heading">#</a></h1>
+<p>Django 提供了一些类来帮助您管理分页数据，也就是说，这些数据通过 “前/下” 链接被分割到多个页面。—— <a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/pagination/">Django 文档</a></p>
+<p>REST framework 包含对自定义分页样式的支持。这允许您修改如何将大的结果集分成单个数据页面。</p>
+<p>分页 API 支持：</p>
+<ul class="simple">
+<li><p>分页链接是作为响应内容的一部分提供的。</p></li>
+<li><p>分页链接被包含在响应标头中，例如 <code class="docutils literal notranslate"><span class="pre">Content-Range</span></code> 或 <code class="docutils literal notranslate"><span class="pre">Link</span></code>。</p></li>
+</ul>
+<p>内置样式目前都使用被包含作为响应内容的一部分的链接。使用可浏览 API 时，此样式更易于访问。</p>
+<p>只有在使用通用视图或视图集时，才会自动执行分页。如果您使用常规 <code class="docutils literal notranslate"><span class="pre">APIView</span></code>，则需要自己调用分页 API 以确保返回分页响应。有关示例，请参阅 <code class="docutils literal notranslate"><span class="pre">mixins.ListModelMixin</span></code> 和 <code class="docutils literal notranslate"><span class="pre">generics.GenericAPIView</span></code> 类的源代码。</p>
+<p>可以通过将分页类设置为 <code class="docutils literal notranslate"><span class="pre">None</span></code> 来关闭分页。</p>
+<section id="setting-the-pagination-style">
+<h2>设置分页样式 (Setting the pagination style)<a class="headerlink" href="#setting-the-pagination-style" title="Permalink to this heading">#</a></h2>
+<p>可以使用 <code class="docutils literal notranslate"><span class="pre">DEFAULT_PAGINATION_CLASS</span></code> 和 <code class="docutils literal notranslate"><span class="pre">PAGE_SIZE</span></code> 设置键全局设置分页样式。例如，要使用内置的限制/偏移分页，您可以这样做：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_PAGINATION_CLASS&#39;</span><span class="p">:</span> <span class="s1">&#39;rest_framework.pagination.LimitOffsetPagination&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;PAGE_SIZE&#39;</span><span class="p">:</span> <span class="mi">100</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>请注意，您需要同时设置分页类和应使用的页面大小。默认情况下，<code class="docutils literal notranslate"><span class="pre">DEFAULT_PAGINATION_CLASS</span></code> 和 <code class="docutils literal notranslate"><span class="pre">PAGE_SIZE</span></code> 都是 <code class="docutils literal notranslate"><span class="pre">None</span></code>。</p>
+<p>您还可以通过使用 <code class="docutils literal notranslate"><span class="pre">pagination_class</span></code> 属性在单个视图上设置分页类。通常，您希望在整个 API 中使用相同的分页样式，尽管您可能希望在每个视图的基础上更改分页的各个方面，例如默认或最大页大小。</p>
+</section>
+<section id="modifying-the-pagination-style">
+<h2>修改分页样式 (Modifying the pagination style)<a class="headerlink" href="#modifying-the-pagination-style" title="Permalink to this heading">#</a></h2>
+<p>如果您想修改分页样式的特定方面，您需要重写其中一个分页类，并设置要更改的属性。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LargeResultsSetPagination</span><span class="p">(</span><span class="n">PageNumberPagination</span><span class="p">):</span>
+    <span class="n">page_size</span> <span class="o">=</span> <span class="mi">1000</span>
+    <span class="n">page_size_query_param</span> <span class="o">=</span> <span class="s1">&#39;page_size&#39;</span>
+    <span class="n">max_page_size</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="k">class</span> <span class="nc">StandardResultsSetPagination</span><span class="p">(</span><span class="n">PageNumberPagination</span><span class="p">):</span>
+    <span class="n">page_size</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">page_size_query_param</span> <span class="o">=</span> <span class="s1">&#39;page_size&#39;</span>
+    <span class="n">max_page_size</span> <span class="o">=</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+<p>然后，您可以使用 <code class="docutils literal notranslate"><span class="pre">.pagination_class</span></code> 属性将新样式应用到视图：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BillingRecordsView</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListAPIView</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Billing</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">BillingRecordsSerializer</span>
+    <span class="n">pagination_class</span> <span class="o">=</span> <span class="n">LargeResultsSetPagination</span>
+</pre></div>
+</div>
+<p>或者使用 <code class="docutils literal notranslate"><span class="pre">DEFAULT_PAGINATION_CLASS</span></code> 设置键全局应用样式。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_PAGINATION_CLASS&#39;</span><span class="p">:</span> <span class="s1">&#39;apps.core.pagination.StandardResultsSetPagination&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="api-api-reference">
+<h1>API 参考 (API Reference)<a class="headerlink" href="#api-api-reference" title="Permalink to this heading">#</a></h1>
+<section id="pagenumberpagination">
+<h2>PageNumberPagination<a class="headerlink" href="#pagenumberpagination" title="Permalink to this heading">#</a></h2>
+<p>此分页样式在请求查询参数中接受单个数字页码。</p>
+<p><strong>Request</strong>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>GET https://api.example.org/accounts/?page=4
+</pre></div>
+</div>
+<p><strong>Response</strong>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>HTTP 200 OK
+{
+    &quot;count&quot;: 1023
+    &quot;next&quot;: &quot;https://api.example.org/accounts/?page=5&quot;,
+    &quot;previous&quot;: &quot;https://api.example.org/accounts/?page=3&quot;,
+    &quot;results&quot;: [
+       …
+    ]
+}
+</pre></div>
+</div>
+<section id="setup">
+<h3>设置 (Setup)<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h3>
+<p>要全局启用 <code class="docutils literal notranslate"><span class="pre">PageNumberPagination</span></code> 样式，请使用以下配置，并按要求设置 <code class="docutils literal notranslate"><span class="pre">PAGE_SIZE</span></code>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_PAGINATION_CLASS&#39;</span><span class="p">:</span> <span class="s1">&#39;rest_framework.pagination.PageNumberPagination&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;PAGE_SIZE&#39;</span><span class="p">:</span> <span class="mi">100</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>在 <code class="docutils literal notranslate"><span class="pre">GenericAPIView</span></code> 子类上，您还可以设置 <code class="docutils literal notranslate"><span class="pre">pagination_class</span></code> 属性以便在每个视图的基础上选择 <code class="docutils literal notranslate"><span class="pre">PageNumberPagination</span></code>。</p>
+</section>
+<section id="configuration">
+<h3>配置 (Configuration)<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">PageNumberPagination</span></code> 类包含许多可以重写以修改分页样式的属性。</p>
+<p>要设置这些属性，您应该重写 <code class="docutils literal notranslate"><span class="pre">PageNumberPagination</span></code> 类，然后启用上面的自定义分页类。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">django_paginator_class</span></code> - 要使用的 Django Paginator 类。默认是 <code class="docutils literal notranslate"><span class="pre">django.core.paginator.Paginator</span></code>，对于大多数用例应该没问题。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">page_size</span></code> - 表示页面大小的数值。如果设置，则会覆盖 <code class="docutils literal notranslate"><span class="pre">PAGE_SIZE</span></code> 设置。默认值与 <code class="docutils literal notranslate"><span class="pre">PAGE_SIZE</span></code> 设置键相同。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">page_query_param</span></code> - 指示要用于分页控件的查询参数的名称的字符串值。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">page_size_query_param</span></code> - 如果设置，则这是指示允许客户端基于每个请求设置页面大小的查询参数的名称的字符串值。默认为 <code class="docutils literal notranslate"><span class="pre">None</span></code>，表示客户端可能无法控制所请求的页面大小。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_page_size</span></code> - 如果设置，则这是指示允许的最大请求页面大小的数值。该属性仅在 <code class="docutils literal notranslate"><span class="pre">page_size_query_param</span></code> 也被设置时有效。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">last_page_strings</span></code> - 字符串值得列表或元组，指示可与 <code class="docutils literal notranslate"><span class="pre">page_query_param</span></code> 一起使用的值，用以请求集合中的最终页面。默认为 <code class="docutils literal notranslate"><span class="pre">('last',)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">template</span></code> - 在可浏览 API 中渲染分页控件时使用的模板的名称。可能会被覆盖以修改渲染样式，或设置为 <code class="docutils literal notranslate"><span class="pre">None</span></code> 以完全禁用 HTML 分页控件。默认为 <code class="docutils literal notranslate"><span class="pre">&quot;rest_framework/pagination/numbers.html&quot;</span></code>。</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="limitoffsetpagination">
+<h2>LimitOffsetPagination<a class="headerlink" href="#limitoffsetpagination" title="Permalink to this heading">#</a></h2>
+<p>这种分页样式反映了查找多个数据库记录时使用的语法。客户端包括 “limit” 和 “offset” 查询参数。limit 表示要返回的最大项数，相当于其他样式中的 <code class="docutils literal notranslate"><span class="pre">page_size</span></code>。offset 表示查询相对于整套未标记项的起始位置。</p>
+<p><strong>Request</strong>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>GET https://api.example.org/accounts/?limit=100&amp;offset=400
+</pre></div>
+</div>
+<p><strong>Response</strong>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>HTTP 200 OK
+{
+    &quot;count&quot;: 1023
+    &quot;next&quot;: &quot;https://api.example.org/accounts/?limit=100&amp;offset=500&quot;,
+    &quot;previous&quot;: &quot;https://api.example.org/accounts/?limit=100&amp;offset=300&quot;,
+    &quot;results&quot;: [
+       …
+    ]
+}
+</pre></div>
+</div>
+<section id="id1">
+<h3>设置 (Setup)<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>要全局启用 <code class="docutils literal notranslate"><span class="pre">LimitOffsetPagination</span></code> 样式，请使用以下配置：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_PAGINATION_CLASS&#39;</span><span class="p">:</span> <span class="s1">&#39;rest_framework.pagination.LimitOffsetPagination&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>或者，您也可以设置 <code class="docutils literal notranslate"><span class="pre">PAGE_SIZE</span></code> 键。如果还使用 <code class="docutils literal notranslate"><span class="pre">PAGE_SIZE</span></code> 参数，则 <code class="docutils literal notranslate"><span class="pre">limit</span></code> 查询参数将是可选的，并且可被客户端省略。</p>
+<p>在 <code class="docutils literal notranslate"><span class="pre">GenericAPIView</span></code> 子类上，您还可以设置 <code class="docutils literal notranslate"><span class="pre">pagination_class</span></code> 属性以便在每个视图的基础上选择 <code class="docutils literal notranslate"><span class="pre">LimitOffsetPagination</span></code>。</p>
+</section>
+<section id="id2">
+<h3>配置 (Configuration)<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">LimitOffsetPagination</span></code> 类包含许多可以重写以修改分页样式的属性。</p>
+<p>要设置这些属性，您应该重写 <code class="docutils literal notranslate"><span class="pre">LimitOffsetPagination</span></code> 类，然后启用上面的自定义分页类。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">default_limit</span></code> - 如果客户端在查询参数中未提供一个值，则指示使用限制的数值。默认与 <code class="docutils literal notranslate"><span class="pre">PAGE_SIZE</span></code> 设置键相同的值。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limit_query_param</span></code> - 指示 “limit” 查询参数的名称的字符串值。默认为 <code class="docutils literal notranslate"><span class="pre">'limit'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">offset_query_param</span></code> - 指示 “offset” 查询参数的名称的字符串值。默认为 <code class="docutils literal notranslate"><span class="pre">'offset'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_limit</span></code> - 如果设置，则这是指示客户端可能请求的最大允许限度的数值。默认为 <code class="docutils literal notranslate"><span class="pre">None</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">template</span></code> - 在可浏览 API 中渲染分页控件时使用的模板的名称。可能会被覆盖以修改渲染样式，或设置为 <code class="docutils literal notranslate"><span class="pre">None</span></code> 以完全禁用 HTML 分页控件。默认为 <code class="docutils literal notranslate"><span class="pre">&quot;rest_framework/pagination/numbers.html&quot;</span></code>。</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="cursorpagination">
+<h2>CursorPagination<a class="headerlink" href="#cursorpagination" title="Permalink to this heading">#</a></h2>
+<p>基于游标的分页提供了一个不透明的 “游标” 指示器，客户端可以使用该指示器来翻阅结果集。这种分页样式只提供正向和反向控件，并且不允许客户端导航到任意位置。</p>
+<p>基于游标的分页要求结果集中的项具有唯一且不变的排序。这种排序通常是记录上的创建时间戳，因为这提供了排序的一致性。</p>
+<p>基于游标的分页比其他方案更复杂。它还要求结果集提供固定顺序，并且不允许客户端任意索引到结果集。然而，它确实提供了以下好处：</p>
+<ul class="simple">
+<li><p>提供一致的分页视图。正确使用 <code class="docutils literal notranslate"><span class="pre">CursorPagination</span></code> 可确保客户端在分页记录时永远不会看到相同的项两次，即使在分页过程中其他客户端插入新项。</p></li>
+<li><p>支持使用非常大的数据集。对于极大的数据集，使用基于偏移的分页样式的分页可能变得低效或无法使用。基于游标的分页方案具有固定时间属性，并且不会随着数据集大小的增加而减慢。</p></li>
+</ul>
+<section id="details-and-limitations">
+<h3>细节和限制 (Details and limitations)<a class="headerlink" href="#details-and-limitations" title="Permalink to this heading">#</a></h3>
+<p>正确使用基于游标的分页需要稍微注意细节。您需要考虑希望该方案应用什么排序。默认是按 <code class="docutils literal notranslate"><span class="pre">&quot;-created&quot;</span></code> 排序。这假设在模型实例上<strong>必须有一个 ‘created’ 时间戳字段</strong>，并且将显示 “时间轴” 样式的分页视图，其中最近添加的项是第一个。</p>
+<p>您可以通过覆盖分页类的 <code class="docutils literal notranslate"><span class="pre">'ordering'</span></code> 属性，或者将 <code class="docutils literal notranslate"><span class="pre">OrderingFilter</span></code> 过滤器类与 <code class="docutils literal notranslate"><span class="pre">CursorPagination</span></code> 一起使用来修改排序。当与 <code class="docutils literal notranslate"><span class="pre">OrderingFilter</span></code> 一起使用时，您应该强烈考虑限制用户可能排序的字段。</p>
+<p>正确使用游标分页应该有一个满足以下条件的排序字段：</p>
+<ul class="simple">
+<li><p>应该是一个不变的值，例如时间戳、slug 或其他仅在创建时设置一次的字段。</p></li>
+<li><p>应该是唯一的，或者几乎是唯一的。毫秒精度时间戳就是一个很好的例子。游标分页的这种实现使用了智能的 “位置 + 偏移” 样式，允许它正确地支持非严格唯一的值作为排序。</p></li>
+<li><p>应该是可以强制为字符串的非空值。</p></li>
+<li><p>不应该是浮点数。精度误差容易导致不正确的结果。提示：使用小数代替。(如果你已经有了一个浮点字段，并且必须对它进行分页，那么<a class="reference external" href="https://gist.github.com/keturn/8bc88525a183fd41c73ffb729b8865be#file-fpcursorpagination-py">这里能找到使用小数来限制精度的 <code class="docutils literal notranslate"><span class="pre">CurrPosiPrimes</span></code> 子类示例</a>。)</p></li>
+<li><p>该字段应具有数据库索引。</p></li>
+</ul>
+<p>使用不满足这些约束的排序字段通常仍然有效，但是您将失去游标分页的一些好处。</p>
+<p>关于我们用于游标分页的实现的更多技术细节，“<a class="reference external" href="http://cramer.io/2011/03/08/building-cursors-for-the-disqus-api">为 Disqus API 构建游标</a>” 博客文章对基本方法进行了很好的概述。</p>
+</section>
+<section id="id3">
+<h3>设置 (Setup)<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>要全局启用 <code class="docutils literal notranslate"><span class="pre">CursorPagination</span></code> 样式，请使用以下配置，按要求修改 <code class="docutils literal notranslate"><span class="pre">PAGE_SIZE</span></code>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_PAGINATION_CLASS&#39;</span><span class="p">:</span> <span class="s1">&#39;rest_framework.pagination.CursorPagination&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;PAGE_SIZE&#39;</span><span class="p">:</span> <span class="mi">100</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>在 <code class="docutils literal notranslate"><span class="pre">GenericAPIView</span></code> 子类上，您还可以设置 <code class="docutils literal notranslate"><span class="pre">pagination_class</span></code> 属性以便在每个视图的基础上选择 <code class="docutils literal notranslate"><span class="pre">CursorPagination</span></code>。</p>
+</section>
+<section id="id4">
+<h3>配置 (Configuration)<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">CursorPagination</span></code> 类包含许多可以重写以修改分页样式的属性。</p>
+<p>要设置这些属性，您应该重写 <code class="docutils literal notranslate"><span class="pre">CursorPagination</span></code> 类，然后启用上面的自定义分页类。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">page_size</span></code> = 指示页面大小的数值。如果设置，则会覆盖 <code class="docutils literal notranslate"><span class="pre">PAGE_SIZE</span></code> 设置。默认与 <code class="docutils literal notranslate"><span class="pre">PAGE_SIZE</span></code> 设置键相同的值。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cursor_query_param</span></code> = 指示 “cursor” 查询参数的名称的字符串值。默认为 <code class="docutils literal notranslate"><span class="pre">'cursor'</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ordering</span></code> = 这应该是一个字符串或字符串列表，指示将应用基于游标的分页的字段。例如： <code class="docutils literal notranslate"><span class="pre">ordering</span> <span class="pre">=</span> <span class="pre">'slug'</span></code>。默认为 <code class="docutils literal notranslate"><span class="pre">-created</span></code>。该值还可以通过在视图上使用 <code class="docutils literal notranslate"><span class="pre">OrderingFilter</span></code> 来覆盖。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">template</span></code> = 在可浏览 API 中渲染分页控件时使用的模板的名称。可能会被覆盖以修改渲染样式，或设置为 <code class="docutils literal notranslate"><span class="pre">None</span></code> 以完全禁用 HTML 分页控件。默认为 <code class="docutils literal notranslate"><span class="pre">&quot;rest_framework/pagination/previous_and_next.html&quot;</span></code>。</p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="custom-pagination-styles">
+<h1>自定义分页样式 (Custom pagination styles)<a class="headerlink" href="#custom-pagination-styles" title="Permalink to this heading">#</a></h1>
+<p>要创建自定义分页序列化类，您应该子类化 <code class="docutils literal notranslate"><span class="pre">pagination.BasePagination</span></code> 并重写 <code class="docutils literal notranslate"><span class="pre">paginate_queryset(self,</span> <span class="pre">queryset,</span> <span class="pre">request,</span> <span class="pre">view=None)</span></code> 和 <code class="docutils literal notranslate"><span class="pre">get_paginated_response(self,</span> <span class="pre">data)</span></code> 方法：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">paginate_queryset</span></code> 方法传递初始查询集，并且应返回一个只包含请求页面中的数据的可迭代对象。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_paginated_response</span></code> 方法传递序列化的页面数据，并返回 <code class="docutils literal notranslate"><span class="pre">Response</span></code> 实例。</p></li>
+</ul>
+<p>请注意，<code class="docutils literal notranslate"><span class="pre">paginate_queryset</span></code> 方法可以在分页实例上设置状态，而后 <code class="docutils literal notranslate"><span class="pre">get_paginated_response</span></code> 方法可以使用它。</p>
+<section id="id5">
+<h2>举个栗子<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>假设我们想用一个修改后的格式替换默认分页输出样式，该格式包含嵌套 “links” 键下的下一个和上一个链接。我们可以像这样指定自定义分页类：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomPagination</span><span class="p">(</span><span class="n">pagination</span><span class="o">.</span><span class="n">PageNumberPagination</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_paginated_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({</span>
+            <span class="s1">&#39;links&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;next&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_next_link</span><span class="p">(),</span>
+                <span class="s1">&#39;previous&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_previous_link</span><span class="p">()</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">page</span><span class="o">.</span><span class="n">paginator</span><span class="o">.</span><span class="n">count</span><span class="p">,</span>
+            <span class="s1">&#39;results&#39;</span><span class="p">:</span> <span class="n">data</span>
+        <span class="p">})</span>
+</pre></div>
+</div>
+<p>然后我们需要在配置中设置自定义类：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_PAGINATION_CLASS&#39;</span><span class="p">:</span> <span class="s1">&#39;my_project.apps.core.pagination.CustomPagination&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;PAGE_SIZE&#39;</span><span class="p">:</span> <span class="mi">100</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>请注意，如果您关心如何在可浏览 API 的响应中显示键的顺序，则可以在构造分页响应的主体时选择使用 <code class="docutils literal notranslate"><span class="pre">OrderedDict</span></code>，但这是可选的。</p>
+</section>
+<section id="using-your-custom-pagination-class">
+<h2>使用您的自定义分页类 (Using your custom pagination class)<a class="headerlink" href="#using-your-custom-pagination-class" title="Permalink to this heading">#</a></h2>
+<p>要默认使用您的自定义分页类，请使用 <code class="docutils literal notranslate"><span class="pre">DEFAULT_PAGINATION_CLASS</span></code> 设置：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_PAGINATION_CLASS&#39;</span><span class="p">:</span> <span class="s1">&#39;my_project.apps.core.pagination.LinkHeaderPagination&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;PAGE_SIZE&#39;</span><span class="p">:</span> <span class="mi">100</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>列表端点的 API 响应现在将包含一个 <code class="docutils literal notranslate"><span class="pre">Link</span></code> 标头，而不是将分页链接作为响应主体的一部分包括在内，例如：</p>
+</section>
+<section id="pagination-schemas">
+<h2>分页和模式 (Pagination &amp; schemas)<a class="headerlink" href="#pagination-schemas" title="Permalink to this heading">#</a></h2>
+<p>您还可以通过实现 <code class="docutils literal notranslate"><span class="pre">get_schema_fields()</span></code> 方法使分页控件可用于 REST framework 提供的模式自动生成。此方法应具有以下签名：</p>
+<p><code class="docutils literal notranslate"><span class="pre">get_schema_fields(self,</span> <span class="pre">view)</span></code></p>
+<p>该方法应返回 <code class="docutils literal notranslate"><span class="pre">coreapi.Field</span></code> 实例的列表。</p>
+<hr class="docutils" />
+<p><img alt="f_14127127.png" src="http://pan.16mb.com/data/f_14127127.png" /></p>
+<p><em>使用 ‘Link header’ 的自定义分页样式</em></p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="html-html-pagination-controls">
+<h1>HTML 分页控件 (HTML pagination controls)<a class="headerlink" href="#html-html-pagination-controls" title="Permalink to this heading">#</a></h1>
+<p>默认情况下，使用分页类将导致 HTML 分页控件显示在可浏览的 API 中。有两种内置显示样式。<code class="docutils literal notranslate"><span class="pre">PageNumberPagination</span></code> 和 <code class="docutils literal notranslate"><span class="pre">LimitOffsetPagination</span></code> 类显示带有上一个和下一个控件的页码列表。<code class="docutils literal notranslate"><span class="pre">CursorPagination</span></code> 类显示更简单的样式，仅显示上一个和下一个控件。</p>
+<section id="customizing-the-controls">
+<h2>自定义控件 (Customizing the controls)<a class="headerlink" href="#customizing-the-controls" title="Permalink to this heading">#</a></h2>
+<p>您可以覆盖渲染 HTML 分页控件的模板。这两种内置式样是：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rest_framework/pagination/numbers.html</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rest_framework/pagination/previous_and_next.html</span></code></p></li>
+</ul>
+<p>在全局模板目录中提供这些路径中的任一个模板将重写相关分页类的默认渲染。</p>
+<p>或者，您可以通过继承现有类来完全禁用 HTML 分页控件，将 <code class="docutils literal notranslate"><span class="pre">template=None</span></code> 设置为类的属性。然后，您需要配置 <code class="docutils literal notranslate"><span class="pre">DEFAULT_PAGINATION_CLASS</span></code> 设置键，以将您的自定义类用作默认分页样式。</p>
+<section id="api-low-level-api">
+<h3>低级 API (Low-level API)<a class="headerlink" href="#api-low-level-api" title="Permalink to this heading">#</a></h3>
+<p>用于确定分页类是否应显示控件的低级 API 在分页实例上公开为 <code class="docutils literal notranslate"><span class="pre">display_page_controls</span></code> 属性。如果需要显示 HTML 分页控件，则应在 <code class="docutils literal notranslate"><span class="pre">paginate_queryset</span></code> 方法中将自定义分页类设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">.to_html()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.get_html_context()</span></code> 方法也可以在自定义分页类中重写，以便进一步自定义控件的渲染方式。</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="third-party-packages">
+<h1>第三方包 (Third party packages)<a class="headerlink" href="#third-party-packages" title="Permalink to this heading">#</a></h1>
+<p>以下是可用的第三方包。</p>
+<section id="drf-extensions">
+<h2>DRF-extensions<a class="headerlink" href="#drf-extensions" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://chibisov.github.io/drf-extensions/docs/"><code class="docutils literal notranslate"><span class="pre">DRF-extensions</span></code> 包</a>包括 <a class="reference external" href="https://chibisov.github.io/drf-extensions/docs/#paginatebymaxmixin"><code class="docutils literal notranslate"><span class="pre">PaginateByMax</span></code> 混合类</a>，它允许您的 API 客户端指定 <code class="docutils literal notranslate"><span class="pre">?page_size=max</span></code> 以获得允许的最大页面大小。</p>
+</section>
+<section id="drf-proxy-pagination">
+<h2>drf-proxy-pagination<a class="headerlink" href="#drf-proxy-pagination" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/tuffnatty/drf-proxy-pagination"><code class="docutils literal notranslate"><span class="pre">drf-proxy-pagination</span></code> 包</a>中包含 <code class="docutils literal notranslate"><span class="pre">ProxyPagination</span></code> 类，允许选择带有查询参数的分页类。</p>
+</section>
+<section id="link-header-pagination">
+<h2>link-header-pagination<a class="headerlink" href="#link-header-pagination" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/tbeadle/django-rest-framework-link-header-pagination"><code class="docutils literal notranslate"><span class="pre">django-rest-framework-link-header-pagination</span></code> 包</a>中包含 <code class="docutils literal notranslate"><span class="pre">LinkHeaderPagination</span></code> 类，它通过 <a class="reference external" href="http://www.django-rest-framework.org/api-guide/github-link-pagination">Github 开发者文档</a>中描述的 HTTP <code class="docutils literal notranslate"><span class="pre">Link</span></code> 标头提供分页。</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./API-Guide"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Filtering.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">过滤 (Filtering)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Versioning.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">版本控制 (Versioning)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">分页 (Pagination)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-pagination-style">设置分页样式 (Setting the pagination style)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-the-pagination-style">修改分页样式 (Modifying the pagination style)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-reference">API 参考 (API Reference)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pagenumberpagination">PageNumberPagination</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">设置 (Setup)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">配置 (Configuration)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitoffsetpagination">LimitOffsetPagination</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">设置 (Setup)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">配置 (Configuration)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cursorpagination">CursorPagination</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#details-and-limitations">细节和限制 (Details and limitations)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">设置 (Setup)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">配置 (Configuration)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-pagination-styles">自定义分页样式 (Custom pagination styles)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">举个栗子</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-your-custom-pagination-class">使用您的自定义分页类 (Using your custom pagination class)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pagination-schemas">分页和模式 (Pagination &amp; schemas)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#html-html-pagination-controls">HTML 分页控件 (HTML pagination controls)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-the-controls">自定义控件 (Customizing the controls)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-low-level-api">低级 API (Low-level API)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#third-party-packages">第三方包 (Third party packages)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drf-extensions">DRF-extensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drf-proxy-pagination">drf-proxy-pagination</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#link-header-pagination">link-header-pagination</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

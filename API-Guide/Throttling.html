@@ -1,0 +1,848 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>限流 (Throttling) &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'API-Guide/Throttling';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="过滤 (Filtering)" href="Filtering.html" />
+    <link rel="prev" title="权限 (Permissions)" href="Permissions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Authentication-and-Permissions.html">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Views.html">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Renderers.html">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-fields.html">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Validators.html">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Authentication.html">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Permissions.html">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Filtering.html">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Pagination.html">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Exceptions.html">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Testing.html">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Settings.html">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/API_Clients.html">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/The_Browsable_API.html">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Community/Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Third_Party_Packages.html">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Contributing_to_REST_framework.html">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Community/Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.4_Announcement.html">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.0_Announcement.html">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAPI-Guide/Throttling.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/API-Guide/Throttling.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>限流 (Throttling)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">限流 (Throttling)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-throttling-is-determined">如何确定限流 (How throttling is determined)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-throttling-policy">设置限流策略 (Setting the throttling policy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-clients-are-identified">如何识别客户端 (How clients are identified)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-cache">设置缓存 (Setting up the cache)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api">API 参考</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anonratethrottle">AnonRateThrottle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#userratethrottle">UserRateThrottle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scopedratethrottle">ScopedRateThrottle</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-throttles">自定义限流 (Custom throttles)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">举个栗子</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="throttling">
+<h1>限流 (Throttling)<a class="headerlink" href="#throttling" title="Permalink to this heading">#</a></h1>
+<p>限流类似于<a class="reference external" href="http://www.django-rest-framework.org/api-guide/permissions/">权限</a>，因为它确定是否应该授权请求。限流阀表示临时状态，并用来控制客户端对 API 的请求速率。</p>
+<p>与权限一样，可能会使用多种限流方式。您的 API 可能对未经身份验证的请求进行限流，对经过身份验证的请求限流较少。</p>
+<p>您可能想要使用多种限流的另一种方案是，如果您需要对 API 的不同部分施加不同的约束，由于某些服务特别是资源密集型。</p>
+<p>如果您想同时施加突发节流速率和持续节流速率，还可以使用多个限流阀。例如，您可能希望将用户限制为每分钟最多 60 个请求，每天 1000 个请求。</p>
+<p>限流阀不一定只指限速请求。例如，存储服务可能还需要限制带宽，而付费数据服务可能希望限制访问的记录的特定数量。</p>
+<section id="how-throttling-is-determined">
+<h2>如何确定限流 (How throttling is determined)<a class="headerlink" href="#how-throttling-is-determined" title="Permalink to this heading">#</a></h2>
+<p>与权限和身份验证一样，REST framework 中的限流始终定义为类列表。</p>
+<p>在运行视图的主体之前，检查列表中的每个限流阀。如果任何限流检查失败，将引发 <code class="docutils literal notranslate"><span class="pre">exceptions.Throttled</span></code> 异常，并且该视图的主体将不会再执行。</p>
+</section>
+<section id="setting-the-throttling-policy">
+<h2>设置限流策略 (Setting the throttling policy)<a class="headerlink" href="#setting-the-throttling-policy" title="Permalink to this heading">#</a></h2>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">DEFAULT_THROTTLE_CLASSES</span></code> 和 <code class="docutils literal notranslate"><span class="pre">DEFAULT_THROTTLE_RATES</span></code> settings 可以设置全局的默认限流策略。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_THROTTLE_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;rest_framework.throttling.AnonRateThrottle&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;rest_framework.throttling.UserRateThrottle&#39;</span>
+    <span class="p">),</span>
+    <span class="s1">&#39;DEFAULT_THROTTLE_RATES&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;anon&#39;</span><span class="p">:</span> <span class="s1">&#39;100/day&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="s1">&#39;1000/day&#39;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">DEFAULT_THROTTLE_RATES</span></code> 中使用的频率描述可能包括 <code class="docutils literal notranslate"><span class="pre">second</span></code>，<code class="docutils literal notranslate"><span class="pre">minute</span></code>，<code class="docutils literal notranslate"><span class="pre">hour</span></code> 或 <code class="docutils literal notranslate"><span class="pre">day</span></code> 作为限流周期。</p>
+<p>您还可以使用基于 <code class="docutils literal notranslate"><span class="pre">APIView</span></code> 类的视图，在每个视图或每个视图集的基础上设置限流策略。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">rest_framework.throttling</span> <span class="kn">import</span> <span class="n">UserRateThrottle</span>
+<span class="kn">from</span> <span class="nn">rest_framework.views</span> <span class="kn">import</span> <span class="n">APIView</span>
+
+<span class="k">class</span> <span class="nc">ExampleView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="n">throttle_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">UserRateThrottle</span><span class="p">,)</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;request was permitted&#39;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>或者使用基于函数的视图的 <code class="docutils literal notranslate"><span class="pre">&#64;api_view</span></code> 装饰器。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@throttle_classes</span><span class="p">([</span><span class="n">UserRateThrottle</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">example_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;request was permitted&#39;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="how-clients-are-identified">
+<h2>如何识别客户端 (How clients are identified)<a class="headerlink" href="#how-clients-are-identified" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">X-Forwarded-For</span></code> HTTP 标头和 <code class="docutils literal notranslate"><span class="pre">REMOTE_ADDR</span></code> WSGI 变量用于为限流的唯一标识的客户端 IP 地址。如果存在 <code class="docutils literal notranslate"><span class="pre">X-Forwarded-For</span></code> 标头，则将使用它，否则将使用 WSGI 环境中的 <code class="docutils literal notranslate"><span class="pre">REMOTE_ADDR</span></code> 变量的值。</p>
+<p>如果您需要严格标识唯一的客户端 IP 地址，则需要首先通过设置 <code class="docutils literal notranslate"><span class="pre">NUM_PROXIES</span></code> 设置来配置 API 运行的应用程序代理的数量。此设置应为零或更大的整数。如果设置为非零，则一旦任何应用程序代理 IP 地址首先被排除，客户端 IP 将被标识为 <code class="docutils literal notranslate"><span class="pre">X-Forwarded-For</span></code> 标头中的最后一个 IP 地址。如果设置为零，则 <code class="docutils literal notranslate"><span class="pre">REMOTE_ADDR</span></code> 值将始终用作识别 IP 地址。</p>
+<p>重要的是要理解，如果配置 <code class="docutils literal notranslate"><span class="pre">NUM_PROXIES</span></code> 设置，那么唯一的 <a class="reference external" href="https://en.wikipedia.org/wiki/Network_address_translation">NAT</a> 网关后面的所有客户端将被视为单个客户端。</p>
+<p>关于 <code class="docutils literal notranslate"><span class="pre">X-Forwarded-For</span></code> 标头如何工作以及识别远程客户端 IP 的更多上下文可以<a class="reference external" href="http://oxpedia.org/wiki/index.php?title=AppSuite:Grizzly#Multiple_Proxies_in_front_of_the_cluster">在这里找到</a>。</p>
+</section>
+<section id="setting-up-the-cache">
+<h2>设置缓存 (Setting up the cache)<a class="headerlink" href="#setting-up-the-cache" title="Permalink to this heading">#</a></h2>
+<p>EST framework 提供的限流类使用 Django 的缓存后端。你应该确保你已经设置了适当的<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/settings/#caches">缓存设置</a>。对于简单的设置，<code class="docutils literal notranslate"><span class="pre">LocMemCache</span></code> 后端的默认值应该没问题。有关更多详细信息，请参阅 Django 的<a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/cache/#setting-up-the-cache">缓存文档</a>。</p>
+<p>如果您需要使用 <code class="docutils literal notranslate"><span class="pre">'default'</span></code> 以外的缓存，则可以通过创建自定义限流类并设置 <code class="docutils literal notranslate"><span class="pre">cache</span></code> 属性来实现。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomAnonRateThrottle</span><span class="p">(</span><span class="n">AnonRateThrottle</span><span class="p">):</span>
+    <span class="n">cache</span> <span class="o">=</span> <span class="n">get_cache</span><span class="p">(</span><span class="s1">&#39;alternate&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>您还需要记住在 <code class="docutils literal notranslate"><span class="pre">'DEFAULT_THROTTLE_CLASSES'</span></code> settings 键中设置自定义的限流类，或者使用 <code class="docutils literal notranslate"><span class="pre">throttle_classes</span></code> 视图属性。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="api">
+<h1>API 参考<a class="headerlink" href="#api" title="Permalink to this heading">#</a></h1>
+<section id="anonratethrottle">
+<h2>AnonRateThrottle<a class="headerlink" href="#anonratethrottle" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">AnonRateThrottle</span></code> 只会限制未经认证的用户。传入请求的 IP 地址用于生成唯一的键来限流。</p>
+<p>允许的请求率由以下之一决定 (按优先顺序)。</p>
+<ul class="simple">
+<li><p>类上的 <code class="docutils literal notranslate"><span class="pre">rate</span></code> 属性，可以通过重写 <code class="docutils literal notranslate"><span class="pre">AnonRateThrottle</span></code> 并设置其属性来提供。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT_THROTTLE_RATES['anon']</span></code> 设置。</p></li>
+</ul>
+<p>如果您想限制未知来源的请求率，<code class="docutils literal notranslate"><span class="pre">AnonRateThrottle</span></code> 是合适的。</p>
+</section>
+<section id="userratethrottle">
+<h2>UserRateThrottle<a class="headerlink" href="#userratethrottle" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">UserRateThrottle</span></code> 将通过 API 限制用户的给定请求率。用户 id 用于生成唯一的密钥来加以限制。未经身份验证的请求将回退到使用传入请求的 IP 地址生成唯一的密钥来进行限制。</p>
+<p>允许的请求率由以下之一决定 (按优先顺序)。</p>
+<ul class="simple">
+<li><p>类上的 <code class="docutils literal notranslate"><span class="pre">rate</span></code> 属性，可以通过重写 <code class="docutils literal notranslate"><span class="pre">UserRateThrottle</span></code> 并设置其属性来提供。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT_THROTTLE_RATES['user']</span></code> 设置。</p></li>
+</ul>
+<p>API 可能同时具有多个 <code class="docutils literal notranslate"><span class="pre">UserRateThrottles</span></code>。为此，请重写 <code class="docutils literal notranslate"><span class="pre">UserRateThrottle</span></code> 并为每个类设置唯一的 “范围”。</p>
+<p>例如，可以通过使用以下类来实现多个用户限流率…</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BurstRateThrottle</span><span class="p">(</span><span class="n">UserRateThrottle</span><span class="p">):</span>
+    <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;burst&#39;</span>
+
+<span class="k">class</span> <span class="nc">SustainedRateThrottle</span><span class="p">(</span><span class="n">UserRateThrottle</span><span class="p">):</span>
+    <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;sustained&#39;</span>
+</pre></div>
+</div>
+<p>…和以下设置。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_THROTTLE_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;example.throttles.BurstRateThrottle&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;example.throttles.SustainedRateThrottle&#39;</span>
+    <span class="p">),</span>
+    <span class="s1">&#39;DEFAULT_THROTTLE_RATES&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;burst&#39;</span><span class="p">:</span> <span class="s1">&#39;60/min&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;sustained&#39;</span><span class="p">:</span> <span class="s1">&#39;1000/day&#39;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>如果希望对每个用户进行简单的全局速率限制，那么 <code class="docutils literal notranslate"><span class="pre">UserRateThrottle</span></code> 是合适的。</p>
+</section>
+<section id="scopedratethrottle">
+<h2>ScopedRateThrottle<a class="headerlink" href="#scopedratethrottle" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ScopedRateThrottle</span></code> 类可用于限制对 API 特定部分的访问。只有当正在访问的视图包含 <code class="docutils literal notranslate"><span class="pre">.throttle_scope</span></code> 属性时才会应用此限制。然后通过将请求的 “范围” 与唯一的用户 id 或 IP 地址连接起来形成唯一的限流密钥。</p>
+<p>允许的请求率由 <code class="docutils literal notranslate"><span class="pre">DEFAULT_THROTTLE_RATES</span></code> setting 使用请求 “范围” 中的键确定。</p>
+<p>例如，给出以下视图…</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ContactListView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="n">throttle_scope</span> <span class="o">=</span> <span class="s1">&#39;contacts&#39;</span>
+    <span class="o">...</span>
+
+<span class="k">class</span> <span class="nc">ContactDetailView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="n">throttle_scope</span> <span class="o">=</span> <span class="s1">&#39;contacts&#39;</span>
+    <span class="o">...</span>
+
+<span class="k">class</span> <span class="nc">UploadView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="n">throttle_scope</span> <span class="o">=</span> <span class="s1">&#39;uploads&#39;</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>…和以下设置。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_THROTTLE_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;rest_framework.throttling.ScopedRateThrottle&#39;</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="s1">&#39;DEFAULT_THROTTLE_RATES&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;contacts&#39;</span><span class="p">:</span> <span class="s1">&#39;1000/day&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;uploads&#39;</span><span class="p">:</span> <span class="s1">&#39;20/day&#39;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>用户对 <code class="docutils literal notranslate"><span class="pre">ContactListView</span></code> 或 <code class="docutils literal notranslate"><span class="pre">ContactDetailView</span></code> 的请求将被限制为每天 1000 次。用户对 <code class="docutils literal notranslate"><span class="pre">UploadView</span></code> 的请求将被限制为每天 20 次。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="custom-throttles">
+<h1>自定义限流 (Custom throttles)<a class="headerlink" href="#custom-throttles" title="Permalink to this heading">#</a></h1>
+<p>要创建自定义限流，请重写 <code class="docutils literal notranslate"><span class="pre">BaseThrottle</span></code> 类并实现 <code class="docutils literal notranslate"><span class="pre">.allow_request(self,</span> <span class="pre">request,</span> <span class="pre">view)</span></code>。如果请求被允许，该方法应返回 <code class="docutils literal notranslate"><span class="pre">True</span></code>，否则返回 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
+<p>还可以选择重写 <code class="docutils literal notranslate"><span class="pre">.wait()</span></code> 方法。如果实现，<code class="docutils literal notranslate"><span class="pre">.wait()</span></code> 应返回在尝试下一次请求之前等待的推荐秒数，或者返回 <code class="docutils literal notranslate"><span class="pre">None</span></code>。如果 <code class="docutils literal notranslate"><span class="pre">.allow_request()</span></code> 先前已经返回 <code class="docutils literal notranslate"><span class="pre">False</span></code>，则只会调用 <code class="docutils literal notranslate"><span class="pre">.wait()</span></code> 方法。</p>
+<p>如果 <code class="docutils literal notranslate"><span class="pre">.wait()</span></code> 方法被实现并且请求受到限制，那么 <code class="docutils literal notranslate"><span class="pre">Retry-After</span></code> 标头将包含在响应中。</p>
+<section id="id1">
+<h2>举个栗子<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>以下是速率限制的示例，它将随机地限制 10 次请求中的 1 次。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">class</span> <span class="nc">RandomRateThrottle</span><span class="p">(</span><span class="n">throttling</span><span class="o">.</span><span class="n">BaseThrottle</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">allow_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./API-Guide"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Permissions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">权限 (Permissions)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Filtering.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">过滤 (Filtering)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">限流 (Throttling)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-throttling-is-determined">如何确定限流 (How throttling is determined)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-throttling-policy">设置限流策略 (Setting the throttling policy)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-clients-are-identified">如何识别客户端 (How clients are identified)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-cache">设置缓存 (Setting up the cache)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api">API 参考</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anonratethrottle">AnonRateThrottle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#userratethrottle">UserRateThrottle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scopedratethrottle">ScopedRateThrottle</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-throttles">自定义限流 (Custom throttles)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">举个栗子</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

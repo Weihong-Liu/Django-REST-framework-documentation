@@ -1,0 +1,1132 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>测试 (Testing) &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'API-Guide/Testing';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="设置 (Settings)" href="Settings.html" />
+    <link rel="prev" title="异常 (Exceptions)" href="Exceptions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Authentication-and-Permissions.html">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Views.html">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Renderers.html">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-fields.html">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Validators.html">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Authentication.html">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Permissions.html">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Throttling.html">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Filtering.html">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Pagination.html">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Exceptions.html">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Settings.html">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/API_Clients.html">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/The_Browsable_API.html">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Community/Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Third_Party_Packages.html">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Contributing_to_REST_framework.html">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Community/Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.4_Announcement.html">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.0_Announcement.html">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAPI-Guide/Testing.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/API-Guide/Testing.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>测试 (Testing)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">测试 (Testing)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#apirequestfactory">APIRequestFactory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-test-requests">创建测试请求 (Creating test requests)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#format-using-the-format-argument">使用 <code class="docutils literal notranslate"><span class="pre">format</span></code> 参数 (Using the <code class="docutils literal notranslate"><span class="pre">format</span></code> argument)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicitly-encoding-the-request-body">显式编码请求主体 (Explicitly encoding the request body)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-patch-put-and-patch-with-form-data">PUT 和 PATCH 与表单数据 (PUT and PATCH with form data)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forcing-authentication">强制验证 (Forcing authentication)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csrf-forcing-csrf-validation">强制 CSRF 验证 (Forcing CSRF validation)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#apiclient">APIClient</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-requests">发出请求 (Making requests)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authenticating">认证 (Authenticating)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#login-kwargs">.login(**kwargs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#credentials-kwargs">.credentials(**kwargs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#force-authenticate-user-none-token-none">.force_authenticate(user=None, token=None)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csrf-csrf-validation">CSRF 验证 (CSRF validation)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#requestsclient">RequestsClient</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requestsclient-requestsclient-and-working-with-the-database"><code class="docutils literal notranslate"><span class="pre">RequestsClient</span></code> 和使用数据库 (<code class="docutils literal notranslate"><span class="pre">RequestsClient</span></code> and working with the database)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#headers-authentication">标头和身份验证 (Headers &amp; Authentication)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csrf">CSRF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-tests">实时测试 (Live tests)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#coreapiclient">CoreAPIClient</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">标头和身份验证 (Headers &amp; Authentication)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-test-cases">API 测试用例 (API Test cases)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">举个栗子</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#urlpatternstestcase">URLPatternsTestCase</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">举个栗子</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-responses">测试响应 (Testing responses)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-response-data">检查响应数据 (Checking the response data)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rendering-responses">渲染响应 (Rendering responses)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">配置 (Configuration)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-default-format">设置默认格式 (Setting the default format)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-available-formats">设置可用的格式 (Setting the available formats)</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="testing">
+<h1>测试 (Testing)<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h1>
+<p>天有不测风云，码有祸福旦夕 (指明了测试在编程开发中的重要性)。—— <a class="reference external" href="https://jacobian.org/writing/django-apps-with-buildout/#s-create-a-test-wrapper">Jacob Kaplan-Moss</a></p>
+<p>REST framework 包含一些扩展 Django 现有测试框架的辅助类，并改进对 API 请求的支持。</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="apirequestfactory">
+<h1>APIRequestFactory<a class="headerlink" href="#apirequestfactory" title="Permalink to this heading">#</a></h1>
+<p>扩展 <a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/testing/advanced/#django.test.client.RequestFactory">Django 的现有的 <code class="docutils literal notranslate"><span class="pre">RequestFactory</span></code> 类</a>。</p>
+<section id="creating-test-requests">
+<h2>创建测试请求 (Creating test requests)<a class="headerlink" href="#creating-test-requests" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">APIRequestFactory</span></code> 类支持与 Django 的标准 <code class="docutils literal notranslate"><span class="pre">RequestFactory</span></code> 类几乎相同的 API。这意味着标准的 <code class="docutils literal notranslate"><span class="pre">.get()</span></code>，<code class="docutils literal notranslate"><span class="pre">.post()</span></code>，<code class="docutils literal notranslate"><span class="pre">.put()</span></code>，<code class="docutils literal notranslate"><span class="pre">.patch()</span></code>，<code class="docutils literal notranslate"><span class="pre">.delete()</span></code>，<code class="docutils literal notranslate"><span class="pre">.head()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.options()</span></code> 方法都可用。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.test</span> <span class="kn">import</span> <span class="n">APIRequestFactory</span>
+
+<span class="c1"># 使用标准 RequestFactory API 创建表单 POST 请求</span>
+<span class="n">factory</span> <span class="o">=</span> <span class="n">APIRequestFactory</span><span class="p">()</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/notes/&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;new idea&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<section id="format-using-the-format-argument">
+<h3>使用 <code class="docutils literal notranslate"><span class="pre">format</span></code> 参数 (Using the <code class="docutils literal notranslate"><span class="pre">format</span></code> argument)<a class="headerlink" href="#format-using-the-format-argument" title="Permalink to this heading">#</a></h3>
+<p>创建请求主体 (如 <code class="docutils literal notranslate"><span class="pre">post</span></code>，<code class="docutils literal notranslate"><span class="pre">put</span></code> 和 <code class="docutils literal notranslate"><span class="pre">patch</span></code>) 方法包括 <code class="docutils literal notranslate"><span class="pre">format</span></code> 参数，这使得使用除 multipart 表单数据以外的内容类型生成请求变得容易。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 创建 JSON POST 请求</span>
+<span class="n">factory</span> <span class="o">=</span> <span class="n">APIRequestFactory</span><span class="p">()</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/notes/&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;new idea&#39;</span><span class="p">},</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>默认情况下，可用的格式是 <code class="docutils literal notranslate"><span class="pre">'multipart'</span></code> 和 <code class="docutils literal notranslate"><span class="pre">'json'</span></code>。为了与 Django 的现有的 <code class="docutils literal notranslate"><span class="pre">RequestFactory</span></code> 兼容，默认格式是 <code class="docutils literal notranslate"><span class="pre">'multipart'</span></code>。</p>
+<p>要支持更广泛的请求格式集，或更改默认格式，<a class="reference external" href="http://www.django-rest-framework.org/api-guide/testing/#configuration">请参阅配置部分</a>。</p>
+</section>
+<section id="explicitly-encoding-the-request-body">
+<h3>显式编码请求主体 (Explicitly encoding the request body)<a class="headerlink" href="#explicitly-encoding-the-request-body" title="Permalink to this heading">#</a></h3>
+<p>如果您需要显式编码请求主体，则可以通过设置 <code class="docutils literal notranslate"><span class="pre">content_type</span></code> 标志来完成。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">request</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/notes/&#39;</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;new idea&#39;</span><span class="p">}),</span> <span class="n">content_type</span><span class="o">=</span><span class="s1">&#39;application/json&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="put-patch-put-and-patch-with-form-data">
+<h3>PUT 和 PATCH 与表单数据 (PUT and PATCH with form data)<a class="headerlink" href="#put-patch-put-and-patch-with-form-data" title="Permalink to this heading">#</a></h3>
+<p>Django 的 <code class="docutils literal notranslate"><span class="pre">RequestFactory</span></code> 和 REST framework 的 <code class="docutils literal notranslate"><span class="pre">APIRequestFactory</span></code> 之间值得注意的一个区别是 multipart 表单数据将被编码为除 <code class="docutils literal notranslate"><span class="pre">.post()</span></code> 以外的方法。</p>
+<p>例如，使用 <code class="docutils literal notranslate"><span class="pre">APIRequestFactory</span></code>，您可以像这样做一个表单 PUT 请求：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">factory</span> <span class="o">=</span> <span class="n">APIRequestFactory</span><span class="p">()</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s1">&#39;/notes/547/&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;remember to email dave&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>使用 Django 的 <code class="docutils literal notranslate"><span class="pre">RequestFactory</span></code>，您需要自己显式编码数据：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.test.client</span> <span class="kn">import</span> <span class="n">encode_multipart</span><span class="p">,</span> <span class="n">RequestFactory</span>
+
+<span class="n">factory</span> <span class="o">=</span> <span class="n">RequestFactory</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;remember to email dave&#39;</span><span class="p">}</span>
+<span class="n">content</span> <span class="o">=</span> <span class="n">encode_multipart</span><span class="p">(</span><span class="s1">&#39;BoUnDaRyStRiNg&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">content_type</span> <span class="o">=</span> <span class="s1">&#39;multipart/form-data; boundary=BoUnDaRyStRiNg&#39;</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s1">&#39;/notes/547/&#39;</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="n">content_type</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="forcing-authentication">
+<h2>强制验证 (Forcing authentication)<a class="headerlink" href="#forcing-authentication" title="Permalink to this heading">#</a></h2>
+<p>当使用请求工厂直接测试视图时，能够直接验证请求通常很方便，而不必构造正确的验证凭证。</p>
+<p>要强制验证请求，请使用 <code class="docutils literal notranslate"><span class="pre">force_authenticate()</span></code> 方法。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.test</span> <span class="kn">import</span> <span class="n">force_authenticate</span>
+
+<span class="n">factory</span> <span class="o">=</span> <span class="n">APIRequestFactory</span><span class="p">()</span>
+<span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;olivia&#39;</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">AccountDetail</span><span class="o">.</span><span class="n">as_view</span><span class="p">()</span>
+
+<span class="c1"># 对视图进行身份验证请求...</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/accounts/django-superstars/&#39;</span><span class="p">)</span>
+<span class="n">force_authenticate</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">view</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>该方法的签名是 <code class="docutils literal notranslate"><span class="pre">force_authenticate(request,</span> <span class="pre">user=None,</span> <span class="pre">token=None)</span></code>。在进行呼叫时，可以设置用户和令牌中的一个或两个。</p>
+<p>例如，当使用令牌强行进行身份验证时，您可能会执行以下操作：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;olivia&#39;</span><span class="p">)</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/accounts/django-superstars/&#39;</span><span class="p">)</span>
+<span class="n">force_authenticate</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="n">user</span><span class="o">.</span><span class="n">auth_token</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>注意</strong>：<code class="docutils literal notranslate"><span class="pre">force_authenticate</span></code> 直接将 <code class="docutils literal notranslate"><span class="pre">request.user</span></code> 设置为内存中的 <code class="docutils literal notranslate"><span class="pre">user</span></code> 实例。如果要更新已保存的 <code class="docutils literal notranslate"><span class="pre">user</span></code> 状态的多个测试中重新使用相同的 <code class="docutils literal notranslate"><span class="pre">user</span></code> 实例，则可能需要在测试之间调用 <code class="docutils literal notranslate"><span class="pre">refresh_from_db()</span></code>。</p>
+<hr class="docutils" />
+<p><strong>注意</strong>：使用 <code class="docutils literal notranslate"><span class="pre">APIRequestFactory</span></code> 时，返回的对象是 Django 的标准 <code class="docutils literal notranslate"><span class="pre">HttpRequest</span></code>，而不是 REST framework 的 <code class="docutils literal notranslate"><span class="pre">Request</span></code> 对象，只有在调用视图后才会生成。</p>
+<p>这意味着直接在请求对象上设置属性可能并不总是具有您期望的效果。例如，直接设置 <code class="docutils literal notranslate"><span class="pre">.token</span></code> 将不起作用，并且直接设置 <code class="docutils literal notranslate"><span class="pre">.user</span></code> 仅在使用会话身份验证时才有效。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 如果正在使用 `SessionAuthentication`，请求将只进行身份验证。</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/accounts/django-superstars/&#39;</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">user</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">view</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="csrf-forcing-csrf-validation">
+<h2>强制 CSRF 验证 (Forcing CSRF validation)<a class="headerlink" href="#csrf-forcing-csrf-validation" title="Permalink to this heading">#</a></h2>
+<p>默认情况下，使用 <code class="docutils literal notranslate"><span class="pre">APIRequestFactory</span></code> 创建的请求在传递给 REST framework 视图时不会应用 CSRF 验证。如果您需要显式启用 CSRF 验证，则可以通过在实例化工厂时设置 <code class="docutils literal notranslate"><span class="pre">enforce_csrf_checks</span></code> 标志来实现。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">factory</span> <span class="o">=</span> <span class="n">APIRequestFactory</span><span class="p">(</span><span class="n">enforce_csrf_checks</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>注意</strong>：值得注意的是，Django 的标准 <code class="docutils literal notranslate"><span class="pre">RequestFactory</span></code> 不需要包含此选项，因为当使用常规的 Django 时，CSRF 验证发生在中间件中，当直接测试视图时不会运行。当使用 REST framework 时，CSRF 验证发生在视图内，因此请求工厂需要禁用视图级 CSRF 检查。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="apiclient">
+<h1>APIClient<a class="headerlink" href="#apiclient" title="Permalink to this heading">#</a></h1>
+<p>扩展 <a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/testing/tools/#the-test-client">Django 现有的 <code class="docutils literal notranslate"><span class="pre">Client</span></code> 类</a>。</p>
+<section id="making-requests">
+<h2>发出请求 (Making requests)<a class="headerlink" href="#making-requests" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">APIClient</span></code> 类支持与 Django 的标准 <code class="docutils literal notranslate"><span class="pre">Client</span></code> 类相同的请求接口。这意味着标准的 <code class="docutils literal notranslate"><span class="pre">.get()</span></code>，<code class="docutils literal notranslate"><span class="pre">.post()</span></code>，<code class="docutils literal notranslate"><span class="pre">.put()</span></code>，<code class="docutils literal notranslate"><span class="pre">.patch()</span></code>，<code class="docutils literal notranslate"><span class="pre">.delete()</span></code>，<code class="docutils literal notranslate"><span class="pre">.head()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.options()</span></code> 方法都可用。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.test</span> <span class="kn">import</span> <span class="n">APIClient</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">APIClient</span><span class="p">()</span>
+<span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/notes/&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;new idea&#39;</span><span class="p">},</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>要支持更广泛的请求格式集，或更改默认格式，<a class="reference external" href="http://www.django-rest-framework.org/api-guide/testing/#configuration">请参阅配置部分</a>。</p>
+</section>
+<section id="authenticating">
+<h2>认证 (Authenticating)<a class="headerlink" href="#authenticating" title="Permalink to this heading">#</a></h2>
+<section id="login-kwargs">
+<h3>.login(**kwargs)<a class="headerlink" href="#login-kwargs" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">login</span></code> 方法的功能与 Django 的常规 <code class="docutils literal notranslate"><span class="pre">Client</span></code> 类完全相同。这允许您对任何包含 <code class="docutils literal notranslate"><span class="pre">SessionAuthentication</span></code> 的视图进行身份验证。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在登录会话的上下文中发出所有请求。</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">APIClient</span><span class="p">()</span>
+<span class="n">client</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;lauren&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;secret&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>要退出，请照常调用注销方法。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 登出</span>
+<span class="n">client</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">login</span></code> 方法适用于测试使用会话身份验证的 API，例如包含 AJAX 与 API 交互的网站。</p>
+</section>
+<section id="credentials-kwargs">
+<h3>.credentials(**kwargs)<a class="headerlink" href="#credentials-kwargs" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">credentials</span></code> 方法可用于设置标头，然后测试客户端将包含在所有后续请求中。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.authtoken.models</span> <span class="kn">import</span> <span class="n">Token</span>
+<span class="kn">from</span> <span class="nn">rest_framework.test</span> <span class="kn">import</span> <span class="n">APIClient</span>
+
+<span class="c1"># 在所有请求中包含适当的 `Authorization:` 标头。</span>
+<span class="n">token</span> <span class="o">=</span> <span class="n">Token</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user__username</span><span class="o">=</span><span class="s1">&#39;lauren&#39;</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">APIClient</span><span class="p">()</span>
+<span class="n">client</span><span class="o">.</span><span class="n">credentials</span><span class="p">(</span><span class="n">HTTP_AUTHORIZATION</span><span class="o">=</span><span class="s1">&#39;Token &#39;</span> <span class="o">+</span> <span class="n">token</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>请注意，第二次调用 <code class="docutils literal notranslate"><span class="pre">credentials</span></code> 会覆盖任何现有凭证。您可以通过调用不带参数的方法来取消设置任何现有凭据。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 停止包含任何凭据</span>
+<span class="n">client</span><span class="o">.</span><span class="n">credentials</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">credentials</span></code> 方法适用于测试需要验证标头的 API，例如基本身份验证，OAuth1 和 OAuth2 身份验证以及简单令牌身份验证方案。</p>
+</section>
+<section id="force-authenticate-user-none-token-none">
+<h3>.force_authenticate(user=None, token=None)<a class="headerlink" href="#force-authenticate-user-none-token-none" title="Permalink to this heading">#</a></h3>
+<p>有时您可能希望完全绕过身份验证，并强制测试客户端的所有请求被自动视为已通过身份验证。</p>
+<p>如果您正在测试 API 但不希望构建有效的身份验证凭据以发出测试请求，则这可能是一个有用的快捷方式。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;lauren&#39;</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">APIClient</span><span class="p">()</span>
+<span class="n">client</span><span class="o">.</span><span class="n">force_authenticate</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>要取消对后续请求的身份验证，请调用 <code class="docutils literal notranslate"><span class="pre">force_authenticate</span></code> 将用户和/或令牌设置为 <code class="docutils literal notranslate"><span class="pre">None</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">force_authenticate</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="csrf-csrf-validation">
+<h2>CSRF 验证 (CSRF validation)<a class="headerlink" href="#csrf-csrf-validation" title="Permalink to this heading">#</a></h2>
+<p>默认情况下，使用 <code class="docutils literal notranslate"><span class="pre">APIClient</span></code> 时不应用 CSRF 验证。如果您需要显式启用 CSRF 验证，则可以通过在实例化客户端时设置 <code class="docutils literal notranslate"><span class="pre">enforce_csrf_checks</span></code> 标志来实现。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">APIClient</span><span class="p">(</span><span class="n">enforce_csrf_checks</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>通常，CSRF 验证将仅适用于任何会话身份验证视图。这意味着 CSRF 验证只有在客户端通过调用 <code class="docutils literal notranslate"><span class="pre">login()</span></code> 登录后才会发生。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="requestsclient">
+<h1>RequestsClient<a class="headerlink" href="#requestsclient" title="Permalink to this heading">#</a></h1>
+<p>REST framework 还包含一个客户端，用于使用流行的 Python 库 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 与应用程序进行交互。 这可能是有用的，如果：</p>
+<ul class="simple">
+<li><p>您期望主要从另一个 Python 服务与 API 进行交互，并且希望在与客户端看到的相同级别上测试该服务。</p></li>
+<li><p>您希望以这样的方式编写测试，即它们也可以针对临时或实时环境运行。(请参阅下面的 “实时测试”。)</p></li>
+</ul>
+<p>这公开了与直接使用请求会话完全相同的接口。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">RequestsClient</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://testserver/users/&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+</pre></div>
+</div>
+<p>请注意，请求客户端要求您传递完全限定的 URL。</p>
+<section id="requestsclient-requestsclient-and-working-with-the-database">
+<h2><code class="docutils literal notranslate"><span class="pre">RequestsClient</span></code> 和使用数据库 (<code class="docutils literal notranslate"><span class="pre">RequestsClient</span></code> and working with the database)<a class="headerlink" href="#requestsclient-requestsclient-and-working-with-the-database" title="Permalink to this heading">#</a></h2>
+<p>如果您想编写仅与服务接口交互的测试，则 <code class="docutils literal notranslate"><span class="pre">RequestsClient</span></code> 类很有用。这比使用标准的 Django 测试客户端要严格一些，因为这意味着所有的交互必须通过 API。</p>
+<p>如果您正在使用 <code class="docutils literal notranslate"><span class="pre">RequestsClient</span></code>，则需要确保测试设置和结果断言作为常规 API 调用执行，而不是直接与数据库模型交互。例如，与其检查 <code class="docutils literal notranslate"><span class="pre">Customer.objects.count()</span> <span class="pre">==</span> <span class="pre">3</span></code>，不如列出客户端点，并确保它包含三个记录。</p>
+</section>
+<section id="headers-authentication">
+<h2>标头和身份验证 (Headers &amp; Authentication)<a class="headerlink" href="#headers-authentication" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="http://docs.python-requests.org/en/master/user/advanced/#session-objects">当使用标准的 <code class="docutils literal notranslate"><span class="pre">requests.Session</span></code> 实例</a>以相同的方式提供自定义标头和身份验证凭据。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">requests.auth</span> <span class="kn">import</span> <span class="n">HTTPBasicAuth</span>
+
+<span class="n">client</span><span class="o">.</span><span class="n">auth</span> <span class="o">=</span> <span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;pass&#39;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;x-test&#39;</span><span class="p">:</span> <span class="s1">&#39;true&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</section>
+<section id="csrf">
+<h2>CSRF<a class="headerlink" href="#csrf" title="Permalink to this heading">#</a></h2>
+<p>如果您正在使用 <code class="docutils literal notranslate"><span class="pre">SessionAuthentication</span></code>，则需要为 <code class="docutils literal notranslate"><span class="pre">POST</span></code>，<code class="docutils literal notranslate"><span class="pre">PUT</span></code>，<code class="docutils literal notranslate"><span class="pre">PATCH</span></code> 或 <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> 请求包含 CSRF 令牌。</p>
+<p>您可以通过遵循基于 JavaScript 的客户端使用的相同流程来执行此操作。首先发出 <code class="docutils literal notranslate"><span class="pre">GET</span></code> 请求以获取 CRSF 令牌，然后在以下请求中显示该令牌。</p>
+<p>例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">RequestsClient</span><span class="p">()</span>
+
+<span class="c1"># 获取 CSRF 令牌。</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/homepage/&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+<span class="n">csrftoken</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">cookies</span><span class="p">[</span><span class="s1">&#39;csrftoken&#39;</span><span class="p">]</span>
+
+<span class="c1"># 与 API 交互。</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/organisations/&#39;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;MegaCorp&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;active&#39;</span>
+<span class="p">},</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;X-CSRFToken&#39;</span><span class="p">:</span> <span class="n">csrftoken</span><span class="p">})</span>
+<span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+</pre></div>
+</div>
+</section>
+<section id="live-tests">
+<h2>实时测试 (Live tests)<a class="headerlink" href="#live-tests" title="Permalink to this heading">#</a></h2>
+<p>通过谨慎使用，<code class="docutils literal notranslate"><span class="pre">RequestsClient</span></code> 和 <code class="docutils literal notranslate"><span class="pre">CoreAPIClient</span></code> 都提供了编写测试用例的能力，这些测试用例可以在开发中运行，也可以直接针对登台服务器或生产环境运行。</p>
+<p>使用此样式创建一些核心功能的基本测试是验证实时服务的有效方法。这样做可能需要仔细注意安装和卸载，以确保测试以不直接影响客户数据的方式运行。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="coreapiclient">
+<h1>CoreAPIClient<a class="headerlink" href="#coreapiclient" title="Permalink to this heading">#</a></h1>
+<p>CoreAPIClient 允许您使用 Python <code class="docutils literal notranslate"><span class="pre">coreapi</span></code> 客户端库与您的 API 进行交互。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fetch the API schema</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">CoreAPIClient</span><span class="p">()</span>
+<span class="n">schema</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://testserver/schema/&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create a new organisation</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;MegaCorp&#39;</span><span class="p">,</span> <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;active&#39;</span><span class="p">}</span>
+<span class="n">client</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;organisations&#39;</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">],</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="c1"># Ensure that the organisation exists in the listing</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;organisations&#39;</span><span class="p">,</span> <span class="s1">&#39;list&#39;</span><span class="p">])</span>
+<span class="k">assert</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">data</span> <span class="o">==</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;MegaCorp&#39;</span><span class="p">,</span> <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;active&#39;</span><span class="p">}])</span>
+</pre></div>
+</div>
+<section id="id1">
+<h2>标头和身份验证 (Headers &amp; Authentication)<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>自定义标头和身份验证可以与 <code class="docutils literal notranslate"><span class="pre">CoreAPIClient</span></code> 以类似于 <code class="docutils literal notranslate"><span class="pre">RequestsClient</span></code> 的方式一起使用。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">requests.auth</span> <span class="kn">import</span> <span class="n">HTTPBasicAuth</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">CoreAPIClient</span><span class="p">()</span>
+<span class="n">client</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">auth</span> <span class="o">=</span> <span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;pass&#39;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;x-test&#39;</span><span class="p">:</span> <span class="s1">&#39;true&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="api-api-test-cases">
+<h1>API 测试用例 (API Test cases)<a class="headerlink" href="#api-api-test-cases" title="Permalink to this heading">#</a></h1>
+<p>REST framework 包含以下测试用例类，它们镜像现有的 Django 测试用例类，但使用 <code class="docutils literal notranslate"><span class="pre">API​​Client</span></code> 而不是 Django 的默认 <code class="docutils literal notranslate"><span class="pre">Client</span></code>。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">APISimpleTestCase</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APITransactionTestCase</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APITestCase</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APILiveServerTestCase</span></code></p></li>
+</ul>
+<section id="id2">
+<h2>举个栗子<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>您可以像使用常规 Django 测试用例类一样使用任何 REST framework 的测试用例类。<code class="docutils literal notranslate"><span class="pre">self.client</span></code> 属性将是 <code class="docutils literal notranslate"><span class="pre">APIClient</span></code> 实例。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">reverse</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">status</span>
+<span class="kn">from</span> <span class="nn">rest_framework.test</span> <span class="kn">import</span> <span class="n">APITestCase</span>
+<span class="kn">from</span> <span class="nn">myproject.apps.core.models</span> <span class="kn">import</span> <span class="n">Account</span>
+
+<span class="k">class</span> <span class="nc">AccountTests</span><span class="p">(</span><span class="n">APITestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test_create_account</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        确保我们可以创建新的帐户对象。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;account-list&#39;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;DabApps&#39;</span><span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">status</span><span class="o">.</span><span class="n">HTTP_201_CREATED</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Account</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">Account</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;DabApps&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="urlpatternstestcase">
+<h1>URLPatternsTestCase<a class="headerlink" href="#urlpatternstestcase" title="Permalink to this heading">#</a></h1>
+<p>REST framework 还提供了一个测试用例类，用于在每个类的基础上隔离 <code class="docutils literal notranslate"><span class="pre">urlpatterns</span></code>。请注意，这继承自 Django 的 <code class="docutils literal notranslate"><span class="pre">SimpleTestCase</span></code>，并且很可能需要与另一个测试用例类混合使用。</p>
+<section id="id3">
+<h2>举个栗子<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">include</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">reverse</span>
+<span class="kn">from</span> <span class="nn">rest_framework.test</span> <span class="kn">import</span> <span class="n">APITestCase</span><span class="p">,</span> <span class="n">URLPatternsTestCase</span>
+
+
+<span class="k">class</span> <span class="nc">AccountTests</span><span class="p">(</span><span class="n">APITestCase</span><span class="p">,</span> <span class="n">URLPatternsTestCase</span><span class="p">):</span>
+    <span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">path</span><span class="p">(</span><span class="s1">&#39;api/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;api.urls&#39;</span><span class="p">)),</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">test_create_account</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        确保我们可以创建新的帐户对象。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;account-list&#39;</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">status</span><span class="o">.</span><span class="n">HTTP_200_OK</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="testing-responses">
+<h1>测试响应 (Testing responses)<a class="headerlink" href="#testing-responses" title="Permalink to this heading">#</a></h1>
+<section id="checking-the-response-data">
+<h2>检查响应数据 (Checking the response data)<a class="headerlink" href="#checking-the-response-data" title="Permalink to this heading">#</a></h2>
+<p>当检查测试响应的有效性时，检查创建响应的数据通常更方便，而不是检查完全渲染的响应。</p>
+<p>例如，检查 <code class="docutils literal notranslate"><span class="pre">response.data</span></code> 更容易：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/users/4/&#39;</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;lauren&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>而不是检查解析 <code class="docutils literal notranslate"><span class="pre">response.content</span></code> 的结果：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/users/4/&#39;</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;lauren&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</section>
+<section id="rendering-responses">
+<h2>渲染响应 (Rendering responses)<a class="headerlink" href="#rendering-responses" title="Permalink to this heading">#</a></h2>
+<p>如果您使用 <code class="docutils literal notranslate"><span class="pre">API​​RequestFactory</span></code> 直接测试视图，则返回的响应将不会渲染，因为模板响应的渲染由 Django 的内部请求 - 响应循环执行。为了访问 <code class="docutils literal notranslate"><span class="pre">response.content</span></code>，您首先需要渲染响应。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">view</span> <span class="o">=</span> <span class="n">UserDetail</span><span class="o">.</span><span class="n">as_view</span><span class="p">()</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/users/4&#39;</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="s1">&#39;4&#39;</span><span class="p">)</span>
+<span class="n">response</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>  <span class="c1"># 没有这个，无法访问`response.content`。</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;{&quot;username&quot;: &quot;lauren&quot;, &quot;id&quot;: 4}&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="configuration">
+<h1>配置 (Configuration)<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h1>
+<section id="setting-the-default-format">
+<h2>设置默认格式 (Setting the default format)<a class="headerlink" href="#setting-the-default-format" title="Permalink to this heading">#</a></h2>
+<p>可以使用 <code class="docutils literal notranslate"><span class="pre">TEST_REQUEST_DEFAULT_FORMAT</span></code> 设置键设置用于发出测试请求的默认格式。例如，要始终对测试请求默认使用 JSON 而不是标准的 multipart 表单请求，请在 <code class="docutils literal notranslate"><span class="pre">settings.py</span></code> 文件中设置以下内容：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="s1">&#39;TEST_REQUEST_DEFAULT_FORMAT&#39;</span><span class="p">:</span> <span class="s1">&#39;json&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="setting-the-available-formats">
+<h2>设置可用的格式 (Setting the available formats)<a class="headerlink" href="#setting-the-available-formats" title="Permalink to this heading">#</a></h2>
+<p>如果需要使用除 multipart 或 json 请求之外的其他东西来测试请求，可以通过设置<code class="docutils literal notranslate"><span class="pre">TEST_REQUEST_RENDERER_CLASSES</span></code> 设置来完成。</p>
+<p>例如，要在测试请求中添加对 <code class="docutils literal notranslate"><span class="pre">format</span> <span class="pre">='html'</span></code> 的支持，您可能在 <code class="docutils literal notranslate"><span class="pre">settings.py</span></code> 文件中有类似的内容。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="s1">&#39;TEST_REQUEST_RENDERER_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;rest_framework.renderers.MultiPartRenderer&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;rest_framework.renderers.JSONRenderer&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;rest_framework.renderers.TemplateHTMLRenderer&#39;</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./API-Guide"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Exceptions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">异常 (Exceptions)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Settings.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">设置 (Settings)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">测试 (Testing)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#apirequestfactory">APIRequestFactory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-test-requests">创建测试请求 (Creating test requests)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#format-using-the-format-argument">使用 <code class="docutils literal notranslate"><span class="pre">format</span></code> 参数 (Using the <code class="docutils literal notranslate"><span class="pre">format</span></code> argument)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicitly-encoding-the-request-body">显式编码请求主体 (Explicitly encoding the request body)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-patch-put-and-patch-with-form-data">PUT 和 PATCH 与表单数据 (PUT and PATCH with form data)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forcing-authentication">强制验证 (Forcing authentication)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csrf-forcing-csrf-validation">强制 CSRF 验证 (Forcing CSRF validation)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#apiclient">APIClient</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-requests">发出请求 (Making requests)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authenticating">认证 (Authenticating)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#login-kwargs">.login(**kwargs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#credentials-kwargs">.credentials(**kwargs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#force-authenticate-user-none-token-none">.force_authenticate(user=None, token=None)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csrf-csrf-validation">CSRF 验证 (CSRF validation)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#requestsclient">RequestsClient</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requestsclient-requestsclient-and-working-with-the-database"><code class="docutils literal notranslate"><span class="pre">RequestsClient</span></code> 和使用数据库 (<code class="docutils literal notranslate"><span class="pre">RequestsClient</span></code> and working with the database)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#headers-authentication">标头和身份验证 (Headers &amp; Authentication)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csrf">CSRF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-tests">实时测试 (Live tests)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#coreapiclient">CoreAPIClient</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">标头和身份验证 (Headers &amp; Authentication)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-test-cases">API 测试用例 (API Test cases)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">举个栗子</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#urlpatternstestcase">URLPatternsTestCase</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">举个栗子</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-responses">测试响应 (Testing responses)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-response-data">检查响应数据 (Checking the response data)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rendering-responses">渲染响应 (Rendering responses)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">配置 (Configuration)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-default-format">设置默认格式 (Setting the default format)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-available-formats">设置可用的格式 (Setting the available formats)</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

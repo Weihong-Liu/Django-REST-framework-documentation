@@ -1,0 +1,981 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>验证器 (Validators) &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'API-Guide/Validators';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="认证 (Authentication)" href="Authentication.html" />
+    <link rel="prev" title="序列化器关系 (Serializer relations)" href="Serializer-relations.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Authentication-and-Permissions.html">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Views.html">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Renderers.html">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-fields.html">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Authentication.html">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Permissions.html">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Throttling.html">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Filtering.html">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Pagination.html">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Exceptions.html">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Testing.html">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Settings.html">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/API_Clients.html">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/The_Browsable_API.html">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Community/Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Third_Party_Packages.html">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Contributing_to_REST_framework.html">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Community/Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.4_Announcement.html">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.0_Announcement.html">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAPI-Guide/Validators.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/API-Guide/Validators.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>验证器 (Validators)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">验证器 (Validators)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rest-framework-validation-in-rest-framework">REST framework 中的验证 (Validation in REST framework)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">举个栗子</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniquevalidator">UniqueValidator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniquetogethervalidator">UniqueTogetherValidator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniquefordatevalidator">UniqueForDateValidator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniqueformonthvalidator">UniqueForMonthValidator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniqueforyearvalidator">UniqueForYearValidator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-with-a-writable-date-field">使用可写日期字段 (Using with a writable date field.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-with-a-read-only-date-field">使用只读日期字段 (Using with a read-only date field.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-with-a-hidden-date-field">使用隐藏日期字段 (Using with a hidden date field.)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-field-defaults">高级字段默认值 (Advanced field defaults)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#currentuserdefault">CurrentUserDefault</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#createonlydefault">CreateOnlyDefault</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-validators">验证器的限制 (Limitations of validators)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-fields">可选字段 (Optional fields)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-nested-serializers">更新嵌套的序列化器 (Updating nested serializers)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging-complex-cases">调试复杂案例 (Debugging complex cases)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-custom-validators">编写自定义验证器 (Writing custom validators)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-based">基于函数 (Function based)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-level-validation">字段级验证 (Field-level validation)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-based">基于类 (Class-based)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-context-using-set-context">使用 <code class="docutils literal notranslate"><span class="pre">set_context()</span></code> (Using <code class="docutils literal notranslate"><span class="pre">set_context()</span></code>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="validators">
+<h1>验证器 (Validators)<a class="headerlink" href="#validators" title="Permalink to this heading">#</a></h1>
+<p>验证器对于在不同类型的字段之间重用验证逻辑非常有用。—— <a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/validators/">Django 文档</a></p>
+<p>大多数情况下，您在 REST framework 中处理验证时，只需依赖默认的字段验证，或者在序列化器或字段类上编写显式的验证方法。</p>
+<p>但是，有时您需要将验证逻辑放入可重用的组件中，以便可以在整个代码库中轻松地重用它。这可以通过使用验证器函数和验证器类来实现。</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="rest-framework-validation-in-rest-framework">
+<h1>REST framework 中的验证 (Validation in REST framework)<a class="headerlink" href="#rest-framework-validation-in-rest-framework" title="Permalink to this heading">#</a></h1>
+<p>Django REST framework 序列化器中的验证与 Django 的 <code class="docutils literal notranslate"><span class="pre">ModelForm</span></code> 类中的验证工作方式略有不同。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">ModelForm</span></code>，验证一部分在表单上执行，一部分在模型实例上执行。使用 REST framework ，验证完全在序列化器上执行。这是有利的，原因如下：</p>
+<ul class="simple">
+<li><p>它引入了适当的关注点分离，使您的代码行为更加明显。</p></li>
+<li><p>使用快捷的 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 类和使用显式的 <code class="docutils literal notranslate"><span class="pre">Serializer</span></code> 类可以轻松切换。任何用于 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 的验证行为都很容易复制。</p></li>
+<li><p>打印序列化器实例的 <code class="docutils literal notranslate"><span class="pre">repr</span></code> 将准确显示它应用的验证规则。在模型实例上没有额外的隐藏验证行为被调用。</p></li>
+</ul>
+<p>当您使用 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 时，所有这些都会自动为您处理。如果您想转而使用 <code class="docutils literal notranslate"><span class="pre">Serializer</span></code> 类，那么需要显式地定义验证规则。</p>
+<section id="id1">
+<h2>举个栗子<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>作为 REST framework 如何使用显式验证的一个示例，我们将使用一个具有唯一性约束的字段的简单模型类。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomerReportRecord</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">time_raised</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">,</span> <span class="n">editable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">reference</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>这是一个基本的 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code>，我们可以用它来创建或更新 <code class="docutils literal notranslate"><span class="pre">CustomerReportRecord</span></code> 实例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomerReportSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">CustomerReportRecord</span>
+</pre></div>
+</div>
+<p>如果我们使用 <code class="docutils literal notranslate"><span class="pre">manage.py</span> <span class="pre">shell</span></code> 打开 Django shell，我们现在可以</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">project.example.serializers</span> <span class="kn">import</span> <span class="n">CustomerReportSerializer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">serializer</span> <span class="o">=</span> <span class="n">CustomerReportSerializer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">serializer</span><span class="p">))</span>
+<span class="go">CustomerReportSerializer():</span>
+<span class="go">    id = IntegerField(label=&#39;ID&#39;, read_only=True)</span>
+<span class="go">    time_raised = DateTimeField(read_only=True)</span>
+<span class="go">    reference = CharField(max_length=20, validators=[&lt;UniqueValidator(queryset=CustomerReportRecord.objects.all())&gt;])</span>
+<span class="go">    description = CharField(style={&#39;type&#39;: &#39;textarea&#39;})</span>
+</pre></div>
+</div>
+<p>这里有趣的一点是 <code class="docutils literal notranslate"><span class="pre">reference</span></code> 字段。我们可以看到，序列化器字段上的验证器显式强制执行唯一性约束。</p>
+<p>由于这种更显式的样式，REST framework 包含了一些在核心 Django 中不可用的验证器类。下面详细介绍这些类。</p>
+</section>
+<hr class="docutils" />
+<section id="uniquevalidator">
+<h2>UniqueValidator<a class="headerlink" href="#uniquevalidator" title="Permalink to this heading">#</a></h2>
+<p>该验证器可用于在模型字段上强制实施 <code class="docutils literal notranslate"><span class="pre">unique=True</span></code> 约束。它需要一个必需的参数和一个可选的 <code class="docutils literal notranslate"><span class="pre">messages</span></code> 参数：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">queryset</span></code> 必须 - 这是强制执行唯一性的查询集。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">message</span></code> - 验证失败时使用的错误消息。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lookup</span></code> - lookup 用于查找具有验证值的现有实例。默认为 <code class="docutils literal notranslate"><span class="pre">'exact'</span></code>。</p></li>
+</ul>
+<p>此验证器应该应用于序列化器字段，如下所示：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.validators</span> <span class="kn">import</span> <span class="n">UniqueValidator</span>
+
+<span class="n">slug</span> <span class="o">=</span> <span class="n">SlugField</span><span class="p">(</span>
+    <span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">UniqueValidator</span><span class="p">(</span><span class="n">queryset</span><span class="o">=</span><span class="n">BlogPost</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">())]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="uniquetogethervalidator">
+<h2>UniqueTogetherValidator<a class="headerlink" href="#uniquetogethervalidator" title="Permalink to this heading">#</a></h2>
+<p>此验证器可用于在模型实例上强制执行 <code class="docutils literal notranslate"><span class="pre">unique_together</span></code> 约束。它有两个必需的参数和一个可选的 <code class="docutils literal notranslate"><span class="pre">messages</span></code> 参数：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">queryset</span></code> 必须 - 这是强制执行唯一性的查询集。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fields</span></code> 必须 - 生成唯一集合的字段名称的列表或元组。这些必须作为序列化器类的字段存在。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">message</span></code> - 验证失败时使用的错误消息。</p></li>
+</ul>
+<p>此验证器应该应用于序列化器类，如下所示：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.validators</span> <span class="kn">import</span> <span class="n">UniqueTogetherValidator</span>
+
+<span class="k">class</span> <span class="nc">ExampleSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="c1"># ToDo 项属于父列表，并具有由 &#39;position&#39; 字段定义的排序。给定列表中没有两个项目可以共享相同的位置。</span>
+        <span class="n">validators</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">UniqueTogetherValidator</span><span class="p">(</span>
+                <span class="n">queryset</span><span class="o">=</span><span class="n">ToDoItem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span>
+                <span class="n">fields</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">,</span> <span class="s1">&#39;position&#39;</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>注意</strong>：<code class="docutils literal notranslate"><span class="pre">UniqueTogetherValidation</span></code> 类始终施加一个隐式约束，即它所应用的所有字段都是按必须处理的。具有 <code class="docutils literal notranslate"><span class="pre">default</span></code> 值的字段是个例外，因为它们总是提供一个值，即使在用户输入中省略。</p>
+</section>
+<hr class="docutils" />
+<section id="uniquefordatevalidator">
+<h2>UniqueForDateValidator<a class="headerlink" href="#uniquefordatevalidator" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="uniqueformonthvalidator">
+<h2>UniqueForMonthValidator<a class="headerlink" href="#uniqueformonthvalidator" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="uniqueforyearvalidator">
+<h2>UniqueForYearValidator<a class="headerlink" href="#uniqueforyearvalidator" title="Permalink to this heading">#</a></h2>
+<p>这些验证器可用于在模型实例上强制执行 <code class="docutils literal notranslate"><span class="pre">unique_for_date</span></code>，<code class="docutils literal notranslate"><span class="pre">unique_for_month</span></code> 和 <code class="docutils literal notranslate"><span class="pre">unique_for_year</span></code> 约束。他们有以下参数：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">queryset</span></code> 必须 - 这是强制执行唯一性的查询集。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fields</span></code> 必须 - 将验证给定日期范围中唯一性的字段名。这必须作为序列化类中的字段存在。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">date_field</span></code> 必须 - 将用于确定唯一性约束的日期范围的字段名称。这必须作为序列化器类中的字段存在。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">message</span></code> - 验证失败时使用的错误消息。</p></li>
+</ul>
+<p>此验证器应该应用于序列化器类，如下所示：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.validators</span> <span class="kn">import</span> <span class="n">UniqueForYearValidator</span>
+
+<span class="k">class</span> <span class="nc">ExampleSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="c1"># Blog posts should have a slug that is unique for the current year.</span>
+        <span class="n">validators</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">UniqueForYearValidator</span><span class="p">(</span>
+                <span class="n">queryset</span><span class="o">=</span><span class="n">BlogPostItem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span>
+                <span class="n">field</span><span class="o">=</span><span class="s1">&#39;slug&#39;</span><span class="p">,</span>
+                <span class="n">date_field</span><span class="o">=</span><span class="s1">&#39;published&#39;</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
+</pre></div>
+</div>
+<p>用于验证的日期字段始终需要出现在序列化器类中。不能只依赖模型类的 <code class="docutils literal notranslate"><span class="pre">default=…</span></code>，因为要用于默认值的值在验证运行之后才会生成。</p>
+<p>你可能需要使用几种样式，具体取决于您希望 API 如何展现。如果您使用的是 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> ，可能只需依赖 REST framework 为您生成的默认值，但如果你使用的是 <code class="docutils literal notranslate"><span class="pre">Serializer</span></code> 或只想更明确的控制，请使用下面演示的样式。</p>
+<section id="using-with-a-writable-date-field">
+<h3>使用可写日期字段 (Using with a writable date field.)<a class="headerlink" href="#using-with-a-writable-date-field" title="Permalink to this heading">#</a></h3>
+<p>如果您希望日期字段可写，唯一值得注意的是您应确保输入数据始终可用，或者通过设置 <code class="docutils literal notranslate"><span class="pre">default</span></code> 参数，或者设置 <code class="docutils literal notranslate"><span class="pre">required</span> <span class="pre">=</span> <span class="pre">True</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">published</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="using-with-a-read-only-date-field">
+<h3>使用只读日期字段 (Using with a read-only date field.)<a class="headerlink" href="#using-with-a-read-only-date-field" title="Permalink to this heading">#</a></h3>
+<p>如果你希望日期字段可见，但用户无法编辑，请设置 <code class="docutils literal notranslate"><span class="pre">read_only=True</span></code> 并另外设置 <code class="docutils literal notranslate"><span class="pre">default=...</span></code> 参数。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">published</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">read_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>该字段对用户不可写，但默认值仍将传递给 <code class="docutils literal notranslate"><span class="pre">validated_data</span></code>。</p>
+</section>
+<section id="using-with-a-hidden-date-field">
+<h3>使用隐藏日期字段 (Using with a hidden date field.)<a class="headerlink" href="#using-with-a-hidden-date-field" title="Permalink to this heading">#</a></h3>
+<p>如果您希望日期字段对用户完全隐藏，请使用 <code class="docutils literal notranslate"><span class="pre">HiddenField</span></code>。该字段类型不接受用户输入，而是始终将其默认值返回到序列化器中的 <code class="docutils literal notranslate"><span class="pre">validated_data</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">published</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">HiddenField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>注意</strong>：<code class="docutils literal notranslate"><span class="pre">UniqueFor&lt;Range&gt;Validation</span></code> 类强加一个隐式约束，即它所应用的字段都按必须处理的。具有 <code class="docutils literal notranslate"><span class="pre">default</span></code> 值的字段是个例外，因为它们总是提供一个值，即使在用户输入中省略。</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="advanced-field-defaults">
+<h1>高级字段默认值 (Advanced field defaults)<a class="headerlink" href="#advanced-field-defaults" title="Permalink to this heading">#</a></h1>
+<p>在序列化器中跨多个字段应用的验证器有时需要 API 客户端不应提供的字段输入，但可用作验证器的输入。</p>
+<p>您可能希望用于此类验证的两种模式包括：</p>
+<ul class="simple">
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">HiddenField</span></code>。该字段将出现在 <code class="docutils literal notranslate"><span class="pre">validated_data</span></code> 中，但不会在序列化器输出表示中使用。</p></li>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">read_only=True</span></code> 的标准字段，但也包含 <code class="docutils literal notranslate"><span class="pre">default=...</span></code> 参数。该字段将用于序列化器输出表示，但不能由用户直接设置。</p></li>
+</ul>
+<p>REST framework 包含一些在此上下文中可能有用的默认值。</p>
+<section id="currentuserdefault">
+<h2>CurrentUserDefault<a class="headerlink" href="#currentuserdefault" title="Permalink to this heading">#</a></h2>
+<p>可用于表示当前用户的默认类。为了使用它，在实例化序列化器时，’request’ 必须作为上下文字典的一部分提供。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">owner</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">HiddenField</span><span class="p">(</span>
+    <span class="n">default</span><span class="o">=</span><span class="n">serializers</span><span class="o">.</span><span class="n">CurrentUserDefault</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="createonlydefault">
+<h2>CreateOnlyDefault<a class="headerlink" href="#createonlydefault" title="Permalink to this heading">#</a></h2>
+<p>可用于在创建操作期间仅设置默认参数的默认类。在更新期间，该字段被省略。</p>
+<p>它接受一个参数，这是在创建操作期间应该使用的默认值或可调用参数。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">created_at</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span>
+    <span class="n">default</span><span class="o">=</span><span class="n">serializers</span><span class="o">.</span><span class="n">CreateOnlyDefault</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="limitations-of-validators">
+<h1>验证器的限制 (Limitations of validators)<a class="headerlink" href="#limitations-of-validators" title="Permalink to this heading">#</a></h1>
+<p>有一些模棱两可的情况，您需要显式处理验证，而不是依赖于 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 生成的默认序列化器类。</p>
+<p>在这些情况下，您可能希望通过为序列化器 <code class="docutils literal notranslate"><span class="pre">Meta.validators</span></code> 属性指定一个空列表来禁用自动生成的验证器。</p>
+<section id="optional-fields">
+<h2>可选字段 (Optional fields)<a class="headerlink" href="#optional-fields" title="Permalink to this heading">#</a></h2>
+<p>默认情况下 “unique together” 验证强制所有字段都是 <code class="docutils literal notranslate"><span class="pre">required=True</span></code>。在某些情况下，您可能希望显式的将 <code class="docutils literal notranslate"><span class="pre">required=False</span></code> 应用到其中一个字段，在这种情况下，期望的验证行为是不明确的。</p>
+<p>在这种情况下，您通常需要从序列化器类中排除验证器，而不是显式地编写任何验证逻辑，无论是在 <code class="docutils literal notranslate"><span class="pre">.validate()</span></code> 方法中，还是在视图中。</p>
+<p>举个栗子：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BillingRecordSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="c1"># 在这里或视图中应用自定义验证。</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;client&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;amount&#39;</span><span class="p">)</span>
+        <span class="n">extra_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;client&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;required&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}}</span>
+        <span class="n">validators</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 删除默认的 &quot;unique together&quot; 约束。</span>
+</pre></div>
+</div>
+</section>
+<section id="updating-nested-serializers">
+<h2>更新嵌套的序列化器 (Updating nested serializers)<a class="headerlink" href="#updating-nested-serializers" title="Permalink to this heading">#</a></h2>
+<p>将更新应用于现有实例时，唯一性验证器将从唯一性检查中排除当前实例。当前实例在唯一性检查的上下文中可用，因为它作为序列化器中的属性存在，最初在实例化序列化器时使用 <code class="docutils literal notranslate"><span class="pre">instance=...</span></code> 传递。</p>
+<p>在嵌套序列化器上进行更新操作时，无法应用此排除，因为该实例不可用。</p>
+<p>同样，您可能希望从序列化器类中显式删除验证器，并在 <code class="docutils literal notranslate"><span class="pre">.validate()</span></code> 方法或视图中显式地为验证约束编写代码。</p>
+</section>
+<section id="debugging-complex-cases">
+<h2>调试复杂案例 (Debugging complex cases)<a class="headerlink" href="#debugging-complex-cases" title="Permalink to this heading">#</a></h2>
+<p>如果您不确定 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 类将生成什么行为，那么运行 <code class="docutils literal notranslate"><span class="pre">manage.py</span> <span class="pre">shell</span></code> 通常是个好主意，并打印序列化器的实例，以便您可以检查自动生成的字段和验证器。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">serializer</span> <span class="o">=</span> <span class="n">MyComplexModelSerializer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">serializer</span><span class="p">)</span>
+<span class="go">class MyComplexModelSerializer:</span>
+<span class="go">    my_fields = ...</span>
+</pre></div>
+</div>
+<p>还要记住，对于复杂的情况，通常最好显式地定义序列化器类，而不是依赖于默认的 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 行为。这涉及更多代码，但确保结果行为更透明。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="writing-custom-validators">
+<h1>编写自定义验证器 (Writing custom validators)<a class="headerlink" href="#writing-custom-validators" title="Permalink to this heading">#</a></h1>
+<p>您可以使用任何 Django 现有的验证器，也可以编写自己的自定义验证器。</p>
+<section id="function-based">
+<h2>基于函数 (Function based)<a class="headerlink" href="#function-based" title="Permalink to this heading">#</a></h2>
+<p>验证器可以是任何可调用函数，在失败时引发 <code class="docutils literal notranslate"><span class="pre">serializers.ValidationError</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">even_number</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;This field must be an even number.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="field-level-validation">
+<h3>字段级验证 (Field-level validation)<a class="headerlink" href="#field-level-validation" title="Permalink to this heading">#</a></h3>
+<p>您可以通过将 <code class="docutils literal notranslate"><span class="pre">.validate_&lt;field_name&gt;</span></code> 方法添加到 <code class="docutils literal notranslate"><span class="pre">Serializer</span></code> 子类来指定自定义字段级验证。这在 <a class="reference external" href="http://www.django-rest-framework.org/api-guide/serializers/#field-level-validation">Serializer 文档</a>中有记录</p>
+</section>
+</section>
+<section id="class-based">
+<h2>基于类 (Class-based)<a class="headerlink" href="#class-based" title="Permalink to this heading">#</a></h2>
+<p>要编写基于类的验证器，请使用 <code class="docutils literal notranslate"><span class="pre">__call__</span></code> 方法。基于类的验证器非常有用，因为它们允许您参数化和重用行为。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MultipleOf</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base</span> <span class="o">=</span> <span class="n">base</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">base</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;This field must be a multiple of </span><span class="si">%d</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">base</span>
+            <span class="k">raise</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="set-context-using-set-context">
+<h3>使用 <code class="docutils literal notranslate"><span class="pre">set_context()</span></code> (Using <code class="docutils literal notranslate"><span class="pre">set_context()</span></code>)<a class="headerlink" href="#set-context-using-set-context" title="Permalink to this heading">#</a></h3>
+<p>在某些高级情况下，您可能希望将验证器传递给作为附加上下文使用的序列化器字段。您可以通过在基于类的验证器上声明 <code class="docutils literal notranslate"><span class="pre">set_context</span></code> 方法来实现。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serializer_field</span><span class="p">):</span>
+    <span class="c1"># 确定这是更新还是创建操作。</span>
+    <span class="c1"># 在 `__call__` 中，我们可以使用该信息来修改验证行为。</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">is_update</span> <span class="o">=</span> <span class="n">serializer_field</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">instance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./API-Guide"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Serializer-relations.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">序列化器关系 (Serializer relations)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Authentication.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">认证 (Authentication)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">验证器 (Validators)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rest-framework-validation-in-rest-framework">REST framework 中的验证 (Validation in REST framework)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">举个栗子</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniquevalidator">UniqueValidator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniquetogethervalidator">UniqueTogetherValidator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniquefordatevalidator">UniqueForDateValidator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniqueformonthvalidator">UniqueForMonthValidator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniqueforyearvalidator">UniqueForYearValidator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-with-a-writable-date-field">使用可写日期字段 (Using with a writable date field.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-with-a-read-only-date-field">使用只读日期字段 (Using with a read-only date field.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-with-a-hidden-date-field">使用隐藏日期字段 (Using with a hidden date field.)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-field-defaults">高级字段默认值 (Advanced field defaults)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#currentuserdefault">CurrentUserDefault</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#createonlydefault">CreateOnlyDefault</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-validators">验证器的限制 (Limitations of validators)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-fields">可选字段 (Optional fields)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-nested-serializers">更新嵌套的序列化器 (Updating nested serializers)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging-complex-cases">调试复杂案例 (Debugging complex cases)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-custom-validators">编写自定义验证器 (Writing custom validators)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-based">基于函数 (Function based)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-level-validation">字段级验证 (Field-level validation)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-based">基于类 (Class-based)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-context-using-set-context">使用 <code class="docutils literal notranslate"><span class="pre">set_context()</span></code> (Using <code class="docutils literal notranslate"><span class="pre">set_context()</span></code>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1694 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Django REST framework 3.0 &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Community/3.0_Announcement';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Kickstarting Django REST framework 3" href="Kickstarter_Announcement.html" />
+    <link rel="prev" title="Django REST framework 3.1" href="3.1_Announcement.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Authentication-and-Permissions.html">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Views.html">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Renderers.html">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializer-fields.html">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Validators.html">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Authentication.html">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Permissions.html">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Throttling.html">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Filtering.html">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Pagination.html">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Exceptions.html">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Testing.html">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Settings.html">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/API_Clients.html">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/The_Browsable_API.html">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Third_Party_Packages.html">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Contributing_to_REST_framework.html">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.4_Announcement.html">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FCommunity/3.0_Announcement.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Community/3.0_Announcement.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Django REST framework 3.0</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-features">新特性 (New features)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rest-framework-rest-framework-under-the-hood">REST framework：在引擎盖下 (REST framework: Under the hood.)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#request-objects">请求对象 (Request objects)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data-and-query-params-properties">The <code class="docutils literal notranslate"><span class="pre">.data</span></code> and <code class="docutils literal notranslate"><span class="pre">.query_params</span></code> properties.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#serializers">序列化器 (Serializers)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-step-object-creation">单步对象创建 (Single-step object creation.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-create-and-update-methods">The <code class="docutils literal notranslate"><span class="pre">.create()</span></code> and <code class="docutils literal notranslate"><span class="pre">.update()</span></code> methods.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validated-data-object-use-validated-data-instead-of-object">使用 <code class="docutils literal notranslate"><span class="pre">.validated_data</span></code> 而不是 <code class="docutils literal notranslate"><span class="pre">.object</span></code> (Use <code class="docutils literal notranslate"><span class="pre">.validated_data</span></code> instead of <code class="docutils literal notranslate"><span class="pre">.object</span></code>.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-is-valid-raise-exception-true">Using <code class="docutils literal notranslate"><span class="pre">.is_valid(raise_exception=True)</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-serializers-validationerror">Using <code class="docutils literal notranslate"><span class="pre">serializers.ValidationError.</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validate-field-name-change-to-validate-field-name">更改为 <code class="docutils literal notranslate"><span class="pre">validate_</span> <span class="pre">&lt;field_name&gt;</span></code> (Change to <code class="docutils literal notranslate"><span class="pre">validate_&lt;field_name&gt;</span></code>.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-field-name-removal-of-transform-field-name">删除 <code class="docutils literal notranslate"><span class="pre">transform_&lt;field_name&gt;</span></code> (Removal of <code class="docutils literal notranslate"><span class="pre">transform_&lt;field_name&gt;</span></code>.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelserializer-modelform-differences-between-modelserializer-validation-and-modelform">ModelSerializer 验证和 ModelForm 之间的差异。 (Differences between ModelSerializer validation and ModelForm.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writable-nested-serialization">可写嵌套序列化 (Writable nested serialization.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#printable-serializer-representations">可打印的序列化器表示 (Printable serializer representations.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-extra-kwargs-option">The <code class="docutils literal notranslate"><span class="pre">extra_kwargs</span></code> option.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperlinkedmodelserializer-changes-to-hyperlinkedmodelserializer">更改为 <code class="docutils literal notranslate"><span class="pre">HyperlinkedModelSerializer</span></code> (Changes to <code class="docutils literal notranslate"><span class="pre">HyperlinkedModelSerializer</span></code>.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fields-for-model-methods-and-properties">模型方法和属性的字段。 (Fields for model methods and properties.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-listserializer-class">The <code class="docutils literal notranslate"><span class="pre">ListSerializer</span></code> class.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-baseserializer-class">The <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> class.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#baseserializer-read-only-baseserializer-classes">只读 <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> 类 (Read-only <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> classes.)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#baseserializer-read-write-baseserializer-classes">读写 <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> 类 (Read-write <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> classes.)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseserializer-creating-new-generic-serializers-with-baseserializer">使用 <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> 创建新的通用序列化器 (Creating new generic serializers with <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code>.)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#serializer-fields">序列化器字段 (Serializer fields)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-readonly-the-field-and-readonly-field-classes"><code class="docutils literal notranslate"><span class="pre">Field</span></code> 和 <code class="docutils literal notranslate"><span class="pre">ReadOnly</span></code> 字段类 (The <code class="docutils literal notranslate"><span class="pre">Field</span></code> and <code class="docutils literal notranslate"><span class="pre">ReadOnly</span></code> field classes.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-required-allow-null-allow-blank-and-default-arguments">The <code class="docutils literal notranslate"><span class="pre">required</span></code>, <code class="docutils literal notranslate"><span class="pre">allow_null</span></code>, <code class="docutils literal notranslate"><span class="pre">allow_blank</span></code> and <code class="docutils literal notranslate"><span class="pre">default</span></code> arguments.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coercing-output-types">强制输出类型 (Coercing output types.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-of-validate">Removal of <code class="docutils literal notranslate"><span class="pre">.validate()</span></code>.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-listfield-class">The <code class="docutils literal notranslate"><span class="pre">ListField</span></code> class.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-choicefield-class-may-now-accept-a-flat-list">The <code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code> class may now accept a flat list.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multiplechoicefield-class">The <code class="docutils literal notranslate"><span class="pre">MultipleChoiceField</span></code> class.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-changes-to-the-custom-field-api">更改自定义字段 API (Changes to the custom field API.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queryset-explicit-queryset-required-on-relational-fields">关系字段需要显式 <code class="docutils literal notranslate"><span class="pre">queryset</span></code> (Explicit queryset required on relational fields.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#serializermethodfield-optional-argument-to-serializermethodfield"><code class="docutils literal notranslate"><span class="pre">SerializerMethodField</span></code> 的可选参数 (Optional argument to <code class="docutils literal notranslate"><span class="pre">SerializerMethodField</span></code>.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-enforcing-consistent-source-usage">强制执行一致 <code class="docutils literal notranslate"><span class="pre">source</span></code> 用法 (Enforcing consistent <code class="docutils literal notranslate"><span class="pre">source</span></code> usage.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-uniquevalidator-and-uniquetogethervalidator-classes">The <code class="docutils literal notranslate"><span class="pre">UniqueValidator</span></code> and <code class="docutils literal notranslate"><span class="pre">UniqueTogetherValidator</span></code> classes.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-uniquefordatevalidator-classes">The <code class="docutils literal notranslate"><span class="pre">UniqueForDateValidator</span></code> classes.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generic-views">通用视图 (Generic views)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simplification-of-view-logic">简化视图逻辑 (Simplification of view logic.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changes-to-pre-post-save-hooks">Changes to pre/post save hooks.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-of-view-attributes">删除视图属性 (Removal of view attributes.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-put-as-create">PUT 为创建 (PUT as create.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-error-responses">自定义错误响应 (Customizing error responses.)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-the-metadata-api">元数据 API (The metadata API)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#html-serializers-as-html-forms">序列化器作为 HTML 表单 (Serializers as HTML forms)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#style-the-style-keyword-argument-for-serializer-fields">序列化器字段的 <code class="docutils literal notranslate"><span class="pre">style</span></code> 关键字参数 (The <code class="docutils literal notranslate"><span class="pre">style</span></code> keyword argument for serializer fields.)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-style">API 样式 (API style)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unicode-json-by-default">Unicode JSON by default.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compact-json-by-default">Compact JSON by default.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#url-file-fields-as-urls">文件字段为 URL (File fields as URLs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retry-after-throttle-headers-using-retry-after">使用 <code class="docutils literal notranslate"><span class="pre">Retry-After</span></code> 限制标头 (Throttle headers using <code class="docutils literal notranslate"><span class="pre">Retry-After</span></code>.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iso-8601-date-and-time-objects-as-iso-8601-strings-in-serializer-data">日期和时间对象作为序列化器数据中的 ISO-8601 字符串 (Date and time objects as ISO-8601 strings in serializer data.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decimals-as-strings-in-serializer-data">Decimals as strings in serializer data.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous-notes">杂项说明 (Miscellaneous notes)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-coming-next">接下来会发生什么 (What’s coming next)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="django-rest-framework-3-0">
+<h1>Django REST framework 3.0<a class="headerlink" href="#django-rest-framework-3-0" title="Permalink to this heading">#</a></h1>
+<p>Django REST framework 的 3.0 版本是近四年迭代和改进的结果。它全面地解决了序列化器、字段和通用视图中先前遗留的一些设计问题。</p>
+<p><strong>这个版本本质上是递增的。有一些突破性的 API 更改，升级需要您仔细阅读发布说明，但是迁移路径应该相对简单。</strong></p>
+<p>REST franewirk API 和实现的质量差异应该使编写，维护和调试应用程序变得更加容易。</p>
+<p>3.0 是我们最近的 <a class="reference external" href="https://www.kickstarter.com/projects/tomchristie/django-rest-framework-3">Kickstarter 活动</a>资助的三个版本中的第一个。</p>
+<p>一如既往，非常感谢我们众多<a class="reference external" href="http://www.django-rest-framework.org/topics/kickstarter-announcement/#sponsors">精彩的赞助商</a>。如果您正在寻找 Django 演出，并希望与聪明的有社区意识的人工作，你应该查看该列表，看看谁在招聘。</p>
+<hr class="docutils" />
+<section id="new-features">
+<h2>新特性 (New features)<a class="headerlink" href="#new-features" title="Permalink to this heading">#</a></h2>
+<p>这个新版本的显著特点包括：</p>
+<ul class="simple">
+<li><p>序列化器上的可打印表示，它允许您检查实例上到底有哪些字段。</p></li>
+<li><p>简单的模型序列化器，它们更容易理解和调试，并且可以在隐式 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 类和显式 <code class="docutils literal notranslate"><span class="pre">Serializer</span></code> 类之间轻松切换。</p></li>
+<li><p>新的 <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> 类，使编写用于替代存储后端的序列化器或完全自定义您的序列化和验证逻辑变得更容易。</p></li>
+<li><p>一个更干净的字段 API，包括新类，如 <code class="docutils literal notranslate"><span class="pre">ListField</span></code> 和 <code class="docutils literal notranslate"><span class="pre">MultipleChoiceField</span></code>。</p></li>
+<li><p>通用视图的<a class="reference external" href="https://github.com/encode/django-rest-framework/blob/master/rest_framework/mixins.py">超简单默认实现</a>。</p></li>
+<li><p>支持覆盖 API 如何处理验证错误。</p></li>
+<li><p>元数据 API 允许您自定义 API 如何处理 <code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code> 请求。</p></li>
+<li><p>默认情况下，启用了 unicode 样式编码的更紧凑的 JSON 输出。</p></li>
+<li><p>用于序列化器的基于模板的 HTML 表单渲染。这将在即将发布的 3.1 版本中最终敲定为公共 API。</p></li>
+</ul>
+<p>3.1 和 3.2 版本继续计划重要的新功能。这些版本将对应两个 <a class="reference external" href="https://www.kickstarter.com/projects/tomchristie/django-rest-framework-3">Kickstarter 延伸目标</a> - “功能改进” 和 “管理界面”。进一步的 3.x 版本将提供简单的升级，而没有 3.0 版本所需的基本 API 更改的相同级别。</p>
+<hr class="docutils" />
+<section id="rest-framework-rest-framework-under-the-hood">
+<h3>REST framework：在引擎盖下 (REST framework: Under the hood.)<a class="headerlink" href="#rest-framework-rest-framework-under-the-hood" title="Permalink to this heading">#</a></h3>
+<p>2014 年 11 月在阿姆斯特丹举行的 <a class="reference external" href="https://www.djangounderthehood.com/">Django：在引擎盖下</a>事件的演讲，提供了一些关于 3.0 背后的设计决策的良好背景信息。</p>
+<hr class="docutils" />
+<p><em>以下是有关 3.0 的 API 更改和迁移说明的深入指南。</em></p>
+</section>
+</section>
+<section id="request-objects">
+<h2>请求对象 (Request objects)<a class="headerlink" href="#request-objects" title="Permalink to this heading">#</a></h2>
+<section id="the-data-and-query-params-properties">
+<h3>The <code class="docutils literal notranslate"><span class="pre">.data</span></code> and <code class="docutils literal notranslate"><span class="pre">.query_params</span></code> properties.<a class="headerlink" href="#the-data-and-query-params-properties" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">request.DATA</span></code> 和 <code class="docutils literal notranslate"><span class="pre">request.FILES</span></code> 的用法现在处于等待弃用状态，有助于单个 <code class="docutils literal notranslate"><span class="pre">request.data</span></code> 属性包含所有已解析的数据。</p>
+<p>对于只解析 url 编码或多部分请求的 web 应用程序来说，拥有单独的属性是合理的，但是对于 REST framework 支持的通用请求解析来说就没有什么意义了。</p>
+<p>您现在可以将所有请求数据传递到单个参数中的序列化程序类：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Do this...</span>
+<span class="n">ExampleSerializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>而不是单独传递 files 参数：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Don&#39;t do this...</span>
+<span class="n">ExampleSerializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">DATA</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">request.QUERY_PARAMS</span></code> 的用法现在正在等待弃用，以支持小写的 <code class="docutils literal notranslate"><span class="pre">request.query_params</span></code>。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="serializers">
+<h2>序列化器 (Serializers)<a class="headerlink" href="#serializers" title="Permalink to this heading">#</a></h2>
+<section id="single-step-object-creation">
+<h3>单步对象创建 (Single-step object creation.)<a class="headerlink" href="#single-step-object-creation" title="Permalink to this heading">#</a></h3>
+<p>以前，序列化器使用两步对象创建，如下所示：</p>
+<ol class="arabic simple">
+<li><p>验证数据将创建对象实例。此实例可用作 <code class="docutils literal notranslate"><span class="pre">serializer.object</span></code>。</p></li>
+<li><p>然后调用 <code class="docutils literal notranslate"><span class="pre">serializer.save()</span></code> 将对象实例保存到数据库。</p></li>
+</ol>
+<p>这种风格与 Django 中的 <code class="docutils literal notranslate"><span class="pre">ModelForm</span></code> 类的工作方式一致，但由于多种原因而存在问题：</p>
+<ul class="simple">
+<li><p>某些数据 (例如多对多关系) 保存之前无法添加到对象实例中。这种类型的数据需要隐藏在对象实例的某个未记录的状态中，或者作为序列化器实例保存状态，以便在调用 <code class="docutils literal notranslate"><span class="pre">.save()</span></code> 时使用。</p></li>
+<li><p>直接实例化模型实例意味着您不能使用模型管理器类来创建实例，例如 <code class="docutils literal notranslate"><span class="pre">ExampleModel.objects.create(...)</span></code>。Manager 类是强制执行业务逻辑和应用程序级数据约束的优秀层。</p></li>
+<li><p>这两步过程使得它不清楚在何处放置反序列化逻辑。例如，在创建对象期间或在对象保存期间，是否应将额外属性 (如当前用户) 加到实例中？</p></li>
+</ul>
+<p>我们现在使用单步对象创建，如下所示：</p>
+<ol class="arabic simple">
+<li><p>验证数据使已清理的数据作为 <code class="docutils literal notranslate"><span class="pre">serializer.validated_data</span></code> 可用。</p></li>
+<li><p>调用 <code class="docutils literal notranslate"><span class="pre">serializer.save()</span></code> 然后保存并返回新的对象实例。</p></li>
+</ol>
+<p>由此产生的 API 更改将在下面进一步详述。</p>
+</section>
+<section id="the-create-and-update-methods">
+<h3>The <code class="docutils literal notranslate"><span class="pre">.create()</span></code> and <code class="docutils literal notranslate"><span class="pre">.update()</span></code> methods.<a class="headerlink" href="#the-create-and-update-methods" title="Permalink to this heading">#</a></h3>
+<p>现在删除了 <code class="docutils literal notranslate"><span class="pre">.restore_object()</span></code> 方法，我们有了两个单独的方法，<code class="docutils literal notranslate"><span class="pre">create()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.update()</span></code>。这些方法与之前的 <code class="docutils literal notranslate"><span class="pre">.restore_object()</span></code> 略有不同。</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">.create()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.update()</span></code> 方法时，您应该创建并保存对象实例。这与前面的 <code class="docutils literal notranslate"><span class="pre">.restore_object()</span></code> 行为形成了对比，后者会实例化对象，但不会保存它。</p>
+<p>这些方法还替换了不再存在的可选 <code class="docutils literal notranslate"><span class="pre">.save_object()</span></code> 方法。</p>
+<p>本教程中的以下示例以前使用 <code class="docutils literal notranslate"><span class="pre">restore_object()</span></code> 来处理创建和更新对象实例。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">restore_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">instance</span><span class="p">:</span>
+        <span class="c1"># 更新现有实例</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">code</span><span class="p">)</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">linenos</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;linenos&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">linenos</span><span class="p">)</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">language</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;language&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">language</span><span class="p">)</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;style&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">style</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">instance</span>
+
+    <span class="c1"># 创建新实例</span>
+    <span class="k">return</span> <span class="n">Snippet</span><span class="p">(</span><span class="o">**</span><span class="n">attrs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>现在将分为两种不同的方法。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
+    <span class="n">instance</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">instance</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">code</span><span class="p">)</span>
+    <span class="n">instance</span><span class="o">.</span><span class="n">linenos</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;linenos&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">linenos</span><span class="p">)</span>
+    <span class="n">instance</span><span class="o">.</span><span class="n">language</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;language&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">language</span><span class="p">)</span>
+    <span class="n">instance</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;style&#39;</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">style</span><span class="p">)</span>
+    <span class="n">instance</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">instance</span>
+
+<span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Snippet</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">validated_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>请注意，这些方法应返回新创建的对象实例。</p>
+</section>
+<section id="validated-data-object-use-validated-data-instead-of-object">
+<h3>使用 <code class="docutils literal notranslate"><span class="pre">.validated_data</span></code> 而不是 <code class="docutils literal notranslate"><span class="pre">.object</span></code> (Use <code class="docutils literal notranslate"><span class="pre">.validated_data</span></code> instead of <code class="docutils literal notranslate"><span class="pre">.object</span></code>.)<a class="headerlink" href="#validated-data-object-use-validated-data-instead-of-object" title="Permalink to this heading">#</a></h3>
+<p>如果需要在保存之前检查数据，而不是使用不再存在的 <code class="docutils literal notranslate"><span class="pre">.object</span></code> 属性，则现在必须使用 <code class="docutils literal notranslate"><span class="pre">.validated_data</span></code> 属性。</p>
+<p>例如，以下代码不再有效：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">serializer</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">name</span>  <span class="c1"># 检查经过验证的字段数据。</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating ticket &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+    <span class="n">serializer</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>  <span class="c1"># 保存时包括用户。</span>
+    <span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>您现在可以使用 <code class="docutils literal notranslate"><span class="pre">.validated_data</span></code> 来检查已清理的传入值，而不是使用 <code class="docutils literal notranslate"><span class="pre">.object</span></code> 来检查部分构造的实例。另外，您不能直接在实例上设置额外的属性，而是将它们作为关键字参数传递给 <code class="docutils literal notranslate"><span class="pre">.save()</span></code> 方法。</p>
+<p>相应的代码现在看起来像这样：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">serializer</span><span class="o">.</span><span class="n">validated_data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>  <span class="c1"># 检查经过验证的字段数据。</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Creating ticket &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+    <span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>  <span class="c1"># 保存时包括用户。</span>
+</pre></div>
+</div>
+</section>
+<section id="using-is-valid-raise-exception-true">
+<h3>Using <code class="docutils literal notranslate"><span class="pre">.is_valid(raise_exception=True)</span></code><a class="headerlink" href="#using-is-valid-raise-exception-true" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">is_valid()</span></code> 方法现在接受一个可选的布尔标志 <code class="docutils literal notranslate"><span class="pre">raise_exception</span></code>。</p>
+<p>如果序列化器数据包含验证错误，则调用 <code class="docutils literal notranslate"><span class="pre">.is_valid(raise_exception</span> <span class="pre">=</span> <span class="pre">True)</span></code> 将导致引发 <code class="docutils literal notranslate"><span class="pre">ValidationError</span></code>。这个错误将由 REST framework 的默认异常处理程序处理，允许您从视图代码中删除错误响应处理。</p>
+<p>通过使用 <code class="docutils literal notranslate"><span class="pre">EXCEPTION_HANDLER</span></code> 设置键，可以对错误响应的处理和格式化进行全局更改。</p>
+<p>此更改还意味着现在可以更改内置通用视图使用的错误响应的样式，而不必包含 mixin 类或其他覆盖。</p>
+</section>
+<section id="using-serializers-validationerror">
+<h3>Using <code class="docutils literal notranslate"><span class="pre">serializers.ValidationError.</span></code><a class="headerlink" href="#using-serializers-validationerror" title="Permalink to this heading">#</a></h3>
+<p>以前 <code class="docutils literal notranslate"><span class="pre">serializers.ValidationError</span></code> 错误只是 <code class="docutils literal notranslate"><span class="pre">django.core.exceptions.ValidationError</span></code> 的同义词。现在已经改变了，以便它继承标准的 <code class="docutils literal notranslate"><span class="pre">APIException</span></code> 基类。</p>
+<p>这背后的原因是 Django 的 <code class="docutils literal notranslate"><span class="pre">ValidationError</span></code> 类是用于 HTML 表单的，并且它的 API 使得它在使用序列化器中可能出现的嵌套验证错误时稍微有些尴尬。</p>
+<p>对于大多数用户来说，这种更改不需要对代码库进行任何更新，但是值得确保的是，无论何时出现验证错误，您都应该使用 <code class="docutils literal notranslate"><span class="pre">serializers.ValidationError</span></code> 异常类，而不是 Django 内置的异常。</p>
+<p>我们强烈建议您使用命名空间导入 <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">serializers</span></code> 样式，而不是 <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">serializers</span> <span class="pre">import</span> <span class="pre">ValidationError</span></code>，以避免任何潜在的混淆。</p>
+</section>
+<section id="validate-field-name-change-to-validate-field-name">
+<h3>更改为 <code class="docutils literal notranslate"><span class="pre">validate_</span> <span class="pre">&lt;field_name&gt;</span></code> (Change to <code class="docutils literal notranslate"><span class="pre">validate_&lt;field_name&gt;</span></code>.)<a class="headerlink" href="#validate-field-name-change-to-validate-field-name" title="Permalink to this heading">#</a></h3>
+<p>可以附加到序列化器类上的 <code class="docutils literal notranslate"><span class="pre">validate_&lt;field_name&gt;</span></code> 钩子会稍微改变它们的签名并返回类型。在此之前，这些将获取所有传入数据的字典，以及表示字段名称的键，并返回包含该字段的经过验证的数据的字典：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validate_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;This field should be a multiple of ten.&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">attrs</span>
+</pre></div>
+</div>
+<p>现在稍微简化了一下，方法钩子只是简单地获取要验证的值，并返回验证值。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validate_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;This field should be a multiple of ten.&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span>
+</pre></div>
+</div>
+<p>任何适用于多个字段的特设验证都应该像往常一样放在 <code class="docutils literal notranslate"><span class="pre">.validate(self,</span> <span class="pre">attrs)</span></code> 方法中。</p>
+<p>因为 <code class="docutils literal notranslate"><span class="pre">.validate_&lt;field_name&gt;</span></code> 之前会接受完整的属性字典，所以它可用于根据另一个字段中的输入来验证字段。现在，如果您需要这样做，您应该使用 <code class="docutils literal notranslate"><span class="pre">.validate()</span></code> 代替。</p>
+<p>您可以通过引发简单的 <code class="docutils literal notranslate"><span class="pre">ValidationError</span></code> 从验证方法返回 <code class="docutils literal notranslate"><span class="pre">non_field_errors</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+    <span class="c1"># serializer.errors == {&#39;non_field_errors&#39;: [&#39;A non field error&#39;]}</span>
+    <span class="k">raise</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;A non field error&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>或者，如果希望错误针对特定字段，那么在实例化 <code class="docutils literal notranslate"><span class="pre">ValidationError</span></code> 时使用字典，如下所示：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+    <span class="c1"># serializer.errors == {&#39;my_field&#39;: [&#39;A field error&#39;]}</span>
+    <span class="k">raise</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">({</span><span class="s1">&#39;my_field&#39;</span><span class="p">:</span> <span class="s1">&#39;A field error&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>这确保您仍然可以编写比较所有输入字段的验证，但这会根据特定字段标记错误。</p>
+</section>
+<section id="transform-field-name-removal-of-transform-field-name">
+<h3>删除 <code class="docutils literal notranslate"><span class="pre">transform_&lt;field_name&gt;</span></code> (Removal of <code class="docutils literal notranslate"><span class="pre">transform_&lt;field_name&gt;</span></code>.)<a class="headerlink" href="#transform-field-name-removal-of-transform-field-name" title="Permalink to this heading">#</a></h3>
+<p>不再提供序列化器类上未充分利用的 <code class="docutils literal notranslate"><span class="pre">transform_</span> <span class="pre">&lt;field_name&gt;</span></code>。相反，如果需要对表示样式应用任何修改，您应该覆盖 <code class="docutils literal notranslate"><span class="pre">to_representation()</span></code>。</p>
+<p>举个栗子：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">to_representation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">UserSerializer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">to_representation</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
+    <span class="n">ret</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ret</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">ret</span>
+</pre></div>
+</div>
+<p>去掉 API 的额外点意味着现在只有一种正确的方法。这有助于重复和强化核心 API，而不是采用多种不同的方法。</p>
+<p>如果您绝对需要保留 <code class="docutils literal notranslate"><span class="pre">transform_&lt;field_name&gt;</span></code> 行为，例如，为了提供更简单的 2.x 到 3.0 升级，您可以使用 mixin 或 serializer 基类来重新添加行为。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BaseModelSerializer</span><span class="p">(</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    自定义的 ModelSerializer 类，它保留 2.x 样式 `transform_&lt;field_name&gt;` 行为。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">to_representation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">BaseModelSerializer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">to_representation</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">ret</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;transform_&#39;</span> <span class="o">+</span> <span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">ret</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ret</span>
+</pre></div>
+</div>
+</section>
+<section id="modelserializer-modelform-differences-between-modelserializer-validation-and-modelform">
+<h3>ModelSerializer 验证和 ModelForm 之间的差异。 (Differences between ModelSerializer validation and ModelForm.)<a class="headerlink" href="#modelserializer-modelform-differences-between-modelserializer-validation-and-modelform" title="Permalink to this heading">#</a></h3>
+<p>此更改还意味着我们不再在模型实例上使用 <code class="docutils literal notranslate"><span class="pre">.full_clean()</span></code> 方法，而是在序列化器上显式地执行所有验证。这提供了更清晰的分离，并确保在 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 类上没有自动验证行为，而这些行为在常规 <code class="docutils literal notranslate"><span class="pre">Serializer</span></code> 类上也无法轻易复制。</p>
+<p>在大多数情况下，这种变化应该是透明的。字段验证和唯一性检查仍将正常运行，但实现稍有不同。</p>
+<p>需要注意的一个区别是 <code class="docutils literal notranslate"><span class="pre">.clean()</span></code> 方法不会作为序列化器验证的一部分调用，就像使用 <code class="docutils literal notranslate"><span class="pre">ModelForm</span></code> 那样。使用序列化器 <code class="docutils literal notranslate"><span class="pre">.validate()</span></code> 方法在需要时对传入数据执行最后的验证步骤。</p>
+<p>在某些情况下，您确实需要在模型 <code class="docutils literal notranslate"><span class="pre">.clean()</span></code> 方法中保留验证逻辑，而不能将其分离到序列化器 <code class="docutils literal notranslate"><span class="pre">.validate()</span></code> 中。您可以通过在 <code class="docutils literal notranslate"><span class="pre">.validate()</span></code> 方法中显式地实例化一个模型实例来实现这一点。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
+    <span class="n">instance</span> <span class="o">=</span> <span class="n">ExampleModel</span><span class="p">(</span><span class="o">**</span><span class="n">attrs</span><span class="p">)</span>
+    <span class="n">instance</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">attrs</span>
+</pre></div>
+</div>
+<p>同样，如果可能的话，你真的应该考虑将验证逻辑正确地从模型方法中分离出来，但上述内容在某些向后兼容性情况下可能很有用，或者对于简单的迁移路径也很有用。</p>
+</section>
+<section id="writable-nested-serialization">
+<h3>可写嵌套序列化 (Writable nested serialization.)<a class="headerlink" href="#writable-nested-serialization" title="Permalink to this heading">#</a></h3>
+<p>REST framework 2.x 尝试自动支持可写嵌套序列化，但行为复杂且不明显。尝试自动处理这些情况是有问题的：</p>
+<ul class="simple">
+<li><p>保存多个相关模型实例的顺序可能涉及复杂的依赖关系。</p></li>
+<li><p>当相关的模型传递 <code class="docutils literal notranslate"><span class="pre">None</span></code> 数据时，用户应该期望什么行为是不清楚的。</p></li>
+<li><p>目前还不清楚用户应该如何期望多个关系来处理多个记录的更新、创建和删除。</p></li>
+</ul>
+<p>现在，使用 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 上的 <code class="docutils literal notranslate"><span class="pre">depth</span></code> 选项将默认创建<strong>只读嵌套序列化器</strong>。</p>
+<p>如果您尝试使用可写嵌套的序列化器，而不编写自定义的 <code class="docutils literal notranslate"><span class="pre">create()</span></code> 和/或 <code class="docutils literal notranslate"><span class="pre">update()</span></code> 方法，则在尝试保存序列化器时将看到断言错误。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">ProfileSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">model</span> <span class="o">=</span> <span class="n">Profile</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;address&#39;</span><span class="p">,</span> <span class="s1">&#39;phone&#39;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">UserSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">profile</span> <span class="o">=</span> <span class="n">ProfileSerializer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;profile&#39;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;lizzy&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="s1">&#39;lizzy@example.com&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="s1">&#39;profile&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;address&#39;</span><span class="p">:</span> <span class="s1">&#39;123 Acacia Avenue&#39;</span><span class="p">,</span> <span class="s1">&#39;phone&#39;</span><span class="p">:</span> <span class="s1">&#39;01273 100200&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">}</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">serializer</span> <span class="o">=</span> <span class="n">UserSerializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+<span class="go">AssertionError: The `.create()` method does not support nested writable fields by default. Write an explicit `.create()` method for serializer `UserSerializer`, or set `read_only=True` on nested serializer fields.</span>
+</pre></div>
+</div>
+<p>要使用可写嵌套序列化，您需要在序列化器类上声明嵌套字段，并显式地编写 <code class="docutils literal notranslate"><span class="pre">create()</span></code> 和/或 <code class="docutils literal notranslate"><span class="pre">update()</span></code> 方法。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UserSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="n">ProfileSerializer</span><span class="p">()</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;profile&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
+        <span class="n">profile_data</span> <span class="o">=</span> <span class="n">validated_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;profile&#39;</span><span class="p">)</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">validated_data</span><span class="p">)</span>
+        <span class="n">Profile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="o">**</span><span class="n">profile_data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">user</span>
+</pre></div>
+</div>
+<p>单步对象的创建比以前 <code class="docutils literal notranslate"><span class="pre">.restore_object()</span></code> 行为更简单，也更明显。</p>
+</section>
+<section id="printable-serializer-representations">
+<h3>可打印的序列化器表示 (Printable serializer representations.)<a class="headerlink" href="#printable-serializer-representations" title="Permalink to this heading">#</a></h3>
+<p>序列化器实例现在支持可打印表示，允许您检查实例上存在的字段。</p>
+<p>例如，给出以下示例模型：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LocationRating</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">rating</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
+    <span class="n">created_by</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>让我们创建一个对应于 <code class="docutils literal notranslate"><span class="pre">LocationRating</span></code> 模型的简单 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 类。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LocationRatingSerializer</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">LocationRating</span>
+</pre></div>
+</div>
+<p>我们现在可以使用 <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">shell</span></code> 检查 Django shell 中的序列化器表示…</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">serializer</span> <span class="o">=</span> <span class="n">LocationRatingSerializer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">serializer</span><span class="p">)</span>  <span class="c1"># 或者在 Python 2.x 中使用 `print serializer`</span>
+<span class="go">LocationRatingSerializer():</span>
+<span class="go">    id = IntegerField(label=&#39;ID&#39;, read_only=True)</span>
+<span class="go">    location = CharField(max_length=100)</span>
+<span class="go">    rating = IntegerField()</span>
+<span class="go">    created_by = PrimaryKeyRelatedField(queryset=User.objects.all())</span>
+</pre></div>
+</div>
+</section>
+<section id="the-extra-kwargs-option">
+<h3>The <code class="docutils literal notranslate"><span class="pre">extra_kwargs</span></code> option.<a class="headerlink" href="#the-extra-kwargs-option" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 上的 <code class="docutils literal notranslate"><span class="pre">write_only_fields</span></code> 选项已移至 <code class="docutils literal notranslate"><span class="pre">PendingDeprecation</span></code>，并替换为更通用的 <code class="docutils literal notranslate"><span class="pre">extra_kwargs</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MySerializer</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">MyModel</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;notes&#39;</span><span class="p">,</span> <span class="s1">&#39;is_admin&#39;</span><span class="p">)</span>
+        <span class="n">extra_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;is_admin&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;write_only&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<p>或者，在序列化器类上显式指定该字段：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MySerializer</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="n">is_admin</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">write_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">MyModel</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;notes&#39;</span><span class="p">,</span> <span class="s1">&#39;is_admin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>对于更常见的情况，<code class="docutils literal notranslate"><span class="pre">read_only_fields</span></code> 选项仍然是方便的快捷方式。</p>
+</section>
+<section id="hyperlinkedmodelserializer-changes-to-hyperlinkedmodelserializer">
+<h3>更改为 <code class="docutils literal notranslate"><span class="pre">HyperlinkedModelSerializer</span></code> (Changes to <code class="docutils literal notranslate"><span class="pre">HyperlinkedModelSerializer</span></code>.)<a class="headerlink" href="#hyperlinkedmodelserializer-changes-to-hyperlinkedmodelserializer" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">view_name</span></code> 和 <code class="docutils literal notranslate"><span class="pre">lookup_field</span></code> 选项已移至 <code class="docutils literal notranslate"><span class="pre">PendingDeprecation</span></code>。它们不再是必需的，因为您可以使用 <code class="docutils literal notranslate"><span class="pre">extra_kwargs</span></code> 参数：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MySerializer</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">HyperlinkedModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">MyModel</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;notes&#39;</span><span class="p">,</span> <span class="s1">&#39;is_admin&#39;</span><span class="p">)</span>
+        <span class="n">extra_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;lookup_field&#39;</span><span class="p">:</span> <span class="s1">&#39;uuid&#39;</span><span class="p">}</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<p>或者，在序列化器类上显式指定该字段：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MySerializer</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">HyperlinkedModelSerializer</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">HyperlinkedIdentityField</span><span class="p">(</span>
+        <span class="n">view_name</span><span class="o">=</span><span class="s1">&#39;mymodel-detail&#39;</span><span class="p">,</span>
+        <span class="n">lookup_field</span><span class="o">=</span><span class="s1">&#39;uuid&#39;</span>
+    <span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">MyModel</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;notes&#39;</span><span class="p">,</span> <span class="s1">&#39;is_admin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="fields-for-model-methods-and-properties">
+<h3>模型方法和属性的字段。 (Fields for model methods and properties.)<a class="headerlink" href="#fields-for-model-methods-and-properties" title="Permalink to this heading">#</a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code>，您现在可以在字段选项中指定引用模型方法或属性的字段名。例如，假设您有以下模型：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Invitation</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
+    <span class="n">to_email</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">EmailField</span><span class="p">()</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">expiry_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">created</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>您可以在 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 类中包含 <code class="docutils literal notranslate"><span class="pre">expiry_date</span></code> 作为字段选项。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">InvitationSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Invitation</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;to_email&#39;</span><span class="p">,</span> <span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="s1">&#39;expiry_date&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这些字段将映射到 <code class="docutils literal notranslate"><span class="pre">serializers.ReadOnlyField()</span></code> 实例。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">serializer</span> <span class="o">=</span> <span class="n">InvitationSerializer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="nb">repr</span><span class="p">(</span><span class="n">serializer</span><span class="p">)</span>
+<span class="go">InvitationSerializer():</span>
+<span class="go">    to_email = EmailField(max_length=75)</span>
+<span class="go">    message = CharField(max_length=1000)</span>
+<span class="go">    expiry_date = ReadOnlyField()</span>
+</pre></div>
+</div>
+</section>
+<section id="the-listserializer-class">
+<h3>The <code class="docutils literal notranslate"><span class="pre">ListSerializer</span></code> class.<a class="headerlink" href="#the-listserializer-class" title="Permalink to this heading">#</a></h3>
+<p>现在已添加 <code class="docutils literal notranslate"><span class="pre">ListSerializer</span></code> 类，并允许您创建仅用于接受多个输入的基本序列化器类。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MultipleUserSerializer</span><span class="p">(</span><span class="n">ListSerializer</span><span class="p">):</span>
+    <span class="n">child</span> <span class="o">=</span> <span class="n">UserSerializer</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>您还可以对序列化器类使用 <code class="docutils literal notranslate"><span class="pre">many</span> <span class="pre">=</span> <span class="pre">True</span></code> 参数。值得注意的是，<code class="docutils literal notranslate"><span class="pre">many=True</span></code> 参数透明地创建了 <code class="docutils literal notranslate"><span class="pre">ListSerializer</span></code> 实例，允许在 REST framework 代码库中干净地分隔列表和非列表数据的验证逻辑。</p>
+<p>您通常希望继续使用现有的 <code class="docutils literal notranslate"><span class="pre">many=True</span></code> 标志，而不是显式地声明 <code class="docutils literal notranslate"><span class="pre">ListSerializer</span></code> 类，但是如果您需要批量更新编写的自定义 <code class="docutils literal notranslate"><span class="pre">create</span></code> 或 <code class="docutils literal notranslate"><span class="pre">update</span></code> 方法，或者提供其他自定义行为，那么显式地声明类是非常有用的。</p>
+<p>请参阅新的 <code class="docutils literal notranslate"><span class="pre">ListField</span></code> 类，它以相同的方式验证输入，但不包括 <code class="docutils literal notranslate"><span class="pre">.is_valid()</span></code>、<code class="docutils literal notranslate"><span class="pre">.data</span></code>、<code class="docutils literal notranslate"><span class="pre">.save()</span></code> 等序列化器接口。</p>
+</section>
+<section id="the-baseserializer-class">
+<h3>The <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> class.<a class="headerlink" href="#the-baseserializer-class" title="Permalink to this heading">#</a></h3>
+<p>REST framework 现在包含一个简单的 <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> 类，可以用来轻松地支持替代序列化和反序列化样式。</p>
+<p>该类实现与 <code class="docutils literal notranslate"><span class="pre">Serializer</span></code> 类相同的基本 API：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.data</span></code> - 返回传出原生表示。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.is_valid()</span></code> - 反序列化和验证传入的数据。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.validated_data</span></code> - 返回经过验证的传入数据。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.errors</span></code> - 在验证期间返回错误。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.save()</span></code> - 将验证过的数据持久化到对象实例中。</p></li>
+</ul>
+<p>可以覆盖四种方法，具体取决于您希望序列化器类支持的功能：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.to_representation()</span></code> - 重写这个以支持序列化，用于读取操作。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.to_internal_value()</span></code> - 重写这个以支持反序列化，用于写操作。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.create()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.update()</span></code> - 覆盖其中的任意一个或两个，以支持保存实例。</p></li>
+</ul>
+<p>因为此类提供与 <code class="docutils literal notranslate"><span class="pre">Serializer</span></code> 类相同的接口，所以您可以将它与现有的基于类的通用视图一起使用，就像使用常规 <code class="docutils literal notranslate"><span class="pre">Serializer</span></code> 或 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 一样。</p>
+<p>在执行此操作时您将注意到的唯一区别是 <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> 类不会在可浏览的 API 中生成 HTML 表单。这是因为它们返回的数据不包括允许将每个字段渲染为合适的 HTML 输入的所有字段信息。</p>
+<section id="baseserializer-read-only-baseserializer-classes">
+<h4>只读 <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> 类 (Read-only <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> classes.)<a class="headerlink" href="#baseserializer-read-only-baseserializer-classes" title="Permalink to this heading">#</a></h4>
+<p>要使用 <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> 类实现只读序列化器，只需重写 <code class="docutils literal notranslate"><span class="pre">.to_representation()</span></code> 方法。让我们看一个使用简单 Django 模型的示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HighScore</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">player_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>创建只读序列化器以将 <code class="docutils literal notranslate"><span class="pre">HighScore</span></code> 实例转换为原始数据类型非常简单。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HighScoreSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">BaseSerializer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">to_representation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="n">obj</span><span class="o">.</span><span class="n">score</span><span class="p">,</span>
+            <span class="s1">&#39;player_name&#39;</span><span class="p">:</span> <span class="n">obj</span><span class="o">.</span><span class="n">player_name</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<p>我们现在可以使用此类来序列化单个 <code class="docutils literal notranslate"><span class="pre">HighScore</span></code> 实例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">high_score</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">pk</span><span class="p">):</span>
+    <span class="n">instance</span> <span class="o">=</span> <span class="n">HighScore</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+    <span class="n">serializer</span> <span class="o">=</span> <span class="n">HighScoreSerializer</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>或者使用它来序列化多个实例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">all_high_scores</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">HighScore</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-score&#39;</span><span class="p">)</span>
+    <span class="n">serializer</span> <span class="o">=</span> <span class="n">HighScoreSerializer</span><span class="p">(</span><span class="n">queryset</span><span class="p">,</span> <span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="baseserializer-read-write-baseserializer-classes">
+<h4>读写 <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> 类 (Read-write <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> classes.)<a class="headerlink" href="#baseserializer-read-write-baseserializer-classes" title="Permalink to this heading">#</a></h4>
+<p>要创建读写序列化器，我们首先需要实现 <code class="docutils literal notranslate"><span class="pre">.to_internal_value()</span></code> 方法。此方法返回将用于构造对象实例的验证值，如果提供的数据格式不正确，则可能引发 <code class="docutils literal notranslate"><span class="pre">ValidationError</span></code>。</p>
+<p>一旦实现了 <code class="docutils literal notranslate"><span class="pre">.to_internal_value()</span></code>，基本的验证 API 将在序列化器上可用，您将能够使用 <code class="docutils literal notranslate"><span class="pre">.is_valid()</span></code>、<code class="docutils literal notranslate"><span class="pre">.validated_data</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.errors</span></code>。</p>
+<p>如果还想支持 <code class="docutils literal notranslate"><span class="pre">.save()</span></code>，还需要实现 <code class="docutils literal notranslate"><span class="pre">.create()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.update()</span></code> 方法中的任意一种或两者。</p>
+<p>下面是我们以前的 <code class="docutils literal notranslate"><span class="pre">HighScoreSerializer</span></code> 的完整示例，它已经被更新以支持读写操作。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HighScoreSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">BaseSerializer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">to_internal_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;score&#39;</span><span class="p">)</span>
+        <span class="n">player_name</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;player_name&#39;</span><span class="p">)</span>
+
+        <span class="c1"># 执行数据验证。</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">score</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">({</span>
+                <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="s1">&#39;This field is required.&#39;</span>
+            <span class="p">})</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">player_name</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">({</span>
+                <span class="s1">&#39;player_name&#39;</span><span class="p">:</span> <span class="s1">&#39;This field is required.&#39;</span>
+            <span class="p">})</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">player_name</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">({</span>
+                <span class="s1">&#39;player_name&#39;</span><span class="p">:</span> <span class="s1">&#39;May not be more than 10 characters.&#39;</span>
+            <span class="p">})</span>
+
+        <span class="c1"># 返回经过验证的值。这将作为 `.validated_data` 属性。</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">score</span><span class="p">),</span>
+            <span class="s1">&#39;player_name&#39;</span><span class="p">:</span> <span class="n">player_name</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">to_representation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="n">obj</span><span class="o">.</span><span class="n">score</span><span class="p">,</span>
+            <span class="s1">&#39;player_name&#39;</span><span class="p">:</span> <span class="n">obj</span><span class="o">.</span><span class="n">player_name</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validated_data</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">HighScore</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">validated_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="baseserializer-creating-new-generic-serializers-with-baseserializer">
+<h3>使用 <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> 创建新的通用序列化器 (Creating new generic serializers with <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code>.)<a class="headerlink" href="#baseserializer-creating-new-generic-serializers-with-baseserializer" title="Permalink to this heading">#</a></h3>
+<p>如果您想要实现新的通用序列化器类来处理特定的序列化样式或与替代存储后端集成，那么 <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> 类也很有用。</p>
+<p>以下类是可以处理将任意对象强制转换为基本表示的通用序列化器的示例。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ObjectSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">BaseSerializer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    将任意复杂对象强制转换为基本表示形式的只读序列化器。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">to_representation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">attribute_name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+            <span class="n">attribute</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">attribute_name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">attribute_name</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">):</span>
+                <span class="c1"># 忽略私有属性。</span>
+                <span class="k">pass</span>
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="s1">&#39;__call__&#39;</span><span class="p">):</span>
+                <span class="c1"># 忽略方法和其他 callables。</span>
+                <span class="k">pass</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))):</span>
+                <span class="c1"># 基本类型可以不经修改地传递。</span>
+                <span class="n">output</span><span class="p">[</span><span class="n">attribute_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">attribute</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="c1"># 递归处理列表中的项。</span>
+                <span class="n">output</span><span class="p">[</span><span class="n">attribute_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">to_representation</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">attribute</span>
+                <span class="p">]</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="c1"># 递归处理词典中的项。</span>
+                <span class="n">output</span><span class="p">[</span><span class="n">attribute_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_representation</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">attribute</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                <span class="p">}</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># 强制其他任何字符串表示。</span>
+                <span class="n">output</span><span class="p">[</span><span class="n">attribute_name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="serializer-fields">
+<h2>序列化器字段 (Serializer fields)<a class="headerlink" href="#serializer-fields" title="Permalink to this heading">#</a></h2>
+<section id="field-readonly-the-field-and-readonly-field-classes">
+<h3><code class="docutils literal notranslate"><span class="pre">Field</span></code> 和 <code class="docutils literal notranslate"><span class="pre">ReadOnly</span></code> 字段类 (The <code class="docutils literal notranslate"><span class="pre">Field</span></code> and <code class="docutils literal notranslate"><span class="pre">ReadOnly</span></code> field classes.)<a class="headerlink" href="#field-readonly-the-field-and-readonly-field-classes" title="Permalink to this heading">#</a></h3>
+<p>对于字段基类有一些小的调整。</p>
+<p>以前我们有这两个基类：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Field</span></code> 作为只读字段的基类。包含用于序列化数据的默认实现。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WritableField</span></code> 作为读写字段的基类。</p></li>
+</ul>
+<p>我们现在使用以下内容：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Field</span></code> 是所有字段的基类。它不包括序列化或反序列化数据的任何默认实现。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ReadOnlyField</span></code> 是只读字段的具体实现，它只返回属性值而不进行修改。</p></li>
+</ul>
+</section>
+<section id="the-required-allow-null-allow-blank-and-default-arguments">
+<h3>The <code class="docutils literal notranslate"><span class="pre">required</span></code>, <code class="docutils literal notranslate"><span class="pre">allow_null</span></code>, <code class="docutils literal notranslate"><span class="pre">allow_blank</span></code> and <code class="docutils literal notranslate"><span class="pre">default</span></code> arguments.<a class="headerlink" href="#the-required-allow-null-allow-blank-and-default-arguments" title="Permalink to this heading">#</a></h3>
+<p>REST framework 现在对字段的空值验证有更明确和清晰的控制。</p>
+<p>以前，<code class="docutils literal notranslate"><span class="pre">required=False</span></code> 关键字参数的含义未被指定。在实践中，它的使用意味着一个字段既可以不包含在输入中，也可以包含在输入中，但可以是 <code class="docutils literal notranslate"><span class="pre">None</span></code> 或空字符串。</p>
+<p>现在我们有了更好的分离，具有单独的 <code class="docutils literal notranslate"><span class="pre">required</span></code>、<code class="docutils literal notranslate"><span class="pre">allow_null</span></code> 和 <code class="docutils literal notranslate"><span class="pre">allow_blank</span></code> 参数。</p>
+<p>下面一组参数用于控制空值的验证：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">required=False</span></code>：该值不需要出现在输入中，如果没有看到该值，则不会传递给 <code class="docutils literal notranslate"><span class="pre">.create()</span></code> 或 <code class="docutils literal notranslate"><span class="pre">.update()</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">default=&lt;value&gt;</span></code>：该值不需要出现在输入中，如果没有看到，则会将默认值传递给 <code class="docutils literal notranslate"><span class="pre">.create()</span></code> 或 <code class="docutils literal notranslate"><span class="pre">.update()</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">allow_null=True</span></code>：<code class="docutils literal notranslate"><span class="pre">None</span></code> 是有效输入。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">allow_blank=True</span></code>：<code class="docutils literal notranslate"><span class="pre">''</span></code> 是有效输入。仅适用于 <code class="docutils literal notranslate"><span class="pre">CharField</span></code> 和子类。</p></li>
+</ul>
+<p>如果相应的模型字段有默认值，通常需要使用 <code class="docutils literal notranslate"><span class="pre">required=False</span></code>，并且如果需要，还需要设置 <code class="docutils literal notranslate"><span class="pre">allow_null=True</span></code> 或 <code class="docutils literal notranslate"><span class="pre">allow_blank=True</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">default</span></code> 参数也是可用的，并且总是意味着字段不需要在输入中。没有必要在指定默认值时使用 <code class="docutils literal notranslate"><span class="pre">required</span></code> 参数，这样做将导致错误。</p>
+</section>
+<section id="coercing-output-types">
+<h3>强制输出类型 (Coercing output types.)<a class="headerlink" href="#coercing-output-types" title="Permalink to this heading">#</a></h3>
+<p>以前的字段实现在很多情况下并没有强制将值返回到正确的类型。例如，如果属性值是字符串，<code class="docutils literal notranslate"><span class="pre">IntegerField</span></code> 将返回字符串输出。现在我们更加严格地强制正确的返回类型，导致更多的约束和预期的行为。</p>
+</section>
+<section id="removal-of-validate">
+<h3>Removal of <code class="docutils literal notranslate"><span class="pre">.validate()</span></code>.<a class="headerlink" href="#removal-of-validate" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">.validate()</span></code> 方法现在从字段类中删除了。这个方法在任何情况下都是没有文档说明的，而不是公共的 API。相反，您应该简单地重写 <code class="docutils literal notranslate"><span class="pre">to_internal_value()</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UppercaseCharField</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">to_internal_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">UppercaseCharField</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">to_internal_value</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">!=</span> <span class="n">value</span><span class="o">.</span><span class="n">upper</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;The input should be uppercase only.&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+</pre></div>
+</div>
+<p>以前的验证错误可能会在 <code class="docutils literal notranslate"><span class="pre">.to_native()</span></code> 或 <code class="docutils literal notranslate"><span class="pre">.validate()</span></code> 中引发，这使得应该使用哪个不太明显。仅提供单点 API 可确保更多重复和强化核心 API。</p>
+</section>
+<section id="the-listfield-class">
+<h3>The <code class="docutils literal notranslate"><span class="pre">ListField</span></code> class.<a class="headerlink" href="#the-listfield-class" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ListField</span></code> 类现在已经添加了。该字段验证列表输入。它接受 <code class="docutils literal notranslate"><span class="pre">child</span></code> 关键字参数，该参数用于指定用于验证列表中的每个项的字段。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="n">ListField</span><span class="p">(</span><span class="n">child</span><span class="o">=</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">min_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>您还可以使用声明式样式来创建 <code class="docutils literal notranslate"><span class="pre">ListField</span></code> 的新子类，如下所示：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ScoresField</span><span class="p">(</span><span class="n">ListField</span><span class="p">):</span>
+    <span class="n">child</span> <span class="o">=</span> <span class="n">IntegerField</span><span class="p">(</span><span class="n">min_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>现在我们可以在另一个序列化器中使用 <code class="docutils literal notranslate"><span class="pre">ScoresField</span></code> 类：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="n">ScoresField</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>请参阅新的 <code class="docutils literal notranslate"><span class="pre">ListSerializer</span></code> 类，该类以相同的方式验证输入，但也包括 <code class="docutils literal notranslate"><span class="pre">.is_valid()</span></code>、<code class="docutils literal notranslate"><span class="pre">.data</span></code>、<code class="docutils literal notranslate"><span class="pre">.save()</span></code> 等序列化器接口。</p>
+</section>
+<section id="the-choicefield-class-may-now-accept-a-flat-list">
+<h3>The <code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code> class may now accept a flat list.<a class="headerlink" href="#the-choicefield-class-may-now-accept-a-flat-list" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code> 类现在除了使用一对列表 <code class="docutils literal notranslate"><span class="pre">(name,</span> <span class="pre">display_value)</span></code> 的现有样式外，还可以接受选择列表。以下内容现在有效：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">color</span> <span class="o">=</span> <span class="n">ChoiceField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="the-multiplechoicefield-class">
+<h3>The <code class="docutils literal notranslate"><span class="pre">MultipleChoiceField</span></code> class.<a class="headerlink" href="#the-multiplechoicefield-class" title="Permalink to this heading">#</a></h3>
+<p>已经添加了 <code class="docutils literal notranslate"><span class="pre">MultipleChoiceField</span></code> 类。此字段的作用类似 <code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code>，但返回一个集合，其中可能不包含 none、一个或多个有效选项。</p>
+</section>
+<section id="api-changes-to-the-custom-field-api">
+<h3>更改自定义字段 API (Changes to the custom field API.)<a class="headerlink" href="#api-changes-to-the-custom-field-api" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">from_native(self,</span> <span class="pre">value)</span></code> 和 <code class="docutils literal notranslate"><span class="pre">to_native(self,</span> <span class="pre">data)</span></code> 方法名已经被更明显命名的 <code class="docutils literal notranslate"><span class="pre">to_internal_value(self,</span> <span class="pre">data)</span></code> 和 <code class="docutils literal notranslate"><span class="pre">to_representation(self,</span> <span class="pre">value)</span></code> 所取代。</p>
+<p>删除 <code class="docutils literal notranslate"><span class="pre">field_from_native()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">field_to_native()</span></code> 方法。以前，如果您想不只是从对象中查找字段值的方式自定义行为，则可以使用这些方法。例如…</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">field_to_native</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">field_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;一个返回类名的自定义只读字段。&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+</pre></div>
+</div>
+<p>现在，如果您需要访问整个对象，则需要覆盖以下一个或两个：</p>
+<ul class="simple">
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">get_attribute</span></code> 修改传递给 <code class="docutils literal notranslate"><span class="pre">to_representation()</span></code> 的属性值。</p></li>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">get_value</span></code> 修改传递给 <code class="docutils literal notranslate"><span class="pre">to_internal_value()</span></code> 的数据值。</p></li>
+</ul>
+<p>例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+    <span class="c1"># 将整个对象传递到 `to_representation()`，而不是标准的属性查找。</span>
+    <span class="k">return</span> <span class="n">obj</span>
+
+<span class="k">def</span> <span class="nf">to_representation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+</pre></div>
+</div>
+</section>
+<section id="queryset-explicit-queryset-required-on-relational-fields">
+<h3>关系字段需要显式 <code class="docutils literal notranslate"><span class="pre">queryset</span></code> (Explicit queryset required on relational fields.)<a class="headerlink" href="#queryset-explicit-queryset-required-on-relational-fields" title="Permalink to this heading">#</a></h3>
+<p>以前在序列化器类上显式声明的关系字段可以省略 queryset 参数，如果 (且仅当) 在 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 上声明它们。</p>
+<p>此代码在 2.4.3 中有效：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AccountSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="n">organizations</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">SlugRelatedField</span><span class="p">(</span><span class="n">slug_field</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Account</span>
+</pre></div>
+</div>
+<p>但是这段代码在 3.0 中无效：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 缺少 `queryset`</span>
+<span class="k">class</span> <span class="nc">AccountSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">):</span>
+    <span class="n">organizations</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">SlugRelatedField</span><span class="p">(</span><span class="n">slug_field</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">restore_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>现在对于可写的关系字段总是需要 queryset 参数。这消除了一些魔力，使在隐式 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 类和显式 <code class="docutils literal notranslate"><span class="pre">Serializer</span></code> 类之间切换变得更容易、更明显。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AccountSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="n">organizations</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">SlugRelatedField</span><span class="p">(</span>
+        <span class="n">slug_field</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span>
+        <span class="n">queryset</span><span class="o">=</span><span class="n">Organization</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Account</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">queryset</span></code> 参数只对可写字段是必需的，对于 <code class="docutils literal notranslate"><span class="pre">read_only=True</span></code> 的字段则不是必需的或有效的。</p>
+</section>
+<section id="serializermethodfield-optional-argument-to-serializermethodfield">
+<h3><code class="docutils literal notranslate"><span class="pre">SerializerMethodField</span></code> 的可选参数 (Optional argument to <code class="docutils literal notranslate"><span class="pre">SerializerMethodField</span></code>.)<a class="headerlink" href="#serializermethodfield-optional-argument-to-serializermethodfield" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">SerializerMethodField</span></code> 的参数现在是可选的，默认值是 <code class="docutils literal notranslate"><span class="pre">get_&lt;field_name&gt;</span></code>。例如以下是有效的：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AccountSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">):</span>
+    <span class="c1"># `method_name=&#39;get_billing_details&#39;` by default.</span>
+    <span class="n">billing_details</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">SerializerMethodField</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">get_billing_details</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">account</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">calculate_billing</span><span class="p">(</span><span class="n">account</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>为了确保代码样式一致，如果包含与默认方法名称匹配的冗余方法名称参数，就会引发断言错误。例如，以下代码将引发错误：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">billing_details</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">SerializerMethodField</span><span class="p">(</span><span class="s1">&#39;get_billing_details&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="source-enforcing-consistent-source-usage">
+<h3>强制执行一致 <code class="docutils literal notranslate"><span class="pre">source</span></code> 用法 (Enforcing consistent <code class="docutils literal notranslate"><span class="pre">source</span></code> usage.)<a class="headerlink" href="#source-enforcing-consistent-source-usage" title="Permalink to this heading">#</a></h3>
+<p>我看到了一些不必要地包含 <code class="docutils literal notranslate"><span class="pre">source</span></code> 参数的代码库，将其设置为与字段名相同的值。这种用法是冗余和混乱的，使得通常不需要 <code class="docutils literal notranslate"><span class="pre">source</span></code> 的情况不那么明显。</p>
+<p>以下用法现在会引发错误：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">email</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="the-uniquevalidator-and-uniquetogethervalidator-classes">
+<h3>The <code class="docutils literal notranslate"><span class="pre">UniqueValidator</span></code> and <code class="docutils literal notranslate"><span class="pre">UniqueTogetherValidator</span></code> classes.<a class="headerlink" href="#the-uniquevalidator-and-uniquetogethervalidator-classes" title="Permalink to this heading">#</a></h3>
+<p>REST framework 现在提供了新的验证器，允许您确保字段唯一性，同时仍然使用完全显式的 <code class="docutils literal notranslate"><span class="pre">Serializer</span></code> 类，而不是使用 <code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">UniqueValidator</span></code> 应该应用于序列化器字段，并接受一个 <code class="docutils literal notranslate"><span class="pre">queryset</span></code> 参数。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
+<span class="kn">from</span> <span class="nn">rest_framework.validators</span> <span class="kn">import</span> <span class="n">UniqueValidator</span>
+
+<span class="k">class</span> <span class="nc">OrganizationSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">HyperlinkedIdentityField</span><span class="p">(</span><span class="n">view_name</span><span class="o">=</span><span class="s1">&#39;organization_detail&#39;</span><span class="p">)</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">read_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span>
+        <span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="n">validators</span><span class="o">=</span><span class="n">UniqueValidator</span><span class="p">(</span><span class="n">queryset</span><span class="o">=</span><span class="n">Organization</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">UniqueTogetherValidator</span></code> 应该应用到序列化器上，然后接受 <code class="docutils literal notranslate"><span class="pre">queryset</span></code> 参数和 <code class="docutils literal notranslate"><span class="pre">fields</span></code> 参数，这个参数应该是字段名的列表或元组。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RaceResultSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">):</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ChoiceField</span><span class="p">([</span><span class="s1">&#39;5k&#39;</span><span class="p">,</span> <span class="s1">&#39;10k&#39;</span><span class="p">])</span>
+    <span class="n">position</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">validators</span> <span class="o">=</span> <span class="p">[</span><span class="n">UniqueTogetherValidator</span><span class="p">(</span>
+            <span class="n">queryset</span><span class="o">=</span><span class="n">RaceResult</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span>
+            <span class="n">fields</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="s1">&#39;position&#39;</span><span class="p">)</span>
+        <span class="p">)]</span>
+</pre></div>
+</div>
+</section>
+<section id="the-uniquefordatevalidator-classes">
+<h3>The <code class="docutils literal notranslate"><span class="pre">UniqueForDateValidator</span></code> classes.<a class="headerlink" href="#the-uniquefordatevalidator-classes" title="Permalink to this heading">#</a></h3>
+<p>REST framework 现在还包括用于验证 <code class="docutils literal notranslate"><span class="pre">unique_for_date</span></code>、<code class="docutils literal notranslate"><span class="pre">unique_for_month</span></code> 和 <code class="docutils literal notranslate"><span class="pre">unique_for_year</span></code> 模型字段约束的显式验证器类。这些在内部使用，而不是调用 <code class="docutils literal notranslate"><span class="pre">Model.full_clean()</span></code>。</p>
+<p>这些类被记录在文档的<a class="reference external" href="https://www.django-rest-framework.org/api-guide/validators/">验证器</a>部分中。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="generic-views">
+<h2>通用视图 (Generic views)<a class="headerlink" href="#generic-views" title="Permalink to this heading">#</a></h2>
+<section id="simplification-of-view-logic">
+<h3>简化视图逻辑 (Simplification of view logic.)<a class="headerlink" href="#simplification-of-view-logic" title="Permalink to this heading">#</a></h3>
+<p>由于新的序列化器 API，默认方法处理程序的视图逻辑已经大大简化。</p>
+</section>
+<section id="changes-to-pre-post-save-hooks">
+<h3>Changes to pre/post save hooks.<a class="headerlink" href="#changes-to-pre-post-save-hooks" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">pre_save</span></code> 和 <code class="docutils literal notranslate"><span class="pre">post_save</span></code> 钩子不再存在，而是替换为 <code class="docutils literal notranslate"><span class="pre">perform_create(self,</span> <span class="pre">serializer)</span></code> 和 <code class="docutils literal notranslate"><span class="pre">perform_update(self,</span> <span class="pre">serializer)</span></code>。</p>
+<p>这些方法应该通过调用 <code class="docutils literal notranslate"><span class="pre">serializer.save()</span></code> 来保存对象实例，并根据需要添加任何其他参数。他们还可以执行任何自定义预保存或后保存行为。</p>
+<p>例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">perform_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serializer</span><span class="p">):</span>
+    <span class="c1"># 直接包含 owner 属性，而不是来自请求数据。</span>
+    <span class="n">instance</span> <span class="o">=</span> <span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+    <span class="c1"># 执行自定义后保存操作。</span>
+    <span class="n">send_email</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">to_email</span><span class="p">,</span> <span class="n">instance</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">pre_delete</span></code> 和 <code class="docutils literal notranslate"><span class="pre">post_delete</span></code> 钩子不再存在，取而代之的是 <code class="docutils literal notranslate"><span class="pre">.perform_destroy(self,</span> <span class="pre">instance)</span></code>，它应该删除实例并执行任何自定义操作。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">perform_destroy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
+    <span class="c1"># 执行自定义预删除操作。</span>
+    <span class="n">send_deletion_alert</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">instance</span><span class="o">.</span><span class="n">created_by</span><span class="p">,</span> <span class="n">deleted</span><span class="o">=</span><span class="n">instance</span><span class="p">)</span>
+    <span class="c1"># 删除对象实例。</span>
+    <span class="n">instance</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="removal-of-view-attributes">
+<h3>删除视图属性 (Removal of view attributes.)<a class="headerlink" href="#removal-of-view-attributes" title="Permalink to this heading">#</a></h3>
+<p>视图实例上不再设置 <code class="docutils literal notranslate"><span class="pre">.object</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.object_list</span></code> 属性。将视图视为在视图处理期间存储状态的可变对象实例，这往往是糟糕的设计，并可能导致模糊流逻辑。</p>
+<p>我个人建议开发人员将视图实例视为应用程序代码中的不可变对象。</p>
+</section>
+<section id="put-put-as-create">
+<h3>PUT 为创建 (PUT as create.)<a class="headerlink" href="#put-put-as-create" title="Permalink to this heading">#</a></h3>
+<p>允许 <code class="docutils literal notranslate"><span class="pre">PUT</span></code> 作为创建操作是有问题的，因为它必须公开有关对象存在或不存在的信息。同样不明显的是，透明地允许重新创建先前删除的实例必然比简单地返回 <code class="docutils literal notranslate"><span class="pre">404</span></code> 响应具有更好的默认行为。</p>
+<p>在不同的情况下，“<code class="docutils literal notranslate"><span class="pre">PUT</span></code> as 404” 和 “<code class="docutils literal notranslate"><span class="pre">PUT</span></code> as create” 两种样式都可以有效，但是我们现在选择了 404 行为作为默认设置，因为它更简单、更明显。</p>
+<p>如果您需要恢复之前的行为，您可能需要将 <a class="reference external" href="https://gist.github.com/tomchristie/a2ace4577eff2c603b1b"><code class="docutils literal notranslate"><span class="pre">AllowPUTAsCreateMixin</span></code> 类</a>作为 mixin 包含到您的视图中。</p>
+</section>
+<section id="customizing-error-responses">
+<h3>自定义错误响应 (Customizing error responses.)<a class="headerlink" href="#customizing-error-responses" title="Permalink to this heading">#</a></h3>
+<p>通用视图现在为无效数据引发 <code class="docutils literal notranslate"><span class="pre">ValidationFailed</span></code> 异常。然后由异常处理程序处理此异常，而不是由视图直接返回 <code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code> 响应。</p>
+<p>此更改意味着您现在可以轻松地在整个 API 中自定义错误响应的样式，而无需修改任何通用视图。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="api-the-metadata-api">
+<h2>元数据 API (The metadata API)<a class="headerlink" href="#api-the-metadata-api" title="Permalink to this heading">#</a></h2>
+<p>处理 <code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code> 请求的行为以前直接构建在基于类的视图中。现在已经正确地将其分离为元数据 API，该 API 允许与 REST framework 中的其他 API 策略具有相同的可插入样式。</p>
+<p>这使得在整个 API 中为 <code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code> 响应使用不同的样式更加容易，并使创建第三方元数据策略成为可能。</p>
+</section>
+<hr class="docutils" />
+<section id="html-serializers-as-html-forms">
+<h2>序列化器作为 HTML 表单 (Serializers as HTML forms)<a class="headerlink" href="#html-serializers-as-html-forms" title="Permalink to this heading">#</a></h2>
+<p>REST framework 3.0 包含用于序列化器的模板化 HTML 表单渲染。</p>
+<p>此 API 还没有最终确定，只会在 3.1 版本中推广到公共 API。</p>
+<p>您需要注意的重大变化包括：</p>
+<ul class="simple">
+<li><p>现在支持嵌套的 HTML 表单，例如，当在可浏览的 API 中使用时，带有嵌套的 <code class="docutils literal notranslate"><span class="pre">ProfileSerializer</span></code> 的 <code class="docutils literal notranslate"><span class="pre">UserSerializer</span></code> 将渲染嵌套 <code class="docutils literal notranslate"><span class="pre">fieldset</span></code>。</p></li>
+<li><p>尚不支持嵌套的 HTML 表单列表，但计划用于 3.1。</p></li>
+<li><p>因为我们现在使用模板化 HTML 表单生成，所以 <strong><code class="docutils literal notranslate"><span class="pre">widget</span></code> 选项不再适用于序列化器字段</strong>。您可以使用 <code class="docutils literal notranslate"><span class="pre">style</span></code> 字典控制用于给定字段的模板。</p></li>
+</ul>
+<section id="style-the-style-keyword-argument-for-serializer-fields">
+<h3>序列化器字段的 <code class="docutils literal notranslate"><span class="pre">style</span></code> 关键字参数 (The <code class="docutils literal notranslate"><span class="pre">style</span></code> keyword argument for serializer fields.)<a class="headerlink" href="#style-the-style-keyword-argument-for-serializer-fields" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">style</span></code> 关键字参数可用于将序列化器字段中的其他信息传递给渲染器类。特别是，<code class="docutils literal notranslate"><span class="pre">HTMLFormRenderer</span></code> 使用 <code class="docutils literal notranslate"><span class="pre">base_template</span></code> 键来确定用哪个模板渲染字段。</p>
+<p>例如，要使用 <code class="docutils literal notranslate"><span class="pre">textarea</span></code> 控件而不是默认 <code class="docutils literal notranslate"><span class="pre">input</span></code> 控件，您将使用以下…</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">additional_notes</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;base_template&#39;</span><span class="p">:</span> <span class="s1">&#39;textarea.html&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>同样，要使用单选按钮控件而不是默认 <code class="docutils literal notranslate"><span class="pre">select</span></code> 控件，您将使用以下…</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">color_channel</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ChoiceField</span><span class="p">(</span>
+    <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">],</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;base_template&#39;</span><span class="p">:</span> <span class="s1">&#39;radio.html&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>这个 API 应该被认为是临时的，在即将发布的 3.1 版本中可能会有一些细微的变化。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="api-api-style">
+<h2>API 样式 (API style)<a class="headerlink" href="#api-api-style" title="Permalink to this heading">#</a></h2>
+<p>我们在 API 响应中使用的默认样式有一些改进。</p>
+<section id="unicode-json-by-default">
+<h3>Unicode JSON by default.<a class="headerlink" href="#unicode-json-by-default" title="Permalink to this heading">#</a></h3>
+<p>Unicode JSON 现在是默认值。<code class="docutils literal notranslate"><span class="pre">UnicodeJSONRenderer</span></code> 类不再存在，并且已添加 <code class="docutils literal notranslate"><span class="pre">UNICODE_JSON</span></code> 设置。要还原此行为，请使用新设置：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;UNICODE_JSON&#39;</span><span class="p">:</span> <span class="kc">False</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="compact-json-by-default">
+<h3>Compact JSON by default.<a class="headerlink" href="#compact-json-by-default" title="Permalink to this heading">#</a></h3>
+<p>我们现在默认在响应中输出紧凑的 JSON。例如，我们返回：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>我们现在默认在响应中输出紧凑的JSON。例如，我们返回：
+</pre></div>
+</div>
+<p>而不是以下：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;amy@example.com&quot;</span><span class="p">,</span> <span class="s2">&quot;is_admin&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>已添加 <code class="docutils literal notranslate"><span class="pre">COMPACT_JSON</span></code> 设置，如果需要，可用于还原此行为：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;COMPACT_JSON&#39;</span><span class="p">:</span> <span class="kc">False</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="url-file-fields-as-urls">
+<h3>文件字段为 URL (File fields as URLs)<a class="headerlink" href="#url-file-fields-as-urls" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">FileField</span></code> 和 <code class="docutils literal notranslate"><span class="pre">ImageField</span></code> 类现在默认表示为 URL。您应该确保正确设置 Django 的<a class="reference external" href="https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-MEDIA_URL">标准 <code class="docutils literal notranslate"><span class="pre">MEDIA_URL</span></code> 设置</a>，并确保您的应用程序为上传的文件提供服务。</p>
+<p>您可以使用 <code class="docutils literal notranslate"><span class="pre">UPLOADED_FILES_USE_URL</span></code> 设置键恢复此行为，并在表示中显示文件名：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;UPLOADED_FILES_USE_URL&#39;</span><span class="p">:</span> <span class="kc">False</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>您还可以使用 <code class="docutils literal notranslate"><span class="pre">use_url</span></code> 参数单独修改序列化器字段：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">uploaded_file</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">FileField</span><span class="p">(</span><span class="n">use_url</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>还要注意，在实例化请求对象时，应该将请求对象作为上下文传递给序列化器，以便返回完全限定 URL。返回的 URL 将是 <code class="docutils literal notranslate"><span class="pre">https://example.com/url_path/filename.txt</span></code> 格式。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">context</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;request&#39;</span><span class="p">:</span> <span class="n">request</span><span class="p">}</span>
+<span class="n">serializer</span> <span class="o">=</span> <span class="n">ExampleSerializer</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>如果从上下文中省略了请求，则返回的 URL 将采用 <code class="docutils literal notranslate"><span class="pre">/url_path/filename.txt</span></code> 格式。</p>
+</section>
+<section id="retry-after-throttle-headers-using-retry-after">
+<h3>使用 <code class="docutils literal notranslate"><span class="pre">Retry-After</span></code> 限制标头 (Throttle headers using <code class="docutils literal notranslate"><span class="pre">Retry-After</span></code>.)<a class="headerlink" href="#retry-after-throttle-headers-using-retry-after" title="Permalink to this heading">#</a></h3>
+<p>自定义的 <code class="docutils literal notranslate"><span class="pre">X-Throttle-Wait-Second</span></code> 标头现在已经被放弃，取而代之的是标准的 <code class="docutils literal notranslate"><span class="pre">Retry-After</span></code> 标头。如果需要，可以通过为应用程序编写自定义异常处理程序来还原此行为。</p>
+</section>
+<section id="iso-8601-date-and-time-objects-as-iso-8601-strings-in-serializer-data">
+<h3>日期和时间对象作为序列化器数据中的 ISO-8601 字符串 (Date and time objects as ISO-8601 strings in serializer data.)<a class="headerlink" href="#iso-8601-date-and-time-objects-as-iso-8601-strings-in-serializer-data" title="Permalink to this heading">#</a></h3>
+<p>在序列化器输出中，日期和时间对象现在默认强制为字符串。以前它们作为 <code class="docutils literal notranslate"><span class="pre">Date</span></code>、<code class="docutils literal notranslate"><span class="pre">Time</span></code> 和 <code class="docutils literal notranslate"><span class="pre">DateTime</span></code> 对象返回，后来由渲染器强制转换为字符串。</p>
+<p>您可以通过设置现有的 <code class="docutils literal notranslate"><span class="pre">DATE_FORMAT</span></code>、<code class="docutils literal notranslate"><span class="pre">DATETIME_FORMAT</span></code> 和 <code class="docutils literal notranslate"><span class="pre">TIME_FORMAT</span></code> 设置键来全局地修改此行为。将这些值设置为 <code class="docutils literal notranslate"><span class="pre">None</span></code> 而不是它们的默认值 <code class="docutils literal notranslate"><span class="pre">'iso-8601'</span></code> 将导致在序列化器数据中返回原生对象。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># 在 `serializer.data` 中返回原生 `Date` 和 `Time` 对象</span>
+    <span class="s1">&#39;DATETIME_FORMAT&#39;</span><span class="p">:</span> <span class="kc">None</span>
+    <span class="s1">&#39;DATE_FORMAT&#39;</span><span class="p">:</span> <span class="kc">None</span>
+    <span class="s1">&#39;TIME_FORMAT&#39;</span><span class="p">:</span> <span class="kc">None</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>您还可以使用 <code class="docutils literal notranslate"><span class="pre">date_format</span></code>，<code class="docutils literal notranslate"><span class="pre">time_format</span></code> 和 <code class="docutils literal notranslate"><span class="pre">datetime_format</span></code> 参数单独修改序列化器字段：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 返回 `serializer.data` 中的 `DateTime` 实例，而不是字符串。</span>
+<span class="n">created</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="decimals-as-strings-in-serializer-data">
+<h3>Decimals as strings in serializer data.<a class="headerlink" href="#decimals-as-strings-in-serializer-data" title="Permalink to this heading">#</a></h3>
+<p>在序列化器输出中，默认情况下小数被强制转换为字符串。以前它们作为 <code class="docutils literal notranslate"><span class="pre">Decimal</span></code> 对象返回，后来由渲染器强制转换为字符串。</p>
+<p>您可以使用 <code class="docutils literal notranslate"><span class="pre">COERCE_DECIMAL_TO_STRING</span></code> 设置键全局修改此行为。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;COERCE_DECIMAL_TO_STRING&#39;</span><span class="p">:</span> <span class="kc">False</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>或者使用 <code class="docutils literal notranslate"><span class="pre">coerce_to_string</span></code> 关键字参数在单个序列化器字段上对其进行修改。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 返回 `serializer.data` 中的 `Decimal` 实例，而不是字符串。</span>
+<span class="n">amount</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span>
+    <span class="n">max_digits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">coerce_to_string</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>默认的 JSON 渲染器将为未强制的 <code class="docutils literal notranslate"><span class="pre">Decimal</span></code> 实例返回浮点对象。这允许您根据 API 设计需要轻松切换小数的字符串或浮点表示。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="miscellaneous-notes">
+<h2>杂项说明 (Miscellaneous notes)<a class="headerlink" href="#miscellaneous-notes" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>序列化器 <code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code> 目前不显示嵌套选项，就像 2.4 所示那样。这将是 3.1 的一部分。</p></li>
+<li><p>由于新的模板化表单渲染，’widget’ 选项不再有效。这意味着使用第三方 “autocomplete” 小部件来渲染包含大量选项的选择输入并不是一种简单的方法。您需要使用常规选择或纯文本输入。如果有足够的需求，我们可以考虑在 3.1 或 3.2 中解决这个问题。</p></li>
+<li><p>某些默认验证错误消息已被重写，可能不再进行预翻译。如果您希望本地化它们，您仍然可以<a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/i18n/translation/#localization-how-to-create-language-files">使用 Django 创建语言文件</a>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">APIException</span></code> 子类以前可以在 <code class="docutils literal notranslate"><span class="pre">detail</span></code> 参数中使用任意类型。这些异常现在使用可翻译的文本字符串，因此在 <code class="docutils literal notranslate"><span class="pre">detail</span></code> 参数上作为结果调用 <code class="docutils literal notranslate"><span class="pre">force_text</span></code>，它必须是一个字符串。如果您需要 <code class="docutils literal notranslate"><span class="pre">APIException</span></code> 类的复杂参数，您应该将其子类化并覆盖 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> 方法。通常情况下，您需要使用自定义异常处理程序来提供非标准错误响应。</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="what-s-coming-next">
+<h2>接下来会发生什么 (What’s coming next)<a class="headerlink" href="#what-s-coming-next" title="Permalink to this heading">#</a></h2>
+<p>3.0 是一个增量版本，有几个即将推出的功能将建立在它所做的基线改进之上。</p>
+<p>3.1 版本计划用于解决以下组件的改进：</p>
+<ul class="simple">
+<li><p>将序列化器用作 HTML 表单的公共 API。</p></li>
+<li><p>请求解析，媒体类型 &amp; 可浏览 API 的实现。</p></li>
+<li><p>引入新的分页 API。</p></li>
+<li><p>更好地支持 API 版本控制。</p></li>
+</ul>
+<p>3.2 版本计划为可浏览的 API 引入另一种管理样式的界面。</p>
+<p>您可以跟踪 GitHub 站点上的开发，我们使用<a class="reference external" href="https://github.com/encode/django-rest-framework/milestones">里程碑来指示计划时间表</a>。</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Community"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="3.1_Announcement.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Django REST framework 3.1</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Kickstarter_Announcement.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Kickstarting Django REST framework 3</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-features">新特性 (New features)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rest-framework-rest-framework-under-the-hood">REST framework：在引擎盖下 (REST framework: Under the hood.)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#request-objects">请求对象 (Request objects)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data-and-query-params-properties">The <code class="docutils literal notranslate"><span class="pre">.data</span></code> and <code class="docutils literal notranslate"><span class="pre">.query_params</span></code> properties.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#serializers">序列化器 (Serializers)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-step-object-creation">单步对象创建 (Single-step object creation.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-create-and-update-methods">The <code class="docutils literal notranslate"><span class="pre">.create()</span></code> and <code class="docutils literal notranslate"><span class="pre">.update()</span></code> methods.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validated-data-object-use-validated-data-instead-of-object">使用 <code class="docutils literal notranslate"><span class="pre">.validated_data</span></code> 而不是 <code class="docutils literal notranslate"><span class="pre">.object</span></code> (Use <code class="docutils literal notranslate"><span class="pre">.validated_data</span></code> instead of <code class="docutils literal notranslate"><span class="pre">.object</span></code>.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-is-valid-raise-exception-true">Using <code class="docutils literal notranslate"><span class="pre">.is_valid(raise_exception=True)</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-serializers-validationerror">Using <code class="docutils literal notranslate"><span class="pre">serializers.ValidationError.</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validate-field-name-change-to-validate-field-name">更改为 <code class="docutils literal notranslate"><span class="pre">validate_</span> <span class="pre">&lt;field_name&gt;</span></code> (Change to <code class="docutils literal notranslate"><span class="pre">validate_&lt;field_name&gt;</span></code>.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-field-name-removal-of-transform-field-name">删除 <code class="docutils literal notranslate"><span class="pre">transform_&lt;field_name&gt;</span></code> (Removal of <code class="docutils literal notranslate"><span class="pre">transform_&lt;field_name&gt;</span></code>.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelserializer-modelform-differences-between-modelserializer-validation-and-modelform">ModelSerializer 验证和 ModelForm 之间的差异。 (Differences between ModelSerializer validation and ModelForm.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writable-nested-serialization">可写嵌套序列化 (Writable nested serialization.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#printable-serializer-representations">可打印的序列化器表示 (Printable serializer representations.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-extra-kwargs-option">The <code class="docutils literal notranslate"><span class="pre">extra_kwargs</span></code> option.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperlinkedmodelserializer-changes-to-hyperlinkedmodelserializer">更改为 <code class="docutils literal notranslate"><span class="pre">HyperlinkedModelSerializer</span></code> (Changes to <code class="docutils literal notranslate"><span class="pre">HyperlinkedModelSerializer</span></code>.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fields-for-model-methods-and-properties">模型方法和属性的字段。 (Fields for model methods and properties.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-listserializer-class">The <code class="docutils literal notranslate"><span class="pre">ListSerializer</span></code> class.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-baseserializer-class">The <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> class.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#baseserializer-read-only-baseserializer-classes">只读 <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> 类 (Read-only <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> classes.)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#baseserializer-read-write-baseserializer-classes">读写 <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> 类 (Read-write <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> classes.)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseserializer-creating-new-generic-serializers-with-baseserializer">使用 <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code> 创建新的通用序列化器 (Creating new generic serializers with <code class="docutils literal notranslate"><span class="pre">BaseSerializer</span></code>.)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#serializer-fields">序列化器字段 (Serializer fields)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-readonly-the-field-and-readonly-field-classes"><code class="docutils literal notranslate"><span class="pre">Field</span></code> 和 <code class="docutils literal notranslate"><span class="pre">ReadOnly</span></code> 字段类 (The <code class="docutils literal notranslate"><span class="pre">Field</span></code> and <code class="docutils literal notranslate"><span class="pre">ReadOnly</span></code> field classes.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-required-allow-null-allow-blank-and-default-arguments">The <code class="docutils literal notranslate"><span class="pre">required</span></code>, <code class="docutils literal notranslate"><span class="pre">allow_null</span></code>, <code class="docutils literal notranslate"><span class="pre">allow_blank</span></code> and <code class="docutils literal notranslate"><span class="pre">default</span></code> arguments.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coercing-output-types">强制输出类型 (Coercing output types.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-of-validate">Removal of <code class="docutils literal notranslate"><span class="pre">.validate()</span></code>.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-listfield-class">The <code class="docutils literal notranslate"><span class="pre">ListField</span></code> class.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-choicefield-class-may-now-accept-a-flat-list">The <code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code> class may now accept a flat list.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-multiplechoicefield-class">The <code class="docutils literal notranslate"><span class="pre">MultipleChoiceField</span></code> class.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-changes-to-the-custom-field-api">更改自定义字段 API (Changes to the custom field API.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queryset-explicit-queryset-required-on-relational-fields">关系字段需要显式 <code class="docutils literal notranslate"><span class="pre">queryset</span></code> (Explicit queryset required on relational fields.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#serializermethodfield-optional-argument-to-serializermethodfield"><code class="docutils literal notranslate"><span class="pre">SerializerMethodField</span></code> 的可选参数 (Optional argument to <code class="docutils literal notranslate"><span class="pre">SerializerMethodField</span></code>.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-enforcing-consistent-source-usage">强制执行一致 <code class="docutils literal notranslate"><span class="pre">source</span></code> 用法 (Enforcing consistent <code class="docutils literal notranslate"><span class="pre">source</span></code> usage.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-uniquevalidator-and-uniquetogethervalidator-classes">The <code class="docutils literal notranslate"><span class="pre">UniqueValidator</span></code> and <code class="docutils literal notranslate"><span class="pre">UniqueTogetherValidator</span></code> classes.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-uniquefordatevalidator-classes">The <code class="docutils literal notranslate"><span class="pre">UniqueForDateValidator</span></code> classes.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generic-views">通用视图 (Generic views)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simplification-of-view-logic">简化视图逻辑 (Simplification of view logic.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changes-to-pre-post-save-hooks">Changes to pre/post save hooks.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-of-view-attributes">删除视图属性 (Removal of view attributes.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-put-as-create">PUT 为创建 (PUT as create.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-error-responses">自定义错误响应 (Customizing error responses.)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-the-metadata-api">元数据 API (The metadata API)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#html-serializers-as-html-forms">序列化器作为 HTML 表单 (Serializers as HTML forms)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#style-the-style-keyword-argument-for-serializer-fields">序列化器字段的 <code class="docutils literal notranslate"><span class="pre">style</span></code> 关键字参数 (The <code class="docutils literal notranslate"><span class="pre">style</span></code> keyword argument for serializer fields.)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-style">API 样式 (API style)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unicode-json-by-default">Unicode JSON by default.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compact-json-by-default">Compact JSON by default.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#url-file-fields-as-urls">文件字段为 URL (File fields as URLs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retry-after-throttle-headers-using-retry-after">使用 <code class="docutils literal notranslate"><span class="pre">Retry-After</span></code> 限制标头 (Throttle headers using <code class="docutils literal notranslate"><span class="pre">Retry-After</span></code>.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iso-8601-date-and-time-objects-as-iso-8601-strings-in-serializer-data">日期和时间对象作为序列化器数据中的 ISO-8601 字符串 (Date and time objects as ISO-8601 strings in serializer data.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decimals-as-strings-in-serializer-data">Decimals as strings in serializer data.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous-notes">杂项说明 (Miscellaneous notes)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-coming-next">接下来会发生什么 (What’s coming next)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

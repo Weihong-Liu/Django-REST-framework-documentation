@@ -1,0 +1,817 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>可浏览的 API (The Browsable API) &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Topics/The_Browsable_API';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="REST, Hypermedia &amp; HATEOAS" href="REST%2C_Hypermedia_%26_HATEOAS.html" />
+    <link rel="prev" title="HTML 和表单 (HTML &amp; Forms)" href="HTML_%26_Forms.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Authentication-and-Permissions.html">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Views.html">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Renderers.html">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializer-fields.html">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Validators.html">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Authentication.html">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Permissions.html">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Throttling.html">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Filtering.html">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Pagination.html">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Exceptions.html">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Testing.html">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Settings.html">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="API_Clients.html">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Community/Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Third_Party_Packages.html">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Contributing_to_REST_framework.html">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Community/Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.4_Announcement.html">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.0_Announcement.html">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FTopics/The_Browsable_API.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Topics/The_Browsable_API.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>可浏览的 API (The Browsable API)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#urls">URLs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formats">格式 (Formats)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing">自定义 (Customizing)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overriding-the-default-theme">覆盖默认主题 (Overriding the default theme)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blocks">块 (Blocks)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#components">组件 (Components)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tooltips">工具提示 (Tooltips)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#login-template">登录模板 (Login Template)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-customization">高级定制 (Advanced Customization)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#context">上下文 (Context)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#base-html-not-using-base-html">不使用 base.html (Not using base.html)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#choicefield-handling-choicefield-with-large-numbers-of-items">使用大量项处理 <code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code> (Handling <code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code> with large numbers of items.)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#autocomplete">自动完成 (Autocomplete)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="api-the-browsable-api">
+<h1>可浏览的 API (The Browsable API)<a class="headerlink" href="#api-the-browsable-api" title="Permalink to this heading">#</a></h1>
+<p>这是一个极其错误的真理……我们应该培养思考我们正在做什么的习惯。事实恰恰相反。文明的进步是通过扩展我们不需要思考就能完成的重要操作的数量。—— <a class="reference external" href="https://en.wikiquote.org/wiki/Alfred_North_Whitehead">Alfred North Whitehead</a>，数学概论 (1911)</p>
+<p>API 可能代表应用程序编程接口，但是人类也必须能够读取 API；必须有人进行编程。Django REST Framework 支持在请求 HTML 格式时为每个资源生成人性化的 HTML 输出。这些页面可以方便地浏览资源，以及使用 <code class="docutils literal notranslate"><span class="pre">POST</span></code>、<code class="docutils literal notranslate"><span class="pre">PUT</span></code> 和 <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> 向资源提交数据的表单。</p>
+<section id="urls">
+<h2>URLs<a class="headerlink" href="#urls" title="Permalink to this heading">#</a></h2>
+<p>如果您在资源输出中包含完全限定的 URL，它们将会被 “uralized”，并且可以被人们点击以方便浏览。<code class="docutils literal notranslate"><span class="pre">rest_framework</span></code> 包为此包含了 <code class="docutils literal notranslate"><span class="pre">reverse</span></code> 帮助。</p>
+</section>
+<section id="formats">
+<h2>格式 (Formats)<a class="headerlink" href="#formats" title="Permalink to this heading">#</a></h2>
+<p>默认情况下，API 将返回标头指定的格式，在浏览器中是 HTML。可以在请求中使用 <code class="docutils literal notranslate"><span class="pre">?format=</span></code> 指定格式，因此您可以通过向 URL 添加 <code class="docutils literal notranslate"><span class="pre">?format=json</span></code> 来查看浏览器中的原始 JSON 响应。在 <a class="reference external" href="https://addons.mozilla.org/en-US/firefox/addon/jsonview/">Firefox</a> 和 <a class="reference external" href="https://chrome.google.com/webstore/detail/chklaanhfefbnpoihckbnefhakgolnmc">Chrome</a> 中有一些有用的扩展可以查看 JSON。</p>
+</section>
+<section id="customizing">
+<h2>自定义 (Customizing)<a class="headerlink" href="#customizing" title="Permalink to this heading">#</a></h2>
+<p>可浏览的 API 使用 <a class="reference external" href="https://getbootstrap.com/">Twitter 的 Bootstrap</a> (v3.3.5) 构建，使其易于自定义外观。</p>
+<p>要自定义默认样式，请创建一个名为 <code class="docutils literal notranslate"><span class="pre">rest_framework/api.html</span></code> 的模板，该模板从 <code class="docutils literal notranslate"><span class="pre">rest_framework/base.html</span></code> 扩展而来。例如：</p>
+<p><strong>templates/rest_framework/api.html</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="o">%</span> <span class="n">extends</span> <span class="s2">&quot;rest_framework/base.html&quot;</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="o">...</span>  <span class="c1"># 使用所需的自定义覆盖块</span>
+</pre></div>
+</div>
+<section id="overriding-the-default-theme">
+<h3>覆盖默认主题 (Overriding the default theme)<a class="headerlink" href="#overriding-the-default-theme" title="Permalink to this heading">#</a></h3>
+<p>要替换默认主题，请将 <code class="docutils literal notranslate"><span class="pre">bootstrap_theme</span></code> 块添加到 <code class="docutils literal notranslate"><span class="pre">api.html</span></code> 并将 <code class="docutils literal notranslate"><span class="pre">link</span></code> 插入到所需 Bootstrap 主题 css 文件。这将完全取代包含的主题。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="o">%</span> <span class="n">block</span> <span class="n">bootstrap_theme</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="n">link</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;stylesheet&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;/path/to/my/bootstrap.css&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text/css&quot;</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endblock</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>在 <a class="reference external" href="https://bootswatch.com/">Bootswatch</a> 可以找到合适的预先制作的替代主题。要使用任何 Bootswatch 主题，只需下载主题的 <code class="docutils literal notranslate"><span class="pre">bootstrap.min.css</span></code> 文件，将其添加到项目中，然后如上所述替换默认文件。</p>
+<p>您还可以使用 <code class="docutils literal notranslate"><span class="pre">bootstrap_navbar_variant</span></code> 块更改导航栏变量，默认情况下为 <code class="docutils literal notranslate"><span class="pre">navbar-inverse</span></code>。空的 <code class="docutils literal notranslate"><span class="pre">{％</span> <span class="pre">block</span> <span class="pre">bootstrap_navbar_variant</span> <span class="pre">％}{％</span> <span class="pre">endblock</span> <span class="pre">％}</span></code> 将使用原始的 Bootstrap 导航栏样式。</p>
+<p>完整示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="o">%</span> <span class="n">extends</span> <span class="s2">&quot;rest_framework/base.html&quot;</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="p">{</span><span class="o">%</span> <span class="n">block</span> <span class="n">bootstrap_theme</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="n">link</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;stylesheet&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;https://bootswatch.com/flatly/bootstrap.min.css&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text/css&quot;</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endblock</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="p">{</span><span class="o">%</span> <span class="n">block</span> <span class="n">bootstrap_navbar_variant</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="n">endblock</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>对于更具体的 CSS 调整，而不是简单地覆盖默认 bootstrap 主题，您可以覆盖 <code class="docutils literal notranslate"><span class="pre">style</span></code> 块。</p>
+<hr class="docutils" />
+<p><img alt="" src="https://www.django-rest-framework.org/img/cerulean.png" /></p>
+<p><em>bootswatch ‘Cerulean’ 主题的屏幕截图</em></p>
+<hr class="docutils" />
+<p><img alt="" src="https://www.django-rest-framework.org/img/slate.png" /></p>
+<p><em>bootswatch ‘Slate’ 主题的屏幕截图</em></p>
+</section>
+<hr class="docutils" />
+<section id="blocks">
+<h3>块 (Blocks)<a class="headerlink" href="#blocks" title="Permalink to this heading">#</a></h3>
+<p>可浏览的 API 基本模板中可用的所有块都可以在您的 <code class="docutils literal notranslate"><span class="pre">api.html</span></code> 中使用。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">body</span></code> - 整个 html <code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bodyclass</span></code> - <code class="docutils literal notranslate"><span class="pre">&lt;body&gt;</span></code> 标记的类属性，默认为空。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bootstrap_theme</span></code> - Bootstrap 主题的 CSS。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bootstrap_navbar_variant</span></code> - 导航栏的 CSS 类。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">branding</span></code> - 导航栏的烙印部分，请参阅 <a class="reference external" href="https://getbootstrap.com/2.3.2/components.html#navbar">Bootstrap 组件</a>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">breadcrumbs</span></code> - 链接显示资源嵌套，允许用户备份资源。建议保留这些，但可以使用 breadcrumbs 块覆盖它们。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">script</span></code> - 页面的 JavaScript 文件。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">style</span></code> - 页面的 CSS 样式表。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code> - 页面标题。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">userlinks</span></code> - 这是标题右侧的链接列表，默认情况下包含登录/注销链接。要添加链接而不是替换，请使用 <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">block.super</span> <span class="pre">}}</span></code> 来保留身份验证链接。</p></li>
+</ul>
+<section id="components">
+<h4>组件 (Components)<a class="headerlink" href="#components" title="Permalink to this heading">#</a></h4>
+<p>所有标准的 <a class="reference external" href="https://getbootstrap.com/2.3.2/components.html">Bootstrap 组件</a>都可用。</p>
+</section>
+<section id="tooltips">
+<h4>工具提示 (Tooltips)<a class="headerlink" href="#tooltips" title="Permalink to this heading">#</a></h4>
+<p>可浏览的 API 使用 Bootstrap 工具提示组件。带有 <code class="docutils literal notranslate"><span class="pre">js-tooltip</span></code> 类和 <code class="docutils literal notranslate"><span class="pre">title</span></code> 属性的任何元素，其标题内容都将显示悬停事件的工具提示。</p>
+</section>
+</section>
+<section id="login-template">
+<h3>登录模板 (Login Template)<a class="headerlink" href="#login-template" title="Permalink to this heading">#</a></h3>
+<p>要添加烙印并自定义登录模板的外观，请创建名为 <code class="docutils literal notranslate"><span class="pre">login.html</span></code> 的模板并将其添加到项目中，例如：<code class="docutils literal notranslate"><span class="pre">templates/rest_framework/login.html</span></code>。模板应该从 <code class="docutils literal notranslate"><span class="pre">rest_framework/login_base.html</span></code> 扩展。</p>
+<p>您可以通过包含烙印块来添加您的网站名称或烙印：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="o">%</span> <span class="n">block</span> <span class="n">branding</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="n">h3</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;margin: 0 0 20px;&quot;</span><span class="o">&gt;</span><span class="n">My</span> <span class="n">Site</span> <span class="n">Name</span><span class="o">&lt;/</span><span class="n">h3</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endblock</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>您还可以通过添加类似于 <code class="docutils literal notranslate"><span class="pre">api.html</span></code> 的 <code class="docutils literal notranslate"><span class="pre">bootstrap_theme</span></code> 或 <code class="docutils literal notranslate"><span class="pre">style</span></code> 块来自定义样式。</p>
+</section>
+<section id="advanced-customization">
+<h3>高级定制 (Advanced Customization)<a class="headerlink" href="#advanced-customization" title="Permalink to this heading">#</a></h3>
+<section id="context">
+<h4>上下文 (Context)<a class="headerlink" href="#context" title="Permalink to this heading">#</a></h4>
+<p>模板可用的上下文：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">allowed_methods</span></code>：资源允许的方法列表</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">api_settings</span></code>：API设置</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">available_formats</span></code>：资源允许的格式列表</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">breadcrumblist</span></code>：嵌套资源链后面的链接列表</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">content</span></code>：API 响应的内容</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>：从文档字符串生成的资源的描述</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>：资源的名称</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">post_form</span></code>：POST 表单使用的表单实例 (如果允许的话)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">put_form</span></code>：PUT 表单使用的表单实例 (如果允许的话)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">display_edit_forms</span></code>：一个布尔值，指示是否显示 POST，PUT 和 PATCH 表单</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">request</span></code>：请求对象</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">response</span></code>：响应对象</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">version</span></code>：Django REST Framework 的版本</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">view</span></code>：处理请求的视图</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FORMAT_PARAM</span></code>：视图可以接受格式覆盖</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">METHOD_PARAM</span></code>：视图可以接受方法覆盖</p></li>
+</ul>
+<p>您可以覆盖 <code class="docutils literal notranslate"><span class="pre">BrowsableAPIRenderer.get_context()</span></code> 方法以自定义传递给模板的上下文。</p>
+</section>
+<section id="base-html-not-using-base-html">
+<h4>不使用 base.html (Not using base.html)<a class="headerlink" href="#base-html-not-using-base-html" title="Permalink to this heading">#</a></h4>
+<p>对于更高级的定制，例如没有 Bootstrap 基础或者没有与站点其他部分更紧密的集成，您可以简单地选择不使用 <code class="docutils literal notranslate"><span class="pre">api.html</span></code> 扩展 <code class="docutils literal notranslate"><span class="pre">base.html</span></code>。然后页面内容和功能完全取决于您。</p>
+</section>
+<section id="choicefield-handling-choicefield-with-large-numbers-of-items">
+<h4>使用大量项处理 <code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code> (Handling <code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code> with large numbers of items.)<a class="headerlink" href="#choicefield-handling-choicefield-with-large-numbers-of-items" title="Permalink to this heading">#</a></h4>
+<p>当关系或 <code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code> 包含太多项时，渲染包含所有选项的小部件可能会变得非常慢，并导致可浏览的 API 渲染性能不佳。</p>
+<p>在本例中，最简单的选项是用标准文本输入替换选择输入。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="n">author</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">HyperlinkedRelatedField</span><span class="p">(</span>
+    <span class="n">queryset</span><span class="o">=</span><span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">(),</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;base_template&#39;</span><span class="p">:</span> <span class="s1">&#39;input.html&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="autocomplete">
+<h4>自动完成 (Autocomplete)<a class="headerlink" href="#autocomplete" title="Permalink to this heading">#</a></h4>
+<p>另一个更复杂的选项是用自动完成小部件替换输入，该小部件仅根据需要加载和渲染可用选项的子集。如果您需要这样做，您需要做一些工作来自己构建自定义自动完成 HTML 模板。</p>
+<p><a class="reference external" href="https://www.djangopackages.com/grids/g/auto-complete/">自动完成小部件有多种软件包</a>，例如 <a class="reference external" href="https://github.com/yourlabs/django-autocomplete-light">django-autocomplete-light</a>，您可能需要参考这些软件包。注意，您不能简单地将这些组件作为标准小部件包含，但是需要显式地编写 HTML 模板。这是因为 REST framework 3.0 不再支持 <code class="docutils literal notranslate"><span class="pre">widget</span></code> 关键字参数，因为它现在使用模板化 HTML 生成。</p>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Topics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="HTML_%26_Forms.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">HTML 和表单 (HTML &amp; Forms)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="REST%2C_Hypermedia_%26_HATEOAS.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">REST, Hypermedia &amp; HATEOAS</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#urls">URLs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formats">格式 (Formats)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing">自定义 (Customizing)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overriding-the-default-theme">覆盖默认主题 (Overriding the default theme)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blocks">块 (Blocks)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#components">组件 (Components)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tooltips">工具提示 (Tooltips)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#login-template">登录模板 (Login Template)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-customization">高级定制 (Advanced Customization)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#context">上下文 (Context)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#base-html-not-using-base-html">不使用 base.html (Not using base.html)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#choicefield-handling-choicefield-with-large-numbers-of-items">使用大量项处理 <code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code> (Handling <code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code> with large numbers of items.)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#autocomplete">自动完成 (Autocomplete)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

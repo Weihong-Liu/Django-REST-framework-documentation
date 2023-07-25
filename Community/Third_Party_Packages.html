@@ -1,0 +1,985 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>第三方包 (Third Party Packages) &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Community/Third_Party_Packages';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="对 REST framework 的贡献 (Contributing to REST framework)" href="Contributing_to_REST_framework.html" />
+    <link rel="prev" title="教程和资源 (Tutorials and Resources)" href="Tutorials_and_Resources.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Authentication-and-Permissions.html">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Views.html">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Renderers.html">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializer-fields.html">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Validators.html">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Authentication.html">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Permissions.html">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Throttling.html">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Filtering.html">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Pagination.html">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Exceptions.html">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Testing.html">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Settings.html">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/API_Clients.html">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/The_Browsable_API.html">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Contributing_to_REST_framework.html">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.4_Announcement.html">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.0_Announcement.html">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FCommunity/Third_Party_Packages.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Community/Third_Party_Packages.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第三方包 (Third Party Packages)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-third-party-packages">关于第三方包 (About Third Party Packages)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-create-a-third-party-package">如何创建第三方包 (How to create a Third Party Package)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-your-package">创建您的包 (Creating your package)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cookiecutter-running-the-initial-cookiecutter-command">运行初始 cookiecutter 命令 (Running the initial cookiecutter command)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github-getting-it-onto-github">把它带到 Github 上 (Getting it onto GitHub)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#travis-ci-adding-to-travis-ci">添加到 Travis CI (Adding to Travis CI)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pypi-uploading-to-pypi">上传到 PyPI (Uploading to PyPI)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development">发展 (Development)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#version-requirements">版本要求 (Version requirements)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">测试 (Tests)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#version-compatibility">版本兼容性 (Version compatibility)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#once-your-package-is-available">一旦您的包可用 (Once your package is available)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-adding-to-the-django-rest-framework-grid">添加到 Django REST framework 网格 (Adding to the Django REST framework grid)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-adding-to-the-django-rest-framework-docs">添加到 Django REST framework 文档 (Adding to the Django REST framework docs)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#announce-on-the-discussion-group">在讨论组上宣布 (Announce on the discussion group.)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#existing-third-party-packages">现有第三方包 (Existing Third Party Packages)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">认证 (Authentication)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#permissions">权限 (Permissions)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#serializers">序列化器 (Serializers)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#serializer-fields">序列化器字段 (Serializer fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#views">视图 (Views)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#routers">路由器 (Routers)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parsers">解析器 (Parsers)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renderers">渲染器 (Renderers)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering">过滤 (Filtering)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">杂项 (Misc)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="third-party-packages">
+<h1>第三方包 (Third Party Packages)<a class="headerlink" href="#third-party-packages" title="Permalink to this heading">#</a></h1>
+<p>软件生态系统 […] 建立一个社区，进一步加速知识、内容、问题、专业知识和技能的共享。—— <a class="reference external" href="http://www.software-ecosystems.com/Software_Ecosystems/Ecosystems.html">Jan Bosch</a></p>
+<section id="about-third-party-packages">
+<h2>关于第三方包 (About Third Party Packages)<a class="headerlink" href="#about-third-party-packages" title="Permalink to this heading">#</a></h2>
+<p>第三方软件包允许开发人员共享扩展 Django REST framework 功能的代码，以支持其他用例。</p>
+<p>我们<strong>支持</strong>、<strong>鼓励</strong>并<strong>强烈支持</strong>创建第三方包来封装新的行为，而不是直接向 Django REST framework 添加额外的功能。</p>
+<p>我们的目标是尽可能简单地创建第三方软件包，同时保持简单且维护良好的核心 API。通过推广第三方软件包，我们确保软件包的责任仍由其作者承担。如果一个包被证明是受欢迎的，那么它总是可以被考虑包含到核心 REST framework 中。</p>
+<p>如果您对新功能有所了解，请考虑如何将其打包为第三方包。我们总是很乐意在<a class="reference external" href="https://groups.google.com/forum/#!forum/django-rest-framework">邮件列表</a>上讨论想法。</p>
+</section>
+<section id="how-to-create-a-third-party-package">
+<h2>如何创建第三方包 (How to create a Third Party Package)<a class="headerlink" href="#how-to-create-a-third-party-package" title="Permalink to this heading">#</a></h2>
+<section id="creating-your-package">
+<h3>创建您的包 (Creating your package)<a class="headerlink" href="#creating-your-package" title="Permalink to this heading">#</a></h3>
+<p>您可以使用<a class="reference external" href="https://github.com/jpadilla/cookiecutter-django-rest-framework">此 cookiecutter 模板</a>快速创建可重用的 Django REST Framework 包。Cookiecutter 从项目模板创建项目。虽然是可选的，但是这个 cookiecutter 模板包括 Django REST framework 和其他包中的最佳实践，以及 Travis CI 配置、Tox 配置和合理的 <a class="reference external" href="http://setup.py">setup.py</a>，以便于 PyPI 注册/分发。</p>
+<p>注意：如果您有备用 cookiecuter 包，请告诉我们，以便我们也可以链接到它。</p>
+<section id="cookiecutter-running-the-initial-cookiecutter-command">
+<h4>运行初始 cookiecutter 命令 (Running the initial cookiecutter command)<a class="headerlink" href="#cookiecutter-running-the-initial-cookiecutter-command" title="Permalink to this heading">#</a></h4>
+<p>要运行初始 cookiecutter 命令，首先需要安装 Python <code class="docutils literal notranslate"><span class="pre">cookiecutter</span></code> 包。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ pip install cookiecutter
+</pre></div>
+</div>
+<p>安装 <code class="docutils literal notranslate"><span class="pre">cookiecutter</span></code> 后，只需运行以下命令即可创建新项目。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ cookiecutter gh:jpadilla/cookiecutter-django-rest-framework
+</pre></div>
+</div>
+<p>系统会提示您一些问题，然后回答它们，然后它会根据这些值在当前工作目录中创建您的 Python 包。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>full_name (default is &quot;Your full name here&quot;)? Johnny Appleseed
+email (default is &quot;you@example.com&quot;)? jappleseed@example.com
+github_username (default is &quot;yourname&quot;)? jappleseed
+pypi_project_name (default is &quot;dj-package&quot;)? djangorestframework-custom-auth
+repo_name (default is &quot;dj-package&quot;)? django-rest-framework-custom-auth
+app_name (default is &quot;djpackage&quot;)? custom_auth
+project_short_description (default is &quot;Your project description goes here&quot;)?
+year (default is &quot;2014&quot;)?
+version (default is &quot;0.1.0&quot;)?
+</pre></div>
+</div>
+</section>
+<section id="github-getting-it-onto-github">
+<h4>把它带到 Github 上 (Getting it onto GitHub)<a class="headerlink" href="#github-getting-it-onto-github" title="Permalink to this heading">#</a></h4>
+<p>要将项目放在 GitHub 上，您需要一个存储库才能使用它。您可以<a class="reference external" href="https://github.com/new">在此处</a>创建新存储库。如果您需要帮助，请查看 GitHub 上的 <a class="reference external" href="https://help.github.com/articles/create-a-repo/">Create A Repo</a> 文章。</p>
+</section>
+<section id="travis-ci-adding-to-travis-ci">
+<h4>添加到 Travis CI (Adding to Travis CI)<a class="headerlink" href="#travis-ci-adding-to-travis-ci" title="Permalink to this heading">#</a></h4>
+<p>我们建议使用 Travis CI，这是一种托管的持续集成服务，可以与 GitHub 完美集成，并且可以免费用于公共存储库。</p>
+<p>要开始使用 Travis CI，请使用您的 GitHub 帐户<a class="reference external" href="https://travis-ci.org/">登录</a>。登录后，转到您的<a class="reference external" href="https://travis-ci.org/profile">配置文件页面</a>并为所需的存储库启用服务挂钩。</p>
+<p>如果您使用 cookiecutter 模板，您的项目将包含一个 <code class="docutils literal notranslate"><span class="pre">.travis.yml</span></code> 文件，Travis CI 将使用该文件来构建项目并运行测试。默认情况下，每次推送到存储库或创建 Pull Request 时都会触发构建。</p>
+</section>
+<section id="pypi-uploading-to-pypi">
+<h4>上传到 PyPI (Uploading to PyPI)<a class="headerlink" href="#pypi-uploading-to-pypi" title="Permalink to this heading">#</a></h4>
+<p>一旦您至少有了一个原型工作和测试运行，您就应该在 PyPI 上发布它，以允许其他人通过 <code class="docutils literal notranslate"><span class="pre">pip</span></code> 安装它。</p>
+<p>在发布到 PyPI 之前，您必须<a class="reference external" href="https://pypi.python.org/pypi?%3Aaction=register_form">注册</a>一个帐户。</p>
+<p>要在 PyPI 上注册您的包，请运行以下命令。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ python setup.py register
+</pre></div>
+</div>
+<p>如果这是第一次发布到 PyPI，系统将提示您登录。</p>
+<p>注意：在发布之前，您需要确保您有最新的支持 <code class="docutils literal notranslate"><span class="pre">wheel</span></code> 的 pip，以及安装 <code class="docutils literal notranslate"><span class="pre">wheel</span></code> 包。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ pip install --upgrade pip
+$ pip install wheel
+</pre></div>
+</div>
+<p>在此之后，每次要在 PyPI 上发布新版本时，只需运行以下命令即可。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ python setup.py publish
+You probably want to also tag the version now:
+    git tag -a {0} -m &#39;version 0.1.0&#39;
+    git push --tags
+</pre></div>
+</div>
+<p>在向 PyPI 发布新版本后，标记版本并将其作为 GitHub 发行版提供始终是一个好主意。</p>
+<p>我们建议对您的包版本遵循<a class="reference external" href="https://semver.org/">语义版本控制</a>。</p>
+</section>
+</section>
+<section id="development">
+<h3>发展 (Development)<a class="headerlink" href="#development" title="Permalink to this heading">#</a></h3>
+<section id="version-requirements">
+<h4>版本要求 (Version requirements)<a class="headerlink" href="#version-requirements" title="Permalink to this heading">#</a></h4>
+<p>cookiecutter 模板假定将为 Python 和 Django 提供一组受支持的版本。确保您正确更新您的要求，文档，<code class="docutils literal notranslate"><span class="pre">tox.ini</span></code>，<code class="docutils literal notranslate"><span class="pre">.travis.yml</span></code> 和 <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> 以匹配您希望支持的版本集。</p>
+</section>
+<section id="tests">
+<h4>测试 (Tests)<a class="headerlink" href="#tests" title="Permalink to this heading">#</a></h4>
+<p>cookiecutter 模板包含 <code class="docutils literal notranslate"><span class="pre">runtests.py</span></code>，它使用 <code class="docutils literal notranslate"><span class="pre">pytest</span></code> 包作为测试运行器。</p>
+<p>在运行之前，您需要安装几个测试要求 (依赖)。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ pip install -r requirements.txt
+</pre></div>
+</div>
+<p>安装依赖后，您可以运行 <code class="docutils literal notranslate"><span class="pre">runtests.py</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ ./runtests.py
+</pre></div>
+</div>
+<p>使用更简洁的输出样式运行。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ ./runtests.py --fast
+</pre></div>
+</div>
+<p>不要运行 flake8 代码检查。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ ./runtests.py --nolint
+</pre></div>
+</div>
+<p>只运行 flake8 代码检查，不要运行测试。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ ./runtests.py --lintonly
+</pre></div>
+</div>
+<p>为给定的测试用例运行测试。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ ./runtests.py MyTestCase
+</pre></div>
+</div>
+<p>为给定的测试方法运行测试。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ ./runtests.py MyTestCase.test_this_method
+</pre></div>
+</div>
+<p>为给定的测试方法以较短形式运行测试。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ ./runtests.py test_this_method
+</pre></div>
+</div>
+<p>要针对不同版本的需求 (例如 Django) 对多个版本的 Python 运行测试，我们建议使用 <code class="docutils literal notranslate"><span class="pre">tox</span></code>。<a class="reference external" href="https://tox.readthedocs.io/en/latest/">Tox</a> 是一种通用的 virtualenv 管理和测试命令行工具。</p>
+<p>首先，全局安装 <code class="docutils literal notranslate"><span class="pre">tox</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ pip install tox
+</pre></div>
+</div>
+<p>要运行 <code class="docutils literal notranslate"><span class="pre">tox</span></code>，只需运行：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ tox
+</pre></div>
+</div>
+<p>要运行特定的 <code class="docutils literal notranslate"><span class="pre">tox</span></code> 环境：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ tox -e envlist
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">envlist</span></code> 是一个以逗号分隔的值，用于指定要对其运行测试的环境。要查看所有可能的测试环境的列表，请运行：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ tox -l
+</pre></div>
+</div>
+</section>
+<section id="version-compatibility">
+<h4>版本兼容性 (Version compatibility)<a class="headerlink" href="#version-compatibility" title="Permalink to this heading">#</a></h4>
+<p>有时，为了确保您的代码适用于各种不同版本的 Django、Python 或第三方库，您需要根据环境运行稍微不同的代码。以这种方式分支的任何代码都应该被隔离到 <code class="docutils literal notranslate"><span class="pre">compat.py</span></code> 模块中，并且应该提供代码库其余部分可以使用的单个公共接口。</p>
+<p>查看 Django REST framework 的 <a class="reference external" href="https://github.com/encode/django-rest-framework/blob/master/rest_framework/compat.py">compat.py</a> 作为示例。</p>
+</section>
+</section>
+<section id="once-your-package-is-available">
+<h3>一旦您的包可用 (Once your package is available)<a class="headerlink" href="#once-your-package-is-available" title="Permalink to this heading">#</a></h3>
+<p>一旦您的包在 PyPI 上被正确记录并可用，您可能希望与发现它有用的其他人共享它。</p>
+<section id="django-rest-framework-adding-to-the-django-rest-framework-grid">
+<h4>添加到 Django REST framework 网格 (Adding to the Django REST framework grid)<a class="headerlink" href="#django-rest-framework-adding-to-the-django-rest-framework-grid" title="Permalink to this heading">#</a></h4>
+<p>我们建议将您的包添加到 Django Packages 上的 <a class="reference external" href="https://www.djangopackages.com/grids/g/django-rest-framework/">REST Framework</a> 网格中。</p>
+</section>
+<section id="django-rest-framework-adding-to-the-django-rest-framework-docs">
+<h4>添加到 Django REST framework 文档 (Adding to the Django REST framework docs)<a class="headerlink" href="#django-rest-framework-adding-to-the-django-rest-framework-docs" title="Permalink to this heading">#</a></h4>
+<p>在 GitHub 上创建一个 Pull Request 或 Issue，我们将从主 REST framework 文档中添加一个链接。您可以在最适用的 API 指南部分的<strong>第三方软件包</strong>下添加您的软件包，例如<a class="reference external" href="https://www.django-rest-framework.org/api-guide/authentication/">身份验证</a>或<a class="reference external" href="https://www.django-rest-framework.org/api-guide/permissions/">权限</a>。您还可以在<a class="reference external" href="https://www.django-rest-framework.org/topics/third-party-packages/#existing-third-party-packages">第三方包</a>小节下链接您的包。</p>
+</section>
+<section id="announce-on-the-discussion-group">
+<h4>在讨论组上宣布 (Announce on the discussion group.)<a class="headerlink" href="#announce-on-the-discussion-group" title="Permalink to this heading">#</a></h4>
+<p>您还可以通过<a class="reference external" href="https://groups.google.com/forum/#!forum/django-rest-framework">讨论组</a>让其他人了解您的包。</p>
+</section>
+</section>
+</section>
+<section id="existing-third-party-packages">
+<h2>现有第三方包 (Existing Third Party Packages)<a class="headerlink" href="#existing-third-party-packages" title="Permalink to this heading">#</a></h2>
+<p>Django REST Framework 拥有越来越多的开发人员，软件包和资源社区。</p>
+<p>查看详细介绍 <a class="reference external" href="https://www.djangopackages.com/grids/g/django-rest-framework/">Django Packages</a> 中 Django REST Framework 周围所有包和生态系统的网格。</p>
+<p>要提交新内容，请<a class="reference external" href="https://github.com/encode/django-rest-framework/issues/new">打开问题</a>或<a class="reference external" href="https://github.com/encode/django-rest-framework/compare">创建拉取请求</a>。</p>
+<section id="authentication">
+<h3>认证 (Authentication)<a class="headerlink" href="#authentication" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/juanriaza/django-rest-framework-digestauth">djangorestframework-digestauth</a> - 提供摘要访问身份验证支持。</p></li>
+<li><p><a class="reference external" href="https://github.com/evonove/django-oauth-toolkit">django-oauth-toolkit</a> - 提供 OAuth 2.0 支持。</p></li>
+<li><p><a class="reference external" href="https://github.com/Rediker-Software/doac">doac</a> - 提供 OAuth 2.0 支持。</p></li>
+<li><p><a class="reference external" href="https://github.com/GetBlimp/django-rest-framework-jwt">djangorestframework-jwt</a> - 提供 JSON Web 令牌认证支持。</p></li>
+<li><p><a class="reference external" href="https://github.com/davesque/django-rest-framework-simplejwt">djangorestframework-simplejwt</a> - 提供 JSON Web 令牌认证支持的替代包。</p></li>
+<li><p><a class="reference external" href="https://github.com/kumar303/hawkrest">hawkrest</a> - 提供 Hawk HTTP 授权。</p></li>
+<li><p><a class="reference external" href="https://github.com/etoccalino/django-rest-framework-httpsignature">djangorestframework-httpsignature</a> - 提供易于使用的 HTTP 签名身份验证机制。</p></li>
+<li><p><a class="reference external" href="https://github.com/sunscrapers/djoser">djoser</a> - 提供一组视图来处理注册、登录、注销、密码重置和帐户激活等基本操作。</p></li>
+<li><p><a class="reference external" href="https://github.com/Tivix/django-rest-auth/">django-rest-auth</a> - 提供一组 REST API 端点，用于注册、身份验证 (包括社交媒体身份验证)、密码重置、检索和更新用户详细信息等。</p></li>
+<li><p><a class="reference external" href="https://github.com/ByteInternet/drf-oidc-auth">drf-oidc-auth</a> - 为 DRF 实现 OpenID Connect 令牌认证。</p></li>
+<li><p><a class="reference external" href="https://github.com/aaronn/django-rest-framework-passwordless">drfpasswordless</a> - 通过电子邮件和手机号码添加 (Medium，Square Cash inspired) 无密码登录和注册。</p></li>
+</ul>
+</section>
+<section id="permissions">
+<h3>权限 (Permissions)<a class="headerlink" href="#permissions" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/kevin-brown/drf-any-permissions">drf-any-permissions</a> - 提供备用权限处理。</p></li>
+<li><p><a class="reference external" href="https://github.com/niwibe/djangorestframework-composed-permissions">djangorestframework-composed-permissions</a> - 提供定义复杂权限的简单方法。</p></li>
+<li><p><a class="reference external" href="https://github.com/caxap/rest_condition">rest_condition</a> - 以简单方便的方式构建复杂权限的另一个扩展。</p></li>
+<li><p><a class="reference external" href="https://github.com/Helioscene/dry-rest-permissions">dry-rest-permissions</a> - 提供一种为单个 api 操作定义权限的简单方法。</p></li>
+</ul>
+</section>
+<section id="serializers">
+<h3>序列化器 (Serializers)<a class="headerlink" href="#serializers" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/umutbozkurt/django-rest-framework-mongoengine">django-rest-framework-mongoengine</a> - 支持使用 MongoDB 作为 Django REST framework 存储层的序列化器类。</p></li>
+<li><p><a class="reference external" href="https://github.com/djangonauts/django-rest-framework-gis">djangorestframework-gis</a> - 地理附加组件</p></li>
+<li><p><a class="reference external" href="https://github.com/djangonauts/django-rest-framework-hstore">djangorestframework-hstore</a> - 支持 django-hstore DictionaryField 模型字段及其 schema 模式特性的序列化器类。</p></li>
+<li><p><a class="reference external" href="https://github.com/django-json-api/django-rest-framework-json-api">djangorestframework-jsonapi</a> - 提供解析器、渲染器、序列化器和其他工具，以帮助构建符合 <a class="reference external" href="http://jsonapi.org">jsonapi.org</a> 规范的 API。</p></li>
+<li><p><a class="reference external" href="https://github.com/wq/html-json-forms">html-json-forms</a> - 提供一个算法和序列化器来处理每个 (非活动) 规范的 HTML JSON 表单提交。</p></li>
+<li><p><a class="reference external" href="https://github.com/evenicoulddoit/django-rest-framework-serializer-extensions">django-rest-framework-serializer-extensions</a> - 启用黑名单/白名单字段，并基于每个视图/请求有条件地扩展子序列化器。</p></li>
+<li><p><a class="reference external" href="https://github.com/wimglenn/djangorestframework-queryfields">djangorestframework-queryfields</a> - Serializer mixin 允许客户端控制将在 API 响应中发送的字段。</p></li>
+</ul>
+</section>
+<section id="serializer-fields">
+<h3>序列化器字段 (Serializer fields)<a class="headerlink" href="#serializer-fields" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/estebistec/drf-compound-fields">drf-compound-fields</a> - 提供 “复合” 序列化器字段，例如简单值列表。</p></li>
+<li><p><a class="reference external" href="https://github.com/Hipo/drf-extra-fields">django-extra-fields</a> - 提供额外的序列化器字段。</p></li>
+<li><p><a class="reference external" href="https://github.com/WGBH/django-versatileimagefield">django-versatileimagefield</a> - 为 Django 的库存 <code class="docutils literal notranslate"><span class="pre">ImageField</span></code> 提供简单替换，可以轻松地从单个字段提供多种尺寸/再现的图像。有关 DRF 特定的实施文档，<a class="reference external" href="https://django-versatileimagefield.readthedocs.io/en/latest/drf_integration.html">请单击此处</a>。</p></li>
+</ul>
+</section>
+<section id="views">
+<h3>视图 (Views)<a class="headerlink" href="#views" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/miki725/django-rest-framework-bulk">djangorestframework-bulk</a> - 实现通用视图混合以及一些常见的具体通用视图，以允许通过 API 请求应用批量操作。</p></li>
+<li><p><a class="reference external" href="https://github.com/MattBroach/DjangoRestMultipleModels">django-rest-multiple-models</a> - 提供通用视图 (和 mixin)，用于通过单个 API 请求发送多个序列化模型和/或查询集。</p></li>
+</ul>
+</section>
+<section id="routers">
+<h3>路由器 (Routers)<a class="headerlink" href="#routers" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/alanjds/drf-nested-routers">drf-nested-routers</a> - 提供用于处理嵌套资源的路由器和关系字段。</p></li>
+<li><p><a class="reference external" href="https://wq.io/docs/about-rest">wq.db.rest</a> - 提供具有合理默认 URL 和视图集的管理员样式模型注册 API。</p></li>
+</ul>
+</section>
+<section id="parsers">
+<h3>解析器 (Parsers)<a class="headerlink" href="#parsers" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/juanriaza/django-rest-framework-msgpack">djangorestframework-msgpack</a> - 提供 MessagePack 渲染器和解析器支持。</p></li>
+<li><p><a class="reference external" href="https://github.com/django-json-api/django-rest-framework-json-api">djangorestframework-jsonapi</a> - 提供解析器、渲染器、序列化器和其他工具，以帮助构建符合 <a class="reference external" href="http://jsonapi.org">jsonapi.org</a> 规范的 API。</p></li>
+<li><p><a class="reference external" href="https://github.com/vbabiy/djangorestframework-camel-case">djangorestframework-camel-case</a> - 提供驼峰式 JSON 渲染器和解析器。</p></li>
+</ul>
+</section>
+<section id="renderers">
+<h3>渲染器 (Renderers)<a class="headerlink" href="#renderers" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/mjumbewu/django-rest-framework-csv">djangorestframework-csv</a> - 提供 CSV 渲染器支持。</p></li>
+<li><p><a class="reference external" href="https://github.com/django-json-api/django-rest-framework-json-api">djangorestframework-jsonapi</a> - 提供解析器、渲染器、序列化器和其他工具，以帮助构建符合 <a class="reference external" href="http://jsonapi.org">jsonapi.org</a> 规范的 API。</p></li>
+<li><p><a class="reference external" href="https://github.com/gizmag/drf-ujson-renderer">drf_ujson</a> - 使用 UJSON 包实现 JSON 渲染。</p></li>
+<li><p><a class="reference external" href="https://github.com/wq/django-rest-pandas">rest-pandas</a> - 包括 Excel、CSV 和 SVG 格式的 Pandas DataFrame-powered 渲染器。</p></li>
+<li><p><a class="reference external" href="https://github.com/allisson/django-rest-framework-rapidjson">djangorestframework-rapidjson</a> - 使用解析器和渲染器提供 rapidjson 支持。</p></li>
+</ul>
+</section>
+<section id="filtering">
+<h3>过滤 (Filtering)<a class="headerlink" href="#filtering" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/philipn/django-rest-framework-chain">djangorestframework-chain</a> - 允许任意链接的关系和查找过滤器。</p></li>
+<li><p><a class="reference external" href="https://github.com/miki725/django-url-filter">django-url-filter</a> - 允许以安全的方式通过人性化的 URL 过滤数据。它是一个不依赖于 DRF 的通用库，但它提供了与 DRF 的简单集成。</p></li>
+<li><p><a class="reference external" href="https://github.com/manjitkumar/drf-url-filters">drf-url-filter</a> 是一个简单的 Django 应用程序，它以简洁、可配置的方式在 drf <code class="docutils literal notranslate"><span class="pre">ModelViewSet</span></code> 的 <code class="docutils literal notranslate"><span class="pre">Queryset</span></code> 上应用过滤器。它还支持对传入查询参数及其值的验证。</p></li>
+</ul>
+</section>
+<section id="misc">
+<h3>杂项 (Misc)<a class="headerlink" href="#misc" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/agconti/cookiecutter-django-rest">cookiecutter-django-rest</a> - 负责设置和配置的 cookiecutter 模板，因此您可以专注于使您的 REST apis 非常棒。</p></li>
+<li><p><a class="reference external" href="https://github.com/fredkingham/django_rest_model_hyperlink_serializers_project">djangorestrelationalhyperlink</a> - 一个超链接序列化器，可以通过超链接来改变关系，但在其他方面类似于超链接模型序列化器。</p></li>
+<li><p><a class="reference external" href="https://github.com/marcgibbons/django-rest-swagger">django-rest-swagger</a> - Swagger UI 的 API 文档生成器。</p></li>
+<li><p><a class="reference external" href="https://github.com/eofs/django-rest-framework-proxy">django-rest-framework-proxy</a> - 将传入请求重定向到另一个 API 服务器的代理。</p></li>
+<li><p><a class="reference external" href="https://github.com/AppsFuel/gaiarestframework">gaiarestframework</a> - 用于 django-rest-framework 的实用工具</p></li>
+<li><p><a class="reference external" href="https://github.com/chibisov/drf-extensions">drf-extensions</a> - 自定义扩展的集合</p></li>
+<li><p><a class="reference external" href="https://github.com/dustinfarris/ember-django-adapter">ember-django-adapter</a> - 用于处理 Ember.js 的适配器</p></li>
+<li><p><a class="reference external" href="https://github.com/WGBH/django-versatileimagefield">django-versatileimagefield</a> - 为 Django 的库存 <code class="docutils literal notranslate"><span class="pre">ImageField</span></code> 提供简单替换，可以轻松地从单个字段提供多种尺寸/再现的图像。有关 DRF 特定的实施文档，<a class="reference external" href="https://django-versatileimagefield.readthedocs.io/en/latest/drf_integration.html">请单击此处</a>。</p></li>
+<li><p><a class="reference external" href="https://github.com/aschn/drf-tracking">drf-tracking</a> - 用于跟踪 DRF API 视图请求的实用工具。</p></li>
+<li><p><a class="reference external" href="https://github.com/ArabellaTech/drf_tweaks">drf_tweaks</a> - 具有一步验证 (以及更多) 的序列化程序，没有计数的分页和其他调整。</p></li>
+<li><p><a class="reference external" href="https://github.com/dealertrack/django-rest-framework-braces">django-rest-framework braces</a> - 用于处理 Django Rest Framework 的实用工具的集合。最值得注意的是 <a class="reference external" href="https://django-rest-framework-braces.readthedocs.io/en/latest/overview.html#formserializer">FormSerializer</a> 和 <a class="reference external" href="https://django-rest-framework-braces.readthedocs.io/en/latest/overview.html#serializerform">SerializerForm</a>，它们是 DRF 序列化器和 Django 表单之间的适配器。</p></li>
+<li><p><a class="reference external" href="https://drf-haystack.readthedocs.io/en/latest/">drf-haystack</a> - Django Rest Framework 的 Haystack 搜索</p></li>
+<li><p><a class="reference external" href="https://github.com/mrhwick/django-rest-framework-version-transforms">django-rest-framework-version-transforms</a> - 允许 delta 转换的使用对 DRF 资源表示的版本控制。</p></li>
+<li><p><a class="reference external" href="https://github.com/raphaelgyory/django-rest-messaging">django-rest-messaging</a>，<a class="reference external" href="https://github.com/raphaelgyory/django-rest-messaging-centrifugo">django-rest-messaging-centrifugo</a> 和 <a class="reference external" href="https://github.com/raphaelgyory/django-rest-messaging-js">django-rest-messaging-js</a> - 使用 DRM 的实时可插拔消息传递服务。</p></li>
+<li><p><a class="reference external" href="https://github.com/dealertrack/djangorest-alchemy">djangorest-alchemy</a> - SQLAlchemy 对 REST framework 的支持。</p></li>
+<li><p><a class="reference external" href="https://github.com/izimobil/django-rest-framework-datatables">djangorestframework-datatables</a> - Django REST framework 和<a class="reference external" href="https://datatables.net/">数据表</a>之间的无缝集成。</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Community"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Tutorials_and_Resources.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">教程和资源 (Tutorials and Resources)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Contributing_to_REST_framework.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">对 REST framework 的贡献 (Contributing to REST framework)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-third-party-packages">关于第三方包 (About Third Party Packages)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-create-a-third-party-package">如何创建第三方包 (How to create a Third Party Package)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-your-package">创建您的包 (Creating your package)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cookiecutter-running-the-initial-cookiecutter-command">运行初始 cookiecutter 命令 (Running the initial cookiecutter command)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github-getting-it-onto-github">把它带到 Github 上 (Getting it onto GitHub)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#travis-ci-adding-to-travis-ci">添加到 Travis CI (Adding to Travis CI)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pypi-uploading-to-pypi">上传到 PyPI (Uploading to PyPI)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development">发展 (Development)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#version-requirements">版本要求 (Version requirements)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">测试 (Tests)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#version-compatibility">版本兼容性 (Version compatibility)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#once-your-package-is-available">一旦您的包可用 (Once your package is available)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-adding-to-the-django-rest-framework-grid">添加到 Django REST framework 网格 (Adding to the Django REST framework grid)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-adding-to-the-django-rest-framework-docs">添加到 Django REST framework 文档 (Adding to the Django REST framework docs)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#announce-on-the-discussion-group">在讨论组上宣布 (Announce on the discussion group.)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#existing-third-party-packages">现有第三方包 (Existing Third Party Packages)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">认证 (Authentication)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#permissions">权限 (Permissions)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#serializers">序列化器 (Serializers)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#serializer-fields">序列化器字段 (Serializer fields)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#views">视图 (Views)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#routers">路由器 (Routers)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parsers">解析器 (Parsers)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renderers">渲染器 (Renderers)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering">过滤 (Filtering)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misc">杂项 (Misc)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,919 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>异常 (Exceptions) &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'API-Guide/Exceptions';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="测试 (Testing)" href="Testing.html" />
+    <link rel="prev" title="返回 URL (Returning URLs)" href="Returning-URLs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Authentication-and-Permissions.html">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Views.html">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Renderers.html">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-fields.html">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Validators.html">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Authentication.html">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Permissions.html">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Throttling.html">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Filtering.html">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Pagination.html">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Testing.html">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Settings.html">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/API_Clients.html">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/The_Browsable_API.html">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Community/Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Third_Party_Packages.html">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Contributing_to_REST_framework.html">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Community/Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.4_Announcement.html">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.0_Announcement.html">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAPI-Guide/Exceptions.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/API-Guide/Exceptions.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>异常 (Exceptions)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">异常 (Exceptions)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rest-framework-exception-handling-in-rest-framework-views">REST framework 视图中的异常处理 (Exception handling in REST framework views)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-exception-handling">自定义异常处理 (Custom exception handling)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-reference">API 参考 (API Reference)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apiexception">APIException</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-inspecting-api-exceptions">检查 API 异常 (Inspecting API exceptions)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parseerror">ParseError</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authenticationfailed">AuthenticationFailed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notauthenticated">NotAuthenticated</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permissiondenied">PermissionDenied</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notfound">NotFound</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodnotallowed">MethodNotAllowed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notacceptable">NotAcceptable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupportedmediatype">UnsupportedMediaType</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#throttled">Throttled</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validationerror">ValidationError</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#generic-error-views">通用错误视图 (Generic Error Views)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rest-framework-exceptions-server-error"><code class="docutils literal notranslate"><span class="pre">rest_framework.exceptions.server_error</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">rest_framework.exceptions.server_error</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="exceptions">
+<h1>异常 (Exceptions)<a class="headerlink" href="#exceptions" title="Permalink to this heading">#</a></h1>
+<p>异常…允许错误处理在程序结构的中心或者高级的地方被清晰有条理的组织起来。—— Doug Hellmann, <a class="reference external" href="https://doughellmann.com/blog/2009/06/19/python-exception-handling-techniques/">Python 异常处理技术</a></p>
+<section id="rest-framework-exception-handling-in-rest-framework-views">
+<h2>REST framework 视图中的异常处理 (Exception handling in REST framework views)<a class="headerlink" href="#rest-framework-exception-handling-in-rest-framework-views" title="Permalink to this heading">#</a></h2>
+<p>REST framework 的视图处理各种异常，并处理返回适当的错误响应。</p>
+<p>处理的异常有：</p>
+<ul class="simple">
+<li><p>在 REST framework 内引发的 <code class="docutils literal notranslate"><span class="pre">APIException</span></code> 的子类。</p></li>
+<li><p>Django 的 <code class="docutils literal notranslate"><span class="pre">Http404</span></code> 异常。</p></li>
+<li><p>Django 的 <code class="docutils literal notranslate"><span class="pre">PermissionDenied</span></code> 异常。</p></li>
+</ul>
+<p>针对每种情况，REST framework 将返回具有适当的状态码和内容类型的响应。响应的主体将包含有关错误性质的任何其他细节。</p>
+<p>大多数错误响应将包括响应正文中的 <code class="docutils literal notranslate"><span class="pre">detail</span></code> 键。</p>
+<p>例如，以下请求：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">foo</span><span class="o">/</span><span class="n">bar</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>可能会收到一个错误响应，指示在该资源上不允许 <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> 方法：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">405</span> <span class="n">Method</span> <span class="n">Not</span> <span class="n">Allowed</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">42</span>
+
+<span class="p">{</span><span class="s2">&quot;detail&quot;</span><span class="p">:</span> <span class="s2">&quot;Method &#39;DELETE&#39; not allowed.&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>验证错误的处理方式稍有不同，并将字段名称作为响应中的键。如果验证错误没有指定特定字段，那么它将使用 “non_field_errors” 键，或者为 <code class="docutils literal notranslate"><span class="pre">NON_FIELD_ERRORS_KEY</span></code> setting 中设置的任何字符串值。</p>
+<p>任何示例验证错误可能如下所示：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">400</span> <span class="n">Bad</span> <span class="n">Request</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">94</span>
+
+<span class="p">{</span><span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A valid integer is required.&quot;</span><span class="p">],</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;This field may not be blank.&quot;</span><span class="p">]}</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-exception-handling">
+<h2>自定义异常处理 (Custom exception handling)<a class="headerlink" href="#custom-exception-handling" title="Permalink to this heading">#</a></h2>
+<p>您可以通过创建处理程序函数来实现自定义异常处理，该函数将 API 视图中引发的异常转换为响应对象。这允许您控制 API 使用的错误响应的样式。</p>
+<p>该函数必须带有一对参数，第一个是要处理的异常，第二个是包含任何额外上下文的字典，例如当前正在处理的视图。异常处理程序函数应返回 <code class="docutils literal notranslate"><span class="pre">Response</span></code> 对象，或者如果无法处理异常，则返回 <code class="docutils literal notranslate"><span class="pre">None</span></code>。如果处理程序返回 <code class="docutils literal notranslate"><span class="pre">None</span></code>，那么异常将被重新引发，Django 将返回一个标准的 HTTP 500 ‘server error’ 响应。</p>
+<p>例如，您可能希望确保所有错误响应都包含响应正文中的 HTTP 状态代码，如下所示：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">405</span> <span class="n">Method</span> <span class="n">Not</span> <span class="n">Allowed</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">62</span>
+
+<span class="p">{</span><span class="s2">&quot;status_code&quot;</span><span class="p">:</span> <span class="mi">405</span><span class="p">,</span> <span class="s2">&quot;detail&quot;</span><span class="p">:</span> <span class="s2">&quot;Method &#39;DELETE&#39; not allowed.&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>为了改变响应的样式，您可以编写以下自定义异常处理程序：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.views</span> <span class="kn">import</span> <span class="n">exception_handler</span>
+
+<span class="k">def</span> <span class="nf">custom_exception_handler</span><span class="p">(</span><span class="n">exc</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="c1"># Call REST framework&#39;s default exception handler first,</span>
+    <span class="c1"># to get the standard error response.</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">exception_handler</span><span class="p">(</span><span class="n">exc</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+    <span class="c1"># Now add the HTTP status code to the response.</span>
+    <span class="k">if</span> <span class="n">response</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;status_code&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+<p>默认处理程序不使用上下文参数，但如果异常处理程序需要诸如当前正在处理的视图之类的进一步信息，这可能很有用，这可以作为 <code class="docutils literal notranslate"><span class="pre">context['view']</span></code> 访问。</p>
+<p>异常处理程序还必须使用 <code class="docutils literal notranslate"><span class="pre">EXCEPTION_HANDLER</span></code> 设置键在你的设置中进行配置。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;EXCEPTION_HANDLER&#39;</span><span class="p">:</span> <span class="s1">&#39;my_project.my_app.utils.custom_exception_handler&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>如果未指定，则 <code class="docutils literal notranslate"><span class="pre">'EXCEPTION_HANDLER'</span></code> 设置默认为由 REST framework 提供的标准异常处理程序：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;EXCEPTION_HANDLER&#39;</span><span class="p">:</span> <span class="s1">&#39;rest_framework.views.exception_handler&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>请注意，异常处理程序仅由异常引发生成的响应调用。它不会用于视图直接返回的任何响应，例如当序列化器验证失败时通用视图返回的 <code class="docutils literal notranslate"><span class="pre">HTTP_400_BAD_REQUEST</span></code> 响应。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="api-api-reference">
+<h1>API 参考 (API Reference)<a class="headerlink" href="#api-api-reference" title="Permalink to this heading">#</a></h1>
+<section id="apiexception">
+<h2>APIException<a class="headerlink" href="#apiexception" title="Permalink to this heading">#</a></h2>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">APIException()</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">APIView</span></code> 类或 <code class="docutils literal notranslate"><span class="pre">&#64;api_view</span></code> 中引发的所有异常的<strong>基类</strong>。</p>
+<p>要提供自定义异常，请继承 <code class="docutils literal notranslate"><span class="pre">APIException</span></code>，并在该类上设置 <code class="docutils literal notranslate"><span class="pre">.status_code</span></code>，<code class="docutils literal notranslate"><span class="pre">.default_detail</span></code> 和 <code class="docutils literal notranslate"><span class="pre">default_code</span></code> 属性。</p>
+<p>例如，如果您的 API 依赖于有时可能无法访问的第三方服务，则可能希望为 “503 Service Unavailable” HTTP 响应码实现异常。您可以这样做：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.exceptions</span> <span class="kn">import</span> <span class="n">APIException</span>
+
+<span class="k">class</span> <span class="nc">ServiceUnavailable</span><span class="p">(</span><span class="n">APIException</span><span class="p">):</span>
+    <span class="n">status_code</span> <span class="o">=</span> <span class="mi">503</span>
+    <span class="n">default_detail</span> <span class="o">=</span> <span class="s1">&#39;Service temporarily unavailable, try again later.&#39;</span>
+    <span class="n">default_code</span> <span class="o">=</span> <span class="s1">&#39;service_unavailable&#39;</span>
+</pre></div>
+</div>
+<section id="api-inspecting-api-exceptions">
+<h3>检查 API 异常 (Inspecting API exceptions)<a class="headerlink" href="#api-inspecting-api-exceptions" title="Permalink to this heading">#</a></h3>
+<p>有许多不同的属性可用于检查API异常的状态。您可以使用它们为项目构建自定义异常处理。</p>
+<p>可用的属性和方法是：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.detail</span></code> - 返回错误的文本描述。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.get_codes()</span></code> - 返回错误的代码标识符。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.get_full_details()</span></code> - 返回文本描述和代码标识符。</p></li>
+</ul>
+<p>在大多数情况下，错误细节将是一个简单的项：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">detail</span><span class="p">)</span>
+<span class="go">You do not have permission to perform this action.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">get_codes</span><span class="p">())</span>
+<span class="go">permission_denied</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">get_full_details</span><span class="p">())</span>
+<span class="go">{&#39;message&#39;:&#39;You do not have permission to perform this action.&#39;,&#39;code&#39;:&#39;permission_denied&#39;}</span>
+</pre></div>
+</div>
+<p>在验证错误的情况下，错误详情将是项列表或字典：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">detail</span><span class="p">)</span>
+<span class="go">{&quot;name&quot;:&quot;This field is required.&quot;,&quot;age&quot;:&quot;A valid integer is required.&quot;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">get_codes</span><span class="p">())</span>
+<span class="go">{&quot;name&quot;:&quot;required&quot;,&quot;age&quot;:&quot;invalid&quot;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">get_full_details</span><span class="p">())</span>
+<span class="go">{&quot;name&quot;:{&quot;message&quot;:&quot;This field is required.&quot;,&quot;code&quot;:&quot;required&quot;},&quot;age&quot;:{&quot;message&quot;:&quot;A valid integer is required.&quot;,&quot;code&quot;:&quot;invalid&quot;}}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="parseerror">
+<h2>ParseError<a class="headerlink" href="#parseerror" title="Permalink to this heading">#</a></h2>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">ParseError(detail=None,</span> <span class="pre">code=None)</span></code></p>
+<p>如果请求在访问 <code class="docutils literal notranslate"><span class="pre">request.data</span></code> 时包含格式错误的数据，则引发此异常。</p>
+<p>默认情况下，此异常会导致 HTTP 状态码 “400 Bad Request” 的响应。</p>
+</section>
+<section id="authenticationfailed">
+<h2>AuthenticationFailed<a class="headerlink" href="#authenticationfailed" title="Permalink to this heading">#</a></h2>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">AuthenticationFailed(detail=None,</span> <span class="pre">code=None)</span></code></p>
+<p>当传入请求包含不正确的身份验证时引发。</p>
+<p>默认情况下，此异常会导致 HTTP 状态码 “401 Unauthenticated” 的响应，但它也可能导致 “403 Forbidden” 的响应，具体取决于所使用的身份验证方案。有关详细信息，请参阅<a class="reference external" href="http://www.django-rest-framework.org/api-guide/authentication/">身份验证文档</a>。</p>
+</section>
+<section id="notauthenticated">
+<h2>NotAuthenticated<a class="headerlink" href="#notauthenticated" title="Permalink to this heading">#</a></h2>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">NotAuthenticated(detail=None,</span> <span class="pre">code=None)</span></code></p>
+<p>未经身份验证的请求未通过权限检查时引发。</p>
+<p>默认情况下，此异常会导致 HTTP 状态码 “401 Unauthenticated” 的响应，但它也可能导致 “403 Forbidden” 的响应，具体取决于所使用的身份验证方案。有关详细信息，请参阅<a class="reference external" href="http://www.django-rest-framework.org/api-guide/authentication/">身份验证文档</a>。</p>
+</section>
+<section id="permissiondenied">
+<h2>PermissionDenied<a class="headerlink" href="#permissiondenied" title="Permalink to this heading">#</a></h2>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">PermissionDenied(detail=None,</span> <span class="pre">code=None)</span></code></p>
+<p>当经过身份验证的请求未通过权限检查时引发。</p>
+<p>默认情况下，此异常会导致 HTTP 状态码为 “403 Forbidden” 的响应。</p>
+</section>
+<section id="notfound">
+<h2>NotFound<a class="headerlink" href="#notfound" title="Permalink to this heading">#</a></h2>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">NotFound(detail=None,</span> <span class="pre">code=None)</span></code></p>
+<p>当资源不存在于给定的 URL 时引发。该异常相当于标准的 <code class="docutils literal notranslate"><span class="pre">Http404</span></code> Django 异常。</p>
+<p>默认情况下，此异常会导致 HTTP 状态码 “404 Not Found” 的响应。</p>
+</section>
+<section id="methodnotallowed">
+<h2>MethodNotAllowed<a class="headerlink" href="#methodnotallowed" title="Permalink to this heading">#</a></h2>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">MethodNotAllowed(method,</span> <span class="pre">detail=None,</span> <span class="pre">code=None)</span></code></p>
+<p>当传入请求发生，但未映射到视图上的处理程序方法时引发。</p>
+<p>默认情况下，此异常会导致 HTTP 状态代码 “405 Method Not Allowed” 的响应。</p>
+</section>
+<section id="notacceptable">
+<h2>NotAcceptable<a class="headerlink" href="#notacceptable" title="Permalink to this heading">#</a></h2>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">NotAcceptable(detail=None,</span> <span class="pre">code=None)</span></code></p>
+<p>当传入请求的 <code class="docutils literal notranslate"><span class="pre">Accept</span></code> 标头不能被任何可用的渲染器满足时引发。</p>
+<p>默认情况下，此异常会导致 HTTP 状态码为 “406 Not Acceptable” 的响应。</p>
+</section>
+<section id="unsupportedmediatype">
+<h2>UnsupportedMediaType<a class="headerlink" href="#unsupportedmediatype" title="Permalink to this heading">#</a></h2>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">UnsupportedMediaType(media_type,</span> <span class="pre">detail=None,</span> <span class="pre">code=None)</span></code></p>
+<p>如果在访问 <code class="docutils literal notranslate"><span class="pre">request.data</span></code> 时没有可以处理请求数据的内容类型的解析器，则引发。</p>
+<p>默认情况下，此异常会导致 HTTP 状态码为 “415 Unsupported Media Type” 的响应。</p>
+</section>
+<section id="throttled">
+<h2>Throttled<a class="headerlink" href="#throttled" title="Permalink to this heading">#</a></h2>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">Throttled(wait=None,</span> <span class="pre">detail=None,</span> <span class="pre">code=None)</span></code></p>
+<p>当传入请求未通过限制检查时引发。</p>
+<p>默认情况下，此异常会导致 HTTP 状态码 “429 Too Many Requests” 的响应。</p>
+</section>
+<section id="validationerror">
+<h2>ValidationError<a class="headerlink" href="#validationerror" title="Permalink to this heading">#</a></h2>
+<p><strong>签名</strong>：<code class="docutils literal notranslate"><span class="pre">ValidationError(detail,</span> <span class="pre">code=None)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">ValidationError</span></code> 异常与其他 <code class="docutils literal notranslate"><span class="pre">APIException</span></code> 类略有不同：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">detail</span></code> 参数是必需的，不是可选的。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">detail</span></code> 参数可以是错误详情列表或字典，也可以是嵌套的数据结构。</p></li>
+<li><p>按照惯例，您应该导入 serializers 模块并使用完全限定的 <code class="docutils literal notranslate"><span class="pre">ValidationError</span></code> 样式，用以区别 Django 的内置验证错误。例如：<code class="docutils literal notranslate"><span class="pre">raise</span> <span class="pre">serializers.ValidationError('This</span> <span class="pre">field</span> <span class="pre">must</span> <span class="pre">be</span> <span class="pre">an</span> <span class="pre">integer</span> <span class="pre">value.')</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">ValidationError</span></code> 类应用于序列化器和字段验证以及验证器类。在调用 <code class="docutils literal notranslate"><span class="pre">serializer.is_valid</span></code> 时使用 <code class="docutils literal notranslate"><span class="pre">raise_exception</span></code> 关键字参数也会引发：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">(</span><span class="n">raise_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>通用视图使用 <code class="docutils literal notranslate"><span class="pre">raise_exception=True</span></code> 标志，这意味着您可以在 API 中全局覆盖验证错误响应的样式。为此，请使用自定义异常处理程序，如上所述。</p>
+<p>默认情况下，此异常会导致 HTTP 状态码为 “400 Bad Request” 的响应。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="generic-error-views">
+<h1>通用错误视图 (Generic Error Views)<a class="headerlink" href="#generic-error-views" title="Permalink to this heading">#</a></h1>
+<p>Django REST Framework 提供了两个错误视图，适用于提供通用 JSON <code class="docutils literal notranslate"><span class="pre">500</span></code> Server Error 和 <code class="docutils literal notranslate"><span class="pre">400</span></code> Bad Request 响应。( Django 的默认错误视图提供 HTML 响应，这可能不适合仅限 API 应用程序。)</p>
+<p>按照 <a class="reference external" href="https://docs.djangoproject.com/en/dev/topics/http/views/#customizing-error-views">Django 的自定义错误视图文档</a>使用它们。</p>
+<section id="rest-framework-exceptions-server-error">
+<h2><code class="docutils literal notranslate"><span class="pre">rest_framework.exceptions.server_error</span></code><a class="headerlink" href="#rest-framework-exceptions-server-error" title="Permalink to this heading">#</a></h2>
+<p>返回状态码为 <code class="docutils literal notranslate"><span class="pre">500</span></code> 且 <code class="docutils literal notranslate"><span class="pre">application/json</span></code> 内容类型的响应。</p>
+<p>设为 <code class="docutils literal notranslate"><span class="pre">handler500</span></code>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">handler500</span> <span class="o">=</span> <span class="s1">&#39;rest_framework.exceptions.server_error&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h2><code class="docutils literal notranslate"><span class="pre">rest_framework.exceptions.server_error</span></code><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>返回状态码为 <code class="docutils literal notranslate"><span class="pre">400</span></code> 且 <code class="docutils literal notranslate"><span class="pre">application/json</span></code> 内容类型的响应。</p>
+<p>设为 <code class="docutils literal notranslate"><span class="pre">handler400</span></code>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">handler400</span> <span class="o">=</span> <span class="s1">&#39;rest_framework.exceptions.bad_request&#39;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./API-Guide"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Returning-URLs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">返回 URL (Returning URLs)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Testing.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">测试 (Testing)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">异常 (Exceptions)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rest-framework-exception-handling-in-rest-framework-views">REST framework 视图中的异常处理 (Exception handling in REST framework views)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-exception-handling">自定义异常处理 (Custom exception handling)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-reference">API 参考 (API Reference)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apiexception">APIException</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-inspecting-api-exceptions">检查 API 异常 (Inspecting API exceptions)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parseerror">ParseError</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authenticationfailed">AuthenticationFailed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notauthenticated">NotAuthenticated</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permissiondenied">PermissionDenied</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notfound">NotFound</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodnotallowed">MethodNotAllowed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notacceptable">NotAcceptable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupportedmediatype">UnsupportedMediaType</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#throttled">Throttled</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validationerror">ValidationError</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#generic-error-views">通用错误视图 (Generic Error Views)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rest-framework-exceptions-server-error"><code class="docutils literal notranslate"><span class="pre">rest_framework.exceptions.server_error</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">rest_framework.exceptions.server_error</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

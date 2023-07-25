@@ -1,0 +1,1189 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>API 客户端 (API Clients) &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Topics/API_Clients';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="国际化 (Internationalization)" href="Internationalization.html" />
+    <link rel="prev" title="记录您的 API (Documenting your API)" href="Documenting_your_API.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Authentication-and-Permissions.html">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Views.html">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Renderers.html">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializer-fields.html">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Validators.html">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Authentication.html">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Permissions.html">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Throttling.html">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Filtering.html">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Pagination.html">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Exceptions.html">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Testing.html">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Settings.html">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="The_Browsable_API.html">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Community/Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Third_Party_Packages.html">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Contributing_to_REST_framework.html">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Community/Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.4_Announcement.html">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.0_Announcement.html">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FTopics/API_Clients.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Topics/API_Clients.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>API 客户端 (API Clients)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">API 客户端 (API Clients)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-client-side-core-api">客户端核心 API (Client-side Core API)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-meaningful-interaction">更有意义的交互 (More meaningful interaction)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resilience-evolvability">弹性和进化性 (Resilience &amp; evolvability)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-self-descriptive-apis">自描述 API (Self-descriptive APIs)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line-client">命令行客户端 (Command line client)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">入门 (Getting started)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication-headers">认证和标头 (Authentication &amp; headers)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codecs">编解码器 (Codecs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utilities">Utilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-commands">其他命令 (Other commands)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python-python-client-library">Python 客户端库 (Python client library)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">入门 (Getting started)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">认证 (Authentication)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#token-authentication">令牌认证 (Token authentication)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-authentication">基本认证 (Basic authentication)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-interacting-with-the-api">与 API 交互 (Interacting with the API)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">编解码器 (Codecs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-codecs">配置编解码器 (Configuring codecs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-and-saving-schemas">加载和保存模式 (Loading and saving schemas)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transports">传输 (Transports)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-transports">配置传输 (Configuring transports)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#javascript-javascript-client-library">JavaScript 客户端库 (JavaScript Client Library)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#javascript-installing-the-javascript-client">安装 JavaScript 客户端 (Installing the JavaScript client)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiating-a-client">实例化客户端 (Instantiating a client)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#session-authentication">会话认证 (Session authentication)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">令牌认证 (Token authentication)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">基本认证 (Basic authentication)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-client">使用客户端 (Using the client)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-with-node">使用节点安装 (Installation with node)</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="api-api-clients">
+<h1>API 客户端 (API Clients)<a class="headerlink" href="#api-api-clients" title="Permalink to this heading">#</a></h1>
+<p>API 客户端处理网络请求是如何发出的以及如何解码响应的底层细节。它们为开发人员提供了一个应用程序接口来工作，而不是直接与网络接口一起工作。</p>
+<p>此处记录的 API 客户端不限于使用 Django REST framework 构建的 API。它们可以与任何公开支持的模式格式的 API 一起使用。</p>
+<p>例如，<a class="reference external" href="https://devcenter.heroku.com/categories/platform-api">Heroku 平台 API</a> 以 JSON 超模式格式公开模式。因此，Core API 命令行客户端和 Python 客户端库可<a class="reference external" href="http://www.coreapi.org/tools-and-resources/example-services/#heroku-json-hyper-schema">用于与 Heroku API 交互</a>。</p>
+<section id="api-client-side-core-api">
+<h2>客户端核心 API (Client-side Core API)<a class="headerlink" href="#api-client-side-core-api" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="http://www.coreapi.org/">核心 API</a> 是一种可用于描述 API 的文档规范。它既可以在服务器端使用，就像 REST framework 的<a class="reference external" href="http://www.django-rest-framework.org/api-guide/schemas/">模式生成</a>一样，也可以在客户端使用，如此处所述。</p>
+<p>在客户端使用时，Core API 允许动态驱动的客户端库可以与任何公开支持的模式或超媒体格式的 API 进行交互。</p>
+<p>与通过直接构建 HTTP 请求与 API 交互相比，使用动态驱动的客户端具有许多优势。</p>
+<section id="more-meaningful-interaction">
+<h3>更有意义的交互 (More meaningful interaction)<a class="headerlink" href="#more-meaningful-interaction" title="Permalink to this heading">#</a></h3>
+<p>API 交互以更有意义的方式呈现。您正在应用程序接口层工作，而不是网络接口层。</p>
+</section>
+<section id="resilience-evolvability">
+<h3>弹性和进化性 (Resilience &amp; evolvability)<a class="headerlink" href="#resilience-evolvability" title="Permalink to this heading">#</a></h3>
+<p>客户端确定哪些端点可用，针对每个特定端点存在哪些参数，以及如何形成 HTTP 请求。</p>
+<p>这还允许一定程度的 API 可进化性。URL 可以在不破坏现有客户端的情况下进行修改，或者可以在线使用更高效的编码，并且客户端可以透明地升级。</p>
+</section>
+<section id="api-self-descriptive-apis">
+<h3>自描述 API (Self-descriptive APIs)<a class="headerlink" href="#api-self-descriptive-apis" title="Permalink to this heading">#</a></h3>
+<p>动态驱动的客户端能够向最终用户提供 API 上的文档。该文档允许用户发现可用的端点和参数，并更好地了解他们正在使用的 API。</p>
+<p>因为此文档是由 API 模式驱动的，所以它总是与最近部署的服务版本完全同步。</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="command-line-client">
+<h1>命令行客户端 (Command line client)<a class="headerlink" href="#command-line-client" title="Permalink to this heading">#</a></h1>
+<p>命令行客户端允许您检查和交互任何公开支持的模式格式的 API。</p>
+<section id="getting-started">
+<h2>入门 (Getting started)<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
+<p>要安装 Core API 命令行客户端，请使用 <code class="docutils literal notranslate"><span class="pre">pip</span></code>。</p>
+<p>请注意，命令行客户端是 python 客户端库的单独包。确保安装 <code class="docutils literal notranslate"><span class="pre">coreapi-cli</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ pip install coreapi-cli
+</pre></div>
+</div>
+<p>要开始检查和与 API 交互，必须首先从网络加载模式。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ coreapi get http://api.example.org/
+&lt;Pastebin API &quot;http://127.0.0.1:8000/&quot;&gt;
+snippets: {
+    create(code, [title], [linenos], [language], [style])
+    destroy(pk)
+    highlight(pk)
+    list([page])
+    partial_update(pk, [title], [code], [linenos], [language], [style])
+    retrieve(pk)
+    update(pk, code, [title], [linenos], [language], [style])
+}
+users: {
+    list([page])
+    retrieve(pk)
+}
+</pre></div>
+</div>
+<p>然后，这将加载模式，显示生成的 <code class="docutils literal notranslate"><span class="pre">Document</span></code>。<code class="docutils literal notranslate"><span class="pre">Document</span></code> 包含可能针对 API 进行的所有可用交互。</p>
+<p>要与 API 交互，请使用 <code class="docutils literal notranslate"><span class="pre">action</span></code> 命令。此命令需要用于索引到链接的键列表。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ coreapi action users list
+[
+    {
+        &quot;url&quot;: &quot;http://127.0.0.1:8000/users/2/&quot;,
+        &quot;id&quot;: 2,
+        &quot;username&quot;: &quot;aziz&quot;,
+        &quot;snippets&quot;: []
+    },
+    ...
+]
+</pre></div>
+</div>
+<p>要检查底层 HTTP 请求和响应，请使用 <code class="docutils literal notranslate"><span class="pre">--debug</span></code> 标志。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ coreapi action users list --debug
+&gt; GET /users/ HTTP/1.1
+&gt; Accept: application/vnd.coreapi+json, */*
+&gt; Authorization: Basic bWF4Om1heA==
+&gt; Host: 127.0.0.1
+&gt; User-Agent: coreapi
+&lt; 200 OK
+&lt; Allow: GET, HEAD, OPTIONS
+&lt; Content-Type: application/json
+&lt; Date: Thu, 30 Jun 2016 10:51:46 GMT
+&lt; Server: WSGIServer/0.1 Python/2.7.10
+&lt; Vary: Accept, Cookie
+&lt;
+&lt; [{&quot;url&quot;:&quot;http://127.0.0.1/users/2/&quot;,&quot;id&quot;:2,&quot;username&quot;:&quot;aziz&quot;,&quot;snippets&quot;:[]},{&quot;url&quot;:&quot;http://127.0.0.1/users/3/&quot;,&quot;id&quot;:3,&quot;username&quot;:&quot;amy&quot;,&quot;snippets&quot;:[&quot;http://127.0.0.1/snippets/3/&quot;]},{&quot;url&quot;:&quot;http://127.0.0.1/users/4/&quot;,&quot;id&quot;:4,&quot;username&quot;:&quot;max&quot;,&quot;snippets&quot;:[&quot;http://127.0.0.1/snippets/4/&quot;,&quot;http://127.0.0.1/snippets/5/&quot;,&quot;http://127.0.0.1/snippets/6/&quot;,&quot;http://127.0.0.1/snippets/7/&quot;]},{&quot;url&quot;:&quot;http://127.0.0.1/users/5/&quot;,&quot;id&quot;:5,&quot;username&quot;:&quot;jose&quot;,&quot;snippets&quot;:[]},{&quot;url&quot;:&quot;http://127.0.0.1/users/6/&quot;,&quot;id&quot;:6,&quot;username&quot;:&quot;admin&quot;,&quot;snippets&quot;:[&quot;http://127.0.0.1/snippets/1/&quot;,&quot;http://127.0.0.1/snippets/2/&quot;]}]
+
+[
+    ...
+]
+</pre></div>
+</div>
+<p>某些操作可能包括可选或必需的参数。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ coreapi action users create --param username=example
+</pre></div>
+</div>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">--param</span></code> 时，将自动确定输入的类型。</p>
+<p>如果您希望更明确地参数类型，那么对任何空值、数值、布尔值、列表或对象输入使用 <code class="docutils literal notranslate"><span class="pre">--data</span></code>，对字符串输入使用 <code class="docutils literal notranslate"><span class="pre">--string</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ coreapi action users edit --string username=tomchristie --data is_admin=true
+</pre></div>
+</div>
+</section>
+<section id="authentication-headers">
+<h2>认证和标头 (Authentication &amp; headers)<a class="headerlink" href="#authentication-headers" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">credentials</span></code> 命令用于管理请求 <code class="docutils literal notranslate"><span class="pre">Authentication:</span></code> 标头。添加的任何凭证总是链接到特定域名，以确保凭证不会在不同 API 之间泄漏。</p>
+<p>添加新凭据的格式为：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ coreapi credentials add &lt;domain&gt; &lt;credentials string&gt;
+</pre></div>
+</div>
+<p>例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ coreapi credentials add api.example.org &quot;Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b&quot;
+</pre></div>
+</div>
+<p>可选的 <code class="docutils literal notranslate"><span class="pre">--auth</span></code> 标志还允许您添加特定类型的身份验证，为您处理编码。目前，此处仅支持 <code class="docutils literal notranslate"><span class="pre">“basic”</span></code> 作为选项。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ coreapi credentials add api.example.org tomchristie:foobar --auth basic
+</pre></div>
+</div>
+<p>您还可以使用 <code class="docutils literal notranslate"><span class="pre">headers</span></code> 命令添加特定的请求标头：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ coreapi headers add api.example.org x-api-version 2
+</pre></div>
+</div>
+<p>有关更多信息和可用子命令的列表，请使用 <code class="docutils literal notranslate"><span class="pre">coreapi</span> <span class="pre">credentials</span> <span class="pre">--help</span></code> 或 <code class="docutils literal notranslate"><span class="pre">coreapi</span> <span class="pre">headers</span> <span class="pre">--help</span></code>。</p>
+</section>
+<section id="codecs">
+<h2>编解码器 (Codecs)<a class="headerlink" href="#codecs" title="Permalink to this heading">#</a></h2>
+<p>默认情况下，命令行客户端仅包括对读取 Core JSON 模式的支持，但它包含用于安装其他编解码器的插件系统。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ pip install openapi-codec jsonhyperschema-codec hal-codec
+$ coreapi codecs show
+Codecs
+corejson        application/vnd.coreapi+json encoding, decoding
+hal             application/hal+json         encoding, decoding
+openapi         application/openapi+json     encoding, decoding
+jsonhyperschema application/schema+json      decoding
+json            application/json             data
+text            text/*                       data
+</pre></div>
+</div>
+</section>
+<section id="utilities">
+<h2>Utilities<a class="headerlink" href="#utilities" title="Permalink to this heading">#</a></h2>
+<p>命令行客户端包括以令人难忘的名称为 API URL 添加书签的功能。例如，您可以为现有API添加书签，像这样…</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ coreapi bookmarks add accountmanagement
+</pre></div>
+</div>
+<p>还有用于向前或向后导航访问API URL的历史记录的功能。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ coreapi history show
+$ coreapi history back
+</pre></div>
+</div>
+<p>有关更多信息和可用子命令的列表，请使用 <code class="docutils literal notranslate"><span class="pre">coreapi</span> <span class="pre">bookmarks</span> <span class="pre">--help</span></code> 或 <code class="docutils literal notranslate"><span class="pre">coreapi</span> <span class="pre">history</span> <span class="pre">--help</span></code>。</p>
+</section>
+<section id="other-commands">
+<h2>其他命令 (Other commands)<a class="headerlink" href="#other-commands" title="Permalink to this heading">#</a></h2>
+<p>要显示当前 <code class="docutils literal notranslate"><span class="pre">Document</span></code>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ coreapi show
+</pre></div>
+</div>
+<p>要从网络重新加载当前 <code class="docutils literal notranslate"><span class="pre">Document</span></code>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ coreapi reload
+</pre></div>
+</div>
+<p>要从磁盘加载模式文件：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ coreapi load my-api-schema.json --format corejson
+</pre></div>
+</div>
+<p>以给定的格式将当前文档转储到控制台：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ coreapi dump --format openapi
+</pre></div>
+</div>
+<p>要删除当前文档以及所有当前保存的历史记录，凭据，标头和书签：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ coreapi clear
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="python-python-client-library">
+<h1>Python 客户端库 (Python client library)<a class="headerlink" href="#python-python-client-library" title="Permalink to this heading">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">coreapi</span></code> Python 包允许您以编程方式与任何公开支持的模式格式的 API 进行交互。</p>
+<section id="id1">
+<h2>入门 (Getting started)<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>在开始之前，您需要使用 <code class="docutils literal notranslate"><span class="pre">pip</span></code> 安装 <code class="docutils literal notranslate"><span class="pre">coreapi</span></code> 软件包。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ pip install coreapi
+</pre></div>
+</div>
+<p>为了开始使用 API​​，我们首先需要一个 <code class="docutils literal notranslate"><span class="pre">Client</span></code> 实例。客户端保存与 API 交互时支持编解码器和传输的任何配置，这允许您提供更高级的行为。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">coreapi</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">coreapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>一旦我们有了 <code class="docutils literal notranslate"><span class="pre">Client</span></code> 实例，我们就可以从网络中获取 API 模式。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">schema</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://api.example.org/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>从此调用返回的对象将是 <code class="docutils literal notranslate"><span class="pre">Document</span></code> 实例，它是 API 模式的表示。</p>
+</section>
+<section id="authentication">
+<h2>认证 (Authentication)<a class="headerlink" href="#authentication" title="Permalink to this heading">#</a></h2>
+<p>通常，您还需要在实例化客户端时提供一些身份验证凭据。</p>
+<section id="token-authentication">
+<h3>令牌认证 (Token authentication)<a class="headerlink" href="#token-authentication" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">TokenAuthentication</span></code> 类可用于支持 REST framework 的内置 <code class="docutils literal notranslate"><span class="pre">TokenAuthentication</span></code>，以及 OAuth 和 JWT 模式。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">auth</span> <span class="o">=</span> <span class="n">coreapi</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">TokenAuthentication</span><span class="p">(</span>
+    <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;JWT&#39;</span>
+    <span class="n">token</span><span class="o">=</span><span class="s1">&#39;&lt;token&gt;&#39;</span>
+<span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">coreapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">TokenAuthentication</span></code> 时，您可能需要使用 CoreAPI 客户端实现登录流程。</p>
+<p>建议模式最初是发送未经过身份验证的客户端请求到 “获取令牌” 端点。</p>
+<p>例如，使用 “Django REST framework JWT” 包。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">coreapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+<span class="n">schema</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://api.example.org/&#39;</span><span class="p">)</span>
+
+<span class="n">action</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;api-token-auth&#39;</span><span class="p">,</span> <span class="s1">&#39;obtain-token&#39;</span><span class="p">]</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="n">username</span><span class="p">:</span> <span class="s2">&quot;example&quot;</span><span class="p">,</span> <span class="n">email</span><span class="p">:</span> <span class="s2">&quot;example@example.com&quot;</span><span class="p">}</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="n">auth</span> <span class="o">=</span> <span class="n">coreapi</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">TokenAuthentication</span><span class="p">(</span>
+    <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;JWT&#39;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">coreapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="basic-authentication">
+<h3>基本认证 (Basic authentication)<a class="headerlink" href="#basic-authentication" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">BasicAuthentication</span></code> 类可用于支持 HTTP 基本身份验证。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">auth</span> <span class="o">=</span> <span class="n">coreapi</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">BasicAuthentication</span><span class="p">(</span>
+    <span class="n">username</span><span class="o">=</span><span class="s1">&#39;&lt;username&gt;&#39;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s1">&#39;&lt;password&gt;&#39;</span>
+<span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">coreapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="api-interacting-with-the-api">
+<h2>与 API 交互 (Interacting with the API)<a class="headerlink" href="#api-interacting-with-the-api" title="Permalink to this heading">#</a></h2>
+<p>现在我们有了一个客户端并且已经获取了我们的模式 <code class="docutils literal notranslate"><span class="pre">Document</span></code>，现在我们可以开始与 API 交互了：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">users</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="s1">&#39;list&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>某些端点可能包含命名参数，这些参数可能是可选的或必需的：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_user</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">],</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;max&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2>编解码器 (Codecs)<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>编解码器负责编码或解码文档。</p>
+<p>客户端使用解码过程来获取 API 模式定义的字节串，并返回表示该接口的 Core API 文档。</p>
+<p>编解码器应与特定媒体类型相关联，例如 <code class="docutils literal notranslate"><span class="pre">'application/coreapi+json'</span></code>。</p>
+<p>服务器在响应 <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> 标头中使用此媒体类型，以指示响应中返回的数据类型。</p>
+<section id="configuring-codecs">
+<h3>配置编解码器 (Configuring codecs)<a class="headerlink" href="#configuring-codecs" title="Permalink to this heading">#</a></h3>
+<p>在实例化客户端时可以配置可用的编解码器。这里使用的关键字参数是 <code class="docutils literal notranslate"><span class="pre">decoders</span></code>，因为在客户端的上下文中，编解码器仅用于解码响应。</p>
+<p>在以下示例中，我们将客户端配置为仅接受 <code class="docutils literal notranslate"><span class="pre">Core</span> <span class="pre">JSON</span></code> 和 <code class="docutils literal notranslate"><span class="pre">JSON</span></code> 响应。这将允许我们接收和解码 Core JSON 模式，然后接收针对 API 做出的 JSON 响应。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">coreapi</span> <span class="kn">import</span> <span class="n">codecs</span><span class="p">,</span> <span class="n">Client</span>
+
+<span class="n">decoders</span> <span class="o">=</span> <span class="p">[</span><span class="n">codecs</span><span class="o">.</span><span class="n">CoreJSONCodec</span><span class="p">(),</span> <span class="n">codecs</span><span class="o">.</span><span class="n">JSONCodec</span><span class="p">()]</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">decoders</span><span class="o">=</span><span class="n">decoders</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="loading-and-saving-schemas">
+<h3>加载和保存模式 (Loading and saving schemas)<a class="headerlink" href="#loading-and-saving-schemas" title="Permalink to this heading">#</a></h3>
+<p>您可以直接使用编解码器，以加载现有的模式定义，并返回生成的 <code class="docutils literal notranslate"><span class="pre">Document</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">input_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;my-api-schema.json&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">schema_definition</span> <span class="o">=</span> <span class="n">input_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">codec</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">CoreJSONCodec</span><span class="p">()</span>
+<span class="n">schema</span> <span class="o">=</span> <span class="n">codec</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">schema_definition</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>您还可以在给定 <code class="docutils literal notranslate"><span class="pre">Document</span></code> 实例的情况下直接使用编解码器生成模式定义：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">schema_definition</span> <span class="o">=</span> <span class="n">codec</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
+<span class="n">output_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;my-api-schema.json&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">output_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">schema_definition</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="transports">
+<h2>传输 (Transports)<a class="headerlink" href="#transports" title="Permalink to this heading">#</a></h2>
+<p>传输负责发出网络请求。客户端已安装的传输集确定了它能够支持的网络协议。</p>
+<p>目前，<code class="docutils literal notranslate"><span class="pre">coreapi</span></code> 库仅包含 HTTP/HTTPS 传输，但也可以支持其他协议。</p>
+<section id="configuring-transports">
+<h3>配置传输 (Configuring transports)<a class="headerlink" href="#configuring-transports" title="Permalink to this heading">#</a></h3>
+<p>可以通过配置客户端实例化的传输来自定义网络层的行为。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">coreapi</span> <span class="kn">import</span> <span class="n">transports</span><span class="p">,</span> <span class="n">Client</span>
+
+<span class="n">credentials</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;api.example.org&#39;</span><span class="p">:</span> <span class="s1">&#39;Token 3bd44a009d16ff&#39;</span><span class="p">}</span>
+<span class="n">transports</span> <span class="o">=</span> <span class="n">transports</span><span class="o">.</span><span class="n">HTTPTransport</span><span class="p">(</span><span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">transports</span><span class="o">=</span><span class="n">transports</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>还可以实现更复杂的自定义，例如修改底层的 <code class="docutils literal notranslate"><span class="pre">requests.Session</span></code> 实例以附加修改传出请求的<a class="reference external" href="http://docs.python-requests.org/en/master/user/advanced/#transport-adapters">传输适配器</a>。</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="javascript-javascript-client-library">
+<h1>JavaScript 客户端库 (JavaScript Client Library)<a class="headerlink" href="#javascript-javascript-client-library" title="Permalink to this heading">#</a></h1>
+<p>JavaScript 客户端库允许您通过浏览器或使用节点与 API 进行交互。</p>
+<section id="javascript-installing-the-javascript-client">
+<h2>安装 JavaScript 客户端 (Installing the JavaScript client)<a class="headerlink" href="#javascript-installing-the-javascript-client" title="Permalink to this heading">#</a></h2>
+<p>为了使用 JavaScript 客户端库，您需要在 HTML 页面中包含两个单独的 JavaScript 资源。这些是一个静态 <code class="docutils literal notranslate"><span class="pre">coreapi.js</span></code> 文件，它包含动态客户端库的代码，以及一个模板化的 <code class="docutils literal notranslate"><span class="pre">schema.js</span></code> 资源，它公开了您的 API 模式。</p>
+<p>首先，安装 API 文档视图。这些将包括模式资源，它允许您直接从 HTML 页面加载模式，而无需进行异步 AJAX 调用。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.documentation</span> <span class="kn">import</span> <span class="n">include_docs_urls</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^docs/&#39;</span><span class="p">,</span> <span class="n">include_docs_urls</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;My API service&#39;</span><span class="p">))</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>安装 API 文档 URL 后，您将能够包含所需的 JavaScript 资源。请注意，这两行的排序很重要，因为模式加载需要已安装 CoreAPI。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&lt;!--
+    Load the CoreAPI library and the API schema.
+
+    /static/rest_framework/js/coreapi-0.1.1.js
+    /docs/schema.js
+--&gt;
+{% load static %}
+&lt;script src=&quot;{% static &#39;rest_framework/js/coreapi-0.1.1.js&#39; %}&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;{% url &#39;api-docs:schema-js&#39; %}&quot;&gt;&lt;/script&gt;
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">coreapi</span></code> 库和 <code class="docutils literal notranslate"><span class="pre">schema</span></code> 对象现在都可以在 <code class="docutils literal notranslate"><span class="pre">window</span></code> 实例上使用。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">coreapi</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">coreapi</span>
+<span class="n">const</span> <span class="n">schema</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">schema</span>
+</pre></div>
+</div>
+</section>
+<section id="instantiating-a-client">
+<h2>实例化客户端 (Instantiating a client)<a class="headerlink" href="#instantiating-a-client" title="Permalink to this heading">#</a></h2>
+<p>为了与API交互，您需要一个客户端实例。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">new</span> <span class="n">coreapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>通常，您还需要在实例化客户端时提供一些身份验证凭据。</p>
+<section id="session-authentication">
+<h3>会话认证 (Session authentication)<a class="headerlink" href="#session-authentication" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">SessionAuthentication</span></code> 类允许会话 cookie 提供用户身份验证。您需要提供标准的 HTML 登录流程，以允许用户登录，然后使用会话身份验证实例化客户端：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">auth</span> <span class="o">=</span> <span class="n">new</span> <span class="n">coreapi</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">SessionAuthentication</span><span class="p">({</span>
+    <span class="n">csrfCookieName</span><span class="p">:</span> <span class="s1">&#39;csrftoken&#39;</span><span class="p">,</span>
+    <span class="n">csrfHeaderName</span><span class="p">:</span> <span class="s1">&#39;X-CSRFToken&#39;</span>
+<span class="p">})</span>
+<span class="n">let</span> <span class="n">client</span> <span class="o">=</span> <span class="n">new</span> <span class="n">coreapi</span><span class="o">.</span><span class="n">Client</span><span class="p">({</span><span class="n">auth</span><span class="p">:</span> <span class="n">auth</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>认证方案将处理包括在任何不安全的 HTTP 方法的输出请求中的 CSRF 标头。</p>
+</section>
+<section id="id3">
+<h3>令牌认证 (Token authentication)<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">TokenAuthentication</span></code> 类可用于支持 REST framework 的内置 <code class="docutils literal notranslate"><span class="pre">TokenAuthentication</span></code>，以及 OAuth 和 JWT 模式。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">auth</span> <span class="o">=</span> <span class="n">new</span> <span class="n">coreapi</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">TokenAuthentication</span><span class="p">({</span>
+    <span class="n">scheme</span><span class="p">:</span> <span class="s1">&#39;JWT&#39;</span>
+    <span class="n">token</span><span class="p">:</span> <span class="s1">&#39;&lt;token&gt;&#39;</span>
+<span class="p">})</span>
+<span class="n">let</span> <span class="n">client</span> <span class="o">=</span> <span class="n">new</span> <span class="n">coreapi</span><span class="o">.</span><span class="n">Client</span><span class="p">({</span><span class="n">auth</span><span class="p">:</span> <span class="n">auth</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">TokenAuthentication</span></code> 时，您可能需要使用 CoreAPI 客户端实现登录流程。</p>
+<p>建议模式最初是发送未经过身份验证的客户端请求到 “获取令牌” 端点。</p>
+<p>例如，使用 “Django REST framework JWT” 包。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>// 设置一些全局可访问状态
+window.client = new coreapi.Client()
+window.loggedIn = false
+
+function loginUser(username, password) {
+    let action = [&quot;api-token-auth&quot;, &quot;obtain-token&quot;]
+    let params = {username: &quot;example&quot;, email: &quot;example@example.com&quot;}
+    client.action(schema, action, params).then(function(result) {
+        // 成功时，实例化经过身份验证的客户端。
+        let auth = window.coreapi.auth.TokenAuthentication({
+            scheme: &#39;JWT&#39;,
+            token: result[&#39;token&#39;]
+        })
+        window.client = coreapi.Client({auth: auth})
+        window.loggedIn = true
+    }).catch(function (error) {
+        // 处理错误情况，例如：用户提供不正确的凭据
+    })
+}
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>基本认证 (Basic authentication)<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">BasicAuthentication</span></code> 类可用于支持 HTTP 基本身份验证。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">auth</span> <span class="o">=</span> <span class="n">new</span> <span class="n">coreapi</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">BasicAuthentication</span><span class="p">({</span>
+    <span class="n">username</span><span class="p">:</span> <span class="s1">&#39;&lt;username&gt;&#39;</span><span class="p">,</span>
+    <span class="n">password</span><span class="p">:</span> <span class="s1">&#39;&lt;password&gt;&#39;</span>
+<span class="p">})</span>
+<span class="n">let</span> <span class="n">client</span> <span class="o">=</span> <span class="n">new</span> <span class="n">coreapi</span><span class="o">.</span><span class="n">Client</span><span class="p">({</span><span class="n">auth</span><span class="p">:</span> <span class="n">auth</span><span class="p">})</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="using-the-client">
+<h2>使用客户端 (Using the client)<a class="headerlink" href="#using-the-client" title="Permalink to this heading">#</a></h2>
+<p>发出请求：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">action</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;users&quot;</span><span class="p">,</span> <span class="s2">&quot;list&quot;</span><span class="p">]</span>
+<span class="n">client</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">Return</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">in</span> <span class="s1">&#39;result&#39;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>包括参数：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">action</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;users&quot;</span><span class="p">,</span> <span class="s2">&quot;create&quot;</span><span class="p">]</span>
+<span class="n">let</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="n">username</span><span class="p">:</span> <span class="s2">&quot;example&quot;</span><span class="p">,</span> <span class="n">email</span><span class="p">:</span> <span class="s2">&quot;example@example.com&quot;</span><span class="p">}</span>
+<span class="n">client</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">Return</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">in</span> <span class="s1">&#39;result&#39;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>处理错误：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">Return</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">in</span> <span class="s1">&#39;result&#39;</span>
+<span class="p">})</span><span class="o">.</span><span class="n">catch</span><span class="p">(</span><span class="n">function</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">Error</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">in</span> <span class="s1">&#39;error&#39;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</section>
+<section id="installation-with-node">
+<h2>使用节点安装 (Installation with node)<a class="headerlink" href="#installation-with-node" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">coreapi</span></code> 包在 NPM 上可用。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>$ npm install coreapi
+$ node
+const coreapi = require(&#39;coreapi&#39;)
+</pre></div>
+</div>
+<p>您可能希望直接在代码库中包含 API 模式，方法是从 <code class="docutils literal notranslate"><span class="pre">schema.js</span></code> 资源中复制它，或者异步加载模式。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">client</span> <span class="o">=</span> <span class="n">new</span> <span class="n">coreapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+<span class="n">let</span> <span class="n">schema</span> <span class="o">=</span> <span class="n">null</span>
+<span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://api.example.org/&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">Load</span> <span class="n">a</span> <span class="n">CoreJSON</span> <span class="n">API</span> <span class="n">schema</span><span class="o">.</span>
+    <span class="n">schema</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;schema loaded&#39;</span><span class="p">)</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Topics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Documenting_your_API.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">记录您的 API (Documenting your API)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Internationalization.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">国际化 (Internationalization)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">API 客户端 (API Clients)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-client-side-core-api">客户端核心 API (Client-side Core API)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-meaningful-interaction">更有意义的交互 (More meaningful interaction)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resilience-evolvability">弹性和进化性 (Resilience &amp; evolvability)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-self-descriptive-apis">自描述 API (Self-descriptive APIs)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line-client">命令行客户端 (Command line client)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">入门 (Getting started)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication-headers">认证和标头 (Authentication &amp; headers)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codecs">编解码器 (Codecs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utilities">Utilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-commands">其他命令 (Other commands)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python-python-client-library">Python 客户端库 (Python client library)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">入门 (Getting started)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">认证 (Authentication)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#token-authentication">令牌认证 (Token authentication)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-authentication">基本认证 (Basic authentication)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-interacting-with-the-api">与 API 交互 (Interacting with the API)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">编解码器 (Codecs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-codecs">配置编解码器 (Configuring codecs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-and-saving-schemas">加载和保存模式 (Loading and saving schemas)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transports">传输 (Transports)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-transports">配置传输 (Configuring transports)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#javascript-javascript-client-library">JavaScript 客户端库 (JavaScript Client Library)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#javascript-installing-the-javascript-client">安装 JavaScript 客户端 (Installing the JavaScript client)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instantiating-a-client">实例化客户端 (Instantiating a client)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#session-authentication">会话认证 (Session authentication)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">令牌认证 (Token authentication)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">基本认证 (Basic authentication)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-client">使用客户端 (Using the client)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-with-node">使用节点安装 (Installation with node)</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

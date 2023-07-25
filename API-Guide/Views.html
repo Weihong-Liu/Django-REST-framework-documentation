@@ -1,0 +1,924 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>基于类的视图 &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'API-Guide/Views';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="通用视图 (Generic views)" href="Generic-views.html" />
+    <link rel="prev" title="响应 (Responses)" href="Responses.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Authentication-and-Permissions.html">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Renderers.html">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-fields.html">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Validators.html">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Authentication.html">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Permissions.html">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Throttling.html">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Filtering.html">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Pagination.html">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Exceptions.html">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Testing.html">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Settings.html">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/API_Clients.html">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/The_Browsable_API.html">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Community/Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Third_Party_Packages.html">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Contributing_to_REST_framework.html">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Community/Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.4_Announcement.html">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.0_Announcement.html">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAPI-Guide/Views.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/API-Guide/Views.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>基于类的视图</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">基于类的视图</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api">API 策略属性</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renderer-classes">.renderer_classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parser-classes">.parser_classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication-classes">.authentication_classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#throttle-classes">.throttle_classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#permission-classes">.permission_classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content-negotiation-class">.content_negotiation_class</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">API 策略实例化方法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-renderers-self">.get_renderers(self)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-parsers-self">.get_parsers(self)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-authenticators-self">.get_authenticators(self)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-throttles-self">.get_throttles(self)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-permissions-self">.get_permissions(self)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-content-negotiator-self">.get_content_negotiator(self)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-exception-handler-self">.get_exception_handler(self)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">API 策略实现方法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-permissions-self-request">.check_permissions(self, request)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-throttles-self-request">.check_throttles(self, request)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-content-negotiation-self-request-force-false">.perform_content_negotiation(self, request, force=False)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">调度方法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-self-request-args-kwargs">.initial(self, request, *args, **kwargs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handle-exception-self-exc">.handle_exception(self, exc)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-request-self-request-args-kwargs">.initialize_request(self, request, *args, **kwargs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finalize-response-self-request-response-args-kwargs">.finalize_response(self, request, response, *args, **kwargs)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#function-based-views">基于函数的视图 (Function Based Views)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-view">@api_view()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-policy-decorators">API 策略装饰器 (API policy decorators)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-schema-decorator">视图模式装饰器 (View schema decorator)</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>基于类的视图<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p>Django 的基于类的视图是一个受欢迎的背离旧风格的视图。 —— Reinout van Rees</p>
+<p>REST framework 提供了一个 <code class="docutils literal notranslate"><span class="pre">APIView</span></code> 类，它是 Django 的 <code class="docutils literal notranslate"><span class="pre">View</span></code> 类的子类。</p>
+<p><code class="docutils literal notranslate"><span class="pre">APIView</span></code> 类与常规 <code class="docutils literal notranslate"><span class="pre">View</span></code> 类不同，有以下几种方法：</p>
+<ul class="simple">
+<li><p>传递给处理程序方法的请求将是 REST framework 的 <code class="docutils literal notranslate"><span class="pre">Request</span></code> 实例，而不是 Django 的 <code class="docutils literal notranslate"><span class="pre">HttpRequest</span></code> 实例。</p></li>
+<li><p>处理程序方法可能会返回 REST framework 的 <code class="docutils literal notranslate"><span class="pre">Response</span></code>，而不是 Django 的 <code class="docutils literal notranslate"><span class="pre">HttpResponse</span></code>。该视图将管理内容协商并在响应中设置正确的渲染器。</p></li>
+<li><p>任何 <code class="docutils literal notranslate"><span class="pre">APIException</span></code> 异常都会被捕获并调解为适当的响应。</p></li>
+<li><p>传入的请求将被认证，并且在将请求分派给处理程序方法之前将运行适当的的权限和/或限流检查。</p></li>
+</ul>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">APIView</span></code> 类与使用常规 <code class="docutils literal notranslate"><span class="pre">View</span></code> 类几乎是一样的，像往常一样，传入的请求被分派到适当的处理程序方法，如 <code class="docutils literal notranslate"><span class="pre">.get()</span></code> 或 <code class="docutils literal notranslate"><span class="pre">.post()</span></code> 。另外，可以在控制 API 策略的各个方面的类上设置多个属性。</p>
+<p>例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.views</span> <span class="kn">import</span> <span class="n">APIView</span>
+<span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">authentication</span><span class="p">,</span> <span class="n">permissions</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+
+<span class="k">class</span> <span class="nc">ListUsers</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    查看以列出系统中的所有用户。</span>
+
+<span class="sd">    * 需要令牌认证。</span>
+<span class="sd">    * 只有管理员用户才能访问此视图。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">authentication_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">authentication</span><span class="o">.</span><span class="n">TokenAuthentication</span><span class="p">,)</span>
+    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">permissions</span><span class="o">.</span><span class="n">IsAdminUser</span><span class="p">,)</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        返回所有用户的列表。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">usernames</span> <span class="o">=</span> <span class="p">[</span><span class="n">user</span><span class="o">.</span><span class="n">username</span> <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()]</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">usernames</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>注意</strong>：Django REST framework 的 <code class="docutils literal notranslate"><span class="pre">APIView</span></code>，<code class="docutils literal notranslate"><span class="pre">GenericAPIView</span></code>，各种 <code class="docutils literal notranslate"><span class="pre">Mixins</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Viewsets</span></code> 之间的完整方法，属性和关系初始(理解)很复杂。除了这里的文档之外，<a class="reference external" href="http://www.cdrf.co/">Classy Django REST Framework</a> 资源还为每个 Django REST Framework 的基于类的视图提供了一个可浏览的参考，包含完整的方法和属性。</p>
+<hr class="docutils" />
+<section id="api">
+<h2>API 策略属性<a class="headerlink" href="#api" title="Permalink to this heading">#</a></h2>
+<p>以下属性控制 API 视图的可插入方面。</p>
+<section id="renderer-classes">
+<h3>.renderer_classes<a class="headerlink" href="#renderer-classes" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="parser-classes">
+<h3>.parser_classes<a class="headerlink" href="#parser-classes" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="authentication-classes">
+<h3>.authentication_classes<a class="headerlink" href="#authentication-classes" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="throttle-classes">
+<h3>.throttle_classes<a class="headerlink" href="#throttle-classes" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="permission-classes">
+<h3>.permission_classes<a class="headerlink" href="#permission-classes" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="content-negotiation-class">
+<h3>.content_negotiation_class<a class="headerlink" href="#content-negotiation-class" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="id2">
+<h2>API 策略实例化方法<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>REST framework 使用以下方法来实例化各种可插入 API 策略。您通常不需要重写这些方法。</p>
+<section id="get-renderers-self">
+<h3>.get_renderers(self)<a class="headerlink" href="#get-renderers-self" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="get-parsers-self">
+<h3>.get_parsers(self)<a class="headerlink" href="#get-parsers-self" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="get-authenticators-self">
+<h3>.get_authenticators(self)<a class="headerlink" href="#get-authenticators-self" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="get-throttles-self">
+<h3>.get_throttles(self)<a class="headerlink" href="#get-throttles-self" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="get-permissions-self">
+<h3>.get_permissions(self)<a class="headerlink" href="#get-permissions-self" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="get-content-negotiator-self">
+<h3>.get_content_negotiator(self)<a class="headerlink" href="#get-content-negotiator-self" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="get-exception-handler-self">
+<h3>.get_exception_handler(self)<a class="headerlink" href="#get-exception-handler-self" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="id3">
+<h2>API 策略实现方法<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>在分派到处理程序方法之前调用以下方法。</p>
+<section id="check-permissions-self-request">
+<h3>.check_permissions(self, request)<a class="headerlink" href="#check-permissions-self-request" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="check-throttles-self-request">
+<h3>.check_throttles(self, request)<a class="headerlink" href="#check-throttles-self-request" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="perform-content-negotiation-self-request-force-false">
+<h3>.perform_content_negotiation(self, request, force=False)<a class="headerlink" href="#perform-content-negotiation-self-request-force-false" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="id4">
+<h2>调度方法<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>以下方法由视图的 <code class="docutils literal notranslate"><span class="pre">.dispatch()</span></code> 方法直接调用。它们执行调用处理程序方法之前或之后的任何操作，例如 <code class="docutils literal notranslate"><span class="pre">.get()</span></code>，<code class="docutils literal notranslate"><span class="pre">.post()</span></code>，<code class="docutils literal notranslate"><span class="pre">put()</span></code>，<code class="docutils literal notranslate"><span class="pre">patch()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.delete()</span></code>。</p>
+<section id="initial-self-request-args-kwargs">
+<h3>.initial(self, request, *args, **kwargs)<a class="headerlink" href="#initial-self-request-args-kwargs" title="Permalink to this heading">#</a></h3>
+<p>执行在调用处理程序方法之前需要执行的任何操作。该方法用于强制执行权限和限流，并执行内容协商。</p>
+<p>您通常不需要重写此方法。</p>
+</section>
+<section id="handle-exception-self-exc">
+<h3>.handle_exception(self, exc)<a class="headerlink" href="#handle-exception-self-exc" title="Permalink to this heading">#</a></h3>
+<p>处理程序方法抛出的任何异常都将传递给此方法，该方法要么返回 <code class="docutils literal notranslate"><span class="pre">Response</span></code> 实例，要么重新引发异常。</p>
+<p>默认实现处理 <code class="docutils literal notranslate"><span class="pre">rest_framework.exceptions.APIException</span></code> 的任何子类，以及 Django 的 <code class="docutils literal notranslate"><span class="pre">Http404</span></code> 和 <code class="docutils literal notranslate"><span class="pre">PermissionDenied</span></code> 异常，并返回相应的错误响应。</p>
+<p>如果您需要自定义 API 返回的错误响应，您应该子类化此方法。</p>
+</section>
+<section id="initialize-request-self-request-args-kwargs">
+<h3>.initialize_request(self, request, *args, **kwargs)<a class="headerlink" href="#initialize-request-self-request-args-kwargs" title="Permalink to this heading">#</a></h3>
+<p>确保传递给处理程序方法的请求对象是 <code class="docutils literal notranslate"><span class="pre">Request</span></code> 的一个实例，而不是通常的 Django <code class="docutils literal notranslate"> <span class="pre">HttpRequest</span></code>。</p>
+<p>您通常不需要重写此方法。</p>
+</section>
+<section id="finalize-response-self-request-response-args-kwargs">
+<h3>.finalize_response(self, request, response, *args, **kwargs)<a class="headerlink" href="#finalize-response-self-request-response-args-kwargs" title="Permalink to this heading">#</a></h3>
+<p>确保从处理程序方法返回的任何 <code class="docutils literal notranslate"><span class="pre">Response</span></code> 对象都被渲染成正确的内容类型，这是由内容协商决定的。</p>
+<p>您通常不需要重写此方法。</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="function-based-views">
+<h1>基于函数的视图 (Function Based Views)<a class="headerlink" href="#function-based-views" title="Permalink to this heading">#</a></h1>
+<p>说 [基于类的视图] 永远是最好的解决方案是一个错误。——Nick Coghlan</p>
+<p>REST framework 还允许您使用常规的基于函数的视图。它提供了一套简单的装饰器来包装你的基于函数的视图，以确保它们接收 <code class="docutils literal notranslate"><span class="pre">Request</span></code> (而不是通常的 Django <code class="docutils literal notranslate"><span class="pre">HttpRequest</span></code>)实例并允许它们返回 <code class="docutils literal notranslate"><span class="pre">Response</span></code> (而不是 Django <code class="docutils literal notranslate"><span class="pre">HttpResponse</span></code> )，并允许你配置该请求的处理方式。</p>
+<section id="api-view">
+<h2>&#64;api_view()<a class="headerlink" href="#api-view" title="Permalink to this heading">#</a></h2>
+<p>语法：<code class="docutils literal notranslate"><span class="pre">&#64;api_view(http_method_names=['GET'])</span></code></p>
+<p>这个功能的核心是 <code class="docutils literal notranslate"><span class="pre">api_view</span></code> 装饰器，它接受你的视图应该响应的 HTTP 方法列表。例如，这就是如何编写一个非常简单的视图，只需手动返回一些数据：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.decorators</span> <span class="kn">import</span> <span class="n">api_view</span>
+
+<span class="nd">@api_view</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello, world!&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>该视图将使用<a class="reference external" href="http://www.django-rest-framework.org/api-guide/settings/">设置</a>中指定的默认渲染器，解析器，认证类等。</p>
+<p>默认情况下，只有 <code class="docutils literal notranslate"><span class="pre">GET</span></code> 方法会被接受。其他方法将以“405 Method Not Allowed”进行响应。要改变这种行为，请指定视图允许的方法，如下所示：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Got some data!&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello, world!&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</section>
+<section id="api-api-policy-decorators">
+<h2>API 策略装饰器 (API policy decorators)<a class="headerlink" href="#api-api-policy-decorators" title="Permalink to this heading">#</a></h2>
+<p>为了覆盖默认设置，REST framework 提供了一系列可以添加到视图中的附加装饰器。这些必须在 <code class="docutils literal notranslate"><span class="pre">&#64;api_view</span></code> 装饰器之后(下方)。例如，要创建一个使用<a class="reference external" href="http://www.django-rest-framework.org/api-guide/throttling/">限流</a>来确保它每天只能由特定用户调用一次的视图，请使用 <code class="docutils literal notranslate"><span class="pre">&#64;throttle_classes</span></code> 装饰器，传递一个限流类列表：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.decorators</span> <span class="kn">import</span> <span class="n">api_view</span><span class="p">,</span> <span class="n">throttle_classes</span>
+<span class="kn">from</span> <span class="nn">rest_framework.throttling</span> <span class="kn">import</span> <span class="n">UserRateThrottle</span>
+
+<span class="k">class</span> <span class="nc">OncePerDayUserThrottle</span><span class="p">(</span><span class="n">UserRateThrottle</span><span class="p">):</span>
+        <span class="n">rate</span> <span class="o">=</span> <span class="s1">&#39;1/day&#39;</span>
+
+<span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@throttle_classes</span><span class="p">([</span><span class="n">OncePerDayUserThrottle</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello for today! See you tomorrow!&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>这些装饰器对应于上面描述的 <code class="docutils literal notranslate"><span class="pre">APIView</span></code> 子类上设置的属性。</p>
+<p>可用的装饰者有：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;renderer_classes(...)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;parser_classes(...)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;authentication_classes(...)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;throttle_classes(...)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;permission_classes(...)</span></code></p></li>
+</ul>
+<p>每个装饰器都有一个参数，它必须是一个类列表或者类元组。</p>
+</section>
+<section id="view-schema-decorator">
+<h2>视图模式装饰器 (View schema decorator)<a class="headerlink" href="#view-schema-decorator" title="Permalink to this heading">#</a></h2>
+<p>要覆盖基于函数的视图的默认模式生成，您可以使用 <code class="docutils literal notranslate"><span class="pre">&#64;schema</span></code> 装饰器。这必须在 <code class="docutils literal notranslate"><span class="pre">&#64;api_view</span></code> 装饰器之后(下方)。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.decorators</span> <span class="kn">import</span> <span class="n">api_view</span><span class="p">,</span> <span class="n">schema</span>
+<span class="kn">from</span> <span class="nn">rest_framework.schemas</span> <span class="kn">import</span> <span class="n">AutoSchema</span>
+
+<span class="k">class</span> <span class="nc">CustomAutoSchema</span><span class="p">(</span><span class="n">AutoSchema</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_link</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">base_url</span><span class="p">):</span>
+        <span class="c1"># override view introspection here...</span>
+
+<span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@schema</span><span class="p">(</span><span class="n">CustomAutoSchema</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello for today! See you tomorrow!&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>该装饰器将接受一个 <code class="docutils literal notranslate"><span class="pre">AutoSchema</span></code> 实例，一个 <code class="docutils literal notranslate"><span class="pre">AutoSchema</span></code> 子类实例或 <code class="docutils literal notranslate"><span class="pre">ManualSchema</span></code> 实例，如<a class="reference external" href="http://www.django-rest-framework.org/api-guide/schemas/">Schemas 文档</a>中所述。为了从模式生成中排除视图，您可以传递 <code class="docutils literal notranslate"><span class="pre">None</span></code>。</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./API-Guide"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Responses.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">响应 (Responses)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Generic-views.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">通用视图 (Generic views)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">基于类的视图</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api">API 策略属性</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renderer-classes">.renderer_classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parser-classes">.parser_classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication-classes">.authentication_classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#throttle-classes">.throttle_classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#permission-classes">.permission_classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content-negotiation-class">.content_negotiation_class</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">API 策略实例化方法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-renderers-self">.get_renderers(self)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-parsers-self">.get_parsers(self)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-authenticators-self">.get_authenticators(self)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-throttles-self">.get_throttles(self)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-permissions-self">.get_permissions(self)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-content-negotiator-self">.get_content_negotiator(self)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-exception-handler-self">.get_exception_handler(self)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">API 策略实现方法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-permissions-self-request">.check_permissions(self, request)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-throttles-self-request">.check_throttles(self, request)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-content-negotiation-self-request-force-false">.perform_content_negotiation(self, request, force=False)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">调度方法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-self-request-args-kwargs">.initial(self, request, *args, **kwargs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handle-exception-self-exc">.handle_exception(self, exc)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-request-self-request-args-kwargs">.initialize_request(self, request, *args, **kwargs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finalize-response-self-request-response-args-kwargs">.finalize_response(self, request, response, *args, **kwargs)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#function-based-views">基于函数的视图 (Function Based Views)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-view">@api_view()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-api-policy-decorators">API 策略装饰器 (API policy decorators)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-schema-decorator">视图模式装饰器 (View schema decorator)</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

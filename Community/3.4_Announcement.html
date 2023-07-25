@@ -1,0 +1,771 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Django REST framework 3.4 &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Community/3.4_Announcement';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Django REST framework 3.3" href="3.3_Announcement.html" />
+    <link rel="prev" title="Django REST framework 3.5" href="3.5_Announcement.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Authentication-and-Permissions.html">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Views.html">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Renderers.html">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializer-fields.html">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Validators.html">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Authentication.html">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Permissions.html">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Throttling.html">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Filtering.html">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Pagination.html">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Exceptions.html">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Testing.html">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Settings.html">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/API_Clients.html">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/The_Browsable_API.html">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Third_Party_Packages.html">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Contributing_to_REST_framework.html">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.0_Announcement.html">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FCommunity/3.4_Announcement.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Community/3.4_Announcement.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Django REST framework 3.4</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funding">资金 (Funding)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schemas-client-libraries">模式和客户端库 (Schemas &amp; client libraries)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-versions">支持的版本 (Supported versions)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecations-and-changes">弃用和变化 (Deprecations and changes)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-fields-or-exclude-on-serializer-classes">在序列化器类上使用字段或排除 (Use fields or exclude on serializer classes.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#microsecond-precision-when-returning-time-or-datetime">返回时间或日期时间时的微秒精度 (Microsecond precision when returning time or datetime.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#options-relational-choices-no-longer-displayed-in-options-requests">关系选项不再显示在 OPTIONS 请求中 (Relational choices no longer displayed in OPTIONS requests.)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-improvements">其他改进 (Other improvements)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="django-rest-framework-3-4">
+<h1>Django REST framework 3.4<a class="headerlink" href="#django-rest-framework-3-4" title="Permalink to this heading">#</a></h1>
+<p>3.4 发行版是计划系列中的第一个版本，它将处理模式生成、超媒体支持、API 客户端以及最后的实时支持。</p>
+<hr class="docutils" />
+<section id="funding">
+<h2>资金 (Funding)<a class="headerlink" href="#funding" title="Permalink to this heading">#</a></h2>
+<p>3.4 版本是通过我们的<a class="reference external" href="https://www.django-rest-framework.org/community/funding/">协作资助模型</a>在最近的 <a class="reference external" href="https://www.django-rest-framework.org/community/mozilla-grant/">Mozilla 拨款</a>中实现的。如果您在商业上使用 REST framework，并且希望看到这项工作继续进行，我们强烈鼓励您通过<a class="reference external" href="https://www.django-rest-framework.org/community/funding/"><strong>注册付费计划</strong></a>来投资其持续开发。</p>
+<p>最初的目标是在 REST framework 上提供一个单一的全职职位。现在，我们已达到实现这一目标的 60％ 以上。每一次注册都会产生重大影响。</p>
+<p><a class="reference external" href="http://jobs.rover.com/"><img alt="" src="https://fund-rest-framework.s3.amazonaws.com/rover_130x130.png" /></a> <a class="reference external" href="https://getsentry.com/welcome/"><img alt="" src="https://fund-rest-framework.s3.amazonaws.com/sentry130.png" /></a> <a class="reference external" href="https://getstream.io/?utm_source=drf&amp;utm_medium=banner&amp;utm_campaign=drf"><img alt="" src="https://fund-rest-framework.s3.amazonaws.com/stream-130.png" /></a></p>
+<p><em>非常感谢我们所有<a class="reference external" href="https://fund.django-rest-framework.org/topics/funding/#our-sponsors">出色的赞助商</a>，特别是我们的高级赞助商 <a class="reference external" href="http://jobs.rover.com/">Rover</a>，<a class="reference external" href="https://getsentry.com/welcome/">Sentry</a> 和 <a class="reference external" href="https://getstream.io/?utm_source=drf&amp;utm_medium=banner&amp;utm_campaign=drf">Stream</a>。</em></p>
+</section>
+<hr class="docutils" />
+<section id="schemas-client-libraries">
+<h2>模式和客户端库 (Schemas &amp; client libraries)<a class="headerlink" href="#schemas-client-libraries" title="Permalink to this heading">#</a></h2>
+<p>REST framework 3.4 为生成 API 模式提供了内置支持。</p>
+<p>我们通过使用 <a class="reference external" href="https://www.coreapi.org/">Core API</a> (用于描述 API 的文档对象模型) 来提供此支持。</p>
+<p>由于 Core API 以独立于格式的方式表示 API 模式，因此通过允许渲染器类确定内部表示如何映射到外部模式格式，我们能够将 Core API <code class="docutils literal notranslate"><span class="pre">Document</span></code> 对象渲染为许多不同的模式格式。</p>
+<p>通过将 <code class="docutils literal notranslate"><span class="pre">Document</span></code> 对象渲染为 HTML 文档页面，此方法还将为将来的一系列自动生成的 API 文档选项打开大门。</p>
+<p>除了内置模式支持外，我们现在还提供了以下功能：</p>
+<ul class="simple">
+<li><p>用于与 API 交互的<a class="reference external" href="https://www.django-rest-framework.org/community/api-clients#command-line-client">命令行工具</a>。</p></li>
+<li><p>用于与 API 交互的 <a class="reference external" href="https://www.django-rest-framework.org/community/api-clients#python-client-library">Python 客户端库</a>。</p></li>
+</ul>
+<p>这些 API 客户端是动态驱动的，并且能够与任何公开支持的模式格式的 API 交互。</p>
+<p>动态驱动客户端允许您在应用层接口而不是网络层接口上与 API 交互，同时还提供了 RESTful Web API 设计的好处。</p>
+<p>我们期望在未来几个月内扩大我们提供客户库的语言范围。</p>
+<p>还计划进一步完善 API 模式支持，包括支持文件上传和下载的文档，以及对文档生成和参数注释的改进支持。</p>
+<hr class="docutils" />
+<p>当前对模式格式的支持如下：</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>名称</p></th>
+<th class="head"><p>支持</p></th>
+<th class="head"><p>PyPI 包</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.coreapi.org/specification/encoding/#core-json-encoding">Core JSON</a></p></td>
+<td><p>模式生成和客户端支持。</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">coreapi</span></code> 内置支持。</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://openapis.org/specification">Swagger / OpenAPI</a></p></td>
+<td><p>模式生成和客户端支持。</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">openapi-codec</span></code> 包。</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://json-schema.org/latest/json-schema-hypermedia.html">JSON Hyper-Schema</a></p></td>
+<td><p>目前仅支持客户端。</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hyperschema-codec</span></code> 包。</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://apiblueprint.org/">API Blueprint</a></p></td>
+<td><p>尚不可用。</p></td>
+<td><p>尚不可用。</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<p>你可以阅读更多关于任何的新功能如下：</p>
+<ul class="simple">
+<li><p>关于<a class="reference external" href="https://www.django-rest-framework.org/tutorial/7-schemas-and-client-libraries/">模式和客户端库</a>的新教程部分。</p></li>
+<li><p>关于<a class="reference external" href="https://www.django-rest-framework.org/api-guide/schemas/">模式生成</a>的文档页。</p></li>
+<li><p>关于 <a class="reference external" href="https://www.django-rest-framework.org/topics/api-clients/">API 客户端</a>的主题页面。</p></li>
+</ul>
+<p>同样值得注意的是，Marc Gibbons 目前正在为流行的 Django REST Swagger 包的 2.0 版本努力，它将与我们新的内置支持相结合。</p>
+</section>
+<hr class="docutils" />
+<section id="supported-versions">
+<h2>支持的版本 (Supported versions)<a class="headerlink" href="#supported-versions" title="Permalink to this heading">#</a></h2>
+<p>3.4.0 版本增加了对 Django 1.10 的支持。</p>
+<p>现在支持以下版本的 Python 和 Django：</p>
+<ul class="simple">
+<li><p>Django 版本 1.8，1.9 和 1.10。</p></li>
+<li><p>Python 版本 2.7，3.2 (*)，3.3 (*)，3.4，3.5。</p></li>
+</ul>
+<p>(*) 请注意，Django 1.9 以后不支持 Python 3.2 和 3.3。</p>
+</section>
+<hr class="docutils" />
+<section id="deprecations-and-changes">
+<h2>弃用和变化 (Deprecations and changes)<a class="headerlink" href="#deprecations-and-changes" title="Permalink to this heading">#</a></h2>
+<p>3.4 版本包括非常有限的弃用或行为更改，并应提供简单的升级。</p>
+<section id="use-fields-or-exclude-on-serializer-classes">
+<h3>在序列化器类上使用字段或排除 (Use fields or exclude on serializer classes.)<a class="headerlink" href="#use-fields-or-exclude-on-serializer-classes" title="Permalink to this heading">#</a></h3>
+<p>3.3.0 中的以下更改现在已从 “等待弃用” 升级为 “已弃用”。它的使用将继续发挥作用，但会引起警告：</p>
+<p><code class="docutils literal notranslate"><span class="pre">ModelSerializer</span></code> 和 <code class="docutils literal notranslate"><span class="pre">HyperlinkedModelSerializer</span></code> 应包含 <code class="docutils literal notranslate"><span class="pre">fields</span></code> 选项或 <code class="docutils literal notranslate"><span class="pre">exclude</span></code> 选项。<code class="docutils literal notranslate"><span class="pre">fields</span> <span class="pre">=</span> <span class="pre">'__</span> <span class="pre">all__'</span></code> 快捷方式可用于显式包含所有字段。</p>
+</section>
+<section id="microsecond-precision-when-returning-time-or-datetime">
+<h3>返回时间或日期时间时的微秒精度 (Microsecond precision when returning time or datetime.)<a class="headerlink" href="#microsecond-precision-when-returning-time-or-datetime" title="Permalink to this heading">#</a></h3>
+<p>使用默认的 JSON 渲染器并直接返回 <code class="docutils literal notranslate"><span class="pre">datetime</span></code> 或 <code class="docutils literal notranslate"><span class="pre">time</span></code> 实例，现在将以微秒精度 (6 位数) 呈现，而不是毫秒精度 (3 位数)。这使得输出格式与 <code class="docutils literal notranslate"><span class="pre">serializers.DateTimeField</span></code> 和 <code class="docutils literal notranslate"><span class="pre">serializers.TimeField</span></code> 的默认字符串输出一致。</p>
+<p>此更改<em>不会影响使用序列化器时的默认行为</em>，而是将 <code class="docutils literal notranslate"><span class="pre">datetime</span></code> 和 <code class="docutils literal notranslate"><span class="pre">time</span></code> 实例以微秒精度序列化为字符串。</p>
+<p>如果需要，可以使用 <code class="docutils literal notranslate"><span class="pre">DATETIME_FORMAT</span></code> 和 <code class="docutils literal notranslate"><span class="pre">TIME_FORMAT</span></code> 设置修改序列化器行为。</p>
+<p>可以通过在 <code class="docutils literal notranslate"><span class="pre">JSONRenderer</span></code> 子类上设置自定义 <code class="docutils literal notranslate"><span class="pre">encoder_class</span></code> 属性来修改渲染器行为。</p>
+</section>
+<section id="options-relational-choices-no-longer-displayed-in-options-requests">
+<h3>关系选项不再显示在 OPTIONS 请求中 (Relational choices no longer displayed in OPTIONS requests.)<a class="headerlink" href="#options-relational-choices-no-longer-displayed-in-options-requests" title="Permalink to this heading">#</a></h3>
+<p>向具有序列化器选择字段的视图发出 <code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code> 请求将导致响应中返回可用选项列表。</p>
+<p>在存在关系字段的情况下，先前的行为是返回可用实例的列表以供该关系字段选择。</p>
+<p>为了尽量减少暴露的信息，现在的行为是不返回关系字段的选择信息。</p>
+<p>如果要覆盖此新行为，则需要<a class="reference external" href="https://www.django-rest-framework.org/api-guide/metadata/#custom-metadata-classes">实现自定义元数据类</a>。</p>
+<p>有关此行为更改的详细信息，请参阅<a class="reference external" href="https://github.com/encode/django-rest-framework/issues/3751">问题 #3751</a>。</p>
+</section>
+</section>
+<section id="other-improvements">
+<h2>其他改进 (Other improvements)<a class="headerlink" href="#other-improvements" title="Permalink to this heading">#</a></h2>
+<p>此版本包括来自大量<a class="reference external" href="https://github.com/encode/django-rest-framework/milestone/35">拉取请求和问题</a>的进一步工作。</p>
+<p>非常感谢所有参与发布的贡献者，无论是通过提出问题、提供反馈、改进文档、建议和实现代码更改。</p>
+<p>完整的逐项发布说明可以<a class="reference external" href="https://www.django-rest-framework.org/community/release-notes#34">在这里找到</a>。</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Community"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="3.5_Announcement.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Django REST framework 3.5</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="3.3_Announcement.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Django REST framework 3.3</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funding">资金 (Funding)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#schemas-client-libraries">模式和客户端库 (Schemas &amp; client libraries)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-versions">支持的版本 (Supported versions)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecations-and-changes">弃用和变化 (Deprecations and changes)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-fields-or-exclude-on-serializer-classes">在序列化器类上使用字段或排除 (Use fields or exclude on serializer classes.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#microsecond-precision-when-returning-time-or-datetime">返回时间或日期时间时的微秒精度 (Microsecond precision when returning time or datetime.)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#options-relational-choices-no-longer-displayed-in-options-requests">关系选项不再显示在 OPTIONS 请求中 (Relational choices no longer displayed in OPTIONS requests.)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-improvements">其他改进 (Other improvements)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,895 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>对 REST framework 的贡献 (Contributing to REST framework) &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Community/Contributing_to_REST_framework';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="项目管理 (Project management)" href="Project_management.html" />
+    <link rel="prev" title="第三方包 (Third Party Packages)" href="Third_Party_Packages.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Authentication-and-Permissions.html">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Views.html">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Renderers.html">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializer-fields.html">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Validators.html">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Authentication.html">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Permissions.html">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Throttling.html">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Filtering.html">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Pagination.html">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Exceptions.html">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Testing.html">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../API-Guide/Settings.html">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/API_Clients.html">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/The_Browsable_API.html">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Third_Party_Packages.html">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.4_Announcement.html">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.0_Announcement.html">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FCommunity/Contributing_to_REST_framework.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Community/Contributing_to_REST_framework.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>对 REST framework 的贡献 (Contributing to REST framework)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">对 REST framework 的贡献 (Contributing to REST framework)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#community">社区 (Community)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-of-conduct">行为守则 (Code of conduct)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#issues">问题 (Issues)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#triaging-issues">分类问题 (Triaging issues)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#development">发展 (Development)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">测试 (Testing)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-options">测试选项 (Test options)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-against-multiple-environments">针对多种环境运行 (Running against multiple environments)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pull-requests">拉取请求 (Pull requests)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-compatibility-issues">管理兼容性问题 (Managing compatibility issues)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">文档 (Documentation)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-documentation">构建文档 (Building the documentation)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#language-style">语言样式 (Language style)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown-markdown-style">Markdown 样式 (Markdown style)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#headers">1.Headers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#links">2. Links</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">3. Notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="rest-framework-contributing-to-rest-framework">
+<h1>对 REST framework 的贡献 (Contributing to REST framework)<a class="headerlink" href="#rest-framework-contributing-to-rest-framework" title="Permalink to this heading">#</a></h1>
+<p>世界真的只能一次改变一件事。艺术正在挑选那件作品。—— <a class="reference external" href="https://www.w3.org/People/Berners-Lee/FAQ.html">Tim Berners-Lee</a></p>
+<p>您可以通过多种方式为 Django REST framework 做出贡献。我们希望它是一个由社区主导的项目，所以请参与并帮助塑造项目的未来。</p>
+<section id="community">
+<h2>社区 (Community)<a class="headerlink" href="#community" title="Permalink to this heading">#</a></h2>
+<p>您可以做的最重要的事情是尽可能积极地参与推动 REST framework 项目。代码贡献作为参与项目的主要方式经常被高估，我们认为情况并非如此。</p>
+<p>如果您使用 REST framework，我们希望您能够畅所欲言地讲述您的经验 - 您可以考虑撰写关于使用 REST framework 的博客文章，或者发布关于使用特定 JavaScript 框架构建项目的教程。初学者的经验可能特别有用，因为您将处于最佳位置，以评估哪些 REST framework 更难以理解和使用。</p>
+<p>您可以帮助社区向前发展的其他非常棒的方法包括帮助回答讨论组的问题，或者在 StackOverflow 上设置一个电子邮件警告，这样您就可以得到关于 <code class="docutils literal notranslate"><span class="pre">django-rest-framework</span></code> 标签的任何新问题的通知。</p>
+<p>在回答问题时，请确保通过超链接尽可能地帮助未来的贡献者找到相关的线程和票据，并在相关时包含这些项目的反向链接。</p>
+</section>
+<section id="code-of-conduct">
+<h2>行为守则 (Code of conduct)<a class="headerlink" href="#code-of-conduct" title="Permalink to this heading">#</a></h2>
+<p>请保持礼貌和专业的语气。对于一些用户来说，关于REST framework 邮件列表或票据跟踪器的讨论可能是他们与开源社区的首次接触。第一印象很重要，所以让我们试着让每个人都感到受欢迎。</p>
+<p>注意你选择的语言。例如，在一个男性占主导地位的环境中，以 “嘿，伙伴” 开头的帖子可能会被无意中排除。在这种情况下，使用中性语言同样容易，也更加包容。</p>
+<p><a class="reference external" href="https://www.djangoproject.com/conduct/">Django 行为准则</a>为参与社区论坛提供了更全面的指导方针。</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="issues">
+<h1>问题 (Issues)<a class="headerlink" href="#issues" title="Permalink to this heading">#</a></h1>
+<p>如果你能确保在正确的频道上解决问题，这真的很有帮助。使用问题应针对讨论组。应在 GitHub <a class="reference external" href="https://github.com/encode/django-rest-framework/issues?state=open">问题跟踪器</a>上引发功能请求、错误报告和其他问题。</p>
+<p>关于良好问题报告的一些提示：</p>
+<ul class="simple">
+<li><p>在描述问题时，尝试根据您认为需要更改的行为而不是您认为需要更改的代码来表达您的标签。</p></li>
+<li><p>首先搜索问题列表以查找相关项目，并确保在报告问题之前运行最新版本的 REST framework。</p></li>
+<li><p>如果报告错误，则尝试包含带有失败测试用例的 pull 请求。这将有助于我们快速确定是否存在有效问题，并确保在有问题时更快地解决问题。</p></li>
+<li><p>功能请求通常会被关闭，建议它们在核心 REST framework 库之外实现。保持作为第三方库实现的新功能请求允许我们降低 REST framework 的维护开销，因此重点可以放在持续稳定性，错误修正和优秀文档上。</p></li>
+<li><p>结束问题并不一定意味着讨论的结束。如果您认为您的问题已被错误关闭，请解释原因，我们会考虑是否需要重新打开。</p></li>
+</ul>
+<section id="triaging-issues">
+<h2>分类问题 (Triaging issues)<a class="headerlink" href="#triaging-issues" title="Permalink to this heading">#</a></h2>
+<p>参与分类传入问题是开始贡献的好方法。进入票据跟踪器的每一张票都需要进行审查，以确定下一步应该采取什么步骤。任何人都可以帮忙解决这个问题，你只需要愿意</p>
+<ul class="simple">
+<li><p>读完这张票 - 它是否有意义，是否缺少任何能更好地解释它的上下文？</p></li>
+<li><p>票据是否在正确的地方报告，是否更适合在讨论组进行讨论？</p></li>
+<li><p>如果票据是错误报告，你能复制它吗？您是否能够编写一个演示该问题且可以作为拉取请求提交的失败测试用例？</p></li>
+<li><p>如果票据是功能请求，您是否同意，并且功能请求是否可以实现为第三方程序包？</p></li>
+<li><p>如果一张票没有多少活动，并且它解决了您需要的一些问题，那么请在这张票上进行评论，并尝试找出让它再次运行所需要的东西。</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="development">
+<h1>发展 (Development)<a class="headerlink" href="#development" title="Permalink to this heading">#</a></h1>
+<p>要开始开发 Django REST framework，首先在 GitHub 上从 <a class="reference external" href="https://github.com/encode/django-rest-framework">Django REST Framework repo</a> 创建一个 Fork。</p>
+<p>然后克隆您的 fork。clone 命令将如下所示，使用您的 GitHub 用户名而不是 YOUR-USERNAME：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">YOUR</span><span class="o">-</span><span class="n">USERNAME</span><span class="o">/</span><span class="n">Spoon</span><span class="o">-</span><span class="n">Knife</span>
+</pre></div>
+</div>
+<p>有关更多帮助，请参阅 GitHub 的 <a class="reference external" href="https://help.github.com/articles/fork-a-repo/">Fork a Repo</a> 指南。</p>
+<p>更改应该大致遵循 <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a> 样式约定，我们建议您设置编辑器以自动指示不符合的样式。</p>
+<section id="testing">
+<h2>测试 (Testing)<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h2>
+<p>要运行测试，请克隆存储库，然后：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setup the virtual environment</span>
+<span class="n">virtualenv</span> <span class="n">env</span>
+<span class="n">source</span> <span class="n">env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">django</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="c1"># Run the tests</span>
+<span class="o">./</span><span class="n">runtests</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<section id="test-options">
+<h3>测试选项 (Test options)<a class="headerlink" href="#test-options" title="Permalink to this heading">#</a></h3>
+<p>使用更简洁的输出样式运行。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">runtests</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">q</span>
+</pre></div>
+</div>
+<p>使用更简洁的输出样式运行测试，没有覆盖，没有 flake8。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">runtests</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">fast</span>
+</pre></div>
+</div>
+<p>不要运行 flake8 代码检查。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">runtests</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">nolint</span>
+</pre></div>
+</div>
+<p>只运行 flake8 代码检查，不要运行测试。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">runtests</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">lintonly</span>
+</pre></div>
+</div>
+<p>为给定的测试用例运行测试。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">runtests</span><span class="o">.</span><span class="n">py</span> <span class="n">MyTestCase</span>
+</pre></div>
+</div>
+<p>为给定的测试方法运行测试。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">runtests</span><span class="o">.</span><span class="n">py</span> <span class="n">MyTestCase</span><span class="o">.</span><span class="n">test_this_method</span>
+</pre></div>
+</div>
+<p>为给定的测试方法以较短形式运行测试。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">runtests</span><span class="o">.</span><span class="n">py</span> <span class="n">test_this_method</span>
+</pre></div>
+</div>
+<p>注意：测试用例和测试方法匹配是模糊的，有时会运行包含与给定命令行输入的部分字符串匹配的其他测试。</p>
+</section>
+<section id="running-against-multiple-environments">
+<h3>针对多种环境运行 (Running against multiple environments)<a class="headerlink" href="#running-against-multiple-environments" title="Permalink to this heading">#</a></h3>
+<p>您还可以使用优秀的 <a class="reference external" href="https://tox.readthedocs.io/en/latest/">tox</a> 测试工具对所有受支持的 Python 和 Django 版本运行测试。全局安装 <code class="docutils literal notranslate"><span class="pre">tox</span></code>，然后运行：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tox</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="pull-requests">
+<h2>拉取请求 (Pull requests)<a class="headerlink" href="#pull-requests" title="Permalink to this heading">#</a></h2>
+<p>尽早发出拉取请求是个好主意。拉取请求代表讨论的开始，并不一定需要是最终的完成提交。</p>
+<p>在开始处理拉取请求之前，最好先建立一个新分支。这意味着您以后可以切换回处理另一个单独的问题，而不会干扰正在进行的拉取请求。</p>
+<p>记住，如果你有一个未完成的拉取请求，那么将新的提交推送到你的GitHub仓库也会自动更新拉取请求。</p>
+<p>GitHub 有关处理拉取请求的文档可在<a class="reference external" href="https://help.github.com/articles/using-pull-requests">此处获得</a>。</p>
+<p>总是在提交拉取请求之前运行测试，理想情况下运行 <code class="docutils literal notranslate"><span class="pre">tox</span></code>，以检查您的修改是否兼容 Python 2 和 Python 3，以及它们是否在所有受支持的 Django 版本上正确运行。</p>
+<p>完成拉取请求后，请查看 GitHub 界面中的 Travis 构建状态，并确保测试按预期运行。</p>
+<div align=center><img src="https://www.django-rest-framework.org/img/travis-status.png"/></div>
+<p><em>上图：Travis 构建通知</em></p>
+</section>
+<section id="managing-compatibility-issues">
+<h2>管理兼容性问题 (Managing compatibility issues)<a class="headerlink" href="#managing-compatibility-issues" title="Permalink to this heading">#</a></h2>
+<p>有时，为了确保您的代码适用于各种不同版本的 Django，Python 或第三方库，您需要根据环境运行稍微不同的代码。以这种方式分支的任何代码都应该隔离到 <code class="docutils literal notranslate"><span class="pre">compat.py</span></code> 模块中，并且应该提供代码库的其余部分可以使用的单个公共接口。</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="documentation">
+<h1>文档 (Documentation)<a class="headerlink" href="#documentation" title="Permalink to this heading">#</a></h1>
+<p>REST framework 的文档是从 <a class="reference external" href="https://github.com/encode/django-rest-framework/tree/master/docs">docs 目录</a>中的 <a class="reference external" href="https://daringfireball.net/projects/markdown/basics">Markdown</a> 源文件构建的。</p>
+<p>有许多伟大的 Markdown 编辑器使得使用文档非常容易。<a class="reference external" href="http://mouapp.com/">Mac 的 Mou 编辑器</a>是强烈推荐的编辑器之一。</p>
+<section id="building-the-documentation">
+<h2>构建文档 (Building the documentation)<a class="headerlink" href="#building-the-documentation" title="Permalink to this heading">#</a></h2>
+<p>要构建文档，请使用 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">mkdocs</span></code> 安装 MkDocs，然后运行以下命令。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mkdocs</span> <span class="n">build</span>
+</pre></div>
+</div>
+<p>这将把文档构建到 <code class="docutils literal notranslate"><span class="pre">site</span></code> 目录中。</p>
+<p>您可以使用 <code class="docutils literal notranslate"><span class="pre">serve</span></code> 命令构建文档并在浏览器窗口中打开预览。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mkdocs</span> <span class="n">serve</span>
+</pre></div>
+</div>
+</section>
+<section id="language-style">
+<h2>语言样式 (Language style)<a class="headerlink" href="#language-style" title="Permalink to this heading">#</a></h2>
+<p>文档应采用美式英语。文档的基调是非常重要的 - 尽可能坚持简单、朴素、客观和平衡的风格。</p>
+<p>其他一些提示：</p>
+<ul class="simple">
+<li><p>保持段落相当短。</p></li>
+<li><p>不要使用 ‘e.g.’ 等缩写词而是使用长形式，例如 ‘For example’。</p></li>
+</ul>
+</section>
+<section id="markdown-markdown-style">
+<h2>Markdown 样式 (Markdown style)<a class="headerlink" href="#markdown-markdown-style" title="Permalink to this heading">#</a></h2>
+<p>在处理文档时，您应遵循几个约定。</p>
+<section id="headers">
+<h3>1.Headers<a class="headerlink" href="#headers" title="Permalink to this heading">#</a></h3>
+<p>标头应该使用散列样式。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">### Some important topic</span>
+</pre></div>
+</div>
+<p>不应使用下划线样式。<strong>不要这样做：</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Some</span> <span class="n">important</span> <span class="n">topic</span>
+<span class="o">====================</span>
+</pre></div>
+</div>
+</section>
+<section id="links">
+<h3>2. Links<a class="headerlink" href="#links" title="Permalink to this heading">#</a></h3>
+<p>链接应该始终使用引用样式，并将引用的超链接保留在文档的末尾。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Here</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">link</span> <span class="n">to</span> <span class="p">[</span><span class="n">some</span> <span class="n">other</span> <span class="n">thing</span><span class="p">][</span><span class="n">other</span><span class="o">-</span><span class="n">thing</span><span class="p">]</span><span class="o">.</span>
+
+<span class="n">More</span> <span class="n">text</span><span class="o">...</span>
+
+<span class="p">[</span><span class="n">other</span><span class="o">-</span><span class="n">thing</span><span class="p">]:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">other</span><span class="o">/</span><span class="n">thing</span>
+</pre></div>
+</div>
+<p>此样式有助于保持文档源的一致性和可读性。</p>
+<p>如果要超链接到另一个 REST framework 文档，则应使用相对链接，并链接到 <code class="docutils literal notranslate"><span class="pre">.md</span></code> 后缀。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">authentication</span><span class="p">]:</span> <span class="o">../</span><span class="n">api</span><span class="o">-</span><span class="n">guide</span><span class="o">/</span><span class="n">authentication</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>以此样式链接意味着您可以单击 Markdown 编辑器中的超链接以打开引用的文档。构建文档后，这些链接将转换为 HTML 页面的常规链接。</p>
+</section>
+<section id="notes">
+<h3>3. Notes<a class="headerlink" href="#notes" title="Permalink to this heading">#</a></h3>
+<p>如果你想吸引注意或警告，使用一对封闭线，像这样：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">---</span>
+
+<span class="o">**</span><span class="n">Note</span><span class="p">:</span><span class="o">**</span> <span class="n">A</span> <span class="n">useful</span> <span class="n">documentation</span> <span class="n">note</span><span class="o">.</span>
+
+<span class="o">---</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Community"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Third_Party_Packages.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">第三方包 (Third Party Packages)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Project_management.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">项目管理 (Project management)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">对 REST framework 的贡献 (Contributing to REST framework)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#community">社区 (Community)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-of-conduct">行为守则 (Code of conduct)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#issues">问题 (Issues)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#triaging-issues">分类问题 (Triaging issues)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#development">发展 (Development)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">测试 (Testing)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-options">测试选项 (Test options)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-against-multiple-environments">针对多种环境运行 (Running against multiple environments)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pull-requests">拉取请求 (Pull requests)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-compatibility-issues">管理兼容性问题 (Managing compatibility issues)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">文档 (Documentation)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-documentation">构建文档 (Building the documentation)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#language-style">语言样式 (Language style)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown-markdown-style">Markdown 样式 (Markdown style)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#headers">1.Headers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#links">2. Links</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">3. Notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

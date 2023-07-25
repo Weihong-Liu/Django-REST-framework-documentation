@@ -1,0 +1,958 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>权限 (Permissions) &#8212; Django REST framework 中文文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'API-Guide/Permissions';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="限流 (Throttling)" href="Throttling.html" />
+    <link rel="prev" title="认证 (Authentication)" href="Authentication.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Django REST framework 中文文档
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Quickstart.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Serialization.html">教程 1：序列化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Requests-and-Responses.html">教程 2：请求和响应</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Class-based-views.html">教程 3：基于类的视图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Authentication-and-Permissions.html">教程 4：认证和权限</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Relationships-and-Hyperlinked-APIs.html">教程 5：关系和超链接 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ViewSets-and-Routers.html">教程 6：ViewSets ＆ Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Schemas-and-client_libraries.html">教程 7：Schemas 和客户端库</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API-Guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Requests.html">Requests</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Responses.html">响应 (Responses)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Views.html">基于类的视图</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Generic-views.html">通用视图 (Generic views)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Routers.html">Routers</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Parsers.html">解析器 (Parsers)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Renderers.html">渲染器 (Renderers)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializers.html">序列化器 (Serializers)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-fields.html">序列化器字段 (Serializer fields)</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Serializer-relations.html">序列化器关系 (Serializer relations)</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Validators.html">验证器 (Validators)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Authentication.html">认证 (Authentication)</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">权限 (Permissions)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Throttling.html">限流 (Throttling)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Filtering.html">过滤 (Filtering)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Pagination.html">分页 (Pagination)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Versioning.html">版本控制 (Versioning)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Content-negotiation.html">内容协商 (Content negotiation)</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Metadata.html">元数据 (Metadata)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Schemas.html">模式 (Schemas)</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Format-suffixes.html">格式后缀 (Format suffixes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Returning-URLs.html">返回 URL (Returning URLs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Exceptions.html">异常 (Exceptions)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Testing.html">测试 (Testing)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Settings.html">设置 (Settings)</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Documenting_your_API.html">记录您的 API (Documenting your API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/API_Clients.html">API 客户端 (API Clients)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Topics/Internationalization.html">国际化 (Internationalization)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/AJAX%2C_CSRF_%26_CORS.html">使用 AJAX，CSRF 和 CORS (Working with AJAX, CSRF &amp; CORS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/HTML_%26_Forms.html">HTML 和表单 (HTML &amp; Forms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/The_Browsable_API.html">可浏览的 API (The Browsable API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Topics/REST%2C_Hypermedia_%26_HATEOAS.html">REST, Hypermedia &amp; HATEOAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Community</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Community/Tutorials_and_Resources.html">教程和资源 (Tutorials and Resources)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Third_Party_Packages.html">第三方包 (Third Party Packages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Contributing_to_REST_framework.html">对 REST framework 的贡献 (Contributing to REST framework)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Community/Project_management.html">项目管理 (Project management)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Release_Notes.html">发行说明 (Release Notes)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.9_Announcement.html">Django REST framework 3.9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.8_Announcement.html">Django REST framework 3.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.7_Announcement.html">Django REST framework 3.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.6_Announcement.html">Django REST framework 3.6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.5_Announcement.html">Django REST framework 3.5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.4_Announcement.html">Django REST framework 3.4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.3_Announcement.html">Django REST framework 3.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.2_Announcement.html">Django REST framework 3.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.1_Announcement.html">Django REST framework 3.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/3.0_Announcement.html">Django REST framework 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Kickstarter_Announcement.html">Kickstarting Django REST framework 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Mozilla_Grant.html">Mozilla Grant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Funding.html">资金 (Funding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Community/Jobs.html">工作 (Jobs)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAPI-Guide/Permissions.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/API-Guide/Permissions.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>权限 (Permissions)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">权限 (Permissions)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-permissions-are-determined">如何确定权限 (How permissions are determined)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-level-permissions">对象级权限 (Object level permissions)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-object-level-permissions">对象级权限的限制 (Limitations of object level permissions)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-permission-policy">设置权限策略 (Setting the permission policy)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api">API 参考</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#allowany">AllowAny</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isauthenticated">IsAuthenticated</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isadminuser">IsAdminUser</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isauthenticatedorreadonly">IsAuthenticatedOrReadOnly</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#djangomodelpermissions">DjangoModelPermissions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queryset-using-with-views-that-do-not-include-a-queryset-attribute">使用不包含 <code class="docutils literal notranslate"><span class="pre">queryset</span></code> 属性的视图 (Using with views that do not include a <code class="docutils literal notranslate"><span class="pre">queryset</span></code> attribute.)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#djangomodelpermissionsoranonreadonly">DjangoModelPermissionsOrAnonReadOnly</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#djangoobjectpermissions">DjangoObjectPermissions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-permissions">自定义权限 (Custom permissions)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">举个栗子</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#third-party-packages">第三方包 (Third party packages)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composed-permissions">Composed Permissions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rest-condition">REST Condition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dry-rest-permissions">DRY Rest Permissions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-roles">Django Rest Framework Roles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-api-key">Django Rest Framework API Key</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-role-filters">Django Rest Framework Role Filters</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="permissions">
+<h1>权限 (Permissions)<a class="headerlink" href="#permissions" title="Permalink to this heading">#</a></h1>
+<p>认证或识别本身通常不足以获得对信息或代码的访问。为此，请求访问的实体必须具有授权。—— <a class="reference external" href="https://developer.apple.com/library/mac/#documentation/security/Conceptual/AuthenticationAndAuthorizationGuide/Authorization/Authorization.html">Apple 开发人员文档</a></p>
+<p>与<a class="reference external" href="http://www.django-rest-framework.org/api-guide/authentication/">身份验证</a>和<a class="reference external" href="http://www.django-rest-framework.org/api-guide/throttling/">限流</a>一起，权限确定是否应该授予或拒绝访问请求。</p>
+<p>在允许任何其他代码继续之前，权限检查始终在视图的最开始运行。权限检查通常会使用 <code class="docutils literal notranslate"><span class="pre">request.user</span></code> 和 <code class="docutils literal notranslate"><span class="pre">request.auth</span></code> 属性中的认证信息来确定是否允许传入请求。</p>
+<p>权限用于授予或拒绝不同类别的用户访问 API 的不同部分。</p>
+<p>最简单的权限类型是允许访问任何经过身份验证的用户，并拒绝访问任何未经身份验证的用户。这对应于 REST framework 中的 <code class="docutils literal notranslate"><span class="pre">IsAuthenticated</span></code> 类。</p>
+<p>稍微宽松的权限会允许通过身份验证的用户完全访问，而未经身份验证的用户只能进行只读访问。这对应于 REST framework 中的 <code class="docutils literal notranslate"><span class="pre">IsAuthenticatedOrReadOnly</span></code> 类。</p>
+<section id="how-permissions-are-determined">
+<h2>如何确定权限 (How permissions are determined)<a class="headerlink" href="#how-permissions-are-determined" title="Permalink to this heading">#</a></h2>
+<p>REST framework 中的权限始终被定义为权限类的列表。</p>
+<p>在运行视图的主体之前，列表中的每个权限都会被检查。如果任何权限检查失败，则会引发 <code class="docutils literal notranslate"><span class="pre">exceptions.PermissionDenied</span></code> 或 <code class="docutils literal notranslate"><span class="pre">exceptions.NotAuthenticated</span></code> 异常，并且视图的主体不会再运行。</p>
+<p>当权限检查失败时，根据以下规则，将返回 “403 Forbidden” 或 “401 Unauthorized” 响应：</p>
+<ul class="simple">
+<li><p>请求成功通过身份验证，但权限被拒绝。 —— 将返回 403 Forbidden 响应。</p></li>
+<li><p>请求未成功通过身份验证，并且最高优先级身份验证类未使用 <code class="docutils literal notranslate"><span class="pre">WWW-Authenticate</span></code> 标头。—— 将返回 403 Forbidden 响应。</p></li>
+<li><p>请求未成功通过身份验证，并且最高优先级身份验证类使用 <code class="docutils literal notranslate"><span class="pre">WWW-Authenticate</span></code> 标头。—— 将返回 HTTP 401 Unauthorized 响应，并附带适当的 <code class="docutils literal notranslate"><span class="pre">WWW-Authenticate</span></code> 标头。</p></li>
+</ul>
+</section>
+<section id="object-level-permissions">
+<h2>对象级权限 (Object level permissions)<a class="headerlink" href="#object-level-permissions" title="Permalink to this heading">#</a></h2>
+<p>REST framework 权限还支持对象级权限。对象级权限用于确定是否允许用户对特定对象进行操作，该特定对象通常是指模型实例。</p>
+<p>当 <code class="docutils literal notranslate"><span class="pre">.get_object()</span></code> 被调用时，对象级权限由 REST framework 的通用视图运行。与视图级权限一样，如果用户不被允许对给定对象进行操作，则会引发 <code class="docutils literal notranslate"><span class="pre">exceptions.PermissionDenied</span></code> 异常。</p>
+<p>如果您正在编写自己的视图并希望强制执行对象级权限，或者在通用视图上重写 <code class="docutils literal notranslate"><span class="pre">get_object</span></code> 方法，那么您需要在检索对象时显式地调用视图上的 <code class="docutils literal notranslate"><span class="pre">.check_object_permissions(request,</span> <span class="pre">obj)</span></code> 方法。</p>
+<p>这将引发 <code class="docutils literal notranslate"><span class="pre">PermissionDenied</span></code> 或 <code class="docutils literal notranslate"><span class="pre">NotAuthenticated</span></code> 异常，或者只是在视图具有适当的权限时才返回。</p>
+<p>举个栗子：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">obj</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">(),</span> <span class="n">pk</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;pk&quot;</span><span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">check_object_permissions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">obj</span>
+</pre></div>
+</div>
+<section id="limitations-of-object-level-permissions">
+<h3>对象级权限的限制 (Limitations of object level permissions)<a class="headerlink" href="#limitations-of-object-level-permissions" title="Permalink to this heading">#</a></h3>
+<p>出于性能原因，在返回对象列表时，通用视图不会自动将对象级权限应用于查询集中的每个实例。</p>
+<p>通常，当您使用对象级权限时，您还需要适当地<a class="reference external" href="http://www.django-rest-framework.org/api-guide/filtering/">过滤查询集</a>，以确保用户只能看到他们被允许查看的实例。</p>
+</section>
+</section>
+<section id="setting-the-permission-policy">
+<h2>设置权限策略 (Setting the permission policy)<a class="headerlink" href="#setting-the-permission-policy" title="Permalink to this heading">#</a></h2>
+<p>可以使用 <code class="docutils literal notranslate"><span class="pre">DEFAULT_PERMISSION_CLASSES</span></code> setting 全局设置默认权限策略。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_PERMISSION_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+        <span class="s1">&#39;rest_framework.permissions.IsAuthenticated&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>如果未指定，则此设置默认为允许无限制访问：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;DEFAULT_PERMISSION_CLASSES&#39;</span><span class="p">:</span> <span class="p">(</span>
+   <span class="s1">&#39;rest_framework.permissions.AllowAny&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>您还可以使用基于类的视图 (APIView) 在每个视图或每个视图集的基础上设置身份验证策略。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.permissions</span> <span class="kn">import</span> <span class="n">IsAuthenticated</span>
+<span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">rest_framework.views</span> <span class="kn">import</span> <span class="n">APIView</span>
+
+<span class="k">class</span> <span class="nc">ExampleView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">IsAuthenticated</span><span class="p">,)</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;request was permitted&#39;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>或者，使用基于函数的视图的 <code class="docutils literal notranslate"><span class="pre">&#64;api_view</span></code> 装饰器。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.decorators</span> <span class="kn">import</span> <span class="n">api_view</span><span class="p">,</span> <span class="n">permission_classes</span>
+<span class="kn">from</span> <span class="nn">rest_framework.permissions</span> <span class="kn">import</span> <span class="n">IsAuthenticated</span>
+<span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="kn">import</span> <span class="n">Response</span>
+
+<span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@permission_classes</span><span class="p">((</span><span class="n">IsAuthenticated</span><span class="p">,</span> <span class="p">))</span>
+<span class="k">def</span> <span class="nf">example_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;request was permitted&#39;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>注意</strong>：当通过类属性或装饰器设置新的权限类时，您会告诉视图忽略 <strong><a class="reference external" href="http://settings.py">settings.py</a></strong> 文件上设置的默认列表。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="api">
+<h1>API 参考<a class="headerlink" href="#api" title="Permalink to this heading">#</a></h1>
+<section id="allowany">
+<h2>AllowAny<a class="headerlink" href="#allowany" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">AllowAny</span></code> 权限类将允许不受限制的访问，<strong>不管请求是经过身份验证还是未经身份验证</strong>。</p>
+<p>此权限不是严格要求的，因为您可以通过使用空列表或元组进行权限设置来获得相同的结果，但您可能会发现指定此类很有用，因为它使意图明确。</p>
+</section>
+<section id="isauthenticated">
+<h2>IsAuthenticated<a class="headerlink" href="#isauthenticated" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">IsAuthenticated</span></code> 权限类将拒绝任何未经身份验证的用户的权限，否则允许权限。</p>
+<p>如果您希望 API 仅供注册用户访问，则此权限适用。</p>
+</section>
+<section id="isadminuser">
+<h2>IsAdminUser<a class="headerlink" href="#isadminuser" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">IsAdminUser</span></code> 权限类将拒绝任何用户的权限，除非在 <code class="docutils literal notranslate"><span class="pre">user.is_staff</span></code> 为 <code class="docutils literal notranslate"><span class="pre">True</span></code> 的情况下权限将被允许。</p>
+<p>如果您希望 API 仅对受信任的管理员子集进行访问，则此权限是合适的。</p>
+</section>
+<section id="isauthenticatedorreadonly">
+<h2>IsAuthenticatedOrReadOnly<a class="headerlink" href="#isauthenticatedorreadonly" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">IsAuthenticatedOrReadOnly</span></code> 将允许经过身份验证的用户执行任何请求。如果请求方法是 “安全” 的方法之一 (<code class="docutils literal notranslate"><span class="pre">GET</span></code>、<code class="docutils literal notranslate"><span class="pre">HEAD</span></code>、<code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code>)，则只允许未授权用户的请求。</p>
+<p>如果您希望 API 允许匿名用户拥有读取权限，并且只允许对经过身份验证的用户拥有写入权限，则此权限是合适的。</p>
+</section>
+<section id="djangomodelpermissions">
+<h2>DjangoModelPermissions<a class="headerlink" href="#djangomodelpermissions" title="Permalink to this heading">#</a></h2>
+<p>此权限类与 Django 的标准 <code class="docutils literal notranslate"><span class="pre">django.contrib.auth</span></code> <a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/auth/customizing/#custom-permissions">模型权限</a>绑定。此权限只能应用于具有 <code class="docutils literal notranslate"><span class="pre">.queryset</span></code> 属性集的视图。只有在用户经过身份验证并分配了相关模型权限时，才会获得授权。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span></code> 请求要求用户在模型上具有 <code class="docutils literal notranslate"><span class="pre">add</span></code> 权限。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PUT</span></code> 和 <code class="docutils literal notranslate"><span class="pre">PATCH</span></code> 请求要求用户在模型上具有 <code class="docutils literal notranslate"><span class="pre">change</span></code> 权限。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code> 请求要求用户在模型上具有 <code class="docutils literal notranslate"><span class="pre">delete</span></code> 权限。</p></li>
+</ul>
+<p>还可以重写默认行为以支持自定义模型权限。例如，你可能想要包含 <code class="docutils literal notranslate"><span class="pre">GET</span></code> 请求的 <code class="docutils literal notranslate"><span class="pre">view</span></code> 模型权限。</p>
+<p>要使用自定义模型权限，请重写 <code class="docutils literal notranslate"><span class="pre">DjangoModelPermissions</span></code> 并设置 <code class="docutils literal notranslate"><span class="pre">.perms_map</span></code> 属性。有关详细信息，请参阅源代码。</p>
+<section id="queryset-using-with-views-that-do-not-include-a-queryset-attribute">
+<h3>使用不包含 <code class="docutils literal notranslate"><span class="pre">queryset</span></code> 属性的视图 (Using with views that do not include a <code class="docutils literal notranslate"><span class="pre">queryset</span></code> attribute.)<a class="headerlink" href="#queryset-using-with-views-that-do-not-include-a-queryset-attribute" title="Permalink to this heading">#</a></h3>
+<p>如果您将此权限与重写的 <code class="docutils literal notranslate"><span class="pre">get_queryset()</span></code> 方法的视图一起使用，则视图上可能没有 <code class="docutils literal notranslate"><span class="pre">queryset</span></code> 属性。在这种情况下，我们建议还用前哨查询集标记视图，以便该类可以确定所需的权限。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">queryset</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">none</span><span class="p">()</span>  <span class="c1"># Required for DjangoModelPermissions</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="djangomodelpermissionsoranonreadonly">
+<h2>DjangoModelPermissionsOrAnonReadOnly<a class="headerlink" href="#djangomodelpermissionsoranonreadonly" title="Permalink to this heading">#</a></h2>
+<p>与 <code class="docutils literal notranslate"><span class="pre">DjangoModelPermissions</span></code> 类似，但也允许未经身份验证的用户对 API 的进行只读访问。</p>
+</section>
+<section id="djangoobjectpermissions">
+<h2>DjangoObjectPermissions<a class="headerlink" href="#djangoobjectpermissions" title="Permalink to this heading">#</a></h2>
+<p>该权限类与 Django 的标准<a class="reference external" href="https://docs.djangoproject.com/en/stable/topics/auth/customizing/#handling-object-permissions">对象权限框架</a>绑定，该框架允许模型上的每个对象权限。要使用此权限类，您还需要添加支持对象级权限的权限后端，例如 <a class="reference external" href="https://github.com/lukaszb/django-guardian">django-guardian</a>。</p>
+<p>与 <code class="docutils literal notranslate"><span class="pre">DjangoModelPermissions</span></code> 一样，此权限只能应用于具有 <code class="docutils literal notranslate"><span class="pre">.queryset</span></code> 属性或 <code class="docutils literal notranslate"><span class="pre">.get_queryset()</span></code> 方法的视图。只有在用户经过身份验证且分配了相关的每个对象权限和相关的模型权限时，才会获得授权。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span></code> 请求要求用户在模型实例上具有 <code class="docutils literal notranslate"><span class="pre">add</span></code> 权限。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PUT</span></code> 和 <code class="docutils literal notranslate"><span class="pre">PATCH</span></code> 请求要求用户在模型实例上具有 <code class="docutils literal notranslate"><span class="pre">change</span></code> 权限。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code> 请求要求用户在模型实例上具有 <code class="docutils literal notranslate"><span class="pre">delete</span></code> 权限。</p></li>
+</ul>
+<p>请注意，<code class="docutils literal notranslate"><span class="pre">DjangoObjectPermissions</span></code> <strong>不需要</strong> <code class="docutils literal notranslate"><span class="pre">django-guardian</span></code> 软件包，并且应同样支持其他对象级后端。</p>
+<p>与 <code class="docutils literal notranslate"><span class="pre">DjangoModelPermissions</span></code> 一样，您可以通过重写 <code class="docutils literal notranslate"><span class="pre">DjangoObjectPermissions</span></code> 并设置 <code class="docutils literal notranslate"><span class="pre">.perms_map</span></code> 属性来使用自定义模型权限。有关详细信息，请参阅源代码。</p>
+<hr class="docutils" />
+<p><strong>注意</strong>：如果您需要 <code class="docutils literal notranslate"><span class="pre">GET</span></code>，<code class="docutils literal notranslate"><span class="pre">HEAD</span></code> 和 <code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code> 请求的对象级 <code class="docutils literal notranslate"><span class="pre">view</span></code> 权限，则还需要考虑添加 <code class="docutils literal notranslate"><span class="pre">DjangoObjectPermissionsFilter</span></code> 类，以确保列表端点只返回包含用户具有适当查看权限的对象的结果。</p>
+<hr class="docutils" />
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="custom-permissions">
+<h1>自定义权限 (Custom permissions)<a class="headerlink" href="#custom-permissions" title="Permalink to this heading">#</a></h1>
+<p>要实现自定义权限，请重写 <code class="docutils literal notranslate"><span class="pre">BasePermission</span></code> 并实现以下方法中的一个或两个：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.has_permission(self,</span> <span class="pre">request,</span> <span class="pre">view)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.has_object_permission(self,</span> <span class="pre">request,</span> <span class="pre">view,</span> <span class="pre">obj)</span></code></p></li>
+</ul>
+<p>如果请求被授予访问权限，则方法应返回 <code class="docutils literal notranslate"><span class="pre">True</span></code>，否则返回 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
+<p>如果您需要测试请求是读操作还是写操作，则应该根据常量 <code class="docutils literal notranslate"><span class="pre">SAFE_METHODS</span></code> 检查请求方法，该常量是包含 <code class="docutils literal notranslate"><span class="pre">'GET'</span></code>，<code class="docutils literal notranslate"><span class="pre">'OPTIONS'</span></code> 和 <code class="docutils literal notranslate"><span class="pre">'HEAD'</span></code> 的元组。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="ow">in</span> <span class="n">permissions</span><span class="o">.</span><span class="n">SAFE_METHODS</span><span class="p">:</span>
+    <span class="c1"># Check permissions for read-only request</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Check permissions for write request</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>注意</strong>：只有在视图级别 <code class="docutils literal notranslate"><span class="pre">has_permission</span></code> 检查通过时才会调用实例级别的 <code class="docutils literal notranslate"><span class="pre">has_object_permission</span></code> 方法。还要注意，为了运行实例级检查，视图代码应显式调用 <code class="docutils literal notranslate"><span class="pre">.check_object_permissions(request,</span> <span class="pre">obj)</span></code>。如果您使用的是通用视图，则默认情况下将为您处理。(基于函数的视图需要显式检查对象权限，在失败时引发 <code class="docutils literal notranslate"><span class="pre">PermissionDenied</span></code>。)</p>
+<hr class="docutils" />
+<p>如果测试失败，自定义权限将引发 <code class="docutils literal notranslate"><span class="pre">PermissionDenied</span></code> 异常。要更改与异常相关的错误消息，请直接在自定义权限上实现 <code class="docutils literal notranslate"><span class="pre">message</span></code> 属性。否则，将使用 <code class="docutils literal notranslate"><span class="pre">PermissionDenied</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">default_detail</span></code> 属性。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">permissions</span>
+
+<span class="k">class</span> <span class="nc">CustomerAccessPermission</span><span class="p">(</span><span class="n">permissions</span><span class="o">.</span><span class="n">BasePermission</span><span class="p">):</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="s1">&#39;Adding customers not allowed.&#39;</span>
+
+    <span class="k">def</span> <span class="nf">has_permission</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+         <span class="o">...</span>
+</pre></div>
+</div>
+<section id="id1">
+<h2>举个栗子<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>以下是根据黑名单检查传入请求的 IP 地址的权限类的示例，并且如果 IP 已被列入黑名单，则拒绝该请求。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">permissions</span>
+
+<span class="k">class</span> <span class="nc">BlacklistPermission</span><span class="p">(</span><span class="n">permissions</span><span class="o">.</span><span class="n">BasePermission</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    对列入黑名单的IP进行全局权限检查。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">has_permission</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+        <span class="n">ip_addr</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">]</span>
+        <span class="n">blacklisted</span> <span class="o">=</span> <span class="n">Blacklist</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ip_addr</span><span class="o">=</span><span class="n">ip_addr</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="n">blacklisted</span>
+</pre></div>
+</div>
+<p>除了针对所有传入请求运行的全局权限之外，您还可以创建对象级权限，仅运行针对影响特定对象实例的操作。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">IsOwnerOrReadOnly</span><span class="p">(</span><span class="n">permissions</span><span class="o">.</span><span class="n">BasePermission</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    对象级权限，仅允许对象的所有者编辑它。</span>
+<span class="sd">    假设模型实例具有 `owner` 属性。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">has_object_permission</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">view</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="c1"># 任何请求都允许读取权限，</span>
+        <span class="c1"># 所以我们总是允许 GET，HEAD 或 OPTIONS 请求。</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="ow">in</span> <span class="n">permissions</span><span class="o">.</span><span class="n">SAFE_METHODS</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="c1"># 实例必须具有名为 `owner` 的属性。</span>
+        <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">owner</span> <span class="o">==</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
+</pre></div>
+</div>
+<p>请注意，通用视图将检查适当的对象级权限，但如果您正在编写自己的自定义视图，则需要确保检查自己的对象级权限。您可以通过在拥有对象实例后从视图中调用 <code class="docutils literal notranslate"><span class="pre">self.check_object_permissions(request,</span> <span class="pre">obj)</span></code> 来完成此操作。如果任何对象级权限检查失败，此调用将引发适当的 <code class="docutils literal notranslate"><span class="pre">APIException</span></code>，否则将简单地返回。</p>
+<p>还要注意，通用视图仅检查检索单个模型实例的视图的对象级权限。如果需要对列表视图进行对象级别过滤，则需要单独过滤查询集。有关详细信息，请参阅<a class="reference external" href="http://www.django-rest-framework.org/api-guide/filtering/">过滤文档</a>。</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="third-party-packages">
+<h1>第三方包 (Third party packages)<a class="headerlink" href="#third-party-packages" title="Permalink to this heading">#</a></h1>
+<p>以下是可用的第三方包。</p>
+<section id="composed-permissions">
+<h2>Composed Permissions<a class="headerlink" href="#composed-permissions" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/niwibe/djangorestframework-composed-permissions">Composed Permissions</a> 包使用小的和可重用组件来提供一种定义复杂和多深度 (带逻辑运算符) 权限对象的简单方法。</p>
+</section>
+<section id="rest-condition">
+<h2>REST Condition<a class="headerlink" href="#rest-condition" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/caxap/rest_condition">REST Condition</a> 包是以简单方便的方式构建复杂权限的另一种扩展。该扩展允许您将权限与逻辑运算符组合在一起。</p>
+</section>
+<section id="dry-rest-permissions">
+<h2>DRY Rest Permissions<a class="headerlink" href="#dry-rest-permissions" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/Helioscene/dry-rest-permissions">DRY Rest Permissions</a> 包提供了为单个默认和自定义操作定义不同权限的能力。此包适用于具有从应用程序数据模型中定义的关系派生的权限的应用程序。它还支持通过 API 的序列化器将权限检查返回给客户端应用程序。此外，它还支持向默认和自定义列表操作添加权限，以限制每个用户检索的数据。</p>
+</section>
+<section id="django-rest-framework-roles">
+<h2>Django Rest Framework Roles<a class="headerlink" href="#django-rest-framework-roles" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/computer-lab/django-rest-framework-roles">Django Rest Framework Roles</a> 包使您在多种类型的用户上参数化 API 更轻松。</p>
+</section>
+<section id="django-rest-framework-api-key">
+<h2>Django Rest Framework API Key<a class="headerlink" href="#django-rest-framework-api-key" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/manosim/django-rest-framework-api-key">Django Rest Framework API Key</a> 包允许您确保对服务器发出的每个请求都需要 API 密钥头。您可以从 django 管理界面生成一个。</p>
+</section>
+<section id="django-rest-framework-role-filters">
+<h2>Django Rest Framework Role Filters<a class="headerlink" href="#django-rest-framework-role-filters" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/allisson/django-rest-framework-role-filters">Django Rest Framework Role Filters</a> 包提供对多种类型角色的简单过滤。</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./API-Guide"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Authentication.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">认证 (Authentication)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Throttling.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">限流 (Throttling)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">权限 (Permissions)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-permissions-are-determined">如何确定权限 (How permissions are determined)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-level-permissions">对象级权限 (Object level permissions)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-object-level-permissions">对象级权限的限制 (Limitations of object level permissions)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-permission-policy">设置权限策略 (Setting the permission policy)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#api">API 参考</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#allowany">AllowAny</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isauthenticated">IsAuthenticated</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isadminuser">IsAdminUser</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isauthenticatedorreadonly">IsAuthenticatedOrReadOnly</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#djangomodelpermissions">DjangoModelPermissions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queryset-using-with-views-that-do-not-include-a-queryset-attribute">使用不包含 <code class="docutils literal notranslate"><span class="pre">queryset</span></code> 属性的视图 (Using with views that do not include a <code class="docutils literal notranslate"><span class="pre">queryset</span></code> attribute.)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#djangomodelpermissionsoranonreadonly">DjangoModelPermissionsOrAnonReadOnly</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#djangoobjectpermissions">DjangoObjectPermissions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-permissions">自定义权限 (Custom permissions)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">举个栗子</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#third-party-packages">第三方包 (Third party packages)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composed-permissions">Composed Permissions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rest-condition">REST Condition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dry-rest-permissions">DRY Rest Permissions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-roles">Django Rest Framework Roles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-api-key">Django Rest Framework API Key</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-rest-framework-role-filters">Django Rest Framework Role Filters</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
